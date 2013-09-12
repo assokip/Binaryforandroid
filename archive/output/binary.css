@@ -1,0 +1,17 @@
+body { padding:0 margin:0 }
+
+.header {
+    // logo here, the view can hide this out of view.
+    // we can also include a neat css3 animation which slides it up and down
+    // when display:none/block is triggered
+}
+
+.content {
+
+
+}
+
+.footer {
+    // doubt we'll use this, certainly not for smaller mobile apps
+    display:none;
+}
