@@ -173,12 +173,10 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #2a3052;
   font-family: arial, helvetica, sans-serif;
-  text-rendering: optimizelegibility;
   font-size: 12px;
   height: 100%;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
   width: 100%; }
   body .effect_into {
     -webkit-animation: swipeDown 0.3s linear 1;
@@ -230,6 +228,9 @@ body {
         margin: 0;
         padding: 0;
         border: 0; }
+      body > .wrapper > .main > .wrapper > .login_id {
+        text-align: center;
+        font-size: 2em; }
       body > .wrapper > .main > .wrapper > .menu {
         height: 71%;
         margin: 0 5% 0 5%; }
@@ -240,9 +241,6 @@ body {
           margin: 5%;
           padding: 0;
           border: 0; }
-          body > .wrapper > .main > .wrapper > .menu div:hover {
-            cursor: pointer;
-            opacity: 0.8; }
           body > .wrapper > .main > .wrapper > .menu div .wrapper {
             width: 100%;
             height: 100%;
@@ -250,6 +248,9 @@ body {
             border: 2px solid #FAFAFA;
             box-shadow: 0 0 30px #333333;
             border-radius: 20px; }
+            body > .wrapper > .main > .wrapper > .menu div .wrapper:hover {
+              cursor: pointer;
+              background-color: white; }
         body > .wrapper > .main > .wrapper > .menu .trade .wrapper {
           background: url("../img/main/trade.svg") #ea8125 no-repeat 50% 50%;
           background-size: 90% 90%; }
@@ -323,6 +324,43 @@ body {
       @media screen and (min-aspect-ratio: 1 / 1) {
         body > .wrapper > .support .wrapper > .menu div {
           width: 23%; } }
+  body > .wrapper > .trade {
+    height: 100%;
+    position: fixed; }
+    body > .wrapper > .trade .wrapper .header {
+      background: #ea8125;
+      height: 95px;
+      border-bottom: 2px solid #FAFAFA;
+      box-shadow: 0 0 30px #333333; }
+      body > .wrapper > .trade .wrapper .header > .back {
+        float: left;
+        height: 70px;
+        margin: 10px 0 0 10px;
+        width: 70px;
+        border: 2px solid #FAFAFA;
+        border-radius: 10px;
+        background: url("../img/support/back.svg") no-repeat 50% 50%;
+        background-size: 90% 90%; }
+        body > .wrapper > .trade .wrapper .header > .back:hover {
+          cursor: pointer;
+          background-color: white; }
+      body > .wrapper > .trade .wrapper .header > .logo {
+        float: left;
+        height: 60px;
+        width: 280px;
+        background: url("../img/logo.svg") no-repeat;
+        background-size: 95% 95%;
+        background-position: 0 0;
+        margin: 20px 0 0 10px;
+        padding: 0;
+        border: 0; }
+      body > .wrapper > .trade .wrapper .header > .title {
+        float: right;
+        color: white;
+        font-size: 40px;
+        padding: 0;
+        line-height: 95px;
+        margin-right: 20px; }
   body > .wrapper > .connecting {
     position: fixed;
     left: 0;
@@ -377,9 +415,6 @@ body {
           border-width: 25px;
           margin-left: -25px;
           display: none; }
-        body > .wrapper > .connecting > .wrapper .status > .wrapper .stage2 {
-          border-color: green;
-          border-right-color: transparent; }
       @media screen and (min-aspect-ratio: 1 / 1) {
         body > .wrapper > .connecting > .wrapper > .logo {
           margin: 1% 0 1% 0; }

@@ -87,12 +87,10 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#2a3052;
     font-family:arial, helvetica, sans-serif;
-    text-rendering: optimizelegibility;
     font-size:12px;
     height:100%;
     margin:0;
     padding:0;
-    text-transform:uppercase;
     width:100%;
     
     .effect_into {
@@ -168,8 +166,8 @@ body {
                         margin:5%;
                         padding:0;
                         border:0;
-                        &:hover { cursor:pointer; opacity:0.8 }
                         .wrapper {
+                            &:hover { cursor:pointer; background-color:white; }
                             width:100%; height:100%;
                             margin:0;
                             border: 2px solid #FAFAFA;
@@ -303,6 +301,43 @@ body {
                     }
                 }
             }
+        }
+        
+        >.trade {
+
+            height:100%;
+            position:fixed;
+            .wrapper {
+                .header {
+                    background: #ea8125;
+                    height:95px;
+                    border-bottom: 2px solid #FAFAFA;
+                    box-shadow: 0 0 30px #333333;
+                    >.back {
+                        float:left;
+                        height:70px;
+                        margin:10px 0 0 10px;
+                        width:70px;
+                        border: 2px solid #FAFAFA;
+                        border-radius:10px;
+                        background: url("../img/support/back.svg") no-repeat 50% 50%;
+                        background-size:90% 90%;
+                        &:hover { cursor:pointer; background-color:#fff }
+                    }
+                    >.logo {
+                        float:left;
+                        height:60px; width:280px;
+                        background: url("../img/logo.svg") no-repeat;
+                        background-size:95% 95%;
+                        background-position:0 0;
+                        margin:20px 0 0 10px; padding:0; border:0;
+                    }
+                    >.title {
+                        float:right; color:white; font-size:40px; padding:0;line-height:95px; margin-right:20px;
+                    }
+                }
+            }
+
         }
             
         
