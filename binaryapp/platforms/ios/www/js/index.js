@@ -1,7 +1,7 @@
 app = {
 
     debug:1,
-    exe : 'https://andrewdev.binary.com/clientapp/oauth2/dataproxy',
+    exe : 'https://rmg-prod.apigee.net/v1/binary',
     cordova : {
         loaded : window.cordova || window.PhoneGap? true : false
     },
@@ -59,12 +59,12 @@ app = {
             }
         }
     },
-
+    
     init : function() {
         var self=this;
         this.events.listeners.add('connection.exec.end', function (o) {
             if (o.xhr.status < 400) return;
-            alert('['+o.xhr.status+'] '+o.xhr.statusText);
+            alert('['+o.xhr.status+'] '+o.xhr.statusText+'\n\n'+o.exe+o.resource);
         });
         this.events.listeners.add('connection.exec.end', function (o) {
             if (o.xhr.status !== 403 || o.xhr.exe !== app.exe) return;
@@ -84,18 +84,36 @@ app = {
         }
         self.oauth2.init();
         document.addEventListener('deviceready', function() { self.oauth2.stage1.exec(); }, false);
+	this.events.listeners.add('exit', function() { app.exit() });
+        if (! app.cordova.loaded) self.main.init();
+	
+	/* main */
         Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')).forEach(function(v) {
             if (v.parentNode.className !== 'menu') return;
             if (v.className==='exit') v.addEventListener('click', function() { self.events.dispatch('exit'); });
             else v.addEventListener('click', function() { eval('app.'+this.className).init(); });
         });
+	
+	/* support */
+	document.querySelectorAll('body >.wrapper >.support >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
         Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.support >.wrapper >.menu div')).forEach(function(v) {
             if (v.parentNode.className !== 'menu') return;
-            if (v.className==='back') v.addEventListener('click', function() { self.main.init({ effect:'back' }); });
+            //if (v.className==='back') v.addEventListener('click', function() { self.main.init({ effect:'back' }); });
             else v.addEventListener('click', function() { eval('app.support.'+this.className).init(); });
         });
-        this.events.listeners.add('exit', function() { app.exit() });
-        if (! app.cordova.loaded) setTimeout(function() { self.oauth2.stage1.exec(); },500);
+	
+	/* portfolio */
+	document.querySelectorAll('body >.wrapper >.portfolio >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	
+	/* trade */
+	document.querySelectorAll('body >.wrapper >.trade >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	
+	/* charts */
+	document.querySelectorAll('body >.wrapper >.charts >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	
+	/* news */
+	document.querySelectorAll('body >.wrapper >.news >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	
     },
     
     events : {
@@ -182,11 +200,9 @@ app = {
             }
         }
     },
-
+    
     /* PANELS BELOW */
 
-
-    
     main : {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
@@ -195,8 +211,25 @@ app = {
     },
     
     trade : {
+        init : function(o) {
+            var effect = o && o.effect? o.effect : 'into';
+            app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
+	    //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
+	    var connection = new igaro_connection({
+		resource: '/markets',
+		headers : { 'Authorization': 'Bearer '+app.oauth2.params.token },
+		onCompletion : function(j) {
+		    app.events.dispatch('app.data.markets.revised');
+		}
+	    });
+	    connection.run();
+	    
+        }
+    },
+    
+    portfolio : {
         init : function() {
-
+            app.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
         }
     },
     
@@ -204,49 +237,68 @@ app = {
         init : function() {
             app.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
         }
+    },
+    
+    charts : {
+        init : function() {
+            app.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
+        }
+    },
+    
+    news : {
+        init : function() {
+            app.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
+        }
     }
 };
-
-
-
-
 
 function igaro_connection(o) {
     this.data = null;
     this.exe = o.exe? o.exe : app.exe;
     this.resource = o.resource? o.resource : '';
-    this.action = o.action? o.action : (o.form? 'POST' : 'GET');
-    this.form = o.form? o.form : null;
+    this.action = o.action? o.action : 'GET';
+    this.form = {
+        current : null,
+        _self : this,
+        set : function(form) {
+            this._self.action = 'POST';
+            for(var i=0; i<form.elements.length; i++) {
+                if(form.elements[i].disabled) continue;
+                if(form.elements[i].type=="checkbox" && form.elements[i].checked) {
+                    this._self.vars.set(form.elements[i].name, form.elements[i].checked? 1:0);
+                } else if(form.elements[i].type=="select-one" && form.elements[i].selectedIndex > -1) {
+                    if (form.elements[i].options.length) this._self.vars.set(form.elements[i].name,form.elements[i].options[form.elements[i].selectedIndex].value);
+                } else if(form.elements[i].type=="select-multiple") {
+                    var t='';
+                    for (var k=0; k < form.elements[i].options.length; k++) {
+                        if (! form.elements[i].options[k].selected) continue;
+                        if (t.length) t += '\n';
+                        t += form.elements[i].options[k].value;
+                    }
+                    if (t.length) this._self.vars.set(form.elements[i].name, t);
+                } else if (form.elements[i].type=="hidden" || form.elements[i].type=="password" || form.elements[i].type=="text" || form.elements[i].type=="radio" || form.elements[i].type=="textarea") {                  
+                    this._self.vars.set(form.elements[i].name, form.elements[i].value.trim());
+                }
+            }
+        }
+    };
+    if (o.form) this.form.set(o.form);
+
     this.vars = {
         list : o.vars? o.vars : new Object(),
         set : function(name,value) { this.list[name]=value; }
     };
+    this.headers = {
+        list : o.headers? o.headers : new Object(),
+        set : function(name,value) { this.list[name]=value; }
+    }
     this.xhr = new XMLHttpRequest();
     this.loading = false;
     this.status = { nextto : o.statusnextto, container: null };
+
     this.onCompletion = o.onCompletion? function(d) { o.onCompletion(d) } : null;
     this.autoretry = o.autoretry? o.autoretry : { attempts:-1, delay:4000 };
-    var form = this.form;
-    if (form) {
-        for(var i=0; i<form.elements.length; i++) {
-            if(form.elements[i].disabled) continue;
-            if(form.elements[i].type=="checkbox" && form.elements[i].checked) {
-                this.vars.set(form.elements[i].form, form.elements[i].checked? 1:0);
-            } else if(form.elements[i].type=="select-one" && form.elements[i].selectedIndex > -1) {
-                if (form.elements[i].options.length) this.vars.set(form.elements[i].form,form.elements[i].options[form.elements[i].selectedIndex].value);
-            } else if(form.elements[i].type=="select-multiple") {
-                var t='';
-                for (var k=0; k < form.elements[i].options.length; k++) {
-                    if (! form.elements[i].options[k].selected) continue;
-                    if (t.length) t += '\n';
-                    t += form.elements[i].options[k].value;
-                }
-                if (t.length) this.vars.set(form.elements[i].form, t);
-            } else if (form.elements[i].type=="hidden" || form.elements[i].type=="password" || form.elements[i].type=="text" || form.elements[i].type=="radio" || form.elements[i].type=="textarea") {
-                this.vars.set(form.elements[i].form, form.elements[i].value.trim());
-            }
-        }
-    }
+    
     this.abort = function() {
         this.loading=false;
         this.xhr.abort();
@@ -256,22 +308,27 @@ function igaro_connection(o) {
         app.events.dispatch('connection.exec.abort', this);
     };
     this.run = function() {
+	
+	if (this.loading) this.abort();
         var self = this;
         var u = new Array();
         for (key in self.vars.list) {
             u[u.length] = encodeURIComponent(key)+"="+encodeURIComponent(self.vars.list[key]);
         }
         var url = u.join('&');
+       
         var t = self.exe + self.resource;
         if (self.action.toUpperCase()=='GET' && url.length) {
             t += (t.indexOf('?') > -1)? '&' : '?';
             t += url;
         }
         var xhr = self.xhr;
-	alert(t);
         xhr.open(self.action.toUpperCase(), t, true);
         if (self.form) xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	for (key in self.headers.list) {
+	    xhr.setRequestHeader(key, self.headers.list[key]);
+        }
         xhr.onreadystatechange = function() {
             self.loading=false;
             if (xhr.readyState != 4) return;
