@@ -1,4 +1,4 @@
-function App(o) {
+App = function(o) {
     
     var _app = this;
     
@@ -206,179 +206,10 @@ function App(o) {
             this.pool[i].abort();
         }
     };
-    
-    /* APP SPECIFIC - THESE SHOULD NOT GO HERE, BUT FOR NOW IT'll DO */
-    
-    this.cordova = {
-	loaded : window.cordova || window.PhoneGap? true : false
-    };
-
-    this.exit = function() {
-	navigator.App.exitApp();
-    };
-    
-    this.oauth2 = {
-    
-	status : document.querySelector('body >.wrapper >.connecting >.wrapper >.status >.wrapper'),
-	devid : '3yqBdSJfFGIZELagj9VIt5cAr8tMknRA',
-	scope : 'chart',
-	url : 'https://www.binary.com/clientapp/oauth2',
-	params : new Object(),
-    
-	init : function() {
-	    this.token = null;
-	    this.params = new Object();
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.connecting') });
-	    this.status.getElementsByClassName('init')[0].style.display='block';
-	    this.status.getElementsByClassName('stage1')[0].style.display='none';
-	    this.status.getElementsByClassName('stage2')[0].style.display='none';
-	    this.status.getElementsByClassName('error')[0].style.display='none';
-	    
-	    if (! app.cordova.loaded) document.body.appendChild(document.createElement('iframe'));
-	},
-    
-	stage1 : {
-	    exec : function() {
-		var url = _app.oauth2.url+'/login?scope='+_app.oauth2.scope+'&client_id='+_app.oauth2.devid;
-		_app.oauth2.status.getElementsByClassName('init')[0].style.display='none';
-		_app.oauth2.status.getElementsByClassName('stage1')[0].style.display='block';
-		if (app.cordova.loaded) {
-		    var ref = window.open(url, '_blank', 'location=no');
-		    ref.addEventListener('loadstop', function(event) {
-			if (event.url === url) return;
-			var a = _app.url.param.get('code',event.url);
-			ref.close();
-			_app.oauth2.stage2.exec({ authcode:a });
-		    });
-		} else {
-		    var iframe = document.body.getElementsByTagName('iframe')[0];
-		    iframe.src = url;
-		    iframe.style.display='block';
-		    iframe.addEventListener('message', function(m) {
-			alert(m);
-			alert(m.url);
-			iframe.style.display='none';
-			var a = _app.url.param.get('code',event.url);
-			_app.oauth2.stage2.exec({ authcode:a });
-		    });
-		}
-
-		//win.addEventListener('close', function(event) { _app.exit(); });
-	    }
-	},
-    
-	stage2 : {
-	    exec : function(o) {
-		_app.oauth2.status.getElementsByClassName('stage1')[0].style.display='none';
-		_app.oauth2.status.getElementsByClassName('stage2')[0].style.display='block';
-		var connection = new igaro_connection({
-		    exe: _app.oauth2.url+'/tokenswap',
-		    vars : { scope:_app.oauth2.scope, code:o.authcode },
-		    onCompletion : function(j) {
-			_app.oauth2.params = j.params;
-			_app.events.dispatch('security.oauth2.token.issued');
-			_app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
-			document.querySelector('body >.wrapper >.main >.wrapper >.login_id').innerHTML = j.params.login_id;
-		    }
-		});
-		connection.run();
-	    }
-	}
-    };
-    
-    this.navigate = {
-	
-	current : null,
-	
-	to : function(o) {
-	    var view = o.view;
-	    var ic = Array.prototype.slice.call(view.parentNode.getElementsByTagName('div'));
-	    ic.forEach(function(v) {
-		if (v.parentNode !== view.parentNode || view.className !== v.className) return;
-		var c = v.className.split(' ');
-		for(var i=0; i<c.length;i++) {
-		    if (c[i].substr(0,7) !== 'effect_') continue;
-		    c.splice(i,1);
-		    break;
-		}
-		v.className = c.join(' ');
-		if (o.effect) v.className += ' effect_'+o.effect;
-		var c = this.current && this.current.style.zIndex? this.current.style.zIndex : 999;
-		v.style.zIndex = c+1;
-		v.style.visibility='visible';
-		_app.events.dispatch('view.shown',v.className);
-		this.current = v;
-	    });
-	    var self=this;
-	    setTimeout( function() { ic.forEach(function(v) {
-		if (this.current.parentNode === v.parentNode || v.parentNode !== view.parentNode) return;
-		var c = v.className.split(' ');
-		for(var i=0; i<c.length;i++) {
-		    if (c[i].substr(0,7) !== 'effect_') continue;
-		    c.splice(i,1);
-		    break;
-		}
-		v.className = c.join(' ');
-		v.style.visibility='hidden';
-		v.style.zIndex=0;
-		_app.events.dispatch('view.hidden',v.className);
-	    }) }, 1000);
-	}
-    };
-    
-    /* PANELS BELOW */
-    
-    this.main = {
-	init : function(o) {
-	    var effect = o && o.effect? o.effect : 'into';
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.main'), effect:effect });
-	}
-    };
-    
-    this.trade = {
-	init : function(o) {
-	    var effect = o && o.effect? o.effect : 'into';
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
-	    //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
-	    var connection = new igaro_connection({
-		resource: '/markets',
-		headers : { 'Authorization': 'Bearer '+_app.oauth2.params.token },
-		onCompletion : function(j) {
-		    _app.events.dispatch('app.data.markets.revised');
-		}
-	    });
-	    connection.run();
-	    
-	}
-    };
-	
-    this.portfolio = {
-	init : function() {
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
-	}
-    };
-	
-    this.support = {
-	init : function() {
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
-	}
-    };
-    
-    this.charts = {
-	init : function() {
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
-	}
-    };
-    
-    this.news = {
-	init : function() {
-	    _app.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
-	}
-    };
 
 };
 
-function conxhr342afd (o) {
+var conxhr342afd = function (o) {
     var self = this;
     var _app = o._app;
     this.data = null;
@@ -499,3 +330,7 @@ function conxhr342afd (o) {
         _app.events.dispatch('connection.exec.start', self);
     };
 };
+
+
+
+
