@@ -175,7 +175,7 @@
             scope:'chart',
             into : into,
             stages : [{
-                    url : function(o) { return 'https://www.binary.com/clientapp/oauth2/login?scope='+o.scope+'&client_id='+o.devid },
+                    url : function(o) { return 'https://webapi01.binary.com:5002/oauth2/login?template=oauth2/xhr&scope='+o.scope+'&client_id='+o.devid },
                     onWindowCreate : function(w) {
                         w.addEventListener('loadstop', function(event) {
 			    if (event.url === url) return;
@@ -186,6 +186,7 @@
                         //w.addEventListener('close', function() {  app.exit(); });
                     },
                     onLoad : function() {
+                        
                         if (into) document.body.appendChild(into);
                         status.getElementsByClassName('init')[0].style.display='none';
                         status.getElementsByClassName('stage1')[0].style.display='block';

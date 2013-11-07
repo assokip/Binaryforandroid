@@ -14,7 +14,7 @@ var oauth2 = function(o) {
 
 		exec : function() {
 			var s = o.stages[0];
-			var url = s.url({ url: s.url, scope: o.scope, devid: o.devid });
+			var url = s.url({ scope: o.scope, devid: o.devid });
 			if (! o.into) {
 				var ref = window.open(url, '_blank', 'location=no,menubar=no;directories=no;location=no;modal=yes');
 				if (o.onWindowCreate) o.onWindowCreate(ref);
@@ -31,7 +31,7 @@ var oauth2 = function(o) {
 		exec : function(b) {
 			var s = o.stages[1];
 			var connection = new App.connection.create({
-			    exe: s.url({ url: s.url, scope: o.scope, devid: o.devid, code:b.code }),
+			    exe: s.url({ scope: o.scope, devid: o.devid, code:b.code }),
 			    onCompletion : function(j) {
 				s.onCompletion(j);
 				App.events.dispatch('oauth2.token.issued');
