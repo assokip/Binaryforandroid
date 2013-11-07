@@ -1,0 +1,1 @@
+App.prototype.form = new Object();
