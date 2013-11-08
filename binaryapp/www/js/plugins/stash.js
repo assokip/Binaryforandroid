@@ -1,16 +1,20 @@
-App.prototype.stash = {
+function AppPlugin(app) {
     
-    store : new Object(),
+    app.stash = {
     
-    remove: function(id) { if (id in this.store) delete this.store[id]; },
-    
-    set : function (id, value) {
-        this.store[id]=value;
-    },
-    
-    get : function (id) {
-        if (id in this.store) return this.store[id];
-        return undefined;
-    }
-    
+        store : {},
+        
+        remove: function(id) { if (id in this.store) delete this.store[id]; },
+        
+        set : function (id, value) {
+            this.store[id]=value;
+        },
+        
+        get : function (id) {
+            if (id in this.store) return this.store[id];
+            return undefined;
+        }
+        
+    };
+
 };

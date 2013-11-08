@@ -1,1 +1,3 @@
-App.prototype.form = new Object();
+function AppPlugin(app) {
+    app.form = new Object();
+};

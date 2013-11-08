@@ -457,9 +457,9 @@ body {
                 .status {
                     >.wrapper {
                         position:absolute;
-                        left:35%;
-                        bottom:30%;
-                        width:30%;
+                        left:40%;
+                        top:30%;
+                        width:20%;
                        .error {
                             height:100%;width:100%;position:absolute;
                             background: url("../img/connecting/error.svg") no-repeat;
@@ -476,7 +476,7 @@ body {
 
                         .stage1, .stage2, .init {
                             position:absolute; z-index:99;
-                            width: 8px; height: 8px; border: 8px solid #fff;
+                            width: 6px; height: 6px; border: 6px solid #fff;
                             border-right-color: transparent; border-radius: 50%;
                             -webkit-animation: spin 1s linear infinite;
                             -moz-animation: spin 1s linear infinite;
@@ -490,9 +490,7 @@ body {
                 }
                 @media screen and (min-aspect-ratio: 1/1) {
                     >.logo { margin:1% 0 1% 0; }
-                    >.status {
-                        >.wrapper { width:20%; left:40%; }
-                    }
+                   
                 } 
             }
         }

@@ -657,9 +657,9 @@ body {
         background-position: 50% 100%; }
       body > .wrapper > .connecting > .wrapper .status > .wrapper {
         position: absolute;
-        left: 35%;
-        bottom: 30%;
-        width: 30%; }
+        left: 40%;
+        top: 30%;
+        width: 20%; }
         body > .wrapper > .connecting > .wrapper .status > .wrapper .error {
           height: 100%;
           width: 100%;
@@ -677,9 +677,9 @@ body {
         body > .wrapper > .connecting > .wrapper .status > .wrapper .stage1, body > .wrapper > .connecting > .wrapper .status > .wrapper .stage2, body > .wrapper > .connecting > .wrapper .status > .wrapper .init {
           position: absolute;
           z-index: 99;
-          width: 8px;
-          height: 8px;
-          border: 8px solid #fff;
+          width: 6px;
+          height: 6px;
+          border: 6px solid #fff;
           border-right-color: transparent;
           border-radius: 50%;
           -webkit-animation: spin 1s linear infinite;
@@ -696,7 +696,4 @@ body {
           display: none; }
       @media screen and (min-aspect-ratio: 1 / 1) {
         body > .wrapper > .connecting > .wrapper > .logo {
-          margin: 1% 0 1% 0; }
-        body > .wrapper > .connecting > .wrapper > .status > .wrapper {
-          width: 20%;
-          left: 40%; } }
+          margin: 1% 0 1% 0; } }
