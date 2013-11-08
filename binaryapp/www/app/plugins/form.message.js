@@ -1,5 +1,7 @@
 function AppPlugin(app) {
     
+    if (! app.form) app.form = {};
+    
     app.form.message = {
 
         list : new Object(),

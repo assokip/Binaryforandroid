@@ -79,6 +79,11 @@ function AppPlugin(app) {
 	    } else if (xhr.status === 302) {
 		self.resource = '';
 		self.run();
+	    } else {
+		if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
+		if (self.onError) self.onError();
+		app.events.dispatch('connection.exec.error', self);
+		return;
 	    }
 	    app.events.dispatch('connection.exec.end', self);
 	};

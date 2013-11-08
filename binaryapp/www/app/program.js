@@ -3,18 +3,17 @@
     app = new App();
     
     // init plugins
-    app.plugins.load({ root:'js', plugins: new Array(
+    app.plugins.load({ root:'app', plugins: new Array(
         
         'stash',
 	'cordova',
-	'jsload',
-	'cookie',
+	//'jsload',
+	//'cookie',
 	'status',
 	'url',
 	'currency',
 	'connection',
 	'connection.xhr',
-	'form',
 	'form.message',
 	'oauth2'
         
@@ -27,11 +26,10 @@
             window.addEventListener('load', function() { ready(); });
         }
         
-        
         function ready ()  {
             
             // connection default source
-            app.connection.source.def = 'http://rmg-prod.apigee.net/v1/binary';
+            app.connection.source.def = 'https://rmg-prod.apigee.net/v1/binary';
             
             // set debug mode
             app.debug.set(true);
@@ -41,12 +39,7 @@
             app.debug.set(debug);
             */
             
-            // connection errors
-            app.events.listeners.add('connection.exec.error', function (o) {
-                alert('['+o.xhr.status+'] '+o.xhr.statusText+'\n\n'+o.exe+o.resource);
-            });
-            
-            /*     // throw inbuilt alert for most html codes
+            // throw inbuilt alert for most html codes
             app.events.listeners.add('connection.exec.error', function (o) {
                 app.connection.active.remove(o);
                 var xhr = o.xhr;
@@ -54,9 +47,7 @@
                 var title = xhr.status === 0? 'Connection Failure' : xhr.status + ' ('+xhr.statusText+')';
                 app.events.dispatch('status.append', { type:type, id:'error', title:title, lines:new Array(o.resource) });
             });
-            
-            */
-
+	    
             app.events.listeners.add('connection.exec.data.json.error', function (o) {
                 alert(o.err);
             });
@@ -87,7 +78,7 @@
             // status alerts
             var stc = document.createElement('div');
             stc.className = 'status';
-            window.addEventListener('load', function() { document.body.appendChild(stc); });
+            document.body.appendChild(stc);
             stc.addEventListener('click', function() {
                 app.status.remove();
                 this.style.display='none';
@@ -174,7 +165,7 @@
                             app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
                             app.stash.set('user.login.id', o.params.login_id);
                             app.stash.set('security.apigee.oauth2.token', o.params.token);
-                            document.querySelector('body >.wrapper >.main >.wrapper >.login_id').innerHTML = o.params.login_id;
+                            app.events.dispatch('status.append',{ title:'Credentials', lines : new Array('Logged in as '+o.params.login_id) });
                         }
                     }
                 ]
@@ -185,12 +176,7 @@
                 alert('['+o.xhr.status+'] '+o.xhr.statusText+'\n\n'+o.exe+o.resource);
                 apigee.stage1.exec();
             });
-            
-            app.events.listeners.add('connection.exec.end', function (o) {
-                if (o.xhr.status === 200 || o.xhr.status === 302) return;
-                alert('['+o.xhr.status+'] '+o.xhr.statusText+'\n\n'+o.exe+o.resource);
-            });
-            
+             
             app.navigate = {
                 
                 current : null,
@@ -243,21 +229,23 @@
                 },
                 
                 trade : {
+                    
+                    connection : new app.connection.create({
+                        headers : { 'Authorization': 'Bearer '+app.stash.get('security.apigee.oauth2.token') },
+                        statusnextto: document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')[0]
+                    }),
+                        
                     init : function(o) {
-                        
                         //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
-                        var connection = new app.connection.create({
-                            resource: '/markets',
-                            headers : { 'Authorization': 'Bearer '+app.stash.get('security.apigee.oauth2.token') },
-                            onCompletion : function(j) {
-                                alert(JSON.stringify(j));
-                                var effect = o && o.effect? o.effect : 'into';
-                                app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
-                                app.events.dispatch('app.data.markets.revised');
-                            }
-                        });
-                        connection.run();
-                        
+                        var c = this.connection;
+                        c.resource = '/markets';
+                        c.onCompletion = function(j) {
+                            alert(JSON.stringify(j));
+                            var effect = o && o.effect? o.effect : 'into';
+                            app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
+                            app.events.dispatch('app.data.markets.revised');
+                        };
+                        c.run();
                     }
                 },
                         
