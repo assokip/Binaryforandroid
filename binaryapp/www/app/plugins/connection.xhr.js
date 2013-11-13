@@ -109,8 +109,8 @@ function AppPlugin(app) {
 	    xhr.open(self.action.toUpperCase(), self.lastUrlRequest, true);
 	    if (self.form) xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 	    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-	    for (key in self.headers.list) {
-		xhr.setRequestHeader(key, self.headers.list[key]);
+	    for (var key in self.headers.list) {
+		xhr.setRequestHeader(key, self.headers.list[key].call());
 	    }
 	    self.loading=true;
 	    app.events.dispatch('connection.exec.start', self);
@@ -123,8 +123,6 @@ function AppPlugin(app) {
 		var icon = document.createElement('div');
 		s.container.appendChild(icon);
 	    }
-	    if (s.container) s.container.getElementsByTagName('div')[0].className = 'loading';
-	    
 	};
     };
 

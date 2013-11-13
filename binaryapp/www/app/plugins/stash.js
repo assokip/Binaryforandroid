@@ -12,7 +12,7 @@ function AppPlugin(app) {
         
         get : function (id) {
             if (id in this.store) return this.store[id];
-            return undefined;
+            return null;
         }
         
     };

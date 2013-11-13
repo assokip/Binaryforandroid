@@ -5,12 +5,9 @@ App = function() {
     this.plugins = {
 	
 	load : function(p) {
-	    
 	    var root = p.root;
 	    var plugins = p.plugins;
 	    p.plugins.unshift('debug','events');
-	    
-	    /* load files */
 	    var at=0;
 	    var abort = false;
 	    var loadt = function() {
@@ -24,6 +21,7 @@ App = function() {
 		    at++;
 		    o.onload = o.onreadystatechange = null; // IE memory leak fix
 		    o.parentNode.removeChild(o);
+		    if (p.onProgress) p.onProgress({ percent:Math.round((at/plugins.length-1)*100) });
 		    if (at < plugins.length) {
 			loadt();
 		    } else {
@@ -38,6 +36,5 @@ App = function() {
 	}
     
     };
-    
-    
+
 };

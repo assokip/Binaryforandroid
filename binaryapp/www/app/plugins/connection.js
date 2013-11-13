@@ -13,8 +13,9 @@ function AppPlugin(app) {
             remove : function(o) { this.pool.splice(this.pool.indexOf(o), 1); }
         },
         create : function(o) {
-            if (! o || ! o.exe) o.exe = app.connection.source.def;
-            if (! o || ! o.type) o.type = 'xhr';
+            if (! o) o = {};
+            if (! o.exe) o.exe = app.connection.source.def;
+            if (! o.type) o.type = 'xhr';
             var c = new app.connection.types[o.type](o);
             app.events.dispatch('connection.created',c);
             app.connection.pool.push(c);
