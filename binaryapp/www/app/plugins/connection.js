@@ -17,12 +17,12 @@ function AppPlugin(app) {
             if (! o.exe) o.exe = app.connection.source.def;
             if (! o.type) o.type = 'xhr';
             var c = new app.connection.types[o.type](o);
-            app.events.dispatch('connection.created',c);
+            app.events.dispatch('core.connection.created',c);
             app.connection.pool.push(c);
             return c;
         },
         remove : function(o) {
-            app.events.dispatch('connection.removed',o);
+            app.events.dispatch('core.connection.removed',o);
             app.connection.pool.splice(this.pool.indexOf(o), 1);
         },
         abort : function(o) {

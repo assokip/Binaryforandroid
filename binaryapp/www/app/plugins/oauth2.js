@@ -9,7 +9,7 @@ function AppPlugin(app) {
 			exec : function() {
 				var s = o.stages[0];
 				var url = s.url({ scope: o.scope, devid: o.devid });
-				app.events.dispatch('oauth2.login.request', { url:url });
+				app.events.dispatch('core.oauth2.login.request', { url:url });
 				if (! o.into) {
 					var ref = window.open(url, '_blank', 'location=no,menubar=no;directories=no;location=no;modal=yes');
 					if (o.onWindowCreate) o.onWindowCreate(ref);
@@ -27,7 +27,7 @@ function AppPlugin(app) {
 				    exe: s.url({ scope: o.scope, devid: o.devid, code:b.code }),
 				    onCompletion : function(j) {
 					s.onCompletion(j);
-					app.events.dispatch('oauth2.token.issued',j);
+					app.events.dispatch('core.oauth2.token.issued',j);
 				    }
 				}).run();
 			}

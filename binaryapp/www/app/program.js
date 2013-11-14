@@ -6,16 +6,18 @@
     app.plugins.load({ root:'app', plugins: new Array(
         
         'stash',
+	'store',
+	'cache',
 	'cordova',
 	//'jsload',
-	'store',
 	'status',
 	'url',
 	'currency',
 	'connection',
 	'connection.xhr',
 	'form.message',
-	'oauth2'
+	'oauth2',
+	'binarycom'
 	
     ), onProgress : function(p) {
 	
@@ -38,55 +40,59 @@
             // connection default source
             app.connection.source.def = 'https://rmg-prod.apigee.net/v1/binary';
             
-            // debug
-            var debug = app.debug.get();
-	    document.querySelectorAll('body >.wrapper >.settings >.wrapper >.menu >.debug >.wrapper')[0].className += ' ' + (debug? 'on' : 'off');
-	    app.events.listeners.add('debug.mode.toggled', function (o) {
-		var t = o? 'Enabled' : 'Disabled';
-		app.events.dispatch('status.append',{ title:'Debug Mode '+t, lines : new Array('Please restart the application.') });
+            // debug toggle
+            app.debug.set(app.store.get({ id:'core.debug' })? true : false);
+	    app.events.listeners.add('core.debug.mode.toggled', function (o) {
+		app.events.dispatch('core.status.append',{ title:'Debug Mode '+(o? 'Enabled' : 'Disabled'), lines : new Array('Please restart the application.') });
+            });
+	    
+	    // cache
+	    app.cache.mode.set(app.store.get({ id:'core.cache.mode' })? true : false);
+	    app.events.listeners.add('core.cache.mode.toggled', function (o) {
+		app.events.dispatch('core.status.append',{ title:'Caching '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
             });
 	  
             // throw inbuilt alert for most html codes
-            app.events.listeners.add('connection.exec.error', function (o) {
+            app.events.listeners.add('core.connection.exec.error', function (o) {
                 app.connection.active.remove(o);
                 var xhr = o.xhr;
                 var type = xhr.status === 401? 'critical' : 'warn';
                 var title = xhr.status === 0? 'Connection Failure' : xhr.status + ' ('+xhr.statusText+')';
-                app.events.dispatch('status.append', { type:type, id:'error', title:title, lines:new Array(o.resource) });
+                app.events.dispatch('core.status.append', { type:type, id:'error', title:title, lines:new Array(o.resource) });
             });
 	    
 	    // json errors always go to user
-            app.events.listeners.add('connection.exec.data.json.error', function (o) {
+            app.events.listeners.add('core.connection.exec.data.json.error', function (o) {
                 alert(o.err);
             });
 	    
 	    // debugging, if enabled
-            if (debug) {
-                app.events.listeners.add('connection.exec.data.json.error', function (o) {
-                    app.events.dispatch('log.append','CONNECTION:'+o.id+':JSON:ERROR: '+o.xhr.responseText);
+            if (app.debug.get()) {
+                app.events.listeners.add('core.connection.exec.data.json.error', function (o) {
+                    app.events.dispatch('core.log.append','CONNECTION:'+o.id+':JSON:ERROR: '+o.xhr.responseText);
                 });
-                app.events.listeners.add('connection.exec.start', function (o) {
-                    app.events.dispatch('log.append','CONNECTION:'+o.id+':START: '+o.lastUrlRequest);
+                app.events.listeners.add('core.connection.exec.start', function (o) {
+                    app.events.dispatch('core.log.append','CONNECTION:'+o.id+':START: '+o.lastUrlRequest);
                 });
-                app.events.listeners.add('connection.exec.end', function (o) {
-                    app.events.dispatch('log.append','CONNECTION:'+o.id+':END: '+o.xhr.responseText);
+                app.events.listeners.add('core.connection.exec.end', function (o) {
+                    app.events.dispatch('core.log.append','CONNECTION:'+o.id+':END: '+o.xhr.responseText);
                 });
-                app.events.listeners.add('oauth2.login.request', function (o) {
-                    app.events.dispatch('log.append','OAUTH2:LOGIN:REQUEST: '+o.url);
+                app.events.listeners.add('core.oauth2.login.request', function (o) {
+                    app.events.dispatch('core.log.append','OAUTH2:LOGIN:REQUEST: '+o.url);
                 });
-                app.events.listeners.add('oauth2.token.issued', function (o) {
-                    app.events.dispatch('log.append','OAUTH2:TOKEN: '+o.params.token);
+                app.events.listeners.add('core.oauth2.token.issued', function (o) {
+                    app.events.dispatch('core.log.append','OAUTH2:TOKEN: '+o.params.token);
                 });
-		app.events.listeners.add('view.shown', function (o) {
-                    app.events.dispatch('log.append','VIEW:SHOWN: '+o.className);
+		app.events.listeners.add('core.view.shown', function (o) {
+                    app.events.dispatch('core.log.append','VIEW:SHOWN: '+o.className);
                 });
-		app.events.listeners.add('view.hidden', function (o) {
-                    app.events.dispatch('log.append','VIEW:HIDDEN: '+o.className);
+		app.events.listeners.add('core.view.hidden', function (o) {
+                    app.events.dispatch('core.log.append','VIEW:HIDDEN: '+o.className);
                 });
             }
             
             // append log to console
-            app.events.listeners.add('log.append', function (m) {
+            app.events.listeners.add('core.log.append', function (m) {
                 if (typeof console !== 'undefined') console.log(m);
             });
 	    
@@ -94,14 +100,14 @@
 	    app.events.listeners.add('apigee.oauth2.login.success', function (o) {
 		app.store.set({ id:'apigee.oauth2', value:o.params });
 		app.stash.set({ id:'apigee.oauth2', value:o.params });		
-		app.events.dispatch('status.append',{ title:'Credentials', lines : new Array('You have been logged in') });
+		app.events.dispatch('core.status.append',{ title:'Credentials', lines : new Array('You have been logged in') });
 	    });
 	    app.events.listeners.add('apigee.oauth2.logout', function (o) {
 		app.store.remove({ id:'apigee.oauth2' });
 		app.stash.remove('apigee.oauth2');
-		app.events.dispatch('status.append',{ title:'Credentials', lines : new Array('You have been logged out.') });
+		app.events.dispatch('core.status.append',{ title:'Credentials', lines : new Array('You have been logged out.') });
 	    });
-            app.events.listeners.add('connection.exec.error', function (o) {
+            app.events.listeners.add('core.connection.exec.error', function (o) {
                 if (o.xhr.status !== 401 || o.exe !== app.connection.source.def) return;
 		if (app.stash.get({ id:'apigee.oauth2' })) app.events.dispatch('apigee.oauth2.logout');
 		apigee.stage1.exec();
@@ -115,7 +121,7 @@
                 app.status.remove();
                 this.style.display='none';
             });
-            app.events.listeners.add('status.remove', function (id) {
+            app.events.listeners.add('core.status.remove', function (id) {
                 app.status.remove(id);
                 try { stc.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].removeChild(id); }
 		catch (e) {};
@@ -125,7 +131,7 @@
                     stc.style.display='none';
                 }
             });
-            app.events.listeners.add('status.append', function (o) {
+            app.events.listeners.add('core.status.append', function (o) {
                 var ul;
                 if (! app.status.events.length) {
                     var nav = document.createElement('nav');
@@ -163,7 +169,7 @@
                             g.innerHTML=t;
                             aba.appendChild(g);
                         }); 
-               setTimeout(function() { app.events.dispatch('status.remove',kl) },6000);
+               setTimeout(function() { app.events.dispatch('core.status.remove',kl) },6000);
             });
             
             // create a oauth2 object for apigee
@@ -185,7 +191,7 @@
 		    },
 		    onLoad : function() {
 			if (into) document.body.appendChild(into);
-			status.getElementsByClassName('init')[0].style.display='none';
+			//status.getElementsByClassName('init')[0].style.display='none';
 			status.getElementsByClassName('stage1')[0].style.display='block';
 		    }
 		},{
@@ -201,8 +207,14 @@
 		    }
 		}]
             });
+            window.addEventListener('message', function(m) {
+                into.style.display='none';
+                var a = app.url.param.get('code',m.data.url);
+                apigee.stage2.exec({ code:a });
+            });
+	    
             
-            //app.events.listeners.add('connection.exec.end', function (o) {
+            //app.events.listeners.add('core.connection.exec.end', function (o) {
             //    if (o.xhr.status !== 403 || o.xhr.exe !== app.connection.source.def) return;
             //    alert('['+o.xhr.status+'] '+o.xhr.statusText+'\n\n'+o.exe+o.resource);
             //    apigee.stage1.exec();
@@ -230,7 +242,7 @@
                         if (this.current) this.current.style.zIndex=0;
                         v.style.zIndex = 1;
                         v.style.visibility='visible';
-                        app.events.dispatch('view.shown',v);
+                        app.events.dispatch('core.view.shown',v);
                         this.current = v;
                     });
                     
@@ -246,7 +258,7 @@
 			    v.className = c.join(' ');
 			    v.style.visibility='hidden';
 			    v.style.zIndex=0;
-			    app.events.dispatch('view.hidden',v);
+			    app.events.dispatch('core.view.hidden',v);
 			})
 		    }, 300);
                 }
@@ -266,18 +278,28 @@
                     connection : new app.connection.create(),
                         
                     init : function(o) {
+			var views = document.querySelectorAll('body >.wrapper >.trade >.wrapper >.content');
                         var c = this.connection;
-                        c.resource = '/markets';
 			c.headers.set('Authorization', function() {
 			    var a = app.stash.get('apigee.oauth2');
 			    return a? 'Bearer '+ a.token : '';
 			});
-			var views = document.querySelectorAll('body >.wrapper >.trade >.wrapper >.content');
-			c.status.nextto = document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')[0];
-                        c.onCompletion = function(j) {
-			    var div = views[0].querySelector('.markets');
-			    div.innerHTML='';
-			    j.markets.sort().forEach(function (m) {
+			
+			var rendercategories = function(o) {
+			    var node = views[1].querySelector('.categories');
+			    while(node.firstChild) { node.removeChild(node.firstChild); };
+			    var j = Object.keys(o);
+			    j.forEach(function (m) {
+				var dc = document.createElement('div');
+				dc.innerHTML = m;
+				node.appendChild(dc);
+			    });
+			}
+			
+			var rendermarkets = function(o) {
+			    var markets = views[0].querySelector('.markets');
+			    while(markets.firstChild) { markets.removeChild(markets.firstChild); };
+			    o.forEach(function (m) {
 				var dc = document.createElement('div');
 				dc.innerHTML = m.substr(0,1).toUpperCase()+m.substr(1);
 				dc.addEventListener('click', function() {
@@ -296,24 +318,54 @@
 					    var dc = document.createElement('div');
 					    dc.innerHTML = s.display_name;
 					    sym.appendChild(dc);
-					    
-					    
-					    
-					    
-					    
-					    
-					    
+					    dc.addEventListener('click', function() {
+						var cn = 'binary.markets.'+m+'.contract.categories';
+						var bm = app.cache.get(cn);
+						if (bm) {
+						    if (! views[1].querySelector('.categories').hasChildNodes()) rendercategories(bm);
+						    views[1].style.display='block';
+						    views[0].style.display='none';
+						} else {   
+						    c.status.nextto = dc;
+						    c.resource = '/markets/'+m+'/contract_categories';
+						    c.onCompletion = function(k) {
+							app.cache.set({ id:cn, value:m });
+							rendercategories(k);
+							views[1].style.display='block';
+							views[0].style.display='none';
+						    };
+						    c.run();
+						}; 
+					    });
 					});
 				    };
 				    c.run();
 				});
-				div.appendChild(dc);				
+				markets.appendChild(dc);
 			    });
-			    views[0].querySelector('.symbols').innerHTML='';
-			    views[1].style.visibility='hidden';
-                            app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
-                        };
-                        c.run();
+			    var node = views[0].querySelector('.symbols');
+			    while(node.firstChild) { node.removeChild(node.firstChild); };
+			}
+			
+			views[0].style.display='block';
+			views[1].style.display='none';
+			
+			var cn = 'binary.markets';
+			var bm = app.cache.get(cn);
+			if (bm) {
+			    if (! views[0].querySelector('.markets').hasChildNodes()) rendermarkets(bm);
+			    app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
+			} else {
+			    c.resource = '/markets';
+			    c.status.nextto = document.querySelector('body >.wrapper >.main >.wrapper >.menu div');
+			    c.onCompletion = function(j) {
+				var m = j.markets.sort();
+				app.cache.set({ id:cn, value:m });
+				rendermarkets(m);
+				app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
+			    }
+			    c.run();
+			}
                     }
                 },
 		 
@@ -348,59 +400,87 @@
                 }
             }        
             
-            // main
-            Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')).forEach(function(v) {
-                if (v.parentNode.className !== 'menu') return;
-                v.addEventListener('click', function() { eval('app.views.'+this.className).init(); });
-            });
-	    
 	    // trade
-            document.querySelectorAll('body >.wrapper >.trade >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+            document.querySelector('body >.wrapper >.trade >.wrapper >.header >.back').addEventListener('click', function() {
+		if (document.querySelector('body >.wrapper >.trade >.wrapper >.content').style.display==='none') app.views.trade.init();
+		else app.views.main.init({ effect:'back' });
+	    });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.trade').addEventListener('click', function() {
+		app.views.trade.init();
+            });
 
             // support
-            document.querySelectorAll('body >.wrapper >.support >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+            document.querySelector('body >.wrapper >.support >.wrapper >.header >.back').addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
             Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.support >.wrapper >.menu div')).forEach(function(v) {
                 if (v.parentNode.className !== 'menu') return;
                 //if (v.className==='back') v.addEventListener('click', function() { app.main.init({ effect:'back' }); });
                 else v.addEventListener('click', function() { eval('app.views.support.'+this.className).init(); });
             });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.support').addEventListener('click', function() {
+		app.views.support.init();
+            });
             
             // portfolio
-            document.querySelectorAll('body >.wrapper >.portfolio >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+            document.querySelector('body >.wrapper >.portfolio >.wrapper >.header >.back').addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.portfolio').addEventListener('click', function() {
+		app.views.portfolio.init();
+            });
             
             // charts
-            document.querySelectorAll('body >.wrapper >.charts >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+            document.querySelector('body >.wrapper >.charts >.wrapper >.header >.back').addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.charts').addEventListener('click', function() {
+		app.views.charts.init();
+            });
             
             // news
-            document.querySelectorAll('body >.wrapper >.news >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+            document.querySelector('body >.wrapper >.news >.wrapper >.header >.back').addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.news').addEventListener('click', function() {
+		app.views.news.init();
+            });
 	    
 	    // settings
-            document.querySelectorAll('body >.wrapper >.settings >.wrapper >.header >.back')[0].addEventListener('click', function() { app.views.main.init({ effect:'back' }); });
-	    document.querySelectorAll('body >.wrapper >.settings >.wrapper >.menu >.debug')[0].addEventListener('click', function() {
+	    var sw = document.querySelector('body >.wrapper >.settings >.wrapper')
+	    var ta = sw.querySelector('.menu >.debug');
+	    ta.addEventListener('click', function() {
 		if (app.debug.get()) {
 		    app.debug.set(false);
-		    document.querySelectorAll('body >.wrapper >.settings >.wrapper >.menu >.debug >.wrapper')[0].className = 'wrapper off';
+		    app.store.set({ id:'core.debug', value:false });
+		    this.querySelector('.wrapper').className = 'wrapper off';
 		} else {
 		    app.debug.set(true);
-		    document.querySelectorAll('body >.wrapper >.settings >.wrapper >.menu >.debug >.wrapper')[0].className = 'wrapper on';
+		    app.store.set({ id:'core.debug', value:true });
+		    this.querySelector('.wrapper').className = 'wrapper on';
 		}
 	    });
-	    
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
-	    
-            window.addEventListener('message', function(m) {
-                into.style.display='none';
-                var a = app.url.param.get('code',m.data.url);
-                apigee.stage2.exec({ code:a });
+	    var tb = sw.querySelector('.menu >.cache');
+	    tb.addEventListener('click', function() {
+		if (app.cache.mode.get()) {
+		    app.cache.mode.set(false);
+		    app.store.set({ id:'core.cache.mode', value:false });
+		    this.querySelector('.wrapper').className = 'wrapper off';
+		} else {
+		    app.cache.mode.set(true);
+		    app.store.set({ id:'core.cache.mode', value:true });
+		    this.querySelector('.wrapper').className = 'wrapper on';
+		}
+	    });
+	    sw.querySelector('.header >.back').addEventListener('click', function() {
+		app.views.main.init({ effect:'back' });
+	    });
+	    document.querySelector('body >.wrapper >.main >.wrapper >.menu >.settings').addEventListener('click', function() {
+		ta.querySelector('.wrapper').className += app.debug.get()? ' on' : ' off';
+		tb.querySelector('.wrapper').className += app.cache.mode.get()? ' on' : ' off';
+		app.views.settings.init();
             });
 	    
 	    // previous login?
 	    var pl = app.store.get({ id:'apigee.oauth2' });
 	    if (pl) {
 		app.stash.set('apigee.oauth2',pl);
-		app.events.dispatch('status.append',{ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
+		app.events.dispatch('core.status.append',{ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
 	    }
-
+	    
+	    app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
         };
 
     }});

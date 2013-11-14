@@ -15,13 +15,13 @@
         width:10%;
         background: url("../img/trade/back.svg") no-repeat 50% 50%;
         background-size:100% 100%;
-        position:absolute; top:20%; left:0.7%;
+        position:absolute; top:20%; left:0.7%; z-index:99999999;
         &:hover { cursor:pointer; background-size:96% 96%; }
     }
     >.logo {
         height:100%; width:25%;
         background: url("../img/logo.svg") no-repeat 0 0;
-        background-size:85% 85%;
+        background-size:85% 85%; z-index:99999999;
         position:absolute; top:25%; left:9%;
         margin:0; padding:0; border:0;
     }
@@ -30,6 +30,7 @@
         background-size:95% 95%;
         background-position:0 2%;
         background-repeat:none;
+        z-index:99999999;
         position:absolute; top:15%; right:1%; color:#fff; font-size:30px; font-weight:bold; padding:1% 3% 1% 15%;
     }
     
@@ -40,7 +41,7 @@
     
     @media screen and (max-width: 600px) {
         >.back { top:5%; }
-        >.title { padding-left:20%; }
+        >.title { padding-left:20%; font-size:22px;  }
     }
 
 }
@@ -52,7 +53,7 @@
 
     >div {
         width:22%;
-        height:26%;
+        height:22%;
         float:left;
         padding:5%;
         border:0;
