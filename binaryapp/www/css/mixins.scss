@@ -6,7 +6,7 @@
 
 @mixin pageheader {
     height:8%;
-    margin-bottom:3%;
+    margin:2% 0 2% 0;
     width:100%;
     position:relative;
     >.back {
@@ -22,7 +22,7 @@
         height:100%; width:25%;
         background: url("../img/logo.svg") no-repeat 0 0;
         background-size:85% 85%; z-index:99999999;
-        position:absolute; top:25%; left:9%;
+        position:absolute; top:25%; left:10%;
         margin:0; padding:0; border:0;
     }
  
@@ -40,7 +40,7 @@
     }
     
     @media screen and (max-width: 600px) {
-        >.back { top:5%; }
+        >.back { top:5%; left:2%; }
         >.title { padding-left:20%; font-size:22px;  }
     }
 

@@ -47,7 +47,7 @@
             });
 	    
 	    // cache
-	    app.cache.mode.set(app.store.get({ id:'core.cache.mode' })? true : false);
+	    app.cache.mode.set(app.store.get({ id:'core.cache.mode' } === false)? false : true);
 	    app.events.listeners.add('core.cache.mode.toggled', function (o) {
 		app.events.dispatch('core.status.append',{ title:'Caching '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
             });
@@ -192,13 +192,13 @@
 		    onLoad : function() {
 			if (into) document.body.appendChild(into);
 			//status.getElementsByClassName('init')[0].style.display='none';
-			status.getElementsByClassName('stage1')[0].style.display='block';
+			//status.getElementsByClassName('stage1')[0].style.display='block';
 		    }
 		},{
 		    url : function(o) { return 'http://www.binary.com/clientapp/oauth2/tokenswap?scope='+o.scope+'&client_id='+o.devid+'&code='+o.code },
 		    onLoad : function() {
-			status.getElementsByClassName('stage1')[0].style.display='none';
-			status.getElementsByClassName('stage2')[0].style.display='block';
+			//status.getElementsByClassName('stage1')[0].style.display='none';
+			//status.getElementsByClassName('stage2')[0].style.display='block';
 		    },
 		    onCompletion : function(o) {
 			if (into) into.parentNode.removeChild(into);
@@ -276,96 +276,103 @@
                 trade : {
                     
                     connection : new app.connection.create(),
+		    
+		    marketselected : null,
+		    submarketselected : null,
+		    symbolselected : null,
+		    contractcategory : null,
                         
                     init : function(o) {
 			var views = document.querySelectorAll('body >.wrapper >.trade >.wrapper >.content');
-                        var c = this.connection;
-			c.headers.set('Authorization', function() {
-			    var a = app.stash.get('apigee.oauth2');
-			    return a? 'Bearer '+ a.token : '';
-			});
-			
-			var rendercategories = function(o) {
-			    var node = views[1].querySelector('.categories');
-			    while(node.firstChild) { node.removeChild(node.firstChild); };
-			    var j = Object.keys(o);
-			    j.forEach(function (m) {
-				var dc = document.createElement('div');
-				dc.innerHTML = m;
-				node.appendChild(dc);
-			    });
-			}
-			
-			var rendermarkets = function(o) {
-			    var markets = views[0].querySelector('.markets');
-			    while(markets.firstChild) { markets.removeChild(markets.firstChild); };
-			    o.forEach(function (m) {
-				var dc = document.createElement('div');
-				dc.innerHTML = m.substr(0,1).toUpperCase()+m.substr(1);
-				dc.addEventListener('click', function() {
-				    c.resource = '/markets/'+m;
-				    c.status.nextto = dc;
-				    c.onCompletion = function(k) {
-					Array.prototype.slice.call(views[0].querySelectorAll('.markets >div')).forEach(function(v) { v.className=''; });
-					dc.className='selected';
-					var sym = views[0].querySelector('.symbols');
-					sym.innerHTML='';
-					k.symbols.sort(function(a, b) {
-					    if(a.display_name < b.display_name) return -1;
-					    if(a.display_name > b.display_name) return 1;
-					    return 0;
-					}).forEach(function (s) {
-					    var dc = document.createElement('div');
-					    dc.innerHTML = s.display_name;
-					    sym.appendChild(dc);
-					    dc.addEventListener('click', function() {
-						var cn = 'binary.markets.'+m+'.contract.categories';
-						var bm = app.cache.get(cn);
-						if (bm) {
-						    if (! views[1].querySelector('.categories').hasChildNodes()) rendercategories(bm);
-						    views[1].style.display='block';
-						    views[0].style.display='none';
-						} else {   
-						    c.status.nextto = dc;
-						    c.resource = '/markets/'+m+'/contract_categories';
-						    c.onCompletion = function(k) {
-							app.cache.set({ id:cn, value:m });
-							rendercategories(k);
-							views[1].style.display='block';
-							views[0].style.display='none';
-						    };
-						    c.run();
-						}; 
-					    });
-					});
-				    };
-				    c.run();
-				});
-				markets.appendChild(dc);
-			    });
-			    var node = views[0].querySelector('.symbols');
-			    while(node.firstChild) { node.removeChild(node.firstChild); };
-			}
-			
 			views[0].style.display='block';
 			views[1].style.display='none';
-			
-			var cn = 'binary.markets';
-			var bm = app.cache.get(cn);
-			if (bm) {
-			    if (! views[0].querySelector('.markets').hasChildNodes()) rendermarkets(bm);
-			    app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
-			} else {
-			    c.resource = '/markets';
-			    c.status.nextto = document.querySelector('body >.wrapper >.main >.wrapper >.menu div');
-			    c.onCompletion = function(j) {
-				var m = j.markets.sort();
-				app.cache.set({ id:cn, value:m });
-				rendermarkets(m);
+			var self = this;
+			app.binarycom.product.get({
+			    statusnextto : document.querySelector('body >.wrapper >.main >.wrapper >.menu div'),
+			    onCompletion : function() {
+				var m = Object.keys(app.binarycom.product.data.selectors.market).sort();
+				var markets = views[0].querySelector('.markets >.data');
+				while(markets.firstChild) { markets.removeChild(markets.firstChild); };
+				m.forEach(function (market) {
+				    var dc = document.createElement('div');
+				    if (self.marketselected === market) dc.className='selected';
+				    dc.innerHTML = market;
+				    dc.addEventListener('click', function() {
+					Array.prototype.slice.call(markets.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
+					dc.className='selected';
+					self.marketselected = market;
+					var submarkets = views[0].querySelector('.submarkets >.data');
+					while(submarkets.firstChild) { submarkets.removeChild(submarkets.firstChild); };
+					views[0].getElementsByClassName('submarkets')[0].style.display='block';
+					views[0].getElementsByClassName('symbols')[0].style.display='none';
+					views[0].getElementsByClassName('contractcategory')[0].style.display='none';
+					app.binarycom.product.data.offerings.some(function (offering) {
+					    if (offering.market !== market) return;
+					    offering.available.forEach(function(a) {
+						var dc = document.createElement('div');
+						dc.innerHTML = a.submarket;
+						submarkets.appendChild(dc);
+						dc.addEventListener('click', function() {
+						    Array.prototype.slice.call(submarkets.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
+						    dc.className='selected';
+						    self.submarketselected = a.submarket;
+						    var symbols = views[0].querySelector('.symbols >.data');
+						    while(symbols.firstChild) { symbols.removeChild(symbols.firstChild); };
+						    views[0].getElementsByClassName('symbols')[0].style.display='block';
+						    views[0].getElementsByClassName('contractcategory')[0].style.display='none';
+						    a.available.forEach(function(a) {
+							var dc = document.createElement('div');
+							dc.innerHTML = a.symbol;
+							symbols.appendChild(dc);
+							dc.addEventListener('click', function() {
+							    Array.prototype.slice.call(symbols.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
+							    dc.className='selected';
+							    self.symbolselected = a.symbol;
+							    var contractcategory = views[0].querySelector('.contractcategory >.data');
+							    while(contractcategory.firstChild) { contractcategory.removeChild(contractcategory.firstChild); };
+							    views[0].getElementsByClassName('contractcategory')[0].style.display='block';
+							    a.available.forEach(function(a) {
+								var dc = document.createElement('div');
+								dc.innerHTML = a.contract_category;
+								contractcategory.appendChild(dc);
+								dc.addEventListener('click', function() {
+								    self.contractcategoryselected = a.contract_category;
+								    views[1].style.display='block';
+								    views[0].style.display='none';
+
+								    var title = views[1].getElementsByClassName('title')[0];
+								    while(title.firstChild) { title.removeChild(title.firstChild); };
+								    var s = document.createElement('div');
+								    s.innerHTML = self.marketselected;
+								    title.appendChild(s);
+								    s = document.createElement('div');
+								    s.innerHTML = self.submarketselected;
+								    title.appendChild(s);
+								    s = document.createElement('div');
+								    s.innerHTML = self.symbolselected;
+								    title.appendChild(s);
+								    s = document.createElement('div');
+								    s.innerHTML = self.contractcategoryselected;
+								    title.appendChild(s);
+
+								});
+
+							    });
+							});
+						    });
+						});
+					    });
+					    return true;
+					});
+				    });
+				    markets.appendChild(dc);
+				});
+				
 				app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
 			    }
-			    c.run();
-			}
+
+	
+			});
                     }
                 },
 		 

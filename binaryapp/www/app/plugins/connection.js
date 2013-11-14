@@ -14,7 +14,6 @@ function AppPlugin(app) {
         },
         create : function(o) {
             if (! o) o = {};
-            if (! o.exe) o.exe = app.connection.source.def;
             if (! o.type) o.type = 'xhr';
             var c = new app.connection.types[o.type](o);
             app.events.dispatch('core.connection.created',c);

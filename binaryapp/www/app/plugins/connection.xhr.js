@@ -3,7 +3,7 @@ function AppPlugin(app) {
     app.connection.types['xhr'] = function (o) {
 	var self = this;
 	this.data = null;
-	this.exe = o.exe;
+	this.exe = o.exe? o.exe : null;
 	this.resource = o.resource? o.resource : '';
 	this.action = o.action? o.action : 'GET';
 	this.cors = o.cors? o.cors : null;
@@ -95,6 +95,7 @@ function AppPlugin(app) {
 	};
 	this.run = function() {
 	    if (this.loading) this.abort();
+	    if (! this.exe) this.exe = app.connection.source.def;
 	    var u = new Array();
 	    for (key in self.vars.list) {
 		u[u.length] = encodeURIComponent(key)+"="+encodeURIComponent(self.vars.list[key]);

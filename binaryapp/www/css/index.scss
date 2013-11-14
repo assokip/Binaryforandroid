@@ -35,6 +35,15 @@ body {
             height:100%;
             width:100%;
             background-color:#2a3052;
+            
+            >.wrapper {
+                >.content {
+                    overflow:auto;
+                    padding:2%;
+                    height:80%;
+                }
+            }
+                
         }
         
         >.loading {
@@ -301,10 +310,10 @@ body {
         >.trade {
             height:100%;
             position:fixed;
-            .wrapper {
+            >.wrapper {
                 height:100%;
                 
-                .header {
+                >.header {
                     @include pageheader;
                     >.title {
                         background: url("../img/trade/trade.svg") no-repeat 0 40%;
@@ -312,59 +321,64 @@ body {
                     }
                 }
                 
-                .content {
-                    height:85%;
-                    width:100%;
-                    padding:0;
-                    margin:0;
-                    .markets, .symbols {
-                        height:100%;
-                        width:46%;
-                        overflow:auto;
-                        float:left;
-                        margin:0;
-                        padding:0;
-                        > div {
-                            margin:0 5% 8% 5%;
-                            float:left;
-                            padding:3%;
-                            background:#fff;
+                >.options {
+
+                    >div {
+                        clear:both;
+                        
+                        >.title {
                             font-size:20px;
-                            border: 2px solid #FAFAFA;
-                            border-radius:5px;
-                            &:hover { cursor:pointer; background:#ea8125 }
-                        }
-                    }
-                    
-                    .markets {
-                        margin-right:2%;
-                        width:43%; 
-                        border-right: 2px solid #FAFAFA;
-                        padding:0 5% 0 2%;
-                        > div.selected {
-                            @include objselected;
-                        }
-                    }
-                    
-                    
-                    .categories {
-                         > div {
-                            margin:0 0 2% 2%;
-                            float:left;
-                            padding:0.5% 1% 0.5% 1%;
-                            background:#fff;
-                            font-size:16px;
-                            border: 2px solid #FAFAFA;
-                            border-radius:5px;
-                            &:hover { cursor:pointer; background:#ea8125 }
+                            color:#fff;
+                            font-weight:bold;
+                            padding:0 1% 1.5% 1%; 
                         }
                         
+                        >.data {
+                            > div {
+                                margin:0 1% 2% 1%;
+                                float:left;
+                                padding:0.7% 1.5% 0.7% 1.5%;
+                                background:#fff;
+                                font-size:20px;
+                                border: 2px solid #FAFAFA;
+                                border-radius:10px;
+                                &:hover { cursor:pointer; background:#ea8125 }
+                            }
+                            
+                            > div.selected {
+                                @include objselected;
+                            }
+                        }
+                        
+                        &:not(:first-child) {
+                            padding-top:1.5%;
+                            display:none;
+                        }
                     }
-                    
-                    
-                    
+
                 }
                 
+                >.purchase {
+                    >.title {
+                        margin-left:3%;
+                        >div {
+                            
+                            color:#fff;
+                            font-size:14px;
+                            font-weight:bold;
+                            display:inline-block;
+                            
+                            &:not(:first-child) {
+                                background: url("../img/trade/optionlevel.svg") no-repeat 4px 0;
+                                background-size:15px 15px;
+                                padding-left:22px;
+                            }
+                            
+                            
+                        }
+                    }
+                }
+
                 /* 
                 @media screen and (max-aspect-ratio: 1/1) {
                     
