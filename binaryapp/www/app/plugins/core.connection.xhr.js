@@ -95,7 +95,6 @@ function AppPlugin(app) {
 	};
 	this.run = function() {
 	    if (this.loading) this.abort();
-	    if (! this.exe) this.exe = app.core.connection.source.def;
 	    var u = new Array();
 	    for (key in self.vars.list) {
 		u[u.length] = encodeURIComponent(key)+"="+encodeURIComponent(self.vars.list[key]);

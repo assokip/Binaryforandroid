@@ -68,6 +68,14 @@
             font-size:30px;
             padding:10px 0 5px 0;
         }
+        
+        .disabled {
+            
+            &:hover { cursor:inherit; background-color:inherit; }
+            opacity:0.6;
+        }
+        
+        
     }
     
     @media screen and (max-width: 600px) {

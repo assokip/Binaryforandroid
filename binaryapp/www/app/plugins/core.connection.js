@@ -1,8 +1,13 @@
 function AppPlugin(app) {
     
     app.core.connection = {
-        
-        source : { def : null },
+        source : {
+            def : {
+                value:null,
+                set : function(o) { this.value=o; },
+                get : function() { return this.value; }
+            }
+        },
         types : {},
         pool : new Array(),
         count : function() { return this.pool.length },

@@ -9,9 +9,10 @@ function AppPlugin(app) {
                 var self = this;
                 var c = this.connection;
                 c.headers.set('Authorization', function() {
-                    var a = app.core.stash.get('apigee.oauth2');
+                    var a = app.apigee.status.get();
                     return a? 'Bearer '+ a.token : '';
                 });
+                c.exe = app.apigee.url.get();
                 c.resource = '/offerings';
                 c.status.nextto = o.statusnextto? o.statusnextto : null;
                 c.onCompletion = function(k) {
