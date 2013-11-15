@@ -274,11 +274,12 @@ body {
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #2a3052;
   font-family: proxima-nova, arial, helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   height: 100%;
   margin: 0;
   padding: 0;
-  width: 100%; }
+  width: 100%;
+  color: #000; }
   body > iframe {
     position: absolute;
     width: 100%;
@@ -816,6 +817,15 @@ body {
         body > .wrapper > .settings .wrapper > .menu .cache .off {
           background: url("../img/settings/cache/off.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
+        body > .wrapper > .settings .wrapper > .menu .safety .on {
+          background: url("../img/settings/safety/on.svg") white no-repeat 50% 80%;
+          background-size: 70% 70%; }
+        body > .wrapper > .settings .wrapper > .menu .safety .off {
+          background: url("../img/settings/safety/off.svg") white no-repeat 50% 80%;
+          background-size: 70% 70%; }
+        body > .wrapper > .settings .wrapper > .menu .logout .wrapper {
+          background: url("../img/settings/logout.svg") white no-repeat 50% 80%;
+          background-size: 70% 70%; }
   body > .wrapper > .charts {
     height: 100%;
     position: fixed; }
@@ -1029,6 +1039,8 @@ body {
         body > .wrapper > .trade > .wrapper > .options > div:not(:first-child) {
           padding-top: 1.5%;
           display: none; }
+      body > .wrapper > .trade > .wrapper > .purchase > div:not(:last-child) {
+        margin-bottom: 2%; }
       body > .wrapper > .trade > .wrapper > .purchase > .title {
         margin-left: 3%; }
         body > .wrapper > .trade > .wrapper > .purchase > .title > div {
@@ -1040,6 +1052,24 @@ body {
             background: url("../img/trade/optionlevel.svg") no-repeat 4px 0;
             background-size: 15px 15px;
             padding-left: 22px; }
+      body > .wrapper > .trade > .wrapper > .purchase > .spot {
+        color: green;
+        border-radius: 10px;
+        font-size: 30px;
+        display: inline-block;
+        font-weight: bold; }
+      body > .wrapper > .trade > .wrapper > .purchase > .categories > form {
+        color: #000;
+        font-size: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 2%; }
+        body > .wrapper > .trade > .wrapper > .purchase > .categories > form input, body > .wrapper > .trade > .wrapper > .purchase > .categories > form select {
+          font-size: 16px;
+          padding: 4px;
+          border: 1px solid #444;
+          border-radius: 1px;
+          background: #fff; }
   body > .status {
     position: fixed;
     background: url("../app/plugins/status/close.svg") #676d8d no-repeat;
@@ -1050,7 +1080,6 @@ body {
     bottom: 0;
     left: 0;
     color: #000;
-    font-size: 120%;
     border-top: solid 3px #fff;
     display: none; }
     body > .status nav {

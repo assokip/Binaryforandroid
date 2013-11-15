@@ -1,6 +1,6 @@
 function AppPlugin(app) {
 
-    app.store = {
+    app.core.store = {
         remove : function(o) {
             var type = o.type? o.type : 'local';
             var id = o.id;

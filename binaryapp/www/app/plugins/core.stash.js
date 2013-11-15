@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.stash = {
+    app.core.stash = {
     
         store : {},
         

@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.url = {
+    app.core.url = {
     
         param : {
             

@@ -7,7 +7,6 @@ App = function() {
 	load : function(p) {
 	    var root = p.root;
 	    var plugins = p.plugins;
-	    p.plugins.unshift('debug','events');
 	    var at=0;
 	    var abort = false;
 	    var loadt = function() {

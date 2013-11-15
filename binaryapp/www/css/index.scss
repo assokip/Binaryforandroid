@@ -8,7 +8,6 @@ $PAGE_HEADER_HEIGHT : 10%;
 @import "animations";
 @import "mixins";
 
-
 div { padding:0; margin:0; }
 
 body {
@@ -17,11 +16,12 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#2a3052;
     font-family:proxima-nova, arial, helvetica, sans-serif;
-    font-size:12px;
+    font-size:14px;
     height:100%;
     margin:0;
     padding:0;
     width:100%;
+    color:#000;
     
     >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:9999999; }
     
@@ -284,6 +284,22 @@ body {
                             background-size:70% 70%;
                         }
                     }
+                    .safety {
+                        .on {
+                            background: url("../img/settings/safety/on.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                        .off {
+                            background: url("../img/settings/safety/off.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .logout {
+                        .wrapper {
+                            background: url("../img/settings/logout.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
                 }
             }
         } 
@@ -359,6 +375,9 @@ body {
                 }
                 
                 >.purchase {
+                    >div:not(:last-child) { margin-bottom:2% }
+                    
+                    
                     >.title {
                         margin-left:3%;
                         >div {
@@ -377,6 +396,28 @@ body {
                             
                         }
                     }
+                    
+                    >.spot {
+                        color:green;
+                        border-radius:10px;
+                        font-size:30px;
+                        display:inline-block;
+                        font-weight:bold;
+                    }
+                    
+                    >.categories {
+                        >form {
+                            color:#000; font-size:20px;
+                            input, select { font-size:16px; padding:4px; border: 1px solid #444; border-radius:1px; background:#fff; }
+                            
+                            background: rgba(255,255,255,.8);
+                            border-radius:10px;
+                            padding:2%;
+                            
+                        }
+                        
+                    }
+                    
                 }
 
                 /* 
@@ -426,7 +467,6 @@ body {
     bottom:0;
     left:0;
     color:#000;
-    font-size:120%;
     border-top: solid 3px #fff;
     display:none;
     nav {

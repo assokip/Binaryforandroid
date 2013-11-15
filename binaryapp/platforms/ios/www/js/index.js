@@ -26,16 +26,16 @@ app = {
 
         stage1 : {
             exec : function() {
-                var url = app.oauth2.url+'/login?scope='+app.oauth2.scope+'&client_id='+app.oauth2.devid;
-                app.oauth2.status.getElementsByClassName('init')[0].style.display='none';
-                app.oauth2.status.getElementsByClassName('stage1')[0].style.display='block';
+                var url = app.core.oauth2.url+'/login?scope='+app.core.oauth2.scope+'&client_id='+app.core.oauth2.devid;
+                app.core.oauth2.status.getElementsByClassName('init')[0].style.display='none';
+                app.core.oauth2.status.getElementsByClassName('stage1')[0].style.display='block';
                 var ref = window.open(url, '_blank', 'location=no');
                 var self=this;
                 ref.addEventListener('loadstop', function(event) {
                     if (event.url === url) return;
-                    var a = app.url.param.get('code',event.url);
+                    var a = app.core.url.param.get('code',event.url);
                     ref.close();
-                    app.oauth2.stage2.exec({ authcode:a });
+                    app.core.oauth2.stage2.exec({ authcode:a });
                 });
                 //win.addEventListener('close', function(event) { app.exit(); });
             }
@@ -43,14 +43,14 @@ app = {
 
         stage2 : {
             exec : function(o) {
-                app.oauth2.status.getElementsByClassName('stage1')[0].style.display='none';
-                app.oauth2.status.getElementsByClassName('stage2')[0].style.display='block';
+                app.core.oauth2.status.getElementsByClassName('stage1')[0].style.display='none';
+                app.core.oauth2.status.getElementsByClassName('stage2')[0].style.display='block';
                 var connection = new igaro_connection({
-                    exe: app.oauth2.url+'/tokenswap',
-                    vars : { scope:app.oauth2.scope, code:o.authcode },
+                    exe: app.core.oauth2.url+'/tokenswap',
+                    vars : { scope:app.core.oauth2.scope, code:o.authcode },
                     onCompletion : function(j) {
-                        app.oauth2.params = j.params;
-                        app.events.dispatch('security.oauth2.token.issued');
+                        app.core.oauth2.params = j.params;
+                        app.core.events.dispatch('security.oauth2.token.issued');
                         app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
                         document.querySelector('body >.wrapper >.main >.wrapper >.login_id').innerHTML = j.params.login_id;
                     }
@@ -85,7 +85,7 @@ app = {
         self.oauth2.init();
         document.addEventListener('deviceready', function() { self.oauth2.stage1.exec(); }, false);
 	this.events.listeners.add('exit', function() { app.exit() });
-        if (! app.cordova.loaded) self.main.init();
+        if (! app.core.cordova.loaded) self.main.init();
 	
 	/* main */
         Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')).forEach(function(v) {
@@ -122,13 +122,13 @@ app = {
             add : function(event, fn) {
                 if (! this.list[event]) this.list[event] = [];
                 if (!(fn in this.list) && fn instanceof Function) this.list[event].push(fn);
-                if (app.debug) console.log('EVENTS:ADD:'+event);
+                if (app.core.debug) console.log('EVENTS:ADD:'+event);
             },
             remove : function(event, fn) {
                 if (! this.list[event]) return;
                 for (var i=0, l=this.list[event].length; i<l; i++) {
                     if (this.list[event][i] === fn) {
-                        if (app.debug) console.log('EVENTS:REMOVE:'+event);
+                        if (app.core.debug) console.log('EVENTS:REMOVE:'+event);
                         this.list[event].slice(i,1);
                         break;
                     }
@@ -138,7 +138,7 @@ app = {
         dispatch : function(event, params) {
             if (! this.listeners.list[event]) return;
             for (var i=0, l=this.listeners.list[event].length; i<l; i++) {
-                if (app.debug) console.log('EVENTS:DISPATCH:'+event);
+                if (app.core.debug) console.log('EVENTS:DISPATCH:'+event);
                 this.listeners.list[event][i].call(window, params);
             }
         }
@@ -164,7 +164,7 @@ app = {
                 var c = this.current && this.current.style.zIndex? this.current.style.zIndex : 999;
                 v.style.zIndex = c+1;
                 v.style.visibility='visible';
-                app.events.dispatch('view.shown',v.className);
+                app.core.events.dispatch('view.shown',v.className);
                 this.current = v;
             });
             var self=this;
@@ -179,7 +179,7 @@ app = {
                 v.className = c.join(' ');
                 v.style.visibility='hidden';
                 v.style.zIndex=0;
-                app.events.dispatch('view.hidden',v.className);
+                app.core.events.dispatch('view.hidden',v.className);
             }) }, 1000);
         }
     },
@@ -217,9 +217,9 @@ app = {
 	    //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
 	    var connection = new igaro_connection({
 		resource: '/markets',
-		headers : { 'Authorization': 'Bearer '+app.oauth2.params.token },
+		headers : { 'Authorization': 'Bearer '+app.core.oauth2.params.token },
 		onCompletion : function(j) {
-		    app.events.dispatch('app.data.markets.revised');
+		    app.core.events.dispatch('app.data.markets.revised');
 		}
 	    });
 	    connection.run();
@@ -305,7 +305,7 @@ function igaro_connection(o) {
         if (! this.status.container) return;
         this.status.nextto.removeChild(this.status.container);
         this.status.container = null;
-        app.events.dispatch('connection.exec.abort', this);
+        app.core.events.dispatch('connection.exec.abort', this);
     };
     this.run = function() {
 	
@@ -335,7 +335,7 @@ function igaro_connection(o) {
             if (xhr.status === 200) {
                 try { self.data = xhr.responseText.length? JSON.parse(xhr.responseText) : new Object; }
                 catch(e) {
-                    app.events.dispatch('connection.exec.data.json.error', { xhr:xhr, err:e }); }
+                    app.core.events.dispatch('connection.exec.data.json.error', { xhr:xhr, err:e }); }
                 if (self.status.container) self.status.container.parentNode.removeChild(self.status.container);
                 self.status.container=null;
                 if (self.onCompletion) self.onCompletion(self.data);
@@ -351,7 +351,7 @@ function igaro_connection(o) {
                     self.status.container = null;
                 }
             }
-            app.events.dispatch('connection.exec.end', self);
+            app.core.events.dispatch('connection.exec.end', self);
         };
         self.loading=true;
         xhr.send((this.action==='POST')? url : null);
@@ -364,6 +364,6 @@ function igaro_connection(o) {
             s.container.appendChild(icon);
         }
         if (s.container) s.container.getElementsByTagName('div')[0].className = 'loading';
-        app.events.dispatch('connection.exec.start', { api:self });
+        app.core.events.dispatch('connection.exec.start', { api:self });
     };
 };

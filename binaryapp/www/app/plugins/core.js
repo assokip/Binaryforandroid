@@ -1,3 +1,3 @@
 function AppPlugin(app) {
-    app.binarycom = {};
+    app.core = {};
 }

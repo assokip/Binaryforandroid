@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.connection = {
+    app.core.connection = {
         
         source : { def : null },
         types : {},
@@ -15,19 +15,19 @@ function AppPlugin(app) {
         create : function(o) {
             if (! o) o = {};
             if (! o.type) o.type = 'xhr';
-            var c = new app.connection.types[o.type](o);
-            app.events.dispatch('core.connection.created',c);
-            app.connection.pool.push(c);
+            var c = new app.core.connection.types[o.type](o);
+            app.core.events.dispatch('core.connection.created',c);
+            app.core.connection.pool.push(c);
             return c;
         },
         remove : function(o) {
-            app.events.dispatch('core.connection.removed',o);
-            app.connection.pool.splice(this.pool.indexOf(o), 1);
+            app.core.events.dispatch('core.connection.removed',o);
+            app.core.connection.pool.splice(this.pool.indexOf(o), 1);
         },
         abort : function(o) {
-            var i = app.connection.pool.indexOf(o);
+            var i = app.core.connection.pool.indexOf(o);
             if (i===-1) return;
-            app.connection.pool[i].abort();
+            app.core.connection.pool[i].abort();
         }
         
     };

@@ -1,6 +1,6 @@
 function AppPlugin(app) {
 
-    app.status = {
+    app.core.status = {
         
         events : new Array(),
         remove : function(l) {

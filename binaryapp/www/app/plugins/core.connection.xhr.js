@@ -1,6 +1,6 @@
 function AppPlugin(app) {
 
-    app.connection.types['xhr'] = function (o) {
+    app.core.connection.types['xhr'] = function (o) {
 	var self = this;
 	this.data = null;
 	this.exe = o.exe? o.exe : null;
@@ -58,7 +58,7 @@ function AppPlugin(app) {
 	    if (! this.status.container) return;
 	    this.status.nextto.removeChild(this.status.container);
 	    this.status.container = null;
-	    app.events.dispatch('core.connection.exec.abort', this);
+	    app.core.events.dispatch('core.connection.exec.abort', this);
 	};
 	if (! ('onload' in xhr) && 'onreadystatechange' in xhr) { //xhr1 compat
 	    xhr.onreadystatechange = function() {
@@ -74,7 +74,7 @@ function AppPlugin(app) {
 	    } 
 	    if (xhr.status === 200) {
 		try { self.data = xhr.responseText.length? JSON.parse(xhr.responseText) : new Object; }
-		catch(e) { app.events.dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
+		catch(e) { app.core.events.dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
 		if (self.onCompletion) self.onCompletion(self.data);
 	    } else if (xhr.status === 302) {
 		self.resource = '';
@@ -82,20 +82,20 @@ function AppPlugin(app) {
 	    } else {
 		if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 		if (self.onError) self.onError();
-		app.events.dispatch('core.connection.exec.error', self);
+		app.core.events.dispatch('core.connection.exec.error', self);
 		return;
 	    }
-	    app.events.dispatch('core.connection.exec.end', self);
+	    app.core.events.dispatch('core.connection.exec.end', self);
 	};
 	xhr.onerror = function(o) {
 	    self.loading=false;
 	    if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 	    if (self.onError) self.onError();
-	    app.events.dispatch('core.connection.exec.error', self);
+	    app.core.events.dispatch('core.connection.exec.error', self);
 	};
 	this.run = function() {
 	    if (this.loading) this.abort();
-	    if (! this.exe) this.exe = app.connection.source.def;
+	    if (! this.exe) this.exe = app.core.connection.source.def;
 	    var u = new Array();
 	    for (key in self.vars.list) {
 		u[u.length] = encodeURIComponent(key)+"="+encodeURIComponent(self.vars.list[key]);
@@ -114,7 +114,7 @@ function AppPlugin(app) {
 		xhr.setRequestHeader(key, self.headers.list[key].call());
 	    }
 	    self.loading=true;
-	    app.events.dispatch('core.connection.exec.start', self);
+	    app.core.events.dispatch('core.connection.exec.start', self);
 	    xhr.send((this.action==='POST')? url : null);
 	    var s = this.status;
 	    if (! s.container && s.nextto) {
