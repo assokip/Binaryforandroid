@@ -2,29 +2,34 @@ function AppPlugin(app) {
     
     app.core.events = {
         listeners : {
-            list : new Object(),
+            pool : {},
             add : function(event, fn) {
-                if (! this.list[event]) this.list[event] = new Array();
-                if (!(fn in this.list[event]) && fn instanceof Function) this.list[event].push(fn);
-                if (app.core.debug.mode.get()) app.core.events.dispatch('core.log.append','EVENTS:ADD:'+event);
+                var pool = this.pool;
+                if (! pool[event]) pool[event] = new Array();
+                var m = pool[event];
+                var e = null;
+                if (!(fn in m)) e = m.push(fn);
+                app.core.events.dispatch('core.events.listeners.add',{ event:event, fn:fn });
+                return m[m.length-1];
             },
-            remove : function(event, fn) {
-                if (! this.list[event]) return;
-                for (var i=0, l=this.list[event].length; i<l; i++) {
-                    if (this.list[event][i] === fn) {
-                        if (app.core.debug.mode.get()) app.core.events.dispatch('core.log.append','EVENTS:REMOVE:'+event);
-                        this.list[event].slice(i,1);
-                        break;
+            remove : function(fn) {
+                var pool = this.pool;
+                Object.keys(pool).forEach(function(event) {
+                    var m = pool[event];
+                    for (var i=0; i < m.length; i++) {
+                        if (m[i] !== fn) continue;
+                        app.core.events.dispatch('core.events.listeners.remove',{ event:event, fn:fn });
+                        m.slice(i,1);
                     }
-                }
+                });
+                if (! pool[event]) return;
             }
         },
-        dispatch : function(event, params) {
-            if (! this.listeners.list[event]) return;
-            for (var i=0, l=this.listeners.list[event].length; i<l; i++) {
-                if (event !== 'core.log.append' && app.core.debug.mode.get()) app.core.events.dispatch('core.log.append','EVENTS:DISPATCH:'+event);
-                this.listeners.list[event][i].call(window, params);
-            }
+        dispatch : function(event, params, bubble) {
+            var m = this.listeners.pool[event];
+            if (! m) return;
+            if (bubble !== false && event !== 'core.events.dispatch') app.core.events.dispatch('core.events.dispatch', { event:event });
+            m.forEach(function(t) { t.call(window, params); });
         }
     };
 

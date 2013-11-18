@@ -8,6 +8,7 @@ function AppPlugin(app) {
         
         set : function (id, value) {
             this.store[id]=value;
+            app.core.events.dispatch('core.cache.set', { id:id, value:value });
         },
         
         get : function (id) {

@@ -17,7 +17,7 @@ app = {
         init : function() {
             this.token = null;
             this.params = new Object();
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.connecting') });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.connecting') });
             this.status.getElementsByClassName('init')[0].style.display='block';
             this.status.getElementsByClassName('stage1')[0].style.display='none';
             this.status.getElementsByClassName('stage2')[0].style.display='none';
@@ -51,7 +51,7 @@ app = {
                     onCompletion : function(j) {
                         app.core.oauth2.params = j.params;
                         app.core.events.dispatch('security.oauth2.token.issued');
-                        app.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
+                        app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
                         document.querySelector('body >.wrapper >.main >.wrapper >.login_id').innerHTML = j.params.login_id;
                     }
                 });
@@ -206,14 +206,14 @@ app = {
     main : {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.main'), effect:effect });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.main'), effect:effect });
         }
     },
     
     trade : {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
 	    //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
 	    var connection = new igaro_connection({
 		resource: '/markets',
@@ -229,25 +229,25 @@ app = {
     
     portfolio : {
         init : function() {
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
         }
     },
     
     support : {
         init : function() {
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
         }
     },
     
     charts : {
         init : function() {
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
         }
     },
     
     news : {
         init : function() {
-            app.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
         }
     }
 };

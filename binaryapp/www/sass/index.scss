@@ -1,0 +1,545 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+$PAGE_HEADER_HEIGHT : 10%;
+
+@import "fonts";
+@import "animations";
+@import "mixins";
+
+div { padding:0; margin:0; }
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#fff;
+    font-family:proxima-nova, arial, helvetica, sans-serif;
+    font-size:14px;
+    height:100%;
+    margin:0;
+    padding:0;
+    width:100%;
+    color:#000;
+    
+    >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:9999999; }
+    
+    >.wrapper {
+        
+        >div {
+            visibility:hidden; z-index:-1;
+            position:absolute;
+            left:0;
+            right:0;
+            height:100%;
+            width:100%;
+         
+            >.wrapper {
+                >.content {
+                    overflow:auto;
+                    padding:2%;
+                    height:80%;
+                }
+            }
+                
+        }
+        
+        >.loading {
+            position:fixed;
+            left:0;
+            right:0;
+            height:100%;
+            width:100%;
+            text-align:center;
+            >.wrapper {
+                position:relative;
+                height:100%;
+
+                .progress {
+                    >.wrapper {
+                        position:absolute;
+                        left:25%;
+                        top:40%;
+                        width:50%;
+                        border:1px solid #fff;
+                        padding:5%;
+                        >.percent {
+                            height:50%; background-color:#fff;
+                        }
+                    }
+                }
+                @media screen and (min-aspect-ratio: 1/1) {
+                    >.logo { margin:1% 0 1% 0; }
+                   
+                } 
+            }
+        }
+                
+        >.home {
+            
+            position:fixed;
+            
+            >.wrapper {
+                
+                position:relative;
+                height:100%;
+                margin:0; padding:0; border:0;
+                
+                >.logo {
+                    height:17%; width:70%; 
+                    background: url("logo.svg") no-repeat;
+                    background-size:60%;
+                    background-position:50% 100%;
+                    margin:0; padding:0; border:0;
+                    margin-left:15%;
+                }
+
+                >.menu {
+                    .trade {
+                        .wrapper {
+                            background-image: url("content/home/trade.svg");
+                            background-position: 50% 80%;
+                            background-size:60%;
+                        }
+                    }
+                    .charts {
+                        .wrapper {
+                            background-image: url("content/home/charts.svg");
+                            background-position: 50% 80%;
+                            background-size:55%;
+                        }
+                    }
+                    .portfolio {
+                        .wrapper {
+                            background-image: url("content/home/portfolio.svg");
+                            background-position: 50% 80%;
+                            background-size:60%;
+                        }
+                    }
+                    .support {
+                        .wrapper {
+                            background-image: url("content/home/support.svg");
+                            background-position: 50% 80%;
+                            background-size:55%;
+                        }
+                    }
+                    .news {
+                        .wrapper {
+                            background-image: url("content/home/news.svg");
+                            background-position:50% 80%;
+                            background-size:60%;
+                        }
+                    }
+                    .settings {
+                        .wrapper {
+                            background-image: url("content/home/settings.svg");
+                            background-position: 50% 80%;
+                            background-size:55%;
+                        }
+                    }
+                    @include pagemenu;
+                }
+                
+                @media screen and (max-aspect-ratio: 1/1) {
+                   >.logo { background-size:100%; }
+                }
+            }
+        }
+            
+        >.support {
+            height:100%;
+            position:fixed;
+            .wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/support/support.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+                    .faq {
+                        .wrapper {
+                            background: url("content/support/faq.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .email {
+                        .wrapper {
+                            background: url("content/support/email.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .chat {
+                        .wrapper {
+                            background: url("content/support/chat.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .phone {
+                        .wrapper {
+                            background: url("content/support/phone.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .callback {
+                        .wrapper {
+                            background: url("content/support/callback.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .messages {
+                        .wrapper {
+                            background: url("content/support/messages.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                }
+            }
+        }
+        
+        >.portfolio {
+            height:100%;
+            position:fixed;
+            .wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/portfolio/portfolio.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+
+                }
+            }
+        }
+        
+        >.news {
+            height:100%;
+            position:fixed;
+            .wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/news/news.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+                    .markets {
+                        .wrapper {
+                            background: url("content/news/markets.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .service {
+                        .wrapper {
+                            background: url("content/news/service.svg") #fff no-repeat 50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                }
+            }
+        }
+        
+        >.settings {
+            height:100%;
+            position:fixed;
+            .wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/settings/settings.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+                    .locale {
+                        .wrapper {
+                            background-image: url("content/settings/locale.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .debug {
+                        .on {
+                            background-image: url("content/settings/debug/on.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                        .off {
+                            background-image: url("content/settings/debug/off.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .cache {
+                        .on {
+                            background-image: url("content/settings/cache/on.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                        .off {
+                            background-image: url("content/settings/cache/off.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .safety {
+                        .on {
+                            background-image: url("content/settings/safety/on.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                        .off {
+                            background-image: url("content/settings/safety/off.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                    .logout {
+                        .wrapper {
+                            background-image: url("content/settings/logout.svg");
+                            background-position:50% 80%;
+                            background-size:70% 70%;
+                        }
+                    }
+                }
+            }
+        } 
+        
+        >.charts {
+            height:100%;
+            position:fixed;
+            .wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/charts/charts.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+
+                }
+            }
+        } 
+        
+        >.trade {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                height:100%;
+                
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: url("content/trade/trade.svg");
+                    }
+                }
+                
+                >.options {
+
+                    >div {
+                        clear:both;
+                        
+                        >.title {
+                            font-size:20px;
+                            color:#000;
+                            font-weight:bold;
+                            padding:0 1% 1.5% 1%; 
+                        }
+                        
+                        >.data {
+                            > div {
+                                margin:0 1% 2% 1%;
+                                float:left;
+                                padding:0.7% 1.5% 0.7% 1.5%;
+                                background:#fff;
+                                box-shadow: -0px 10px 20px #EEEEEE;
+                                font-size:20px;
+                                border: 2px solid #EAEAEA;
+                                border-top-width: 1px;
+                                border-radius:10px;
+                                &:hover { cursor:pointer; background-color:#f7f7f7; }
+                            }
+                            
+                            > div.selected {
+                                @include objselected;
+                            }
+                        }
+                        
+                        &:not(:first-child) {
+                            padding-top:1.5%;
+                            display:none;
+                        }
+                    }
+
+                }
+                
+                >.purchase {
+                    >div:not(:last-child) { margin-bottom:2% }
+                    
+                    
+                    >.title {
+                        margin-left:3%;
+                        >div {
+                            
+                            color:#fff;
+                            font-size:14px;
+                            font-weight:bold;
+                            display:inline-block;
+                            
+                            &:not(:first-child) {
+                                background: url("content/trade/optionlevel.svg") no-repeat 4px 0;
+                                background-size:15px 15px;
+                                padding-left:22px;
+                            }
+                            
+                            
+                        }
+                    }
+                    
+                    >.spot {
+                        color:green;
+                        border-radius:10px;
+                        font-size:30px;
+                        display:inline-block;
+                        font-weight:bold;
+                    }
+                    
+                    >.categories {
+                        >form {
+                            color:#000; font-size:20px;
+                            input, select { font-size:16px; padding:4px; border: 1px solid #444; border-radius:1px; background:#fff; }
+                            
+                            background: rgba(255,255,255,.8);
+                            border-radius:10px;
+                            padding:2%;
+                            
+                        }
+                        
+                    }
+                    
+                }
+
+            }
+
+        }
+
+    }
+    
+    >.status {
+        position:fixed;
+        background:url('status/close.svg') rgba(0,0,0,.8) no-repeat;
+        background-size: 30px 30px;
+        background-position: right 10px top 10px;
+        width:100%;
+        z-index:999999999;
+        bottom:0;
+        left:0;
+        color:#000;
+        border-top: solid 3px #fff;
+        display:none;
+        nav {
+            position:relative;
+            padding:12px 50px 20px 20px;
+            ul {
+                margin:0;
+                padding:0;
+                li {
+                    -webkit-animation-name: fadeInRightBig;
+                    -moz-animation-name: fadeInRightBig;
+                    -o-animation-name: fadeInRightBig;
+                    animation-name: fadeInRightBig;
+                    -webkit-animation-duration:1s;
+                    -moz-animation-duration:1s;
+                    -ms-animation-duration:1s;
+                    -o-animation-duration:1s;
+                    animation-duration:1s;
+                    :last-child { margin-right:0; }
+                    list-style:none;
+                    box-shadow: 0 5px 10px #000;
+                    border-radius:8px;
+                    border:2px solid #eee;
+                    margin:12px 12px 0 0;
+                    padding:12px 20px 12px 12px;
+                    white-space:nowrap;
+                    display:inline-block;
+                    background: #fff;
+                    .title { font-weight:bold; }
+                    .type {
+                        display:table-cell;
+                        padding-right:6px;
+                        div { width:24px; height:24px; background-size: 24px 24px; }
+                        .warn { background:url('status/type/warn.png') no-repeat; }
+                        .info { background:url('status/type/info.png') no-repeat; }
+                        .critical { background:url('status/type/critical.png') no-repeat; }
+                    }
+                    .details {
+                        display:table-cell;
+                        vertical-align:middle;
+                        div {
+                            white-space:nowrap; display:block;
+                            .code {
+                                margin:0; display:inline; font-weight:bold;
+                                &:after { content:'-'; padding:0 3pt 0 3pt; }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  
+  form {
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+    }
+    
+    >.apmessage {
+      display:none;
+      position:absolute;
+      line-height:1;
+      border-radius:1px;
+      margin:2px 0 0 1px;
+      white-space:nowrap;
+      font-size:12px;
+      background-color:#fff496;
+      color:#111111;
+      padding:2px 3px 2px 3px;
+      z-index:99999;
+    }
+  }
+
+}
+
+
+
+/* app css */
+.ajax {
+  position:relative;
+  div {
+    position:absolute;
+    z-index:99999999;
+    width: 1.7em; height: 1.7em;
+    left:50%;
+    top:5px;
+    border: solid #000 1em;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite;
+    -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+  }
+}
+
+

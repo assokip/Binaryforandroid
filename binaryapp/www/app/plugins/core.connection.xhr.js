@@ -89,6 +89,10 @@ function AppPlugin(app) {
 	};
 	xhr.onerror = function(o) {
 	    self.loading=false;
+	    if (self.status.container) {
+		self.status.container.parentNode.removeChild(self.status.container);
+		self.status.container=null;
+	    } 
 	    if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 	    if (self.onError) self.onError();
 	    app.core.events.dispatch('core.connection.exec.error', self);
