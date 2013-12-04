@@ -76,7 +76,6 @@ function AppPlugin(app) {
     
     // auto direct on any unauthorised code
     app.core.events.listeners.add('core.connection.exec.error', function (o) {
-        if (401 === o.xhr.status && o.exe === app.binarycom.apigee.url.get()) app.binarycom.apigee.exec();
-        
+        if (o.xhr.status === 401 && o.exe === app.binarycom.apigee.url.get()) app.binarycom.apigee.exec();
     });
 }

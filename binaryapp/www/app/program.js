@@ -257,7 +257,6 @@ window.addEventListener('load', function() {
 		var logout = swm.getElementsByClassName('logout')[0];
 		logout.addEventListener('click', function() {
 		    if (app.binarycom.apigee.status.get()) app.binarycom.apigee.logout();
-		    logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled';
 		});
 		// back
 		sw.querySelector('.header >.back').addEventListener('click', function() {
