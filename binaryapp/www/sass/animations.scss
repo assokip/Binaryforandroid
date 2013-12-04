@@ -114,14 +114,16 @@ body {
         animation: swipeLeft 0.3s linear 1;
     }
     
-    .loading {
-        position:absolute; z-index:99;
-        width: 8px; height: 8px; border: 8px solid #FFF;
-        border-right-color: transparent; border-radius: 50%;
-        -webkit-animation: spin 1s linear infinite;
-        -moz-animation: spin 1s linear infinite;
-        -ms-animation: spin 1s linear infinite;
-        -o-animation: spin 1s linear infinite;
-        animation: spin 1s linear infinite;
+    .app-core-connection-xhr {
+        >.loading {
+            position:absolute; z-index:99;
+            width: 8px; height: 8px; border: 8px solid #FFF;
+            border-right-color: transparent; border-radius: 50%;
+            -webkit-animation: spin 1s linear infinite;
+            -moz-animation: spin 1s linear infinite;
+            -ms-animation: spin 1s linear infinite;
+            -o-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+        }
     }
 }

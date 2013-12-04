@@ -1,5 +1,7 @@
 function AppPlugin(app) {
 
+    if (typeof XMLHttpRequest === 'undefined') return;
+
     app.core.connection.types['xhr'] = function (o) {
 	var self = this;
 	this.data = null;
@@ -12,25 +14,25 @@ function AppPlugin(app) {
 	    current : null,
 	    _self : this,
 	    set : function(form) {
-		this._self.action = 'POST';
-		for(var i=0; i<form.elements.length; i++) {
-		    if(form.elements[i].disabled) continue;
-		    if(form.elements[i].type=="checkbox" && form.elements[i].checked) {
-			this._self.vars.set(form.elements[i].name, form.elements[i].checked? 1:0);
-		    } else if(form.elements[i].type=="select-one" && form.elements[i].selectedIndex > -1) {
-			if (form.elements[i].options.length) this._self.vars.set(form.elements[i].name,form.elements[i].options[form.elements[i].selectedIndex].value);
-		    } else if(form.elements[i].type=="select-multiple") {
-			var t='';
-			for (var k=0; k < form.elements[i].options.length; k++) {
-			    if (! form.elements[i].options[k].selected) continue;
-			    if (t.length) t += '\n';
-			    t += form.elements[i].options[k].value;
-			}
-			if (t.length) this._self.vars.set(form.elements[i].name, t);
-		    } else if (form.elements[i].type=="hidden" || form.elements[i].type=="password" || form.elements[i].type=="text" || form.elements[i].type=="radio" || form.elements[i].type=="textarea") {                  
-			this._self.vars.set(form.elements[i].name, form.elements[i].value.trim());
-		    }
-		}
+            this._self.action = 'POST';
+            for(var i=0; i<form.elements.length; i++) {
+                if(form.elements[i].disabled) continue;
+                if(form.elements[i].type=="checkbox" && form.elements[i].checked) {
+                this._self.vars.set(form.elements[i].name, form.elements[i].checked? 1:0);
+                } else if(form.elements[i].type=="select-one" && form.elements[i].selectedIndex > -1) {
+                if (form.elements[i].options.length) this._self.vars.set(form.elements[i].name,form.elements[i].options[form.elements[i].selectedIndex].value);
+                } else if(form.elements[i].type=="select-multiple") {
+                var t='';
+                for (var k=0; k < form.elements[i].options.length; k++) {
+                    if (! form.elements[i].options[k].selected) continue;
+                    if (t.length) t += '\n';
+                    t += form.elements[i].options[k].value;
+                }
+                if (t.length) this._self.vars.set(form.elements[i].name, t);
+                } else if (form.elements[i].type=="hidden" || form.elements[i].type=="password" || form.elements[i].type=="text" || form.elements[i].type=="radio" || form.elements[i].type=="textarea") {                  
+                this._self.vars.set(form.elements[i].name, form.elements[i].value.trim());
+                }
+            }
 	    }
 	};
 	if (o.form) this.form.set(o.form);
@@ -49,7 +51,7 @@ function AppPlugin(app) {
 	    if ("withCredentials" in xhr) xhr.withCredentials = true; 
 	}
 	this.loading = false;
-	this.status = { nextto : o.statusnextto, container: null };
+	this.status = { nextto : o.statusnextto?o.statusnextto:null };
 	this.onCompletion = o.onCompletion? function(d) { o.onCompletion(d) } : null;
 	this.autoretry = o.autoretry? o.autoretry : { attempts:-1, delay:4000 };
 	this.abort = function() {
@@ -62,37 +64,29 @@ function AppPlugin(app) {
 	};
 	if (! ('onload' in xhr) && 'onreadystatechange' in xhr) { //xhr1 compat
 	    xhr.onreadystatechange = function() {
-		if (xhr.readyState === 4) xhr.onload();
-		else if (xhr.readyState === 0) xhr.onerror({ fatal:true });
+            if (xhr.readyState === 4) xhr.onload();
+            else if (xhr.readyState === 0) xhr.onerror({ fatal:true });
 	    };
 	}
 	xhr.onload = function() {
 	    self.loading=false;
-	    if (self.status.container) {
-		self.status.container.parentNode.removeChild(self.status.container);
-		self.status.container=null;
-	    } 
 	    if (xhr.status === 200) {
-		try { self.data = xhr.responseText.length? JSON.parse(xhr.responseText) : new Object; }
-		catch(e) { app.core.events.dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
-		if (self.onCompletion) self.onCompletion(self.data);
-	    } else if (xhr.status === 302) {
-		self.resource = '';
-		self.run();
+            try { self.data = xhr.responseText.length? JSON.parse(xhr.responseText) : new Object; }
+            catch(e) { app.core.events.dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
+            if (self.onCompletion) self.onCompletion(self.data);
+            } else if (xhr.status === 302) {
+            self.resource = '';
+            self.run();
 	    } else {
-		if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
-		if (self.onError) self.onError();
-		app.core.events.dispatch('core.connection.exec.error', self);
-		return;
+            if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
+            if (self.onError) self.onError();
+            app.core.events.dispatch('core.connection.exec.error', self);
+            return;
 	    }
 	    app.core.events.dispatch('core.connection.exec.end', self);
 	};
 	xhr.onerror = function(o) {
 	    self.loading=false;
-	    if (self.status.container) {
-		self.status.container.parentNode.removeChild(self.status.container);
-		self.status.container=null;
-	    } 
 	    if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 	    if (self.onError) self.onError();
 	    app.core.events.dispatch('core.connection.exec.error', self);
@@ -119,15 +113,8 @@ function AppPlugin(app) {
 	    self.loading=true;
 	    app.core.events.dispatch('core.connection.exec.start', self);
 	    xhr.send((this.action==='POST')? url : null);
-	    var s = this.status;
-	    if (! s.container && s.nextto) {
-		s.container = document.createElement('div');
-		s.container.className = 'ajax';
-		s.nextto.appendChild(s.container);
-		var icon = document.createElement('div');
-		s.container.appendChild(icon);
-	    }
-	};
+
+        };
     };
 
 };

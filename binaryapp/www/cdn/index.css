@@ -234,7 +234,7 @@ body .effect_back {
   -ms-animation: swipeLeft 0.3s linear 1;
   -o-animation: swipeLeft 0.3s linear 1;
   animation: swipeLeft 0.3s linear 1; }
-body .loading {
+body .app-core-connection-xhr > .loading {
   position: absolute;
   z-index: 99;
   width: 8px;
@@ -266,7 +266,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  color: #000; }
+  color: #000;
+  /* connection loading */ }
   body > iframe {
     position: absolute;
     width: 100%;
@@ -275,6 +276,67 @@ body {
     padding: 0;
     margin: 0;
     z-index: 9999999; }
+  body .app-core-connection-xhr {
+    position: relative; }
+    body .app-core-connection-xhr div {
+      position: absolute;
+      z-index: 999999;
+      width: 1.7em;
+      height: 1.7em;
+      left: 50%;
+      top: 5px; }
+    body .app-core-connection-xhr > .loading {
+      position: absolute;
+      z-index: 999999;
+      border: 1em solid #000;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: spin 1s linear infinite;
+      -moz-animation: spin 1s linear infinite;
+      -ms-animation: spin 1s linear infinite;
+      -o-animation: spin 1s linear infinite;
+      animation: spin 1s linear infinite; }
+    body .app-core-connection-xhr > .error {
+      position: absolute;
+      z-index: 999999;
+      border: 1em solid yellow;
+      border-right-color: transparent;
+      border-radius: 50%; }
+  body > .loading {
+    position: fixed;
+    z-index: 9999999;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center; }
+    body > .loading > .wrapper {
+      position: relative;
+      height: 100%; }
+      body > .loading > .wrapper > .progress > .wrapper {
+        position: absolute;
+        left: 25%;
+        top: 45%;
+        width: 50%;
+        border: 1px solid #E0E0E0;
+        height: 10%; }
+        body > .loading > .wrapper > .progress > .wrapper > .percent {
+          height: 100%;
+          background: #F1F1F1; }
+  body > .wrapper form input:focus, body > .wrapper form select:focus, body > .wrapper form textarea:focus {
+    outline: none; }
+  body > .wrapper form > .apmessage {
+    display: none;
+    position: absolute;
+    line-height: 1;
+    border-radius: 1px;
+    margin: 2px 0 0 1px;
+    white-space: nowrap;
+    font-size: 12px;
+    background-color: #fff496;
+    color: #111111;
+    padding: 2px 3px 2px 3px;
+    z-index: 99999; }
   body > .wrapper > div {
     visibility: hidden;
     z-index: -1;
@@ -287,29 +349,6 @@ body {
       overflow: auto;
       padding: 2%;
       height: 80%; }
-  body > .wrapper > .loading {
-    position: fixed;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    text-align: center; }
-    body > .wrapper > .loading > .wrapper {
-      position: relative;
-      height: 100%; }
-      body > .wrapper > .loading > .wrapper .progress > .wrapper {
-        position: absolute;
-        left: 25%;
-        top: 40%;
-        width: 50%;
-        border: 1px solid #fff;
-        padding: 5%; }
-        body > .wrapper > .loading > .wrapper .progress > .wrapper > .percent {
-          height: 50%;
-          background-color: #fff; }
-      @media screen and (min-aspect-ratio: 1 / 1) {
-        body > .wrapper > .loading > .wrapper > .logo {
-          margin: 1% 0 1% 0; } }
   body > .wrapper > .home {
     position: fixed; }
     body > .wrapper > .home > .wrapper {
@@ -1176,36 +1215,3 @@ body {
                 body > .status nav ul li .details div .code:after {
                   content: '-';
                   padding: 0 3pt 0 3pt; }
-  body form input:focus, body form select:focus, body form textarea:focus {
-    outline: none; }
-  body form > .apmessage {
-    display: none;
-    position: absolute;
-    line-height: 1;
-    border-radius: 1px;
-    margin: 2px 0 0 1px;
-    white-space: nowrap;
-    font-size: 12px;
-    background-color: #fff496;
-    color: #111111;
-    padding: 2px 3px 2px 3px;
-    z-index: 99999; }
-
-/* app css */
-.ajax {
-  position: relative; }
-  .ajax div {
-    position: absolute;
-    z-index: 99999999;
-    width: 1.7em;
-    height: 1.7em;
-    left: 50%;
-    top: 5px;
-    border: solid #000 1em;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: spin 1s linear infinite;
-    -moz-animation: spin 1s linear infinite;
-    -ms-animation: spin 1s linear infinite;
-    -o-animation: spin 1s linear infinite;
-    animation: spin 1s linear infinite; }

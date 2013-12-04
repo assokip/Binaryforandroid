@@ -25,7 +25,65 @@ body {
     
     >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:9999999; }
     
+    
+    /* connection loading */
+    .app-core-connection-xhr {
+      position:relative;
+      div { position:absolute; z-index:999999; width: 1.7em; height: 1.7em; left:50%; top:5px; }
+      >.loading { position:absolute; z-index:999999; border: 1em solid #000; border-right-color: transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite; -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
+      >.error { position:absolute; z-index:999999; border: 1em solid yellow; border-right-color: transparent; border-radius: 50%; }
+    }
+
+    >.loading {
+        position:fixed;
+        z-index:9999999;
+        left:0;
+        right:0;
+        height:100%;
+        width:100%;
+        text-align:center;
+        >.wrapper {
+            position:relative;
+            height:100%;
+            >.progress {
+                >.wrapper {
+                    position:absolute;
+                    left:25%;
+                    top:45%;
+                    width:50%;
+                    border:1px solid #E0E0E0;
+                    height:10%;
+                    >.percent {
+                        height:100%;
+                        background:#F1F1F1;
+                    }
+                }
+            }
+        }
+    }
+    
     >.wrapper {
+        
+        form {
+    
+            input:focus, select:focus, textarea:focus {
+                outline: none;
+            }
+            
+            >.apmessage {
+                display:none;
+                position:absolute;
+                line-height:1;
+                border-radius:1px;
+                margin:2px 0 0 1px;
+                white-space:nowrap;
+                font-size:12px;
+                background-color:#fff496;
+                color:#111111;
+                padding:2px 3px 2px 3px;
+                z-index:99999;
+            }
+        }
         
         >div {
             visibility:hidden; z-index:-1;
@@ -44,38 +102,7 @@ body {
             }
                 
         }
-        
-        >.loading {
-            position:fixed;
-            left:0;
-            right:0;
-            height:100%;
-            width:100%;
-            text-align:center;
-            >.wrapper {
-                position:relative;
-                height:100%;
-
-                .progress {
-                    >.wrapper {
-                        position:absolute;
-                        left:25%;
-                        top:40%;
-                        width:50%;
-                        border:1px solid #fff;
-                        padding:5%;
-                        >.percent {
-                            height:50%; background-color:#fff;
-                        }
-                    }
-                }
-                @media screen and (min-aspect-ratio: 1/1) {
-                    >.logo { margin:1% 0 1% 0; }
-                   
-                } 
-            }
-        }
-                
+                 
         >.home {
             
             position:fixed;
@@ -499,47 +526,4 @@ body {
         }
     }
   
-  form {
-    
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-    }
-    
-    >.apmessage {
-      display:none;
-      position:absolute;
-      line-height:1;
-      border-radius:1px;
-      margin:2px 0 0 1px;
-      white-space:nowrap;
-      font-size:12px;
-      background-color:#fff496;
-      color:#111111;
-      padding:2px 3px 2px 3px;
-      z-index:99999;
-    }
-  }
-
 }
-
-
-
-/* app css */
-.ajax {
-  position:relative;
-  div {
-    position:absolute;
-    z-index:99999999;
-    width: 1.7em; height: 1.7em;
-    left:50%;
-    top:5px;
-    border: solid #000 1em;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite;
-    -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite;
-    animation: spin 1s linear infinite;
-  }
-}
-
-

@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    var url = 'https://rmg-prod.apigee.net/v1/binary' // 'http://andrew.devbin.io/clientapp/proxy'; // 
+    var url = 'https://rmg-prod.apigee.net/v1/binary'; // 'http://www.binary.com/clientapp/proxy';
     var into = app.core.cordova.loaded? null : document.createElement('iframe');
     var apigee = app.core.oauth2.create({
         devid:'3yqBdSJfFGIZELagj9VIt5cAr8tMknRA',
@@ -15,18 +15,14 @@ function AppPlugin(app) {
                     ref.close();
                     apigee.stage2.exec({ code:a });
                 });
-                //w.addEventListener('close', function() {  app.exit(); });
+                if (app.core.cordova.loaded) w.addEventListener('close', function() {  app.exit(); });
             },
             onLoad : function() {
                 if (into) document.body.appendChild(into);
-                //status.getElementsByClassName('init')[0].style.display='none';
-                //status.getElementsByClassName('stage1')[0].style.display='block';
             }
         },{
             url : function(o) { return 'http://www.binary.com/clientapp/oauth2/tokenswap?scope='+encodeURIComponent(o.scope)+'&client_id='+encodeURIComponent(o.devid)+'&code='+encodeURIComponent(o.code) },
             onLoad : function() {
-                //status.getElementsByClassName('stage1')[0].style.display='none';
-                //status.getElementsByClassName('stage2')[0].style.display='block';
             },
             onCompletion : function(o) {
                 if (into) into.parentNode.removeChild(into);
@@ -80,7 +76,7 @@ function AppPlugin(app) {
     
     // auto direct on any unauthorised code
     app.core.events.listeners.add('core.connection.exec.error', function (o) {
-        if (o.exe === app.binarycom.apigee.url.get()) app.binarycom.apigee.exec();
+        if (401 === o.xhr.status && o.exe === app.binarycom.apigee.url.get()) app.binarycom.apigee.exec();
         
     });
 }
