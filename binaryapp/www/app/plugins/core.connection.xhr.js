@@ -80,8 +80,8 @@ function AppPlugin(app) {
 	    } else {
             if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
             if (self.onError) self.onError();
-            app.core.events.dispatch('core.connection.exec.error', self);
-            return;
+                app.core.events.dispatch('core.connection.exec.error', self);
+                return;
 	    }
 	    app.core.events.dispatch('core.connection.exec.end', self);
 	};

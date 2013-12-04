@@ -1,7 +1,7 @@
 3.2.9 (Media Mark)
-67091bd0a2d21f5fbfa8a0f949826bb242daa3d4
+98e61eb2d4e613012a1cb34e8d7751ab4b76b560
 o:Sass::Tree::RootNode
-:@template"cI* {
+:@template"gI* {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
@@ -33,8 +33,8 @@ body {
     .app-core-connection-xhr {
       position:relative;
       div { position:absolute; z-index:999999; width: 1.7em; height: 1.7em; left:50%; top:5px; }
-      >.loading { position:absolute; z-index:999999; border: 1em solid #000; border-right-color: transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite; -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
-      >.error { position:absolute; z-index:999999; border: 1em solid yellow; border-right-color: transparent; border-radius: 50%; }
+      >.loading { position:absolute; z-index:999999; border: 0.8em solid #000; border-right-color: transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite; -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
+      >.error { position:absolute; z-index:999999; border: 0.8em solid yellow; border-right-color: transparent; border-radius: 50%; }
     }
 
     >.loading {
@@ -561,10 +561,10 @@ width;i;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i;	[ ;@o;;
 width;i%;	[ ;@o;;o;0;"
 1.7em;;1;@;;;i ;["height;i%;	[ ;@o;;o;0;"50%;;1;@;;;i ;["	left;i%;	[ ;@o;;o;0;"5px;;1;@;;;i ;["top;i%;	[ ;@;["div;o;; [o;!; [o;"
 ; [o;2	;$" ;["div;i%;%0;$@;i%;&0;'o;(;){ ;$@;i%;@o;
-;T;i ;i&;	[o;;o;0;"absolute;;1;@;;;i ;["position;i&;	[ ;@o;;o;0;"999999;;1;@;;;i ;["z-index;i&;	[ ;@o;;o;0;"1em solid #000;;1;@;;;i ;["border;i&;	[ ;@o;;o;0;"transparent;;1;@;;;i ;["border-right-color;i&;	[ ;@o;;o;0;"50%;;1;@;;;i ;["border-radius;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-webkit-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-moz-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-ms-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-o-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["animation;i&;	[ ;@;[">.loading;o;; [o;!; [">o;"
+;T;i ;i&;	[o;;o;0;"absolute;;1;@;;;i ;["position;i&;	[ ;@o;;o;0;"999999;;1;@;;;i ;["z-index;i&;	[ ;@o;;o;0;"0.8em solid #000;;1;@;;;i ;["border;i&;	[ ;@o;;o;0;"transparent;;1;@;;;i ;["border-right-color;i&;	[ ;@o;;o;0;"50%;;1;@;;;i ;["border-radius;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-webkit-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-moz-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-ms-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-o-animation;i&;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["animation;i&;	[ ;@;[">.loading;o;; [o;!; [">o;"
 ; [o:Sass::Selector::Class;$" ;["loading;i&;$@k;i&;&0;'o;(;){ ;$@k;i&;@o;
 ;T;i ;i';	[
-o;;o;0;"absolute;;1;@;;;i ;["position;i';	[ ;@o;;o;0;"999999;;1;@;;;i ;["z-index;i';	[ ;@o;;o;0;"1em solid yellow;;1;@;;;i ;["border;i';	[ ;@o;;o;0;"transparent;;1;@;;;i ;["border-right-color;i';	[ ;@o;;o;0;"50%;;1;@;;;i ;["border-radius;i';	[ ;@;[">.error;o;; [o;!; [">o;"
+o;;o;0;"absolute;;1;@;;;i ;["position;i';	[ ;@o;;o;0;"999999;;1;@;;;i ;["z-index;i';	[ ;@o;;o;0;"0.8em solid yellow;;1;@;;;i ;["border;i';	[ ;@o;;o;0;"transparent;;1;@;;;i ;["border-right-color;i';	[ ;@o;;o;0;"50%;;1;@;;;i ;["border-radius;i';	[ ;@;[">.error;o;; [o;!; [">o;"
 ; [o;3;$" ;["
 error;i';$@š;i';&0;'o;(;){ ;$@š;i';@;[".app-core-connection-xhr;o;; [o;!; [o;"
 ; [o;3;$" ;["app-core-connection-xhr;i#;$@¨;i#;&0;'o;(;){ ;$@¨;i#;@o;

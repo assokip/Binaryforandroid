@@ -288,7 +288,7 @@ body {
     body .app-core-connection-xhr > .loading {
       position: absolute;
       z-index: 999999;
-      border: 1em solid #000;
+      border: 0.8em solid #000;
       border-right-color: transparent;
       border-radius: 50%;
       -webkit-animation: spin 1s linear infinite;
@@ -299,7 +299,7 @@ body {
     body .app-core-connection-xhr > .error {
       position: absolute;
       z-index: 999999;
-      border: 1em solid yellow;
+      border: 0.8em solid yellow;
       border-right-color: transparent;
       border-radius: 50%; }
   body > .loading {

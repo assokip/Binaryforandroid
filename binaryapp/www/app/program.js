@@ -178,10 +178,10 @@ window.addEventListener('load', function() {
 		//settings
 		var mvms = document.querySelector('body >.wrapper >.settings >.wrapper >.menu');
 		mvm.getElementsByClassName('settings')[0].addEventListener('click', function() {
-		 app.binarycom.views.settings.init();
+		    app.binarycom.views.settings.init();
 		});
 		app.core.events.listeners.add('core.cache.mode.set', function (o) {
-		 mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
+		    mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
 		});
 		app.core.events.listeners.add('core.debug.mode.set', function (o) {
 		    mvms.querySelector('.debug >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
@@ -241,47 +241,24 @@ window.addEventListener('load', function() {
 		var swm = sw.getElementsByClassName('menu')[0];
 		swm.getElementsByClassName('debug')[0].addEventListener('click', function() {
 		    var tx = app.core.debug.mode;
-		    var cx = this.getElementsByClassName('wrapper')[0];
-		    if (tx.get()) {
-			tx.set(false);
-			cx.className = 'wrapper off';
-		    } else {
-			tx.set(true);
-			cx.className = 'wrapper on';
-		    }
+		    tx.set(tx.get()? false : true);
 		 });
 		// cache
 		swm.getElementsByClassName('cache')[0].addEventListener('click', function() {
 		    var tx = app.core.cache.mode;
-		    var cx = this.getElementsByClassName('wrapper')[0];
-		    if (tx.get()) {
-			tx.set(false);
-			cx.className = 'wrapper off';
-		    } else {
-			tx.set(true);
-			cx.className = 'wrapper on';
-		    }
+		    tx.set(tx.get()? false : true);
 		});
 		// safety
 		swm.getElementsByClassName('safety')[0].addEventListener('click', function(confirm) {
 		    var tx = app.binarycom.safety.mode;
-		    var cx = this.getElementsByClassName('wrapper')[0];
-		    if (tx.get()) {
-			tx.set(false);
-			cx.className = 'wrapper off';
-		    } else {
-			tx.set(true);
-			cx.className = 'wrapper on';
-		    }
+		    tx.set(tx.get()? false : true);
 		});
-		 
 		 // logout
 		var logout = swm.getElementsByClassName('logout')[0];
 		logout.addEventListener('click', function() {
 		    if (app.binarycom.apigee.status.get()) app.binarycom.apigee.logout();
 		    logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled';
 		});
-	 
 		// back
 		sw.querySelector('.header >.back').addEventListener('click', function() {
 		    this.className = 'back disabled';
