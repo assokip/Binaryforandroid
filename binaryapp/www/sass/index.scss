@@ -15,13 +15,13 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#fff;
-    font-family:proxima-nova, arial, helvetica, sans-serif;
-    font-size:14px;
     height:100%;
     margin:0;
     padding:0;
     width:100%;
     color:#000;
+    font-family:proxima-nova, arial, helvetica, sans-serif;
+    font-size:20px;
     
     >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:9999999; }
     
@@ -29,9 +29,9 @@ body {
     /* connection loading */
     .app-core-connection-xhr {
       position:relative;
-      div { position:absolute; z-index:999999; width: 1.7em; height: 1.7em; left:50%; top:5px; }
-      >.loading { position:absolute; z-index:999999; border: 0.8em solid #000; border-right-color: transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite; -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
-      >.error { position:absolute; z-index:999999; border: 0.8em solid yellow; border-right-color: transparent; border-radius: 50%; }
+      div { position:absolute; z-index:999999; left:50%; top:5px; }
+      >.loading { width: 20px; height: 20px; border: 8px solid #000; border-right-color: transparent; border-radius: 50%; -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite; -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite; animation: spin 1s linear infinite; }
+      >.error {  width: 20px; height: 20px; border: 8px solid yellow; border-right-color: transparent; border-radius: 50%; }
     }
 
     >.loading {
@@ -62,7 +62,7 @@ body {
         }
     }
     
-    >.wrapper {
+    >.main {
         
         form {
     
@@ -94,7 +94,7 @@ body {
             width:100%;
          
             >.wrapper {
-                >.content {
+                >.main {
                     overflow:auto;
                     padding:2%;
                     height:80%;
@@ -114,7 +114,7 @@ body {
                 margin:0; padding:0; border:0;
                 
                 >.logo {
-                    height:17%; width:70%; 
+                    height:20%; width:70%; 
                     background: url("logo.svg") no-repeat;
                     background-size:60%;
                     background-position:50% 100%;
@@ -125,42 +125,42 @@ body {
                 >.menu {
                     .trade {
                         .wrapper {
-                            background-image: url("content/home/trade.svg");
+                            background-image: url("main/home/trade.svg");
                             background-position: 50% 80%;
                             background-size:60%;
                         }
                     }
                     .charts {
                         .wrapper {
-                            background-image: url("content/home/charts.svg");
+                            background-image: url("main/home/charts.svg");
                             background-position: 50% 80%;
                             background-size:55%;
                         }
                     }
                     .portfolio {
                         .wrapper {
-                            background-image: url("content/home/portfolio.svg");
+                            background-image: url("main/home/portfolio.svg");
                             background-position: 50% 80%;
                             background-size:60%;
                         }
                     }
                     .support {
                         .wrapper {
-                            background-image: url("content/home/support.svg");
+                            background-image: url("main/home/support.svg");
                             background-position: 50% 80%;
                             background-size:55%;
                         }
                     }
                     .news {
                         .wrapper {
-                            background-image: url("content/home/news.svg");
+                            background-image: url("main/home/news.svg");
                             background-position:50% 80%;
                             background-size:60%;
                         }
                     }
                     .settings {
                         .wrapper {
-                            background-image: url("content/home/settings.svg");
+                            background-image: url("main/home/settings.svg");
                             background-position: 50% 80%;
                             background-size:55%;
                         }
@@ -169,7 +169,7 @@ body {
                 }
                 
                 @media screen and (max-aspect-ratio: 1/1) {
-                   >.logo { background-size:100%; }
+                   >.logo { background-size:100%; height:17%; }
                 }
             }
         }
@@ -182,44 +182,44 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/support/support.svg");
+                        background-image: url("main/support/support.svg");
                     }
                 }
                 >.menu {
                     @include pagemenu;
                     .faq {
                         .wrapper {
-                            background: url("content/support/faq.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/faq.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .email {
                         .wrapper {
-                            background: url("content/support/email.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/email.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .chat {
                         .wrapper {
-                            background: url("content/support/chat.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/chat.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .phone {
                         .wrapper {
-                            background: url("content/support/phone.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/phone.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .callback {
                         .wrapper {
-                            background: url("content/support/callback.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/callback.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .messages {
                         .wrapper {
-                            background: url("content/support/messages.svg") #fff no-repeat 50% 80%;
+                            background: url("main/support/messages.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
@@ -235,7 +235,7 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/portfolio/portfolio.svg");
+                        background-image: url("main/portfolio/portfolio.svg");
                     }
                 }
                 >.menu {
@@ -253,20 +253,20 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/news/news.svg");
+                        background-image: url("main/news/news.svg");
                     }
                 }
                 >.menu {
                     @include pagemenu;
                     .markets {
                         .wrapper {
-                            background: url("content/news/markets.svg") #fff no-repeat 50% 80%;
+                            background: url("main/news/markets.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .service {
                         .wrapper {
-                            background: url("content/news/service.svg") #fff no-repeat 50% 80%;
+                            background: url("main/news/service.svg") #fff no-repeat 50% 80%;
                             background-size:70% 70%;
                         }
                     }
@@ -282,57 +282,57 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/settings/settings.svg");
+                        background-image: url("main/settings/settings.svg");
                     }
                 }
                 >.menu {
                     @include pagemenu;
                     .locale {
                         .wrapper {
-                            background-image: url("content/settings/locale.svg");
+                            background-image: url("main/settings/locale.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .debug {
                         .on {
-                            background-image: url("content/settings/debug/on.svg");
+                            background-image: url("main/settings/debug/on.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                         .off {
-                            background-image: url("content/settings/debug/off.svg");
+                            background-image: url("main/settings/debug/off.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .cache {
                         .on {
-                            background-image: url("content/settings/cache/on.svg");
+                            background-image: url("main/settings/cache/on.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                         .off {
-                            background-image: url("content/settings/cache/off.svg");
+                            background-image: url("main/settings/cache/off.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .safety {
                         .on {
-                            background-image: url("content/settings/safety/on.svg");
+                            background-image: url("main/settings/safety/on.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                         .off {
-                            background-image: url("content/settings/safety/off.svg");
+                            background-image: url("main/settings/safety/off.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
                     }
                     .logout {
                         .wrapper {
-                            background-image: url("content/settings/logout.svg");
+                            background-image: url("main/settings/logout.svg");
                             background-position:50% 80%;
                             background-size:70% 70%;
                         }
@@ -349,7 +349,7 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/charts/charts.svg");
+                        background-image: url("main/charts/charts.svg");
                     }
                 }
                 >.menu {
@@ -368,41 +368,46 @@ body {
                 >.header {
                     @include pageheader;
                     >.title {
-                        background-image: url("content/trade/trade.svg");
+                        background-image: url("main/trade/trade.svg");
                     }
                 }
                 
-                >.options {
+                >div { margin:3% }
+                
+                >.options >div, >.purchase >.contracttype {
+                
+                     clear:both;
+                     
+                     >.title {
+                         font-size:150%;
+                         padding:0 0 1.5% 2.5%; 
+                     }
+                 
+                     >.data {
+                         > div {
+                             margin:0 1% 2% 0;
+                             float:left;
+                             padding:1% 1.8% 1% 1.8%;
+                             background:#fff;
+                             box-shadow: -0px 10px 20px #EEEEEE;
+                             font-size:95%;
+                             border: 2px solid #EAEAEA;
+                             border-top-width: 1px;
+                             border-radius:6px;
+                             &:hover { cursor:pointer; background-color:#f7f7f7; }
+                         }
+                         
+                         > div.selected {
+                             @include objselected;
+                         }
+                     }
 
+                }
+                    
+                
+                
+                >.options  {
                     >div {
-                        clear:both;
-                        
-                        >.title {
-                            font-size:20px;
-                            color:#000;
-                            font-weight:bold;
-                            padding:0 1% 1.5% 1%; 
-                        }
-                        
-                        >.data {
-                            > div {
-                                margin:0 1% 2% 1%;
-                                float:left;
-                                padding:0.7% 1.5% 0.7% 1.5%;
-                                background:#fff;
-                                box-shadow: -0px 10px 20px #EEEEEE;
-                                font-size:20px;
-                                border: 2px solid #EAEAEA;
-                                border-top-width: 1px;
-                                border-radius:10px;
-                                &:hover { cursor:pointer; background-color:#f7f7f7; }
-                            }
-                            
-                            > div.selected {
-                                @include objselected;
-                            }
-                        }
-                        
                         &:not(:first-child) {
                             padding-top:1.5%;
                             display:none;
@@ -412,48 +417,59 @@ body {
                 }
                 
                 >.purchase {
-                    >div:not(:last-child) { margin-bottom:2% }
                     
-                    
-                    >.title {
-                        margin-left:3%;
-                        >div {
-                            
-                            color:#fff;
-                            font-size:14px;
-                            font-weight:bold;
-                            display:inline-block;
-                            
-                            &:not(:first-child) {
-                                background: url("content/trade/optionlevel.svg") no-repeat 4px 0;
-                                background-size:15px 15px;
-                                padding-left:22px;
-                            }
-                            
-                            
-                        }
-                    }
-                    
-                    >.spot {
-                        color:green;
-                        border-radius:10px;
-                        font-size:30px;
-                        display:inline-block;
+                    >.header {
+                        
+                        background:#f1f1f1;
+                        border:1px solid #f0f0f0;
+                        position:relative;
+                        border-radius:6px;
+                        font-size:90%;
                         font-weight:bold;
-                    }
-                    
-                    >.categories {
-                        >form {
-                            color:#000; font-size:20px;
-                            input, select { font-size:16px; padding:4px; border: 1px solid #444; border-radius:1px; background:#fff; }
+                        
+                        margin-bottom:2%;
+                        
+                        >.location {
+                            display:inline-block;
+                            padding:1% 0 1% 1%;
+                            >div {
+                                padding-right:20px;
+                                display:inline-block;
+                                margin-right:8px;
+                                background: url("main/trade/optionlevel.svg") no-repeat 100% 50%;
+                                background-size:15px 15px;
+                            }
+                        }
+                        
+                        >.spot {
+                            padding:1% 1% 0 0;
+                            margin:0;
+                            position:relative;
+                            display:inline-block;
+                            &.up { color:green }
+                            &.down { color:red }
                             
-                            background: rgba(255,255,255,.8);
-                            border-radius:10px;
-                            padding:2%;
+                            >.app-core-connection-xhr {
+                                position:absolute;right:0;top:0;
+                                >.loading { width: 15px; height: 15px;}
+                                >.error {  width: 15px; height: 15px; }
+                            }
                             
                         }
                         
+                        >.sparkline {
+                            position:absolute;right:1%;top:20%;height:80%;
+                            canvas {
+                                margin:0; padding:0;
+                                display:inline-block;
+                                height:80%;
+                                width:140px;
+                            }
+                        }
+                        
                     }
+                    
+                    
                     
                 }
 
@@ -475,6 +491,7 @@ body {
         color:#000;
         border-top: solid 3px #fff;
         display:none;
+        font-size:80%;
         nav {
             position:relative;
             padding:12px 50px 20px 20px;
@@ -517,7 +534,7 @@ body {
                             white-space:nowrap; display:block;
                             .code {
                                 margin:0; display:inline; font-weight:bold;
-                                &:after { content:'-'; padding:0 3pt 0 3pt; }
+                                &:after { main:'-'; padding:0 3pt 0 3pt; }
                             }
                         }
                     }
@@ -526,4 +543,8 @@ body {
         }
     }
   
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    body { font-size:16px; }
 }

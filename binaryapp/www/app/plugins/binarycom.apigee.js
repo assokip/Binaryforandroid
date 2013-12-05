@@ -29,7 +29,7 @@ function AppPlugin(app) {
                 app.binarycom.status.append({ title:'Credentials', lines : new Array('You have been logged in') });
                 app.core.events.dispatch('binarycom.apigee.login.success', o);
                 app.core.store.set({ id:'binarycom.apigee.auth', value:o.params });
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.home') });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.home') });
             }
         }]
     });

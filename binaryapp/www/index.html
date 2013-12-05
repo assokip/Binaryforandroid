@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="wrapper">
+        <div class="main">
             
             <div class="home">
                 <div class="wrapper">
@@ -49,40 +49,22 @@
                         <div class="markets"><div class="title">Markets</div><div class="data"></div></div>
                         <div class="submarkets"><div class="title">Sub Markets</div><div class="data"></div></div>
                         <div class="symbols"><div class="title">Symbols</div><div class="data"></div></div>
-                        <div class="contractcategory"><div class="title">Contract Category</div><div class="data"></div></div>
                     </div>
                     <div class="content purchase">
-                        <div class="title"></div>
                         
-                        <div class="spot">374.43</div>
-                        
-                        <div class="categories">
-                            
-                            <form class="risefall">
-                            
-                            <select class="currency">
-                            <option value="">[Select]
-                            </select>
-                            <input type="text" size=6 class="payout"> payout if spot is
-                            
-                            <select class="type">
-                            <option value="">[Select]
-                            <option value="higher">higher
-                            <option value="lower">lower
-                            </select> than entry spot
-                            
-                            <input type="text" size=2 class="duration"> 
-                            <select class="duration_type">
-                            <option value="">[Select]
-                            <option value="higher">seconds
-                            <option value="lower">minutes
-                            </select> after execution.
-                            
-                            <hr>
-                            This contract will cost you <b>$130.45</b>
-                            </form>
-                            
+                        <div class="header">
+                            <div class="location"><div class="market"></div><div class="submarket"></div><div class="symbol"></div></div>
+                            <div class="spot"><div class="value"></div></div>
+                            <div class="sparkline"></div>
                         </div>
+                        <div class="contracttype"><div class="title">Contract</div><div class="data"></div></div>
+                        <div class="duration" style="display:none">
+                            <div class="title">Duration</div>
+                            <input type="text" size=5> <select><option value="days">days<option value="hours">hours<option value="minutes">minutes<option value="seconds">seconds</select>
+                        </div>
+                        
+                          
+                        
                     </div>
                 </div>
             </div>

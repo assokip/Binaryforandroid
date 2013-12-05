@@ -260,13 +260,13 @@ body {
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #fff;
-  font-family: proxima-nova, arial, helvetica, sans-serif;
-  font-size: 14px;
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
   color: #000;
+  font-family: proxima-nova, arial, helvetica, sans-serif;
+  font-size: 20px;
   /* connection loading */ }
   body > iframe {
     position: absolute;
@@ -281,14 +281,12 @@ body {
     body .app-core-connection-xhr div {
       position: absolute;
       z-index: 999999;
-      width: 1.7em;
-      height: 1.7em;
       left: 50%;
       top: 5px; }
     body .app-core-connection-xhr > .loading {
-      position: absolute;
-      z-index: 999999;
-      border: 0.8em solid #000;
+      width: 20px;
+      height: 20px;
+      border: 8px solid #000;
       border-right-color: transparent;
       border-radius: 50%;
       -webkit-animation: spin 1s linear infinite;
@@ -297,9 +295,9 @@ body {
       -o-animation: spin 1s linear infinite;
       animation: spin 1s linear infinite; }
     body .app-core-connection-xhr > .error {
-      position: absolute;
-      z-index: 999999;
-      border: 0.8em solid yellow;
+      width: 20px;
+      height: 20px;
+      border: 8px solid yellow;
       border-right-color: transparent;
       border-radius: 50%; }
   body > .loading {
@@ -323,9 +321,9 @@ body {
         body > .loading > .wrapper > .progress > .wrapper > .percent {
           height: 100%;
           background: #F1F1F1; }
-  body > .wrapper form input:focus, body > .wrapper form select:focus, body > .wrapper form textarea:focus {
+  body > .main form input:focus, body > .main form select:focus, body > .main form textarea:focus {
     outline: none; }
-  body > .wrapper form > .apmessage {
+  body > .main form > .apmessage {
     display: none;
     position: absolute;
     line-height: 1;
@@ -337,7 +335,7 @@ body {
     color: #111111;
     padding: 2px 3px 2px 3px;
     z-index: 99999; }
-  body > .wrapper > div {
+  body > .main > div {
     visibility: hidden;
     z-index: -1;
     position: absolute;
@@ -345,20 +343,20 @@ body {
     right: 0;
     height: 100%;
     width: 100%; }
-    body > .wrapper > div > .wrapper > .content {
+    body > .main > div > .wrapper > .main {
       overflow: auto;
       padding: 2%;
       height: 80%; }
-  body > .wrapper > .home {
+  body > .main > .home {
     position: fixed; }
-    body > .wrapper > .home > .wrapper {
+    body > .main > .home > .wrapper {
       position: relative;
       height: 100%;
       margin: 0;
       padding: 0;
       border: 0; }
-      body > .wrapper > .home > .wrapper > .logo {
-        height: 17%;
+      body > .main > .home > .wrapper > .logo {
+        height: 20%;
         width: 70%;
         background: url("logo.svg") no-repeat;
         background-size: 60%;
@@ -367,40 +365,40 @@ body {
         padding: 0;
         border: 0;
         margin-left: 15%; }
-      body > .wrapper > .home > .wrapper > .menu {
+      body > .main > .home > .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .home > .wrapper > .menu .trade .wrapper {
-          background-image: url("content/home/trade.svg");
+        body > .main > .home > .wrapper > .menu .trade .wrapper {
+          background-image: url("main/home/trade.svg");
           background-position: 50% 80%;
           background-size: 60%; }
-        body > .wrapper > .home > .wrapper > .menu .charts .wrapper {
-          background-image: url("content/home/charts.svg");
+        body > .main > .home > .wrapper > .menu .charts .wrapper {
+          background-image: url("main/home/charts.svg");
           background-position: 50% 80%;
           background-size: 55%; }
-        body > .wrapper > .home > .wrapper > .menu .portfolio .wrapper {
-          background-image: url("content/home/portfolio.svg");
+        body > .main > .home > .wrapper > .menu .portfolio .wrapper {
+          background-image: url("main/home/portfolio.svg");
           background-position: 50% 80%;
           background-size: 60%; }
-        body > .wrapper > .home > .wrapper > .menu .support .wrapper {
-          background-image: url("content/home/support.svg");
+        body > .main > .home > .wrapper > .menu .support .wrapper {
+          background-image: url("main/home/support.svg");
           background-position: 50% 80%;
           background-size: 55%; }
-        body > .wrapper > .home > .wrapper > .menu .news .wrapper {
-          background-image: url("content/home/news.svg");
+        body > .main > .home > .wrapper > .menu .news .wrapper {
+          background-image: url("main/home/news.svg");
           background-position: 50% 80%;
           background-size: 60%; }
-        body > .wrapper > .home > .wrapper > .menu .settings .wrapper {
-          background-image: url("content/home/settings.svg");
+        body > .main > .home > .wrapper > .menu .settings .wrapper {
+          background-image: url("main/home/settings.svg");
           background-position: 50% 80%;
           background-size: 55%; }
-        body > .wrapper > .home > .wrapper > .menu > div {
+        body > .main > .home > .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .home > .wrapper > .menu > div .wrapper {
+          body > .main > .home > .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -408,47 +406,47 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .home > .wrapper > .menu > div .wrapper:hover {
+            body > .main > .home > .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .home > .wrapper > .menu > div .disabled {
+          body > .main > .home > .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .home > .wrapper > .menu > div .disabled:hover {
+            body > .main > .home > .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .home > .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .home > .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .home > .wrapper > .menu {
+          body > .main > .home > .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .home > .wrapper > .menu > div {
+            body > .main > .home > .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
       @media screen and (max-aspect-ratio: 1 / 1) {
-        body > .wrapper > .home > .wrapper > .logo {
-          background-size: 100%; } }
-  body > .wrapper > .support {
+        body > .main > .home > .wrapper > .logo {
+          background-size: 100%;
+          height: 17%; } }
+  body > .main > .support {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .support .wrapper {
+    body > .main > .support .wrapper {
       margin: 0;
       padding: 0;
       border: 0;
       height: 100%; }
-      body > .wrapper > .support .wrapper > .header {
+      body > .main > .support .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .support .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .support .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -458,26 +456,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .support .wrapper > .header > .back:hover {
+          body > .main > .support .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .support .wrapper > .header > .logo {
+        body > .main > .support .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .support .wrapper > .header > .title {
+        body > .main > .support .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -486,31 +484,31 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .support .wrapper > .header > .logo {
+          body > .main > .support .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .support .wrapper > .header > .title {
+          body > .main > .support .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .support .wrapper > .header > .back {
+          body > .main > .support .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .support .wrapper > .header > .title {
-          background-image: url("content/support/support.svg"); }
-      body > .wrapper > .support .wrapper > .menu {
+        body > .main > .support .wrapper > .header > .title {
+          background-image: url("main/support/support.svg"); }
+      body > .main > .support .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .support .wrapper > .menu > div {
+        body > .main > .support .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .support .wrapper > .menu > div .wrapper {
+          body > .main > .support .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -518,62 +516,61 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .support .wrapper > .menu > div .wrapper:hover {
+            body > .main > .support .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .support .wrapper > .menu > div .disabled {
+          body > .main > .support .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .support .wrapper > .menu > div .disabled:hover {
+            body > .main > .support .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .support .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .support .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .support .wrapper > .menu {
+          body > .main > .support .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .support .wrapper > .menu > div {
+            body > .main > .support .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
-        body > .wrapper > .support .wrapper > .menu .faq .wrapper {
-          background: url("content/support/faq.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .faq .wrapper {
+          background: url("main/support/faq.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .support .wrapper > .menu .email .wrapper {
-          background: url("content/support/email.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .email .wrapper {
+          background: url("main/support/email.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .support .wrapper > .menu .chat .wrapper {
-          background: url("content/support/chat.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .chat .wrapper {
+          background: url("main/support/chat.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .support .wrapper > .menu .phone .wrapper {
-          background: url("content/support/phone.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .phone .wrapper {
+          background: url("main/support/phone.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .support .wrapper > .menu .callback .wrapper {
-          background: url("content/support/callback.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .callback .wrapper {
+          background: url("main/support/callback.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .support .wrapper > .menu .messages .wrapper {
-          background: url("content/support/messages.svg") white no-repeat 50% 80%;
+        body > .main > .support .wrapper > .menu .messages .wrapper {
+          background: url("main/support/messages.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-  body > .wrapper > .portfolio {
+  body > .main > .portfolio {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .portfolio .wrapper {
+    body > .main > .portfolio .wrapper {
       margin: 0;
       padding: 0;
       border: 0;
       height: 100%; }
-      body > .wrapper > .portfolio .wrapper > .header {
+      body > .main > .portfolio .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .portfolio .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .portfolio .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -583,26 +580,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .portfolio .wrapper > .header > .back:hover {
+          body > .main > .portfolio .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .portfolio .wrapper > .header > .logo {
+        body > .main > .portfolio .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .portfolio .wrapper > .header > .title {
+        body > .main > .portfolio .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -611,31 +608,31 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .portfolio .wrapper > .header > .logo {
+          body > .main > .portfolio .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .portfolio .wrapper > .header > .title {
+          body > .main > .portfolio .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .portfolio .wrapper > .header > .back {
+          body > .main > .portfolio .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .portfolio .wrapper > .header > .title {
-          background-image: url("content/portfolio/portfolio.svg"); }
-      body > .wrapper > .portfolio .wrapper > .menu {
+        body > .main > .portfolio .wrapper > .header > .title {
+          background-image: url("main/portfolio/portfolio.svg"); }
+      body > .main > .portfolio .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .portfolio .wrapper > .menu > div {
+        body > .main > .portfolio .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .portfolio .wrapper > .menu > div .wrapper {
+          body > .main > .portfolio .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -643,44 +640,43 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .portfolio .wrapper > .menu > div .wrapper:hover {
+            body > .main > .portfolio .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .portfolio .wrapper > .menu > div .disabled {
+          body > .main > .portfolio .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .portfolio .wrapper > .menu > div .disabled:hover {
+            body > .main > .portfolio .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .portfolio .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .portfolio .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .portfolio .wrapper > .menu {
+          body > .main > .portfolio .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .portfolio .wrapper > .menu > div {
+            body > .main > .portfolio .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
-  body > .wrapper > .news {
+  body > .main > .news {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .news .wrapper {
+    body > .main > .news .wrapper {
       margin: 0;
       padding: 0;
       border: 0;
       height: 100%; }
-      body > .wrapper > .news .wrapper > .header {
+      body > .main > .news .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .news .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .news .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -690,26 +686,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .news .wrapper > .header > .back:hover {
+          body > .main > .news .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .news .wrapper > .header > .logo {
+        body > .main > .news .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .news .wrapper > .header > .title {
+        body > .main > .news .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -718,31 +714,31 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .news .wrapper > .header > .logo {
+          body > .main > .news .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .news .wrapper > .header > .title {
+          body > .main > .news .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .news .wrapper > .header > .back {
+          body > .main > .news .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .news .wrapper > .header > .title {
-          background-image: url("content/news/news.svg"); }
-      body > .wrapper > .news .wrapper > .menu {
+        body > .main > .news .wrapper > .header > .title {
+          background-image: url("main/news/news.svg"); }
+      body > .main > .news .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .news .wrapper > .menu > div {
+        body > .main > .news .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .news .wrapper > .menu > div .wrapper {
+          body > .main > .news .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -750,50 +746,49 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .news .wrapper > .menu > div .wrapper:hover {
+            body > .main > .news .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .news .wrapper > .menu > div .disabled {
+          body > .main > .news .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .news .wrapper > .menu > div .disabled:hover {
+            body > .main > .news .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .news .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .news .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .news .wrapper > .menu {
+          body > .main > .news .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .news .wrapper > .menu > div {
+            body > .main > .news .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
-        body > .wrapper > .news .wrapper > .menu .markets .wrapper {
-          background: url("content/news/markets.svg") white no-repeat 50% 80%;
+        body > .main > .news .wrapper > .menu .markets .wrapper {
+          background: url("main/news/markets.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .news .wrapper > .menu .service .wrapper {
-          background: url("content/news/service.svg") white no-repeat 50% 80%;
+        body > .main > .news .wrapper > .menu .service .wrapper {
+          background: url("main/news/service.svg") white no-repeat 50% 80%;
           background-size: 70% 70%; }
-  body > .wrapper > .settings {
+  body > .main > .settings {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .settings .wrapper {
+    body > .main > .settings .wrapper {
       margin: 0;
       padding: 0;
       border: 0;
       height: 100%; }
-      body > .wrapper > .settings .wrapper > .header {
+      body > .main > .settings .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .settings .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .settings .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -803,26 +798,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .settings .wrapper > .header > .back:hover {
+          body > .main > .settings .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .settings .wrapper > .header > .logo {
+        body > .main > .settings .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .settings .wrapper > .header > .title {
+        body > .main > .settings .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -831,31 +826,31 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .settings .wrapper > .header > .logo {
+          body > .main > .settings .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .settings .wrapper > .header > .title {
+          body > .main > .settings .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .settings .wrapper > .header > .back {
+          body > .main > .settings .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .settings .wrapper > .header > .title {
-          background-image: url("content/settings/settings.svg"); }
-      body > .wrapper > .settings .wrapper > .menu {
+        body > .main > .settings .wrapper > .header > .title {
+          background-image: url("main/settings/settings.svg"); }
+      body > .main > .settings .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .settings .wrapper > .menu > div {
+        body > .main > .settings .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .settings .wrapper > .menu > div .wrapper {
+          body > .main > .settings .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -863,76 +858,75 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .settings .wrapper > .menu > div .wrapper:hover {
+            body > .main > .settings .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .settings .wrapper > .menu > div .disabled {
+          body > .main > .settings .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .settings .wrapper > .menu > div .disabled:hover {
+            body > .main > .settings .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .settings .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .settings .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .settings .wrapper > .menu {
+          body > .main > .settings .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .settings .wrapper > .menu > div {
+            body > .main > .settings .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
-        body > .wrapper > .settings .wrapper > .menu .locale .wrapper {
-          background-image: url("content/settings/locale.svg");
+        body > .main > .settings .wrapper > .menu .locale .wrapper {
+          background-image: url("main/settings/locale.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .debug .on {
-          background-image: url("content/settings/debug/on.svg");
+        body > .main > .settings .wrapper > .menu .debug .on {
+          background-image: url("main/settings/debug/on.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .debug .off {
-          background-image: url("content/settings/debug/off.svg");
+        body > .main > .settings .wrapper > .menu .debug .off {
+          background-image: url("main/settings/debug/off.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .cache .on {
-          background-image: url("content/settings/cache/on.svg");
+        body > .main > .settings .wrapper > .menu .cache .on {
+          background-image: url("main/settings/cache/on.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .cache .off {
-          background-image: url("content/settings/cache/off.svg");
+        body > .main > .settings .wrapper > .menu .cache .off {
+          background-image: url("main/settings/cache/off.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .safety .on {
-          background-image: url("content/settings/safety/on.svg");
+        body > .main > .settings .wrapper > .menu .safety .on {
+          background-image: url("main/settings/safety/on.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .safety .off {
-          background-image: url("content/settings/safety/off.svg");
+        body > .main > .settings .wrapper > .menu .safety .off {
+          background-image: url("main/settings/safety/off.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-        body > .wrapper > .settings .wrapper > .menu .logout .wrapper {
-          background-image: url("content/settings/logout.svg");
+        body > .main > .settings .wrapper > .menu .logout .wrapper {
+          background-image: url("main/settings/logout.svg");
           background-position: 50% 80%;
           background-size: 70% 70%; }
-  body > .wrapper > .charts {
+  body > .main > .charts {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .charts .wrapper {
+    body > .main > .charts .wrapper {
       margin: 0;
       padding: 0;
       border: 0;
       height: 100%; }
-      body > .wrapper > .charts .wrapper > .header {
+      body > .main > .charts .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .charts .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .charts .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -942,26 +936,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .charts .wrapper > .header > .back:hover {
+          body > .main > .charts .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .charts .wrapper > .header > .logo {
+        body > .main > .charts .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .charts .wrapper > .header > .title {
+        body > .main > .charts .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -970,31 +964,31 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .charts .wrapper > .header > .logo {
+          body > .main > .charts .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .charts .wrapper > .header > .title {
+          body > .main > .charts .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .charts .wrapper > .header > .back {
+          body > .main > .charts .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .charts .wrapper > .header > .title {
-          background-image: url("content/charts/charts.svg"); }
-      body > .wrapper > .charts .wrapper > .menu {
+        body > .main > .charts .wrapper > .header > .title {
+          background-image: url("main/charts/charts.svg"); }
+      body > .main > .charts .wrapper > .menu {
         height: 100%;
         margin-left: 3%; }
-        body > .wrapper > .charts .wrapper > .menu > div {
+        body > .main > .charts .wrapper > .menu > div {
           width: 22%;
           height: 22%;
           float: left;
           padding: 5%;
           border: 0; }
-          body > .wrapper > .charts .wrapper > .menu > div .wrapper {
+          body > .main > .charts .wrapper > .menu > div .wrapper {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -1002,41 +996,40 @@ body {
             border-top-width: 1px;
             border-radius: 20px;
             text-align: center;
-            font-size: 30px;
+            font-size: 130%;
             padding: 10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE; }
-            body > .wrapper > .charts .wrapper > .menu > div .wrapper:hover {
+            body > .main > .charts .wrapper > .menu > div .wrapper:hover {
               cursor: pointer;
               background-color: #f7f7f7; }
-          body > .wrapper > .charts .wrapper > .menu > div .disabled {
+          body > .main > .charts .wrapper > .menu > div .disabled {
             opacity: 0.5; }
-            body > .wrapper > .charts .wrapper > .menu > div .disabled:hover {
+            body > .main > .charts .wrapper > .menu > div .disabled:hover {
               cursor: inherit;
               background-color: #fff; }
         @media screen and (max-width: 600px) {
-          body > .wrapper > .charts .wrapper > .menu > div .wrapper {
-            font-size: 20px;
+          body > .main > .charts .wrapper > .menu > div .wrapper {
+            font-size: 130%;
             border-radius: 10px; } }
         @media screen and (max-aspect-ratio: 4 / 5) {
-          body > .wrapper > .charts .wrapper > .menu {
+          body > .main > .charts .wrapper > .menu {
             margin-left: 5%; }
-            body > .wrapper > .charts .wrapper > .menu > div {
+            body > .main > .charts .wrapper > .menu > div {
               width: 32%;
               height: 16%;
               margin: 3%; } }
-  body > .wrapper > .trade {
+  body > .main > .trade {
     height: 100%;
     position: fixed; }
-    body > .wrapper > .trade > .wrapper {
+    body > .main > .trade > .wrapper {
       height: 100%; }
-      body > .wrapper > .trade > .wrapper > .header {
+      body > .main > .trade > .wrapper > .header {
         height: 13%;
-        margin: 1% 0 2% 0;
+        margin: 1% 0 4% 0;
         width: 100%;
-        position: relative;
-        font-size: 22px; }
-        body > .wrapper > .trade > .wrapper > .header > .back {
+        position: relative; }
+        body > .main > .trade > .wrapper > .header > .back {
           height: 100%;
           margin: 0;
           width: 12%;
@@ -1046,26 +1039,26 @@ body {
           top: 20%;
           left: 5%;
           z-index: 99999999; }
-          body > .wrapper > .trade > .wrapper > .header > .back:hover {
+          body > .main > .trade > .wrapper > .header > .back:hover {
             cursor: pointer;
             -webkit-animation: pulse 1s linear infinite;
             -moz-animation: pulse 1s linear infinite;
             -ms-animation: pulse 1s linear infinite;
             -o-animation: pulse 1s linear infinite;
             animation: pulse 1s linear infinite; }
-        body > .wrapper > .trade > .wrapper > .header > .logo {
+        body > .main > .trade > .wrapper > .header > .logo {
           height: 100%;
           width: 50%;
           background: url("logo.svg") no-repeat 0 50%;
-          background-size: 80%;
+          background-size: 75%;
           z-index: 99999999;
           position: absolute;
           top: 20%;
-          left: 20%;
+          left: 17%;
           margin: 0;
           padding: 0;
           border: 0; }
-        body > .wrapper > .trade > .wrapper > .header > .title {
+        body > .main > .trade > .wrapper > .header > .title {
           background-position: 100% 50%;
           background-size: 40px;
           background-repeat: no-repeat;
@@ -1074,80 +1067,96 @@ body {
           top: 15%;
           right: 2%;
           color: #000;
-          font-size: 30px;
+          font-size: 160%;
           font-weight: bold;
           padding: 0 50px 0 0; }
         @media screen and (max-width: 500px) {
-          body > .wrapper > .trade > .wrapper > .header > .logo {
+          body > .main > .trade > .wrapper > .header > .logo {
             display: none; } }
         @media screen and (max-aspect-ratio: 1 / 1) {
-          body > .wrapper > .trade > .wrapper > .header > .title {
+          body > .main > .trade > .wrapper > .header > .title {
             right: 2%; }
-          body > .wrapper > .trade > .wrapper > .header > .back {
+          body > .main > .trade > .wrapper > .header > .back {
             top: 5%;
             left: 5%;
             background-size: 100%; } }
-        body > .wrapper > .trade > .wrapper > .header > .title {
-          background-image: url("content/trade/trade.svg"); }
-      body > .wrapper > .trade > .wrapper > .options > div {
+        body > .main > .trade > .wrapper > .header > .title {
+          background-image: url("main/trade/trade.svg"); }
+      body > .main > .trade > .wrapper > div {
+        margin: 3%; }
+      body > .main > .trade > .wrapper > .options > div, body > .main > .trade > .wrapper > .purchase > .contracttype {
         clear: both; }
-        body > .wrapper > .trade > .wrapper > .options > div > .title {
-          font-size: 20px;
-          color: #000;
-          font-weight: bold;
-          padding: 0 1% 1.5% 1%; }
-        body > .wrapper > .trade > .wrapper > .options > div > .data > div {
-          margin: 0 1% 2% 1%;
+        body > .main > .trade > .wrapper > .options > div > .title, body > .main > .trade > .wrapper > .purchase > .contracttype > .title {
+          font-size: 150%;
+          padding: 0 0 1.5% 2.5%; }
+        body > .main > .trade > .wrapper > .options > div > .data > div, body > .main > .trade > .wrapper > .purchase > .contracttype > .data > div {
+          margin: 0 1% 2% 0;
           float: left;
-          padding: 0.7% 1.5% 0.7% 1.5%;
+          padding: 1% 1.8% 1% 1.8%;
           background: #fff;
           box-shadow: -0px 10px 20px #EEEEEE;
-          font-size: 20px;
+          font-size: 95%;
           border: 2px solid #EAEAEA;
           border-top-width: 1px;
-          border-radius: 10px; }
-          body > .wrapper > .trade > .wrapper > .options > div > .data > div:hover {
+          border-radius: 6px; }
+          body > .main > .trade > .wrapper > .options > div > .data > div:hover, body > .main > .trade > .wrapper > .purchase > .contracttype > .data > div:hover {
             cursor: pointer;
             background-color: #f7f7f7; }
-        body > .wrapper > .trade > .wrapper > .options > div > .data > div.selected {
+        body > .main > .trade > .wrapper > .options > div > .data > div.selected, body > .main > .trade > .wrapper > .purchase > .contracttype > .data > div.selected {
           background: #252d5f;
           color: #fff; }
-          body > .wrapper > .trade > .wrapper > .options > div > .data > div.selected :hover {
+          body > .main > .trade > .wrapper > .options > div > .data > div.selected :hover, body > .main > .trade > .wrapper > .purchase > .contracttype > .data > div.selected :hover {
             background: #252d5f; }
-        body > .wrapper > .trade > .wrapper > .options > div:not(:first-child) {
-          padding-top: 1.5%;
-          display: none; }
-      body > .wrapper > .trade > .wrapper > .purchase > div:not(:last-child) {
+      body > .main > .trade > .wrapper > .options > div:not(:first-child) {
+        padding-top: 1.5%;
+        display: none; }
+      body > .main > .trade > .wrapper > .purchase > .header {
+        background: #f1f1f1;
+        border: 1px solid #f0f0f0;
+        position: relative;
+        border-radius: 6px;
+        font-size: 90%;
+        font-weight: bold;
         margin-bottom: 2%; }
-      body > .wrapper > .trade > .wrapper > .purchase > .title {
-        margin-left: 3%; }
-        body > .wrapper > .trade > .wrapper > .purchase > .title > div {
-          color: #fff;
-          font-size: 14px;
-          font-weight: bold;
+        body > .main > .trade > .wrapper > .purchase > .header > .location {
+          display: inline-block;
+          padding: 1% 0 1% 1%; }
+          body > .main > .trade > .wrapper > .purchase > .header > .location > div {
+            padding-right: 20px;
+            display: inline-block;
+            margin-right: 8px;
+            background: url("main/trade/optionlevel.svg") no-repeat 100% 50%;
+            background-size: 15px 15px; }
+        body > .main > .trade > .wrapper > .purchase > .header > .spot {
+          padding: 1% 1% 0 0;
+          margin: 0;
+          position: relative;
           display: inline-block; }
-          body > .wrapper > .trade > .wrapper > .purchase > .title > div:not(:first-child) {
-            background: url("content/trade/optionlevel.svg") no-repeat 4px 0;
-            background-size: 15px 15px;
-            padding-left: 22px; }
-      body > .wrapper > .trade > .wrapper > .purchase > .spot {
-        color: green;
-        border-radius: 10px;
-        font-size: 30px;
-        display: inline-block;
-        font-weight: bold; }
-      body > .wrapper > .trade > .wrapper > .purchase > .categories > form {
-        color: #000;
-        font-size: 20px;
-        background: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        padding: 2%; }
-        body > .wrapper > .trade > .wrapper > .purchase > .categories > form input, body > .wrapper > .trade > .wrapper > .purchase > .categories > form select {
-          font-size: 16px;
-          padding: 4px;
-          border: 1px solid #444;
-          border-radius: 1px;
-          background: #fff; }
+          body > .main > .trade > .wrapper > .purchase > .header > .spot.up {
+            color: green; }
+          body > .main > .trade > .wrapper > .purchase > .header > .spot.down {
+            color: red; }
+          body > .main > .trade > .wrapper > .purchase > .header > .spot > .app-core-connection-xhr {
+            position: absolute;
+            right: 0;
+            top: 0; }
+            body > .main > .trade > .wrapper > .purchase > .header > .spot > .app-core-connection-xhr > .loading {
+              width: 15px;
+              height: 15px; }
+            body > .main > .trade > .wrapper > .purchase > .header > .spot > .app-core-connection-xhr > .error {
+              width: 15px;
+              height: 15px; }
+        body > .main > .trade > .wrapper > .purchase > .header > .sparkline {
+          position: absolute;
+          right: 1%;
+          top: 20%;
+          height: 80%; }
+          body > .main > .trade > .wrapper > .purchase > .header > .sparkline canvas {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            height: 80%;
+            width: 140px; }
   body > .status {
     position: fixed;
     background: url("status/close.svg") rgba(0, 0, 0, 0.8) no-repeat;
@@ -1159,7 +1168,8 @@ body {
     left: 0;
     color: #000;
     border-top: solid 3px #fff;
-    display: none; }
+    display: none;
+    font-size: 80%; }
     body > .status nav {
       position: relative;
       padding: 12px 50px 20px 20px; }
@@ -1213,5 +1223,9 @@ body {
                 display: inline;
                 font-weight: bold; }
                 body > .status nav ul li .details div .code:after {
-                  content: '-';
+                  main: '-';
                   padding: 0 3pt 0 3pt; }
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+  body {
+    font-size: 16px; } }

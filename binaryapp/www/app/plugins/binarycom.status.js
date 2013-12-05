@@ -18,7 +18,7 @@ function AppPlugin(app) {
             if (l) {
                 var i = this.pool.indexOf(l);
                 if (i === -1) return;
-                ul.removeChild(l);
+                if (l.parentNode === ul) ul.removeChild(l);
                 this.pool.splice(i,1);
             } else {
                 this.pool.forEach(function (o) { ul.removeChild(o) });

@@ -3,7 +3,7 @@ function AppPlugin(app) {
         home : {
             init : function(o) {
                 var effect = o && o.effect? o.effect : 'into';
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.home'), effect:effect });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.home'), effect:effect });
             }
         },
         
@@ -15,14 +15,27 @@ function AppPlugin(app) {
             submarketselected : null,
             symbolselected : null,
             contractcategory : null,
+            
+            spot : {
+                timeOut : null,
+                history : new Array(),
+                connection : new app.core.connection.create(),
+                sparkline : new app.binarycom.sparkline.create()
+            },
+            
                 
             init : function(o) {
-                var views = document.querySelectorAll('body >.wrapper >.trade >.wrapper >.content');
+                var views = document.querySelectorAll('body >.main >.trade >.wrapper >.content');
                 views[0].style.display='block';
                 views[1].style.display='none';
+                
+                window.clearTimeout(this.spot.timeOut);
+                this.spot.connection.abort();
+                views[1].getElementsByClassName('header')[0].getElementsByClassName('spot')[0].innerHTML='';
+                
                 var self = this;
                 app.binarycom.product.get({
-                    statusnextto : document.querySelector('body >.wrapper >.home >.wrapper >.menu div'),
+                    statusnextto : document.querySelector('body >.main >.home >.wrapper >.menu div'),
                     onCompletion : function(data) {
                         var m = Object.keys(data.selectors.market).sort();
                         var markets = views[0].querySelector('.markets >.data');
@@ -39,7 +52,6 @@ function AppPlugin(app) {
                                 while(submarkets.firstChild) { submarkets.removeChild(submarkets.firstChild); };
                                 views[0].getElementsByClassName('submarkets')[0].style.display='block';
                                 views[0].getElementsByClassName('symbols')[0].style.display='none';
-                                views[0].getElementsByClassName('contractcategory')[0].style.display='none';
                                 data.offerings.some(function (offering) {
                                     if (offering.market !== market) return;
                                     offering.available.forEach(function(a) {
@@ -53,40 +65,59 @@ function AppPlugin(app) {
                                             var symbols = views[0].querySelector('.symbols >.data');
                                             while(symbols.firstChild) { symbols.removeChild(symbols.firstChild); };
                                             views[0].getElementsByClassName('symbols')[0].style.display='block';
-                                            views[0].getElementsByClassName('contractcategory')[0].style.display='none';
                                             a.available.forEach(function(a) {
                                                 var dc = document.createElement('div');
                                                 dc.innerHTML = a.symbol;
                                                 symbols.appendChild(dc);
                                                 dc.addEventListener('click', function() {
                                                     Array.prototype.slice.call(symbols.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
-                                                    dc.className='selected';
                                                     self.symbolselected = a.symbol;
-                                                    var contractcategory = views[0].querySelector('.contractcategory >.data');
-                                                    while(contractcategory.firstChild) { contractcategory.removeChild(contractcategory.firstChild); };
-                                                    views[0].getElementsByClassName('contractcategory')[0].style.display='block';
-                                                    a.available.forEach(function(a) {
+                                                    var contracttypes = new Array();
+                                                    a.available.forEach(function(b) {
+                                                        b.available.forEach(function(c) {
+                                                            if (contracttypes.indexOf(c.contract_type) === -1) contracttypes.push(c.contract_type);
+                                                        });
+                                                    });
+                                                    views[1].style.display='block';
+                                                    views[0].style.display='none';
+                                                    var header = views[1].getElementsByClassName('header')[0];
+                                                    var location = header.getElementsByClassName('location')[0];
+                                                    location.getElementsByClassName('market')[0].innerHTML = self.marketselected;
+                                                    location.getElementsByClassName('submarket')[0].innerHTML = self.submarketselected;
+                                                    location.getElementsByClassName('symbol')[0].innerHTML = self.symbolselected;
+                                                    var sd = header.getElementsByClassName('sparkline')[0];
+                                                    if (! sd.hasChildNodes()) sd.appendChild(self.spot.sparkline.canvas);
+                                                    var sp = self.spot.connection;
+                                                    sp.headers.set('Authorization', function() {
+                                                        var a = app.binarycom.apigee.status.get();
+                                                        return a? 'Bearer '+ a.token : '';
+                                                    });
+                                                    sp.exe = app.binarycom.apigee.url.get();
+                                                    sp.resource = '/symbols/'+self.symbolselected.replace(/\//g,'-')+'/price';
+                                                    var v = header.getElementsByClassName('spot')[0];
+                                                    sp.status.nextto = v;
+                                                    sp.onCompletion = function(k) {
+                                                        var p = k.price;
+                                                        var s = self.spot;
+                                                        v.innerHTML = p;
+                                                        v.className = 'spot';
+                                                        if (s.history.length && s.history[-1] !== p) v.className = 'spot ' + (s.history[-1] < p? 'up' : 'down');
+                                                        s.history.push(parseFloat(p));
+                                                        s.timeout = setTimeout(sp.run,1500);
+                                                        s.sparkline.draw({ data:s.history.slice(s.history.length-10 < 0? 0: s.history.length-10) });
+                                                    }
+                                                    sp.run();
+                                                    var contracttype = views[1].querySelector('.contracttype >.data');
+                                                    while(contracttype.firstChild) { contracttype.removeChild(contracttype.firstChild); };
+                                                    views[1].getElementsByClassName('contracttype')[0].style.display='block';
+                                                    contracttypes.forEach(function(d) {
                                                         var dc = document.createElement('div');
-                                                        dc.innerHTML = a.contract_category;
-                                                        contractcategory.appendChild(dc);
+                                                        dc.innerHTML = d.replace(/\b./g, function(m){ return m.toUpperCase(); });
+                                                        contracttype.appendChild(dc);
                                                         dc.addEventListener('click', function() {
-                                                            self.contractcategoryselected = a.contract_category;
-                                                            views[1].style.display='block';
-                                                            views[0].style.display='none';
-                                                            var title = views[1].getElementsByClassName('title')[0];
-                                                            while(title.firstChild) { title.removeChild(title.firstChild); };
-                                                            var s = document.createElement('div');
-                                                            s.innerHTML = self.marketselected;
-                                                            title.appendChild(s);
-                                                            s = document.createElement('div');
-                                                            s.innerHTML = self.submarketselected;
-                                                            title.appendChild(s);
-                                                            s = document.createElement('div');
-                                                            s.innerHTML = self.symbolselected;
-                                                            title.appendChild(s);
-                                                            s = document.createElement('div');
-                                                            s.innerHTML = self.contractcategoryselected;
-                                                            title.appendChild(s);
+                                                            Array.prototype.slice.call(contracttype.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
+                                                            dc.className='selected';
+                                                            self.contracttypeselected = d;
                                                         });
                                                     });
                                                 });
@@ -99,7 +130,7 @@ function AppPlugin(app) {
                             markets.appendChild(dc);
                         });
                         
-                        app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:o && o.effect? o.effect : 'into' });
+                        app.binarycom.navigate.to({ view:document.querySelector('body >.main >.trade'), effect:o && o.effect? o.effect : 'into' });
                     }
 
                 });
@@ -108,31 +139,31 @@ function AppPlugin(app) {
          
         portfolio : {
             init : function() {
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.portfolio'), effect:'into' });
             }
         },
                 
         support : {
             init : function() {
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.support'), effect:'into' });
             }
         },
         
         charts : {
             init : function() {
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.charts'), effect:'into' });
             }
         },
             
         news : {
             init : function() {
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.news'), effect:'into' });
             }
         },
         
         settings : {
             init : function() {
-                app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.settings'), effect:'into' });
+                app.binarycom.navigate.to({ view:document.querySelector('body >.main >.settings'), effect:'into' });
             }
         }
     }

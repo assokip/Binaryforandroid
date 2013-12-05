@@ -6,10 +6,9 @@
 
 @mixin pageheader {
     height:13%;
-    margin:1% 0 2% 0;
+    margin:1% 0 4% 0;
     width:100%;
     position:relative;
-    font-size:22px; 
     >.back {
         height:100%;
         margin:0;
@@ -29,9 +28,9 @@
     >.logo {
         height:100%; width:50%;
         background: url("logo.svg") no-repeat 0 50%;
-        background-size:80%;
+        background-size:75%;
         z-index:99999999;
-        position:absolute; top:20%; left:20%;
+        position:absolute; top:20%; left:17%;
         margin:0; padding:0; border:0;
     }
  
@@ -41,7 +40,7 @@
         background-repeat:no-repeat;
         z-index:99999999;
         position:absolute; top:15%; right:2%;
-        color:#000; font-size:30px;
+        color:#000; font-size:160%;
         font-weight:bold; padding:0 50px 0 0;
     }
     
@@ -80,7 +79,7 @@
             border-top-width:1px;
             border-radius:20px;
             text-align:center;
-            font-size:30px;
+            font-size:130%;
             padding:10px 0 5px 0;
             background-repeat: no-repeat;
             box-shadow: -0px 10px 20px #EEEEEE;
@@ -95,7 +94,7 @@
     @media screen and (max-width: 600px) {
         >div {
             .wrapper {
-                font-size:20px;
+                font-size:130%;
                 border-radius:10px;
             }
         }

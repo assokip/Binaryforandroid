@@ -28,6 +28,7 @@ window.addEventListener('load', function() {
 	'binarycom.product',
 	'binarycom.safety',
 	'binarycom.navigate',
+	'binarycom.sparkline',
 	'binarycom.views'
 	
     ), onProgress : function(p) {
@@ -65,7 +66,7 @@ window.addEventListener('load', function() {
 	});
 
 	// view listeners
-	var mvms = document.querySelector('body >.wrapper >.settings >.wrapper >.menu');
+	var mvms = document.querySelector('body >.main >.settings >.wrapper >.menu');
 	app.core.events.listeners.add('core.cache.mode.set', function (o) {
 	 mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
 	});
@@ -174,9 +175,9 @@ window.addEventListener('load', function() {
 	
 	// interaction listeners
 	    // home
-	    var mvm = document.querySelector('body >.wrapper >.home >.wrapper >.menu');
+	    var mvm = document.querySelector('body >.main >.home >.wrapper >.menu');
 		//settings
-		var mvms = document.querySelector('body >.wrapper >.settings >.wrapper >.menu');
+		var mvms = document.querySelector('body >.main >.settings >.wrapper >.menu');
 		mvm.getElementsByClassName('settings')[0].addEventListener('click', function() {
 		    app.binarycom.views.settings.init();
 		});
@@ -213,30 +214,32 @@ window.addEventListener('load', function() {
 	     });
 	     
 	     // trade
-	     document.querySelector('body >.wrapper >.trade >.wrapper >.header >.back').addEventListener('click', function() {
-		 if (document.querySelector('body >.wrapper >.trade >.wrapper >.content').style.display==='none') app.binarycom.views.trade.init();
+	     document.querySelector('body >.main >.trade >.wrapper >.header >.back').addEventListener('click', function() {
+		
+		
+		 if (document.querySelector('body >.main >.trade >.wrapper >.content').style.display==='none') app.binarycom.views.trade.init();
 		 else app.binarycom.views.home.init({ effect:'back' });
 	     });
     
 	     // support
-	     document.querySelector('body >.wrapper >.support >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
-	     Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.support >.wrapper >.menu div')).forEach(function(v) {
+	     document.querySelector('body >.main >.support >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
+	     Array.prototype.slice.call(document.querySelectorAll('body >.main >.support >.wrapper >.menu div')).forEach(function(v) {
 		 if (v.parentNode.className !== 'menu') return;
 		 //if (v.className==='back') v.addEventListener('click', function() { app.home.init({ effect:'back' }); });
 		 else v.addEventListener('click', function() { eval('app.binarycom.views.support.'+this.className).init(); });
 	     });
     
 	     // portfolio
-	     document.querySelector('body >.wrapper >.portfolio >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
+	     document.querySelector('body >.main >.portfolio >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
     
 	     // charts
-	     document.querySelector('body >.wrapper >.charts >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
+	     document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
 	     
 	     // news
-	     document.querySelector('body >.wrapper >.news >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
+	     document.querySelector('body >.main >.news >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
     
 	     // settings
-	     var sw = document.querySelector('body >.wrapper >.settings >.wrapper');
+	     var sw = document.querySelector('body >.main >.settings >.wrapper');
 		// debug
 		var swm = sw.getElementsByClassName('menu')[0];
 		swm.getElementsByClassName('debug')[0].addEventListener('click', function() {
@@ -271,7 +274,7 @@ window.addEventListener('load', function() {
 	    else { logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled'; }
 	    
 	    // show home view
-	    app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.home') });
+	    app.binarycom.navigate.to({ view:document.querySelector('body >.main >.home') });
 
     }});
     

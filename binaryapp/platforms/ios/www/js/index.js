@@ -8,7 +8,7 @@ app = {
 
     oauth2 : {
 
-        status : document.querySelector('body >.wrapper >.connecting >.wrapper >.status >.wrapper'),
+        status : document.querySelector('body >.main >.connecting >.wrapper >.status >.wrapper'),
         devid : '3yqBdSJfFGIZELagj9VIt5cAr8tMknRA',
         scope : 'chart',
         url : 'https://andrewdev.binary.com/clientapp/oauth2',
@@ -17,7 +17,7 @@ app = {
         init : function() {
             this.token = null;
             this.params = new Object();
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.connecting') });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.connecting') });
             this.status.getElementsByClassName('init')[0].style.display='block';
             this.status.getElementsByClassName('stage1')[0].style.display='none';
             this.status.getElementsByClassName('stage2')[0].style.display='none';
@@ -51,8 +51,8 @@ app = {
                     onCompletion : function(j) {
                         app.core.oauth2.params = j.params;
                         app.core.events.dispatch('security.oauth2.token.issued');
-                        app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.main') });
-                        document.querySelector('body >.wrapper >.main >.wrapper >.login_id').innerHTML = j.params.login_id;
+                        app.binarycom.navigate.to({ view:document.querySelector('body >.main >.main') });
+                        document.querySelector('body >.main >.main >.wrapper >.login_id').innerHTML = j.params.login_id;
                     }
                 });
                 connection.run();
@@ -88,31 +88,31 @@ app = {
         if (! app.core.cordova.loaded) self.main.init();
 	
 	/* main */
-        Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.main >.wrapper >.menu div')).forEach(function(v) {
+        Array.prototype.slice.call(document.querySelectorAll('body >.main >.main >.wrapper >.menu div')).forEach(function(v) {
             if (v.parentNode.className !== 'menu') return;
             if (v.className==='exit') v.addEventListener('click', function() { self.events.dispatch('exit'); });
             else v.addEventListener('click', function() { eval('app.'+this.className).init(); });
         });
 	
 	/* support */
-	document.querySelectorAll('body >.wrapper >.support >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
-        Array.prototype.slice.call(document.querySelectorAll('body >.wrapper >.support >.wrapper >.menu div')).forEach(function(v) {
+	document.querySelectorAll('body >.main >.support >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+        Array.prototype.slice.call(document.querySelectorAll('body >.main >.support >.wrapper >.menu div')).forEach(function(v) {
             if (v.parentNode.className !== 'menu') return;
             //if (v.className==='back') v.addEventListener('click', function() { self.main.init({ effect:'back' }); });
             else v.addEventListener('click', function() { eval('app.support.'+this.className).init(); });
         });
 	
 	/* portfolio */
-	document.querySelectorAll('body >.wrapper >.portfolio >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	document.querySelectorAll('body >.main >.portfolio >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
 	
 	/* trade */
-	document.querySelectorAll('body >.wrapper >.trade >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	document.querySelectorAll('body >.main >.trade >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
 	
 	/* charts */
-	document.querySelectorAll('body >.wrapper >.charts >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	document.querySelectorAll('body >.main >.charts >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
 	
 	/* news */
-	document.querySelectorAll('body >.wrapper >.news >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
+	document.querySelectorAll('body >.main >.news >.wrapper >.header >.back')[0].addEventListener('click', function() { self.main.init({ effect:'back' }); });
 	
     },
     
@@ -206,15 +206,15 @@ app = {
     main : {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.main'), effect:effect });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.main'), effect:effect });
         }
     },
     
     trade : {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.trade'), effect:effect });
-	    //document.querySelector('body >.wrapper >.trade >.wrapper >.content >.markets').innerHTML='';
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.trade'), effect:effect });
+	    //document.querySelector('body >.main >.trade >.wrapper >.content >.markets').innerHTML='';
 	    var connection = new igaro_connection({
 		resource: '/markets',
 		headers : { 'Authorization': 'Bearer '+app.core.oauth2.params.token },
@@ -229,25 +229,25 @@ app = {
     
     portfolio : {
         init : function() {
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.portfolio'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.portfolio'), effect:'into' });
         }
     },
     
     support : {
         init : function() {
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.support'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.support'), effect:'into' });
         }
     },
     
     charts : {
         init : function() {
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.charts'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.charts'), effect:'into' });
         }
     },
     
     news : {
         init : function() {
-            app.binarycom.navigate.to({ view:document.querySelector('body >.wrapper >.news'), effect:'into' });
+            app.binarycom.navigate.to({ view:document.querySelector('body >.main >.news'), effect:'into' });
         }
     }
 };
