@@ -53,6 +53,7 @@ function AppPlugin(app) {
 	this.loading = false;
 	this.status = { nextto : o.statusnextto?o.statusnextto:null };
 	this.onCompletion = o.onCompletion? function(d) { o.onCompletion(d) } : null;
+        this.onEnd = o.onEnd? function() { o.onEnd() } : null;
 	this.autoretry = o.autoretry? o.autoretry : { attempts:-1, delay:4000 };
 	this.abort = function() {
 	    this.loading=false;
@@ -60,7 +61,8 @@ function AppPlugin(app) {
 	    if (! this.status.container) return;
 	    this.status.nextto.removeChild(this.status.container);
 	    this.status.container = null;
-	    app.core.events.dispatch('core.connection.exec.abort', this);
+	    app.core.events.dispatch('core.connection.exec.aborted', this);
+            if (self.onEnd) self.onEnd();
 	};
 	if (! ('onload' in xhr) && 'onreadystatechange' in xhr) { //xhr1 compat
 	    xhr.onreadystatechange = function() {
@@ -84,12 +86,14 @@ function AppPlugin(app) {
                 return;
 	    }
 	    app.core.events.dispatch('core.connection.exec.end', self);
+            if (self.onEnd) self.onEnd();
 	};
 	xhr.onerror = function(o) {
 	    self.loading=false;
 	    if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 	    if (self.onError) self.onError();
 	    app.core.events.dispatch('core.connection.exec.error', self);
+            if (self.onEnd) self.onEnd();
 	};
 	this.run = function() {
 	    if (this.loading) this.abort();

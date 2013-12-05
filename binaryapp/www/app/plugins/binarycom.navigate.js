@@ -20,7 +20,7 @@ function AppPlugin(app) {
                 if (this.current) this.current.style.zIndex=0;
                 v.style.zIndex = 1;
                 v.style.visibility='visible';
-                app.core.events.dispatch('core.view.shown',v);
+                app.core.events.dispatch('binarycom.navigate.to',v);
                 this.current = v;
             });
             
@@ -36,11 +36,10 @@ function AppPlugin(app) {
                     v.className = c.join(' ');
                     v.style.visibility='hidden';
                     v.style.zIndex=0;
-                    app.core.events.dispatch('core.view.hidden',v);
                 })
             }, 300);
-        }
-
+        },
+        
     };
 
 }

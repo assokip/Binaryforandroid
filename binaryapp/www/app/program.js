@@ -25,11 +25,17 @@ window.addEventListener('load', function() {
 	'binarycom',
 	'binarycom.status',
 	'binarycom.apigee',
-	'binarycom.product',
 	'binarycom.safety',
 	'binarycom.navigate',
 	'binarycom.sparkline',
-	'binarycom.views'
+	'binarycom.models',
+	'binarycom.models.home',
+	'binarycom.models.trade',
+	'binarycom.models.charts',
+	'binarycom.models.news',
+	'binarycom.models.portfolio',
+	'binarycom.models.support',
+	'binarycom.models.settings'
 	
     ), onProgress : function(p) {
 	
@@ -173,108 +179,13 @@ window.addEventListener('load', function() {
 	    alert(o.err);
 	});
 	
-	// interaction listeners
-	    // home
-	    var mvm = document.querySelector('body >.main >.home >.wrapper >.menu');
-		//settings
-		var mvms = document.querySelector('body >.main >.settings >.wrapper >.menu');
-		mvm.getElementsByClassName('settings')[0].addEventListener('click', function() {
-		    app.binarycom.views.settings.init();
-		});
-		app.core.events.listeners.add('core.cache.mode.set', function (o) {
-		    mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-		});
-		app.core.events.listeners.add('core.debug.mode.set', function (o) {
-		    mvms.querySelector('.debug >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-		});
-		app.core.events.listeners.add('binarycom.safety.mode.set', function (o) {
-		    mvms.querySelector('.safety >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-		});
-		app.core.events.listeners.add('binarycom.apigee.login.success', function (o) {
-		    mvms.querySelector('.logout >.wrapper').className = 'wrapper';
-		 });
-		app.core.events.listeners.add('binarycom.apigee.logout.success', function (o) {
-		    mvms.querySelector('.logout >.wrapper').className = 'wrapper disabled';
-		});
-		 
-	     mvm.getElementsByClassName('charts')[0].addEventListener('click', function() {
-		 app.binarycom.views.charts.init();
-	     });
-	     mvm.getElementsByClassName('trade')[0].addEventListener('click', function() {
-		 app.binarycom.views.trade.init();
-	     });
-	     mvm.getElementsByClassName('support')[0].addEventListener('click', function() {
-		 app.binarycom.views.support.init();
-	     });
-	     mvm.getElementsByClassName('news')[0].addEventListener('click', function() {
-		 app.binarycom.views.news.init();
-	     });
-	     mvm.getElementsByClassName('portfolio')[0].addEventListener('click', function() {
-		 app.binarycom.views.portfolio.init();
-	     });
-	     
-	     // trade
-	     document.querySelector('body >.main >.trade >.wrapper >.header >.back').addEventListener('click', function() {
-		
-		
-		 if (document.querySelector('body >.main >.trade >.wrapper >.content').style.display==='none') app.binarycom.views.trade.init();
-		 else app.binarycom.views.home.init({ effect:'back' });
-	     });
-    
-	     // support
-	     document.querySelector('body >.main >.support >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
-	     Array.prototype.slice.call(document.querySelectorAll('body >.main >.support >.wrapper >.menu div')).forEach(function(v) {
-		 if (v.parentNode.className !== 'menu') return;
-		 //if (v.className==='back') v.addEventListener('click', function() { app.home.init({ effect:'back' }); });
-		 else v.addEventListener('click', function() { eval('app.binarycom.views.support.'+this.className).init(); });
-	     });
-    
-	     // portfolio
-	     document.querySelector('body >.main >.portfolio >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
-    
-	     // charts
-	     document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
-	     
-	     // news
-	     document.querySelector('body >.main >.news >.wrapper >.header >.back').addEventListener('click', function() { app.binarycom.views.home.init({ effect:'back' }); });
-    
-	     // settings
-	     var sw = document.querySelector('body >.main >.settings >.wrapper');
-		// debug
-		var swm = sw.getElementsByClassName('menu')[0];
-		swm.getElementsByClassName('debug')[0].addEventListener('click', function() {
-		    var tx = app.core.debug.mode;
-		    tx.set(tx.get()? false : true);
-		 });
-		// cache
-		swm.getElementsByClassName('cache')[0].addEventListener('click', function() {
-		    var tx = app.core.cache.mode;
-		    tx.set(tx.get()? false : true);
-		});
-		// safety
-		swm.getElementsByClassName('safety')[0].addEventListener('click', function(confirm) {
-		    var tx = app.binarycom.safety.mode;
-		    tx.set(tx.get()? false : true);
-		});
-		 // logout
-		var logout = swm.getElementsByClassName('logout')[0];
-		logout.addEventListener('click', function() {
-		    if (app.binarycom.apigee.status.get()) app.binarycom.apigee.logout();
-		});
-		// back
-		sw.querySelector('.header >.back').addEventListener('click', function() {
-		    this.className = 'back disabled';
-		    app.binarycom.views.home.init({ effect:'back' });
-		}); 
-		
-	// init 
-	    // previous login?
-	    var pl = app.binarycom.apigee.status.get();
-	    if (pl) app.binarycom.status.append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
-	    else { logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled'; }
+	// previous login?
+	var pl = app.binarycom.apigee.status.get();
+	if (pl) app.binarycom.status.append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
+	else { logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled'; }
 	    
-	    // show home view
-	    app.binarycom.navigate.to({ view:document.querySelector('body >.main >.home') });
+	// show home view
+	app.binarycom.models.home.init();
 
     }});
     
