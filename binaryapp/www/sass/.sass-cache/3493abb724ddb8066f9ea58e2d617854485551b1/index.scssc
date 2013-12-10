@@ -1,929 +1,0 @@
-3.2.9 (Media Mark)
-aab57d7f377675090bebd7d9e31acd993da36406
-o:Sass::Tree::RootNode
-:@template"ªH* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-}
-
-$PAGE_HEADER_HEIGHT : 10%;
-
-@import "fonts";
-@import "animations";
-@import "mixins";
-
-div { padding:0; margin:0; }
-
-body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#fff;
-    font-family:proxima-nova, arial, helvetica, sans-serif;
-    font-size:14px;
-    height:100%;
-    margin:0;
-    padding:0;
-    width:100%;
-    color:#000;
-    
-    >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:9999999; }
-    
-    >.wrapper {
-        
-        >div {
-            visibility:hidden; z-index:-1;
-            position:absolute;
-            left:0;
-            right:0;
-            height:100%;
-            width:100%;
-         
-            >.wrapper {
-                >.content {
-                    overflow:auto;
-                    padding:2%;
-                    height:80%;
-                }
-            }
-                
-        }
-        
-        >.loading {
-            position:fixed;
-            left:0;
-            right:0;
-            height:100%;
-            width:100%;
-            text-align:center;
-            >.wrapper {
-                position:relative;
-                height:100%;
-
-                .progress {
-                    >.wrapper {
-                        position:absolute;
-                        left:25%;
-                        top:40%;
-                        width:50%;
-                        border:1px solid #fff;
-                        padding:5%;
-                        >.percent {
-                            height:50%; background-color:#fff;
-                        }
-                    }
-                }
-                @media screen and (min-aspect-ratio: 1/1) {
-                    >.logo { margin:1% 0 1% 0; }
-                   
-                } 
-            }
-        }
-                
-        >.home {
-            
-            position:fixed;
-            
-            >.wrapper {
-                
-                position:relative;
-                height:100%;
-                margin:0; padding:0; border:0;
-                
-                >.logo {
-                    height:17%; width:70%; 
-                    background: url("logo.svg") no-repeat;
-                    background-size:60%;
-                    background-position:50% 100%;
-                    margin:0; padding:0; border:0;
-                    margin-left:15%;
-                }
-
-                >.menu {
-                    .trade {
-                        .wrapper {
-                            background-image: url("content/home/trade.svg");
-                            background-position: 50% 80%;
-                            background-size:60%;
-                        }
-                    }
-                    .charts {
-                        .wrapper {
-                            background-image: url("content/home/charts.svg");
-                            background-position: 50% 80%;
-                            background-size:55%;
-                        }
-                    }
-                    .portfolio {
-                        .wrapper {
-                            background-image: url("content/home/portfolio.svg");
-                            background-position: 50% 80%;
-                            background-size:60%;
-                        }
-                    }
-                    .support {
-                        .wrapper {
-                            background-image: url("content/home/support.svg");
-                            background-position: 50% 80%;
-                            background-size:55%;
-                        }
-                    }
-                    .news {
-                        .wrapper {
-                            background-image: url("content/home/news.svg");
-                            background-position:50% 80%;
-                            background-size:60%;
-                        }
-                    }
-                    .settings {
-                        .wrapper {
-                            background-image: url("content/home/settings.svg");
-                            background-position: 50% 80%;
-                            background-size:55%;
-                        }
-                    }
-                    @include pagemenu;
-                }
-                
-                @media screen and (max-aspect-ratio: 1/1) {
-                   >.logo { background-size:100%; }
-                }
-            }
-        }
-            
-        >.support {
-            height:100%;
-            position:fixed;
-            .wrapper {
-                margin:0; padding:0; border:0; height:100%;
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/support/support.svg");
-                    }
-                }
-                >.menu {
-                    @include pagemenu;
-                    .faq {
-                        .wrapper {
-                            background: url("content/support/faq.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .email {
-                        .wrapper {
-                            background: url("content/support/email.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .chat {
-                        .wrapper {
-                            background: url("content/support/chat.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .phone {
-                        .wrapper {
-                            background: url("content/support/phone.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .callback {
-                        .wrapper {
-                            background: url("content/support/callback.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .messages {
-                        .wrapper {
-                            background: url("content/support/messages.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                }
-            }
-        }
-        
-        >.portfolio {
-            height:100%;
-            position:fixed;
-            .wrapper {
-                margin:0; padding:0; border:0; height:100%;
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/portfolio/portfolio.svg");
-                    }
-                }
-                >.menu {
-                    @include pagemenu;
-
-                }
-            }
-        }
-        
-        >.news {
-            height:100%;
-            position:fixed;
-            .wrapper {
-                margin:0; padding:0; border:0; height:100%;
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/news/news.svg");
-                    }
-                }
-                >.menu {
-                    @include pagemenu;
-                    .markets {
-                        .wrapper {
-                            background: url("content/news/markets.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .service {
-                        .wrapper {
-                            background: url("content/news/service.svg") #fff no-repeat 50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                }
-            }
-        }
-        
-        >.settings {
-            height:100%;
-            position:fixed;
-            .wrapper {
-                margin:0; padding:0; border:0; height:100%;
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/settings/settings.svg");
-                    }
-                }
-                >.menu {
-                    @include pagemenu;
-                    .locale {
-                        .wrapper {
-                            background-image: url("content/settings/locale.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .debug {
-                        .on {
-                            background-image: url("content/settings/debug/on.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                        .off {
-                            background-image: url("content/settings/debug/off.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .cache {
-                        .on {
-                            background-image: url("content/settings/cache/on.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                        .off {
-                            background-image: url("content/settings/cache/off.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .safety {
-                        .on {
-                            background-image: url("content/settings/safety/on.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                        .off {
-                            background-image: url("content/settings/safety/off.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                    .logout {
-                        .wrapper {
-                            background-image: url("content/settings/logout.svg");
-                            background-position:50% 80%;
-                            background-size:70% 70%;
-                        }
-                    }
-                }
-            }
-        } 
-        
-        >.charts {
-            height:100%;
-            position:fixed;
-            .wrapper {
-                margin:0; padding:0; border:0; height:100%;
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/charts/charts.svg");
-                    }
-                }
-                >.menu {
-                    @include pagemenu;
-
-                }
-            }
-        } 
-        
-        >.trade {
-            height:100%;
-            position:fixed;
-            >.wrapper {
-                height:100%;
-                
-                >.header {
-                    @include pageheader;
-                    >.title {
-                        background-image: url("content/trade/trade.svg");
-                    }
-                }
-                
-                >.options {
-
-                    >div {
-                        clear:both;
-                        
-                        >.title {
-                            font-size:20px;
-                            color:#000;
-                            font-weight:bold;
-                            padding:0 1% 1.5% 1%; 
-                        }
-                        
-                        >.data {
-                            > div {
-                                margin:0 1% 2% 1%;
-                                float:left;
-                                padding:0.7% 1.5% 0.7% 1.5%;
-                                background:#fff;
-                                box-shadow: -0px 10px 20px #EEEEEE;
-                                font-size:20px;
-                                border: 2px solid #EAEAEA;
-                                border-top-width: 1px;
-                                border-radius:10px;
-                                &:hover { cursor:pointer; background-color:#f7f7f7; }
-                            }
-                            
-                            > div.selected {
-                                @include objselected;
-                            }
-                        }
-                        
-                        &:not(:first-child) {
-                            padding-top:1.5%;
-                            display:none;
-                        }
-                    }
-
-                }
-                
-                >.purchase {
-                    >div:not(:last-child) { margin-bottom:2% }
-                    
-                    
-                    >.title {
-                        margin-left:3%;
-                        >div {
-                            
-                            color:#fff;
-                            font-size:14px;
-                            font-weight:bold;
-                            display:inline-block;
-                            
-                            &:not(:first-child) {
-                                background: url("content/trade/optionlevel.svg") no-repeat 4px 0;
-                                background-size:15px 15px;
-                                padding-left:22px;
-                            }
-                            
-                            
-                        }
-                    }
-                    
-                    >.spot {
-                        color:green;
-                        border-radius:10px;
-                        font-size:30px;
-                        display:inline-block;
-                        font-weight:bold;
-                    }
-                    
-                    >.categories {
-                        >form {
-                            color:#000; font-size:20px;
-                            input, select { font-size:16px; padding:4px; border: 1px solid #444; border-radius:1px; background:#fff; }
-                            
-                            background: rgba(255,255,255,.8);
-                            border-radius:10px;
-                            padding:2%;
-                            
-                        }
-                        
-                    }
-                    
-                }
-
-            }
-
-        }
-
-    }
-    
-    >.status {
-        position:fixed;
-        background:url('status/close.svg') rgba(0,0,0,.8) no-repeat;
-        background-size: 30px 30px;
-        background-position: right 10px top 10px;
-        width:100%;
-        z-index:999999999;
-        bottom:0;
-        left:0;
-        color:#000;
-        border-top: solid 3px #fff;
-        display:none;
-        nav {
-            position:relative;
-            padding:12px 50px 20px 20px;
-            ul {
-                margin:0;
-                padding:0;
-                li {
-                    -webkit-animation-name: fadeInRightBig;
-                    -moz-animation-name: fadeInRightBig;
-                    -o-animation-name: fadeInRightBig;
-                    animation-name: fadeInRightBig;
-                    -webkit-animation-duration:1s;
-                    -moz-animation-duration:1s;
-                    -ms-animation-duration:1s;
-                    -o-animation-duration:1s;
-                    animation-duration:1s;
-                    :last-child { margin-right:0; }
-                    list-style:none;
-                    box-shadow: 0 5px 10px #000;
-                    border-radius:8px;
-                    border:2px solid #eee;
-                    margin:12px 12px 0 0;
-                    padding:12px 20px 12px 12px;
-                    white-space:nowrap;
-                    display:inline-block;
-                    background: #fff;
-                    .title { font-weight:bold; }
-                    .type {
-                        display:table-cell;
-                        padding-right:6px;
-                        div { width:24px; height:24px; background-size: 24px 24px; }
-                        .warn { background:url('status/type/warn.png') no-repeat; }
-                        .info { background:url('status/type/info.png') no-repeat; }
-                        .critical { background:url('status/type/critical.png') no-repeat; }
-                    }
-                    .details {
-                        display:table-cell;
-                        vertical-align:middle;
-                        div {
-                            white-space:nowrap; display:block;
-                            .code {
-                                margin:0; display:inline; font-weight:bold;
-                                &:after { content:'-'; padding:0 3pt 0 3pt; }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-  
-  form {
-    
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-    }
-    
-    >.apmessage {
-      display:none;
-      position:absolute;
-      line-height:1;
-      border-radius:1px;
-      margin:2px 0 0 1px;
-      white-space:nowrap;
-      font-size:12px;
-      background-color:#fff496;
-      color:#111111;
-      padding:2px 3px 2px 3px;
-      z-index:99999;
-    }
-  }
-
-}
-
-
-
-/* app css */
-.ajax {
-  position:relative;
-  div {
-    position:absolute;
-    z-index:99999999;
-    width: 1.7em; height: 1.7em;
-    left:50%;
-    top:5px;
-    border: solid #000 1em;
-    border-right-color: transparent;
-    border-radius: 50%;
-    -webkit-animation: spin 1s linear infinite; -moz-animation: spin 1s linear infinite;
-    -ms-animation: spin 1s linear infinite; -o-animation: spin 1s linear infinite;
-    animation: spin 1s linear infinite;
-  }
-}
-
-
-:@has_childrenT:
-@linei:@children[o:Sass::Tree::RuleNode;T:
-@tabsi ;i;	[o:Sass::Tree::PropNode:@valueo:Sass::Script::Funcall:@keywords{ :
-@args[	o:Sass::Script::Number;i :@denominator_units[ :@numerator_units[ ;i:@original"0:@options{ o;;i ;@;[ ;i;"0;@o;;i ;@;[ ;i;"0;@o;;i ;@;[ ;i;"0;@:
-@name"	rgba;i:@splat0;@:@prop_syntax:new;i ;[" -webkit-tap-highlight-color;i;	[ ;@o:Sass::Tree::CommentNode
-;["N/* make transparent link selection, adjust last value opacity 0 to 1.0 */:
-@type:normal;i;	[ ;@:
-@rule["*:@parsed_ruleso:"Sass::Selector::CommaSequence:@members[o:Sass::Selector::Sequence; [o:#Sass::Selector::SimpleSequence
-; [o:Sass::Selector::Universal:@filename" ;i:@namespace0;$@-;i:@subject0:@sourceso:Set:
-@hash{ ;$@-;i;@o:Sass::Tree::VariableNode:
-@expro;;i;[ ;["%;i
-;"10%;@;"PAGE_HEADER_HEIGHT;i
-;	[ :@guarded0;@o:Sass::Tree::ImportNode;0:@imported_filename"
-fonts;i;	[ :@imported_file0;@o;-;0;."animations;i;	[ ;/0;@o;-;0;."mixins;i;	[ ;/0;@o;
-;T;i ;i;	[o;;o:Sass::Script::String;"0;:identifier;@;;;i ;["padding;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["margin;i;	[ ;@;["div;o;; [o;!; [o;"
-; [o:Sass::Selector::Element	;$" ;["div;i;%0;$@X;i;&0;'o;(;){ ;$@X;i;@o;
-;T;i ;i;	[o;;o;0;"	none;;1;@;;;i ;["-webkit-touch-callout;i;	[ ;@o;
-;[">/* prevent callout to copy image, etc when tap to hold */;;;i;	[ ;@o;;o;0;"	none;;1;@;;;i ;["-webkit-text-size-adjust;i;	[ ;@o;
-;["3/* prevent webkit from resizing text to fit */;;;i;	[ ;@o;;o;0;"	none;;1;@;;;i ;["-webkit-user-select;i;	[ ;@o;
-;["@/* prevent copy paste, to allow, change 'none' to 'text' */;;;i;	[ ;@o;;o;0;"	#fff;;1;@;;;i ;["background-color;i;	[ ;@o;;o;0;"/proxima-nova, arial, helvetica, sans-serif;;1;@;;;i ;["font-family;i;	[ ;@o;;o;0;"	14px;;1;@;;;i ;["font-size;i;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["margin;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["
-width;i;	[ ;@o;;o;0;"	#000;;1;@;;;i ;["
-color;i;	[ ;@o;
-;T;i ;i;	[o;;o;0;"absolute;;1;@;;;i ;["position;i;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["
-width;i;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i;	[ ;@o;;o;0;"0;;1;@;;;i ;["margin;i;	[ ;@o;;o;0;"9999999;;1;@;;;i ;["z-index;i;	[ ;@;[">iframe;o;; [o;!; [">o;"
-; [o;2	;$" ;["iframe;i;%0;$@ﬁ;i;&0;'o;(;){ ;$@ﬁ;i;@o;
-;T;i ;i!;	[o;
-;T;i ;i#;	[o;;o;0;"hidden;;1;@;;;i ;["visibility;i$;	[ ;@o;;o;0;"-1;;1;@;;;i ;["z-index;i$;	[ ;@o;;o;0;"absolute;;1;@;;;i ;["position;i%;	[ ;@o;;o;0;"0;;1;@;;;i ;["	left;i&;	[ ;@o;;o;0;"0;;1;@;;;i ;["
-right;i';	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i(;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["
-width;i);	[ ;@o;
-;T;i ;i+;	[o;
-;T;i ;i,;	[o;;o;0;"	auto;;1;@;;;i ;["overflow;i-;	[ ;@o;;o;0;"2%;;1;@;;;i ;["padding;i.;	[ ;@o;;o;0;"80%;;1;@;;;i ;["height;i/;	[ ;@;[">.content;o;; [o;!; [">o;"
-; [o:Sass::Selector::Class;$" ;["content;i,;$@1;i,;&0;'o;(;){ ;$@1;i,;@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;i+;$@@;i+;&0;'o;(;){ ;$@@;i+;@;["	>div;o;; [o;!; [">o;"
-; [o;2	;$" ;["div;i#;%0;$@O;i#;&0;'o;(;){ ;$@O;i#;@o;
-;T;i ;i5;	[o;;o;0;"
-fixed;;1;@;;;i ;["position;i6;	[ ;@o;;o;0;"0;;1;@;;;i ;["	left;i7;	[ ;@o;;o;0;"0;;1;@;;;i ;["
-right;i8;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i9;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["
-width;i:;	[ ;@o;;o;0;"center;;1;@;;;i ;["text-align;i;;	[ ;@o;
-;T;i ;i<;	[	o;;o;0;"relative;;1;@;;;i ;["position;i=;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i>;	[ ;@o;
-;T;i ;i@;	[o;
-;T;i ;iA;	[o;;o;0;"absolute;;1;@;;;i ;["position;iB;	[ ;@o;;o;0;"25%;;1;@;;;i ;["	left;iC;	[ ;@o;;o;0;"40%;;1;@;;;i ;["top;iD;	[ ;@o;;o;0;"50%;;1;@;;;i ;["
-width;iE;	[ ;@o;;o;0;"1px solid #fff;;1;@;;;i ;["border;iF;	[ ;@o;;o;0;"5%;;1;@;;;i ;["padding;iG;	[ ;@o;
-;T;i ;iH;	[o;;o;0;"50%;;1;@;;;i ;["height;iI;	[ ;@o;;o;0;"	#fff;;1;@;;;i ;["background-color;iI;	[ ;@;[">.percent;o;; [o;!; [">o;"
-; [o;3;$" ;["percent;iH;$@»;iH;&0;'o;(;){ ;$@»;iH;@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;iA;$@◊;iA;&0;'o;(;){ ;$@◊;iA;@;[".progress;o;; [o;!; [o;"
-; [o;3;$" ;["progress;i@;$@Â;i@;&0;'o;(;){ ;$@Â;i@;@o:Sass::Tree::MediaNode;" ;T;i ;iM;	[o;
-;T;i ;iN;	[o;;o;0;"1% 0 1% 0;;1;@;;;i ;["margin;iN;	[ ;@;[">.logo;o;; [o;!; [">o;"
-; [o;3;$" ;["	logo;iN;$@ˇ;iN;&0;'o;(;){ ;$@ˇ;iN;@:@query["screen"
- and "(o;0	;"min-aspect-ratio;;1;iM;@": o:Sass::Script::Operation
-;iM:@operand2o;;i;@;[ ;iM;"1;@:@operator:div;@:@operand1o;;i;@;[ ;iM;"1;@");@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;i<;$@;i<;&0;'o;(;){ ;$@;i<;@;[">.loading;o;; [o;!; [">o;"
-; [o;3;$" ;["loading;i5;$@,;i5;&0;'o;(;){ ;$@,;i5;@o;
-;T;i ;iT;	[o;;o;0;"
-fixed;;1;@;;;i ;["position;iV;	[ ;@o;
-;T;i ;iX;	[o;;o;0;"relative;;1;@;;;i ;["position;iZ;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i[;	[ ;@o;;o;0;"0;;1;@;;;i ;["margin;i\;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i\;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;i\;	[ ;@o;
-;T;i ;i^;	[o;;o;0;"17%;;1;@;;;i ;["height;i_;	[ ;@o;;o;0;"70%;;1;@;;;i ;["
-width;i_;	[ ;@o;;o:Sass::Script::List	;[o;;{ ;[o;0	;"logo.svg;:string;i`;@;"url;i`;0;@o;0	;"no-repeat;;1;i`;@;i`:@separator:
-space;@;;;i ;["background;i`;	[ ;@o;;o;0;"60%;;1;@;;;i ;["background-size;ia;	[ ;@o;;o;0;"50% 100%;;1;@;;;i ;["background-position;ib;	[ ;@o;;o;0;"0;;1;@;;;i ;["margin;ic;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;ic;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;ic;	[ ;@o;;o;0;"15%;;1;@;;;i ;["margin-left;id;	[ ;@;[">.logo;o;; [o;!; [">o;"
-; [o;3;$" ;["	logo;i^;$@£;i^;&0;'o;(;){ ;$@£;i^;@o;
-;T;i ;ig;	[o;
-;T;i ;ih;	[o;
-;T;i ;ii;	[o;;o;;{ ;[o;0	;"content/home/trade.svg;;<;ij;@;"url;ij;0;@;;;i ;["background-image;ij;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;ik;	[ ;@o;;o;0;"60%;;1;@;;;i ;["background-size;il;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;ii;$@Õ;ii;&0;'o;(;){ ;$@Õ;ii;@;[".trade;o;; [o;!; [o;"
-; [o;3;$" ;["
-trade;ih;$@€;ih;&0;'o;(;){ ;$@€;ih;@o;
-;T;i ;io;	[o;
-;T;i ;ip;	[o;;o;;{ ;[o;0	;"content/home/charts.svg;;<;iq;@;"url;iq;0;@;;;i ;["background-image;iq;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;ir;	[ ;@o;;o;0;"55%;;1;@;;;i ;["background-size;is;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;ip;$@;ip;&0;'o;(;){ ;$@;ip;@;[".charts;o;; [o;!; [o;"
-; [o;3;$" ;["charts;io;$@;io;&0;'o;(;){ ;$@;io;@o;
-;T;i ;iv;	[o;
-;T;i ;iw;	[o;;o;;{ ;[o;0	;"content/home/portfolio.svg;;<;ix;@;"url;ix;0;@;;;i ;["background-image;ix;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;iy;	[ ;@o;;o;0;"60%;;1;@;;;i ;["background-size;iz;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iw;$@9;iw;&0;'o;(;){ ;$@9;iw;@;[".portfolio;o;; [o;!; [o;"
-; [o;3;$" ;["portfolio;iv;$@G;iv;&0;'o;(;){ ;$@G;iv;@o;
-;T;i ;i};	[o;
-;T;i ;i~;	[o;;o;;{ ;[o;0	;"content/home/support.svg;;<;i;@;"url;i;0;@;;;i ;["background-image;i;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i{;	[ ;@o;;o;0;"55%;;1;@;;;i ;["background-size;i|;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i~;$@o;i~;&0;'o;(;){ ;$@o;i~;@;[".support;o;; [o;!; [o;"
-; [o;3;$" ;["support;i};$@};i};&0;'o;(;){ ;$@};i};@o;
-;T;i ;i;	[o;
-;T;i ;iÄ;	[o;;o;;{ ;[o;0	;"content/home/news.svg;;<;iÅ;@;"url;iÅ;0;@;;;i ;["background-image;iÅ;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;iÇ;	[ ;@o;;o;0;"60%;;1;@;;;i ;["background-size;iÉ;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iÄ;$@•;iÄ;&0;'o;(;){ ;$@•;iÄ;@;["
-.news;o;; [o;!; [o;"
-; [o;3;$" ;["	news;i;$@≥;i;&0;'o;(;){ ;$@≥;i;@o;
-;T;i ;iÜ;	[o;
-;T;i ;iá;	[o;;o;;{ ;[o;0	;"content/home/settings.svg;;<;ià;@;"url;ià;0;@;;;i ;["background-image;ià;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;iâ;	[ ;@o;;o;0;"55%;;1;@;;;i ;["background-size;iä;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iá;$@€;iá;&0;'o;(;){ ;$@€;iá;@;[".settings;o;; [o;!; [o;"
-; [o;3;$" ;["settings;iÜ;$@È;iÜ;&0;'o;(;){ ;$@È;iÜ;@o:Sass::Tree::MixinNode;{ ;[ ;"pagemenu;iç;	[ ;0;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;ig;$@˝;ig;&0;'o;(;){ ;$@˝;ig;@o;4;" ;T;i ;iê;	[o;
-;T;i ;ië;	[o;;o;0;"	100%;;1;@;;;i ;["background-size;ië;	[ ;@;[">.logo;o;; [o;!; [">o;"
-; [o;3;$" ;["	logo;ië;$@;ië;&0;'o;(;){ ;$@;ië;@;5["screen"
- and "(o;0	;"max-aspect-ratio;;1;iê;@": o;6
-;iê;7o;;i;@;[ ;iê;"1;@;8;9;@;:o;;i;@;[ ;iê;"1;@");@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;iX;$@5;iX;&0;'o;(;){ ;$@5;iX;@;[">.home;o;; [o;!; [">o;"
-; [o;3;$" ;["	home;iT;$@D;iT;&0;'o;(;){ ;$@D;iT;@o;
-;T;i ;iñ;	[o;;o;0;"	100%;;1;@;;;i ;["height;ió;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;iò;	[ ;@o;
-;T;i ;iô;	[o;;o;0;"0;;1;@;;;i ;["margin;iö;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;iö;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;iö;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;iö;	[ ;@o;
-;T;i ;iõ;	[o;?;{ ;[ ;"pageheader;iú;	[ ;0;@o;
-;T;i ;iù;	[o;;o;;{ ;[o;0	;" content/support/support.svg;;<;iû;@;"url;iû;0;@;;;i ;["background-image;iû;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;iù;$@é;iù;&0;'o;(;){ ;$@é;iù;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;iõ;$@ù;iõ;&0;'o;(;){ ;$@ù;iõ;@o;
-;T;i ;i°;	[o;?;{ ;[ ;"pagemenu;i¢;	[ ;0;@o;
-;T;i ;i£;	[o;
-;T;i ;i§;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/support/faq.svg;;<;i•;@;"url;i•;0;@o:Sass::Script::Color	;0;i•:@attrs{	:rediˇ:
-alphai:
-greeniˇ:	blueiˇ;@o;0	;"no-repeat;;1;i•;@o;;i7;[ ;["%;i•;"50%;@o;;iU;[ ;["%;i•;"80%;@;i•;=;>;@;;;i ;["background;i•;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i¶;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i§;$@÷;i§;&0;'o;(;){ ;$@÷;i§;@;["	.faq;o;; [o;!; [o;"
-; [o;3;$" ;["faq;i£;$@‰;i£;&0;'o;(;){ ;$@‰;i£;@o;
-;T;i ;i©;	[o;
-;T;i ;i™;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/support/email.svg;;<;i´;@;"url;i´;0;@o;@	;0;i´;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;i´;@o;;i7;[ ;["%;i´;"50%;@o;;iU;[ ;["%;i´;"80%;@;i´;=;>;@;;;i ;["background;i´;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i¨;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i™;$@;i™;&0;'o;(;){ ;$@;i™;@;[".email;o;; [o;!; [o;"
-; [o;3;$" ;["
-email;i©;$@$;i©;&0;'o;(;){ ;$@$;i©;@o;
-;T;i ;iØ;	[o;
-;T;i ;i∞;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/support/chat.svg;;<;i±;@;"url;i±;0;@o;@	;0;i±;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;i±;@o;;i7;[ ;["%;i±;"50%;@o;;iU;[ ;["%;i±;"80%;@;i±;=;>;@;;;i ;["background;i±;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i≤;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i∞;$@V;i∞;&0;'o;(;){ ;$@V;i∞;@;["
-.chat;o;; [o;!; [o;"
-; [o;3;$" ;["	chat;iØ;$@d;iØ;&0;'o;(;){ ;$@d;iØ;@o;
-;T;i ;iµ;	[o;
-;T;i ;i∂;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/support/phone.svg;;<;i∑;@;"url;i∑;0;@o;@	;0;i∑;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;i∑;@o;;i7;[ ;["%;i∑;"50%;@o;;iU;[ ;["%;i∑;"80%;@;i∑;=;>;@;;;i ;["background;i∑;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i∏;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i∂;$@ñ;i∂;&0;'o;(;){ ;$@ñ;i∂;@;[".phone;o;; [o;!; [o;"
-; [o;3;$" ;["
-phone;iµ;$@§;iµ;&0;'o;(;){ ;$@§;iµ;@o;
-;T;i ;iª;	[o;
-;T;i ;iº;	[o;;o;;	;[
-o;;{ ;[o;0	;"!content/support/callback.svg;;<;iΩ;@;"url;iΩ;0;@o;@	;0;iΩ;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;iΩ;@o;;i7;[ ;["%;iΩ;"50%;@o;;iU;[ ;["%;iΩ;"80%;@;iΩ;=;>;@;;;i ;["background;iΩ;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;iæ;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iº;$@÷;iº;&0;'o;(;){ ;$@÷;iº;@;[".callback;o;; [o;!; [o;"
-; [o;3;$" ;["callback;iª;$@‰;iª;&0;'o;(;){ ;$@‰;iª;@o;
-;T;i ;i¡;	[o;
-;T;i ;i¬;	[o;;o;;	;[
-o;;{ ;[o;0	;"!content/support/messages.svg;;<;i√;@;"url;i√;0;@o;@	;0;i√;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;i√;@o;;i7;[ ;["%;i√;"50%;@o;;iU;[ ;["%;i√;"80%;@;i√;=;>;@;;;i ;["background;i√;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;iƒ;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i¬;$@;i¬;&0;'o;(;){ ;$@;i¬;@;[".messages;o;; [o;!; [o;"
-; [o;3;$" ;["messages;i¡;$@$;i¡;&0;'o;(;){ ;$@$;i¡;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;i°;$@3;i°;&0;'o;(;){ ;$@3;i°;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iô;$@A;iô;&0;'o;(;){ ;$@A;iô;@;[">.support;o;; [o;!; [">o;"
-; [o;3;$" ;["support;iñ;$@P;iñ;&0;'o;(;){ ;$@P;iñ;@o;
-;T;i ;iÀ;	[o;;o;0;"	100%;;1;@;;;i ;["height;iÃ;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;iÕ;	[ ;@o;
-;T;i ;iŒ;	[o;;o;0;"0;;1;@;;;i ;["margin;iœ;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;iœ;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;iœ;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;iœ;	[ ;@o;
-;T;i ;i–;	[o;?;{ ;[ ;"pageheader;i—;	[ ;0;@o;
-;T;i ;i“;	[o;;o;;{ ;[o;0	;"$content/portfolio/portfolio.svg;;<;i”;@;"url;i”;0;@;;;i ;["background-image;i”;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;i“;$@ö;i“;&0;'o;(;){ ;$@ö;i“;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;i–;$@©;i–;&0;'o;(;){ ;$@©;i–;@o;
-;T;i ;i÷;	[o;?;{ ;[ ;"pagemenu;i◊;	[ ;0;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;i÷;$@ø;i÷;&0;'o;(;){ ;$@ø;i÷;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iŒ;$@Õ;iŒ;&0;'o;(;){ ;$@Õ;iŒ;@;[">.portfolio;o;; [o;!; [">o;"
-; [o;3;$" ;["portfolio;iÀ;$@‹;iÀ;&0;'o;(;){ ;$@‹;iÀ;@o;
-;T;i ;i›;	[o;;o;0;"	100%;;1;@;;;i ;["height;iﬁ;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;iﬂ;	[ ;@o;
-;T;i ;i‡;	[o;;o;0;"0;;1;@;;;i ;["margin;i·;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i·;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;i·;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i·;	[ ;@o;
-;T;i ;i‚;	[o;?;{ ;[ ;"pageheader;i„;	[ ;0;@o;
-;T;i ;i‰;	[o;;o;;{ ;[o;0	;"content/news/news.svg;;<;iÂ;@;"url;iÂ;0;@;;;i ;["background-image;iÂ;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;i‰;$@&;i‰;&0;'o;(;){ ;$@&;i‰;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;i‚;$@5;i‚;&0;'o;(;){ ;$@5;i‚;@o;
-;T;i ;iË;	[o;?;{ ;[ ;"pagemenu;iÈ;	[ ;0;@o;
-;T;i ;iÍ;	[o;
-;T;i ;iÎ;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/news/markets.svg;;<;iÏ;@;"url;iÏ;0;@o;@	;0;iÏ;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;iÏ;@o;;i7;[ ;["%;iÏ;"50%;@o;;iU;[ ;["%;iÏ;"80%;@;iÏ;=;>;@;;;i ;["background;iÏ;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;iÌ;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iÎ;$@n;iÎ;&0;'o;(;){ ;$@n;iÎ;@;[".markets;o;; [o;!; [o;"
-; [o;3;$" ;["markets;iÍ;$@|;iÍ;&0;'o;(;){ ;$@|;iÍ;@o;
-;T;i ;i;	[o;
-;T;i ;iÒ;	[o;;o;;	;[
-o;;{ ;[o;0	;"content/news/service.svg;;<;iÚ;@;"url;iÚ;0;@o;@	;0;iÚ;A{	;Biˇ;Ci;Diˇ;Eiˇ;@o;0	;"no-repeat;;1;iÚ;@o;;i7;[ ;["%;iÚ;"50%;@o;;iU;[ ;["%;iÚ;"80%;@;iÚ;=;>;@;;;i ;["background;iÚ;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;iÛ;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;iÒ;$@Æ;iÒ;&0;'o;(;){ ;$@Æ;iÒ;@;[".service;o;; [o;!; [o;"
-; [o;3;$" ;["service;i;$@º;i;&0;'o;(;){ ;$@º;i;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;iË;$@À;iË;&0;'o;(;){ ;$@À;iË;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i‡;$@Ÿ;i‡;&0;'o;(;){ ;$@Ÿ;i‡;@;[">.news;o;; [o;!; [">o;"
-; [o;3;$" ;["	news;i›;$@Ë;i›;&0;'o;(;){ ;$@Ë;i›;@o;
-;T;i ;i˙;	[o;;o;0;"	100%;;1;@;;;i ;["height;i˚;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;i¸;	[ ;@o;
-;T;i ;i˝;	[o;;o;0;"0;;1;@;;;i ;["margin;i˛;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i˛;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;i˛;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;i˛;	[ ;@o;
-;T;i ;iˇ;	[o;?;{ ;[ ;"pageheader;i ;	[ ;0;@o;
-;T;i ;i;	[o;;o;;{ ;[o;0	;""content/settings/settings.svg;;<;i;@;"url;i;0;@;;;i ;["background-image;i;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;i;$@2;i;&0;'o;(;){ ;$@2;i;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;iˇ;$@A;iˇ;&0;'o;(;){ ;$@A;iˇ;@o;
-;T;i ;i;	[o;?;{ ;[ ;"pagemenu;i;	[ ;0;@o;
-;T;i ;i;	[o;
-;T;i ;i;	[o;;o;;{ ;[o;0	;" content/settings/locale.svg;;<;i	;@;"url;i	;0;@;;;i ;["background-image;i	;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i
-;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i;$@p;i;&0;'o;(;){ ;$@p;i;@;[".locale;o;; [o;!; [o;"
-; [o;3;$" ;["locale;i;$@~;i;&0;'o;(;){ ;$@~;i;@o;
-;T;i ;i;	[o;
-;T;i ;i;	[o;;o;;{ ;[o;0	;""content/settings/debug/on.svg;;<;i;@;"url;i;0;@;;;i ;["background-image;i;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i;	[ ;@;[".on;o;; [o;!; [o;"
-; [o;3;$" ;["on;i;$@¶;i;&0;'o;(;){ ;$@¶;i;@o;
-;T;i ;i;	[o;;o;;{ ;[o;0	;"#content/settings/debug/off.svg;;<;i;@;"url;i;0;@;;;i ;["background-image;i;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i;	[ ;@;["	.off;o;; [o;!; [o;"
-; [o;3;$" ;["off;i;$@Ã;i;&0;'o;(;){ ;$@Ã;i;@;[".debug;o;; [o;!; [o;"
-; [o;3;$" ;["
-debug;i;$@⁄;i;&0;'o;(;){ ;$@⁄;i;@o;
-;T;i ;i;	[o;
-;T;i ;i;	[o;;o;;{ ;[o;0	;""content/settings/cache/on.svg;;<;i;@;"url;i;0;@;;;i ;["background-image;i;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i;	[ ;@;[".on;o;; [o;!; [o;"
-; [o;3;$" ;["on;i;$@	;i;&0;'o;(;){ ;$@	;i;@o;
-;T;i ;i ;	[o;;o;;{ ;[o;0	;"#content/settings/cache/off.svg;;<;i!;@;"url;i!;0;@;;;i ;["background-image;i!;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i";	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i#;	[ ;@;["	.off;o;; [o;!; [o;"
-; [o;3;$" ;["off;i ;$@(	;i ;&0;'o;(;){ ;$@(	;i ;@;[".cache;o;; [o;!; [o;"
-; [o;3;$" ;["
-cache;i;$@6	;i;&0;'o;(;){ ;$@6	;i;@o;
-;T;i ;i&;	[o;
-;T;i ;i';	[o;;o;;{ ;[o;0	;"#content/settings/safety/on.svg;;<;i(;@;"url;i(;0;@;;;i ;["background-image;i(;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i);	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i*;	[ ;@;[".on;o;; [o;!; [o;"
-; [o;3;$" ;["on;i';$@^	;i';&0;'o;(;){ ;$@^	;i';@o;
-;T;i ;i,;	[o;;o;;{ ;[o;0	;"$content/settings/safety/off.svg;;<;i-;@;"url;i-;0;@;;;i ;["background-image;i-;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i.;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i/;	[ ;@;["	.off;o;; [o;!; [o;"
-; [o;3;$" ;["off;i,;$@Ñ	;i,;&0;'o;(;){ ;$@Ñ	;i,;@;[".safety;o;; [o;!; [o;"
-; [o;3;$" ;["safety;i&;$@í	;i&;&0;'o;(;){ ;$@í	;i&;@o;
-;T;i ;i2;	[o;
-;T;i ;i3;	[o;;o;;{ ;[o;0	;" content/settings/logout.svg;;<;i4;@;"url;i4;0;@;;;i ;["background-image;i4;	[ ;@o;;o;0;"50% 80%;;1;@;;;i ;["background-position;i5;	[ ;@o;;o;0;"70% 70%;;1;@;;;i ;["background-size;i6;	[ ;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i3;$@∫	;i3;&0;'o;(;){ ;$@∫	;i3;@;[".logout;o;; [o;!; [o;"
-; [o;3;$" ;["logout;i2;$@»	;i2;&0;'o;(;){ ;$@»	;i2;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;i;$@◊	;i;&0;'o;(;){ ;$@◊	;i;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i˝;$@Â	;i˝;&0;'o;(;){ ;$@Â	;i˝;@;[">.settings;o;; [o;!; [">o;"
-; [o;3;$" ;["settings;i˙;$@Ù	;i˙;&0;'o;(;){ ;$@Ù	;i˙;@o;
-;T;i ;i=;	[o;;o;0;"	100%;;1;@;;;i ;["height;i>;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;i?;	[ ;@o;
-;T;i ;i@;	[o;;o;0;"0;;1;@;;;i ;["margin;iA;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;iA;	[ ;@o;;o;0;"0;;1;@;;;i ;["border;iA;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["height;iA;	[ ;@o;
-;T;i ;iB;	[o;?;{ ;[ ;"pageheader;iC;	[ ;0;@o;
-;T;i ;iD;	[o;;o;;{ ;[o;0	;"content/charts/charts.svg;;<;iE;@;"url;iE;0;@;;;i ;["background-image;iE;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;iD;$@>
-;iD;&0;'o;(;){ ;$@>
-;iD;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;iB;$@M
-;iB;&0;'o;(;){ ;$@M
-;iB;@o;
-;T;i ;iH;	[o;?;{ ;[ ;"pagemenu;iI;	[ ;0;@;[">.menu;o;; [o;!; [">o;"
-; [o;3;$" ;["	menu;iH;$@c
-;iH;&0;'o;(;){ ;$@c
-;iH;@;[".wrapper;o;; [o;!; [o;"
-; [o;3;$" ;["wrapper;i@;$@q
-;i@;&0;'o;(;){ ;$@q
-;i@;@;[">.charts;o;; [o;!; [">o;"
-; [o;3;$" ;["charts;i=;$@Ä
-;i=;&0;'o;(;){ ;$@Ä
-;i=;@o;
-;T;i ;iO;	[o;;o;0;"	100%;;1;@;;;i ;["height;iP;	[ ;@o;;o;0;"
-fixed;;1;@;;;i ;["position;iQ;	[ ;@o;
-;T;i ;iR;	[	o;;o;0;"	100%;;1;@;;;i ;["height;iS;	[ ;@o;
-;T;i ;iU;	[o;?;{ ;[ ;"pageheader;iV;	[ ;0;@o;
-;T;i ;iW;	[o;;o;;{ ;[o;0	;"content/trade/trade.svg;;<;iX;@;"url;iX;0;@;;;i ;["background-image;iX;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;iW;$@∏
-;iW;&0;'o;(;){ ;$@∏
-;iW;@;[">.header;o;; [o;!; [">o;"
-; [o;3;$" ;["header;iU;$@«
-;iU;&0;'o;(;){ ;$@«
-;iU;@o;
-;T;i ;i\;	[o;
-;T;i ;i^;	[	o;;o;0;"	both;;1;@;;;i ;["
-clear;i_;	[ ;@o;
-;T;i ;ia;	[	o;;o;0;"	20px;;1;@;;;i ;["font-size;ib;	[ ;@o;;o;0;"	#000;;1;@;;;i ;["
-color;ic;	[ ;@o;;o;0;"	bold;;1;@;;;i ;["font-weight;id;	[ ;@o;;o;0;"0 1% 1.5% 1%;;1;@;;;i ;["padding;ie;	[ ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;ia;$@˙
-;ia;&0;'o;(;){ ;$@˙
-;ia;@o;
-;T;i ;ih;	[o;
-;T;i ;ii;	[o;;o;0;"0 1% 2% 1%;;1;@;;;i ;["margin;ij;	[ ;@o;;o;0;"	left;;1;@;;;i ;["
-float;ik;	[ ;@o;;o;0;"0.7% 1.5% 0.7% 1.5%;;1;@;;;i ;["padding;il;	[ ;@o;;o;0;"	#fff;;1;@;;;i ;["background;im;	[ ;@o;;o;0;"-0px 10px 20px #EEEEEE;;1;@;;;i ;["box-shadow;in;	[ ;@o;;o;0;"	20px;;1;@;;;i ;["font-size;io;	[ ;@o;;o;0;"2px solid #EAEAEA;;1;@;;;i ;["border;ip;	[ ;@o;;o;0;"1px;;1;@;;;i ;["border-top-width;iq;	[ ;@o;;o;0;"	10px;;1;@;;;i ;["border-radius;ir;	[ ;@o;
-;T;i ;is;	[o;;o;0;"pointer;;1;@;;;i ;["cursor;is;	[ ;@o;;o;0;"#f7f7f7;;1;@;;;i ;["background-color;is;	[ ;@;["&:hover;o;; [o;!; [o;"
-; [o:Sass::Selector::Parent;$" ;iso:Sass::Selector::Pseudo
-:	@arg0;:
-class;$@P;["
-hover;is;$@P;is;&0;'o;(;){ ;$@P;is;@;["
-> div;o;; [o;!; [">o;"
-; [o;2	;$" ;["div;ii;%0;$@`;ii;&0;'o;(;){ ;$@`;ii;@o;
-;T;i ;iv;	[o;?;{ ;[ ;"objselected;iw;	[ ;0;@;["> div.selected;o;; [o;!; [">o;"
-; [o;2	;$" ;["div;iv;%0o;3;$@v;["selected;iv;$@v;iv;&0;'o;(;){ ;$@v;iv;@;[">.data;o;; [o;!; [">o;"
-; [o;3;$" ;["	data;ih;$@à;ih;&0;'o;(;){ ;$@à;ih;@o;
-;T;i ;i{;	[o;;o;0;"	1.5%;;1;@;;;i ;["padding-top;i|;	[ ;@o;;o;0;"	none;;1;@;;;i ;["display;i};	[ ;@;["&:not(:first-child);o;; [o;!; [o;"
-; [o;F;$" ;i{o;G
-;H[":first-child;;I;$@§;["not;i{;$@§;i{;&0;'o;(;){ ;$@§;i{;@;["	>div;o;; [o;!; [">o;"
-; [o;2	;$" ;["div;i^;%0;$@∂;i^;&0;'o;(;){ ;$@∂;i^;@;[">.options;o;; [o;!; [">o;"
-; [o;3;$" ;["options;i\;$@≈;i\;&0;'o;(;){ ;$@≈;i\;@o;
-;T;i ;iÉ;	[	o;
-;T;i ;iÑ;	[o;;o;;i;[ ;["%;iÑ;"2%;@;;;i ;["margin-bottom;iÑ;	[ ;@;["> div:not(:last-child);o;; [o;!; [">o;"
-; [o;2	;$" ;["div;iÑ;%0o;G
-;H[":last-child;;I;$@·;["not;iÑ;$@·;iÑ;&0;'o;(;){ ;$@·;iÑ;@o;
-;T;i ;iá;	[o;;o;0;"3%;;1;@;;;i ;["margin-left;ià;	[ ;@o;
-;T;i ;iâ;	[
-o;;o;0;"	#fff;;1;@;;;i ;["
-color;iã;	[ ;@o;;o;0;"	14px;;1;@;;;i ;["font-size;iå;	[ ;@o;;o;0;"	bold;;1;@;;;i ;["font-weight;iç;	[ ;@o;;o;0;"inline-block;;1;@;;;i ;["display;ié;	[ ;@o;
-;T;i ;iê;	[o;;o;;	;[	o;;{ ;[o;0	;""content/trade/optionlevel.svg;;<;ië;@;"url;ië;0;@o;0	;"no-repeat;;1;ië;@o;;i	;[ ;["px;ië;"4px;@o;;i ;@;[ ;ië;"0;@;ië;=;>;@;;;i ;["background;ië;	[ ;@o;;o;0;"15px 15px;;1;@;;;i ;["background-size;ií;	[ ;@o;;o;0;"	22px;;1;@;;;i ;["padding-left;iì;	[ ;@;["&:not(:first-child);o;; [o;!; [o;"
-; [o;F;$" ;iêo;G
-;H[":first-child;;I;$@:;["not;iê;$@:;iê;&0;'o;(;){ ;$@:;iê;@;["	>div;o;; [o;!; [">o;"
-; [o;2	;$" ;["div;iâ;%0;$@L;iâ;&0;'o;(;){ ;$@L;iâ;@;[">.title;o;; [o;!; [">o;"
-; [o;3;$" ;["
-title;iá;$@[;iá;&0;'o;(;){ ;$@[;iá;@o;
-;T;i ;iö;	[
-o;;o;0;"
-green;;1;@;;;i ;["
-color;iõ;	[ ;@o;;o;0;"	10px;;1;@;;;i ;["border-radius;iú;	[ ;@o;;o;0;"	30px;;1;@;;;i ;["font-size;iù;	[ ;@o;;o;0;"inline-block;;1;@;;;i ;["display;iû;	[ ;@o;;o;0;"	bold;;1;@;;;i ;["font-weight;iü;	[ ;@;[">.spot;o;; [o;!; [">o;"
-; [o;3;$" ;["	spot;iö;$@ä;iö;&0;'o;(;){ ;$@ä;iö;@o;
-;T;i ;i¢;	[o;
-;T;i ;i£;	[o;;o;0;"	#000;;1;@;;;i ;["
-color;i§;	[ ;@o;;o;0;"	20px;;1;@;;;i ;["font-size;i§;	[ ;@o;
-;T;i ;i•;	[
-o;;o;0;"	16px;;1;@;;;i ;["font-size;i•;	[ ;@o;;o;0;"4px;;1;@;;;i ;["padding;i•;	[ ;@o;;o;0;"1px solid #444;;1;@;;;i ;["border;i•;	[ ;@o;;o;0;"1px;;1;@;;;i ;["border-radius;i•;	[ ;@o;;o;0;"	#fff;;1;@;;;i ;["background;i•;	[ ;@;["input, select;o;; [o;!; [o;"
-; [o;2	;$" ;["
-input;i•;%0;$@»;i•;&0;'o;(;){ o;!; [o;"
-; [o;2	;$@»;["select;i•;%0;$@»;i•;&0;'o;(;){ ;$@»;i•;@o;;o;;{ ;[	o;;iˇ;@;[ ;iß;"255;@o;;iˇ;@;[ ;iß;"255;@o;;iˇ;@;[ ;iß;"255;@o;;f0.80000000000000004 ôö;@;[ ;iß;"0.8;@;"	rgba;iß;0;@;;;i ;["background;iß;	[ ;@o;;o;0;"	10px;;1;@;;;i ;["border-radius;i®;	[ ;@o;;o;0;"2%;;1;@;;;i ;["padding;i©;	[ ;@;["
->form;o;; [o;!; [">o;"
-; [o;2	;$" ;["	form;i£;%0;$@;i£;&0;'o;(;){ ;$@;i£;@;[">.categories;o;; [o;!; [">o;"
-; [o;3;$" ;["categories;i¢;$@;i¢;&0;'o;(;){ ;$@;i¢;@;[">.purchase;o;; [o;!; [">o;"
-; [o;3;$" ;["purchase;iÉ;$@;iÉ;&0;'o;(;){ ;$@;iÉ;@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;iR;$@.;iR;&0;'o;(;){ ;$@.;iR;@;[">.trade;o;; [o;!; [">o;"
-; [o;3;$" ;["
-trade;iO;$@=;iO;&0;'o;(;){ ;$@=;iO;@;[">.wrapper;o;; [o;!; [">o;"
-; [o;3;$" ;["wrapper;i!;$@L;i!;&0;'o;(;){ ;$@L;i!;@o;
-;T;i ;i∑;	[o;;o;0;"
-fixed;;1;@;;;i ;["position;i∏;	[ ;@o;;o;;	;[o;;{ ;[o;0	;"status/close.svg;;<;iπ;@;"url;iπ;0;@o;;{ ;[	o;;i ;@;[ ;iπ;"0;@o;;i ;@;[ ;iπ;"0;@o;;i ;@;[ ;iπ;"0;@o;;f0.80000000000000004 ôö;@;[ ;iπ;"0.8;@;"	rgba;iπ;0;@o;0	;"no-repeat;;1;iπ;@;iπ;=;>;@;;;i ;["background;iπ;	[ ;@o;;o;0;"30px 30px;;1;@;;;i ;["background-size;i∫;	[ ;@o;;o;0;"right 10px top 10px;;1;@;;;i ;["background-position;iª;	[ ;@o;;o;0;"	100%;;1;@;;;i ;["
-width;iº;	[ ;@o;;o;0;"999999999;;1;@;;;i ;["z-index;iΩ;	[ ;@o;;o;0;"0;;1;@;;;i ;["bottom;iæ;	[ ;@o;;o;0;"0;;1;@;;;i ;["	left;iø;	[ ;@o;;o;0;"	#000;;1;@;;;i ;["
-color;i¿;	[ ;@o;;o;0;"solid 3px #fff;;1;@;;;i ;["border-top;i¡;	[ ;@o;;o;0;"	none;;1;@;;;i ;["display;i¬;	[ ;@o;
-;T;i ;i√;	[o;;o;0;"relative;;1;@;;;i ;["position;iƒ;	[ ;@o;;o;0;"12px 50px 20px 20px;;1;@;;;i ;["padding;i≈;	[ ;@o;
-;T;i ;i∆;	[o;;o;0;"0;;1;@;;;i ;["margin;i«;	[ ;@o;;o;0;"0;;1;@;;;i ;["padding;i»;	[ ;@o;
-;T;i ;i…;	[o;;o;0;"fadeInRightBig;;1;@;;;i ;["-webkit-animation-name;i ;	[ ;@o;;o;0;"fadeInRightBig;;1;@;;;i ;["-moz-animation-name;iÀ;	[ ;@o;;o;0;"fadeInRightBig;;1;@;;;i ;["-o-animation-name;iÃ;	[ ;@o;;o;0;"fadeInRightBig;;1;@;;;i ;["animation-name;iÕ;	[ ;@o;;o;0;"1s;;1;@;;;i ;["-webkit-animation-duration;iŒ;	[ ;@o;;o;0;"1s;;1;@;;;i ;["-moz-animation-duration;iœ;	[ ;@o;;o;0;"1s;;1;@;;;i ;["-ms-animation-duration;i–;	[ ;@o;;o;0;"1s;;1;@;;;i ;["-o-animation-duration;i—;	[ ;@o;;o;0;"1s;;1;@;;;i ;["animation-duration;i“;	[ ;@o;
-;T;i ;i”;	[o;;o;0;"0;;1;@;;;i ;["margin-right;i”;	[ ;@;[":last-child;o;; [o;!; [o;"
-; [o;G
-;H0;;I;$" ;["last-child;i”;$@;i”;&0;'o;(;){ ;$@;i”;@o;;o;0;"	none;;1;@;;;i ;["list-style;i‘;	[ ;@o;;o;0;"0 5px 10px #000;;1;@;;;i ;["box-shadow;i’;	[ ;@o;;o;0;"8px;;1;@;;;i ;["border-radius;i÷;	[ ;@o;;o;0;"2px solid #eee;;1;@;;;i ;["border;i◊;	[ ;@o;;o;0;"12px 12px 0 0;;1;@;;;i ;["margin;iÿ;	[ ;@o;;o;0;"12px 20px 12px 12px;;1;@;;;i ;["padding;iŸ;	[ ;@o;;o;0;"nowrap;;1;@;;;i ;["white-space;i⁄;	[ ;@o;;o;0;"inline-block;;1;@;;;i ;["display;i€;	[ ;@o;;o;0;"	#fff;;1;@;;;i ;["background;i‹;	[ ;@o;
-;T;i ;i›;	[o;;o;0;"	bold;;1;@;;;i ;["font-weight;i›;	[ ;@;[".title;o;; [o;!; [o;"
-; [o;3;$" ;["
-title;i›;$@_;i›;&0;'o;(;){ ;$@_;i›;@o;
-;T;i ;iﬁ;	[o;;o;0;"table-cell;;1;@;;;i ;["display;iﬂ;	[ ;@o;;o;0;"6px;;1;@;;;i ;["padding-right;i‡;	[ ;@o;
-;T;i ;i·;	[o;;o;0;"	24px;;1;@;;;i ;["
-width;i·;	[ ;@o;;o;0;"	24px;;1;@;;;i ;["height;i·;	[ ;@o;;o;0;"24px 24px;;1;@;;;i ;["background-size;i·;	[ ;@;["div;o;; [o;!; [o;"
-; [o;2	;$" ;["div;i·;%0;$@è;i·;&0;'o;(;){ ;$@è;i·;@o;
-;T;i ;i‚;	[o;;o;;	;[o;;{ ;[o;0	;"status/type/warn.png;;<;i‚;@;"url;i‚;0;@o;0	;"no-repeat;;1;i‚;@;i‚;=;>;@;;;i ;["background;i‚;	[ ;@;["
-.warn;o;; [o;!; [o;"
-; [o;3;$" ;["	warn;i‚;$@≠;i‚;&0;'o;(;){ ;$@≠;i‚;@o;
-;T;i ;i„;	[o;;o;;	;[o;;{ ;[o;0	;"status/type/info.png;;<;i„;@;"url;i„;0;@o;0	;"no-repeat;;1;i„;@;i„;=;>;@;;;i ;["background;i„;	[ ;@;["
-.info;o;; [o;!; [o;"
-; [o;3;$" ;["	info;i„;$@À;i„;&0;'o;(;){ ;$@À;i„;@o;
-;T;i ;i‰;	[o;;o;;	;[o;;{ ;[o;0	;"status/type/critical.png;;<;i‰;@;"url;i‰;0;@o;0	;"no-repeat;;1;i‰;@;i‰;=;>;@;;;i ;["background;i‰;	[ ;@;[".critical;o;; [o;!; [o;"
-; [o;3;$" ;["critical;i‰;$@È;i‰;&0;'o;(;){ ;$@È;i‰;@;["
-.type;o;; [o;!; [o;"
-; [o;3;$" ;["	type;iﬁ;$@˜;iﬁ;&0;'o;(;){ ;$@˜;iﬁ;@o;
-;T;i ;iÊ;	[o;;o;0;"table-cell;;1;@;;;i ;["display;iÁ;	[ ;@o;;o;0;"middle;;1;@;;;i ;["vertical-align;iË;	[ ;@o;
-;T;i ;iÈ;	[o;;o;0;"nowrap;;1;@;;;i ;["white-space;iÍ;	[ ;@o;;o;0;"
-block;;1;@;;;i ;["display;iÍ;	[ ;@o;
-;T;i ;iÎ;	[	o;;o;0;"0;;1;@;;;i ;["margin;iÏ;	[ ;@o;;o;0;"inline;;1;@;;;i ;["display;iÏ;	[ ;@o;;o;0;"	bold;;1;@;;;i ;["font-weight;iÏ;	[ ;@o;
-;T;i ;iÌ;	[o;;o;0;"'-';;1;@;;;i ;["content;iÌ;	[ ;@o;;o;0;"0 3pt 0 3pt;;1;@;;;i ;["padding;iÌ;	[ ;@;["&:after;o;; [o;!; [o;"
-; [o;F;$" ;iÌo;G
-;H0;;I;$@C;["
-after;iÌ;$@C;iÌ;&0;'o;(;){ ;$@C;iÌ;@;["
-.code;o;; [o;!; [o;"
-; [o;3;$" ;["	code;iÎ;$@R;iÎ;&0;'o;(;){ ;$@R;iÎ;@;["div;o;; [o;!; [o;"
-; [o;2	;$" ;["div;iÈ;%0;$@`;iÈ;&0;'o;(;){ ;$@`;iÈ;@;[".details;o;; [o;!; [o;"
-; [o;3;$" ;["details;iÊ;$@n;iÊ;&0;'o;(;){ ;$@n;iÊ;@;["li;o;; [o;!; [o;"
-; [o;2	;$" ;["li;i…;%0;$@|;i…;&0;'o;(;){ ;$@|;i…;@;["ul;o;; [o;!; [o;"
-; [o;2	;$" ;["ul;i∆;%0;$@ä;i∆;&0;'o;(;){ ;$@ä;i∆;@;["nav;o;; [o;!; [o;"
-; [o;2	;$" ;["nav;i√;%0;$@ò;i√;&0;'o;(;){ ;$@ò;i√;@;[">.status;o;; [o;!; [">o;"
-; [o;3;$" ;["status;i∑;$@ß;i∑;&0;'o;(;){ ;$@ß;i∑;@o;
-;T;i ;iˆ;	[o;
-;T;i ;i¯;	[o;;o;0;"	none;;1;@;;;i ;["outline;i˘;	[ ;@;[".input:focus, select:focus, textarea:focus;o;; [o;!; [o;"
-; [o;2	;$" ;["
-input;i¯;%0o;G
-;H0;;I;$@ø;["
-focus;i¯;$@ø;i¯;&0;'o;(;){ o;!; [o;"
-; [o;2	;$@ø;["select;i¯;%0o;G
-;H0;;I;$@ø;["
-focus;i¯;$@ø;i¯;&0;'o;(;){ o;!; [o;"
-; [o;2	;$@ø;["textarea;i¯;%0o;G
-;H0;;I;$@ø;["
-focus;i¯;$@ø;i¯;&0;'o;(;){ ;$@ø;i¯;@o;
-;T;i ;i¸;	[o;;o;0;"	none;;1;@;;;i ;["display;i˝;	[ ;@o;;o;0;"absolute;;1;@;;;i ;["position;i˛;	[ ;@o;;o;0;"1;;1;@;;;i ;["line-height;iˇ;	[ ;@o;;o;0;"1px;;1;@;;;i ;["border-radius;i ;	[ ;@o;;o;0;"2px 0 0 1px;;1;@;;;i ;["margin;i;	[ ;@o;;o;0;"nowrap;;1;@;;;i ;["white-space;i;	[ ;@o;;o;0;"	12px;;1;@;;;i ;["font-size;i;	[ ;@o;;o;0;"#fff496;;1;@;;;i ;["background-color;i;	[ ;@o;;o;0;"#111111;;1;@;;;i ;["
-color;i;	[ ;@o;;o;0;"2px 3px 2px 3px;;1;@;;;i ;["padding;i;	[ ;@o;;o;0;"
-99999;;1;@;;;i ;["z-index;i;	[ ;@;[">.apmessage;o;; [o;!; [">o;"
-; [o;3;$" ;["apmessage;i¸;$@-;i¸;&0;'o;(;){ ;$@-;i¸;@;["	form;o;; [o;!; [o;"
-; [o;2	;$" ;["	form;iˆ;%0;$@;;iˆ;&0;'o;(;){ ;$@;;iˆ;@;["	body;o;; [o;!; [o;"
-; [o;2	;$" ;["	body;i;%0;$@I;i;&0;'o;(;){ ;$@I;i;@o;
-;["/* app css */;;;i;	[ ;@o;
-;T;i ;i;	[o;;o;0;"relative;;1;@;;;i ;["position;i;	[ ;@o;
-;T;i ;i;	[o;;o;0;"absolute;;1;@;;;i ;["position;i;	[ ;@o;;o;0;"99999999;;1;@;;;i ;["z-index;i;	[ ;@o;;o;0;"
-1.7em;;1;@;;;i ;["
-width;i;	[ ;@o;;o;0;"
-1.7em;;1;@;;;i ;["height;i;	[ ;@o;;o;0;"50%;;1;@;;;i ;["	left;i;	[ ;@o;;o;0;"5px;;1;@;;;i ;["top;i;	[ ;@o;;o;0;"solid #000 1em;;1;@;;;i ;["border;i;	[ ;@o;;o;0;"transparent;;1;@;;;i ;["border-right-color;i;	[ ;@o;;o;0;"50%;;1;@;;;i ;["border-radius;i;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-webkit-animation;i;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-moz-animation;i;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-ms-animation;i;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["-o-animation;i;	[ ;@o;;o;0;"spin 1s linear infinite;;1;@;;;i ;["animation;i;	[ ;@;["div;o;; [o;!; [o;"
-; [o;2	;$" ;["div;i;%0;$@π;i;&0;'o;(;){ ;$@π;i;@;["
-.ajax;o;; [o;!; [o;"
-; [o;3;$" ;["	ajax;i;$@«;i;&0;'o;(;){ ;$@«;i;@;@

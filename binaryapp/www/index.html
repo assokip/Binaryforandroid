@@ -1,145 +1,161 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="cdn/index.css" />
-        <title>Binary.com Client App</title>
-        <script type="text/javascript" async="false" src="cordova.js"></script>
-        <script type="text/javascript" async="false" src="app/core.js"></script>
-        <script type="text/javascript" async="false" src="app/program.js"></script>
-    </head>
-    <body>
-        
-        <div class="loading">
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<link rel="stylesheet" type="text/css" href="app/program.css" />
+<link rel="stylesheet" type="text/css" href="app/loading.css" />
+<title>Binary.com Client App</title>
+<script type="text/javascript" async="false" src="cordova.js"></script>
+<script type="text/javascript" async="false" src="app/functions.js"></script>
+<script type="text/javascript" async="false" src="app/program.js"></script>
+</head>
+<body>
+    
+<script></script>
+<noscript>Javascript is not enabled. We can't load this application without it.</noscript>
+
+<div class="loading">
+    <div class="wrapper">
+        <div class="logo"></div>
+        <div class="abort">
+            <div class="browser">
+                <div class="incompatible">
+                Your Browser is incompatible with this application. Please upgrade.
+                </div>
+            </div>    
+        </div>
+        <div class="progress">
             <div class="wrapper">
-                <div class="progress">
-                    <div class="wrapper">
-                        <div class="percent"></div>
-                    </div>
+                <div class="percent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    
+    <div class="home">
+        <div class="wrapper">
+            <div class="logo"></div>
+            <div class="menu">
+                <div class="trade"><div class="wrapper">Trade</div></div>
+                <div class="portfolio"><div class="wrapper disabled">Portfolio</div></div>
+                <div class="charts"><div class="wrapper disabled">Charts</div></div>
+                <div class="news"><div class="wrapper">News</div></div>
+                <div class="support"><div class="wrapper">Support</div></div>
+                <div class="settings"><div class="wrapper">Settings</div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="trade_options">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Trade</div>
+            </div>
+            <div class="content">
+                <div class="markets"><div class="title">Markets</div><div class="data"></div></div>
+                <div class="submarkets"><div class="title">Sub Markets</div><div class="data"></div></div>
+                <div class="symbols"><div class="title">Symbols</div><div class="data"></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="trade_purchase">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Trade</div>
+            </div>
+            <div class="content">
+                <div class="header">
+                    <div class="location"><div class="market"></div><div class="submarket"></div><div class="symbol"></div></div>
+                    <div class="spot"><div class="value"></div></div>
+                    <div class="sparkline"></div>
+                </div>
+                <div class="contracttype"><div class="title">Contract</div><div class="data"></div></div>
+                <div class="duration" style="display:none">
+                    <div class="title">Duration</div>
+                    <input type="text" size=5> <select><option value="days">days<option value="hours">hours<option value="minutes">minutes<option value="seconds">seconds</select>
                 </div>
             </div>
         </div>
-
-        <div class="main">
-            
-            <div class="home">
-                <div class="wrapper">
-                    <div class="logo"></div>
-                    <div class="menu">
-                        <div class="trade"><div class="wrapper">Trade</div></div>
-                        <div class="portfolio"><div class="wrapper">Portfolio</div></div>
-                        <div class="charts"><div class="wrapper">Charts</div></div>
-                        <div class="news"><div class="wrapper">News</div></div>
-                        <div class="support"><div class="wrapper">Support</div></div>
-                        <div class="settings"><div class="wrapper">Settings</div></div>
-                    </div>
-                </div>
+    </div>
+    
+    <div class="portfolio">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Portfolio</div>
             </div>
-            
-            <div class="trade">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">Trade</div>
-                    </div>
-                    <div class="content options">
-                        <div class="markets"><div class="title">Markets</div><div class="data"></div></div>
-                        <div class="submarkets"><div class="title">Sub Markets</div><div class="data"></div></div>
-                        <div class="symbols"><div class="title">Symbols</div><div class="data"></div></div>
-                    </div>
-                    <div class="content purchase">
-                        
-                        <div class="header">
-                            <div class="location"><div class="market"></div><div class="submarket"></div><div class="symbol"></div></div>
-                            <div class="spot"><div class="value"></div></div>
-                            <div class="sparkline"></div>
-                        </div>
-                        <div class="contracttype"><div class="title">Contract</div><div class="data"></div></div>
-                        <div class="duration" style="display:none">
-                            <div class="title">Duration</div>
-                            <input type="text" size=5> <select><option value="days">days<option value="hours">hours<option value="minutes">minutes<option value="seconds">seconds</select>
-                        </div>
-                        
-                          
-                        
-                    </div>
-                </div>
-            </div>
-            
-            <div class="portfolio">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">Portfolio</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="charts">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">Charts</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="news">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">News</div>
-                    </div>
-                    <div class="menu">
-                        <div class="markets"><div class="wrapper">Markets</div></div>
-                        <div class="service"><div class="wrapper">Service</div></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="support">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">Support</div>
-                    </div>
-                    <div class="menu">
-                        <div class="faq"><div class="wrapper">FAQ</div></div>
-                        <div class="email"><div class="wrapper">Email</div></div>
-                        <div class="chat"><div class="wrapper">Chat</div></div>
-                        <div class="phone"><div class="wrapper">Phone</div></div>
-                        <div class="callback"><div class="wrapper">Callback</div></div>
-                        <div class="messages"><div class="wrapper">Messages</div></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="settings">
-                <div class="wrapper">
-                    <div class="header">
-                        <div class="back"></div>
-                        <div class="logo"></div>
-                        <div class="title">Settings</div>
-                    </div>
-                    <div class="menu">
-                        <div class="locale"><div class="wrapper">Locale</div></div>
-                        <div class="cache"><div class="wrapper">Cache</div></div>
-                        <div class="debug"><div class="wrapper">Debug</div></div>
-                        <div class="safety"><div class="wrapper">Safety</div></div>
-                        <div class="logout"><div class="wrapper">Logout</div></div>
-
-                    </div>
-                </div>
-            </div>
-        
         </div>
-
-    </body>
+    </div>
+    
+    <div class="charts">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Charts</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">News</div>
+            </div>
+            <div class="menu">
+                <div class="markets"><div class="wrapper disabled">Markets</div></div>
+                <div class="service"><div class="wrapper disabled">Service</div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="support">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Support</div>
+            </div>
+            <div class="menu">
+                <div class="faq"><div class="wrapper disabled" >FAQ</div></div>
+                <div class="email"><div class="wrapper disabled">Email</div></div>
+                <div class="chat"><div class="wrapper disabled">Chat</div></div>
+                <div class="phone"><div class="wrapper disabled">Phone</div></div>
+                <div class="callback"><div class="wrapper disabled">Callback</div></div>
+                <div class="messages"><div class="wrapper disabled">Messages</div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="logo"></div>
+                <div class="title">Settings</div>
+            </div>
+            <div class="menu">
+                <div class="locale"><div class="wrapper disabled">Locale</div></div>
+                <div class="cache"><div class="wrapper">Cache</div></div>
+                <div class="debug"><div class="wrapper">Debug</div></div>
+                <div class="safety"><div class="wrapper">Safety</div></div>
+                <div class="logout"><div class="wrapper">Logout</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

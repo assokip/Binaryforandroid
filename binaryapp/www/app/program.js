@@ -1,46 +1,72 @@
-window.addEventListener('load', function() { 
+window.addEventListener('load', function() {
     
-    app = new App();
+    app = new Object();
+    var env = AppEnv();
+
+    /* application plugins below */
+    var p = new Array();
+    var b = env.browser;
+    var be = b.engine;
+    var bj = b.js;
+    if (bj.version < 1.6) p.push({ name:'polyfix.js.1.6' });
+    if (bj.version < 1.81) p.push({ name:'polyfix.js.1.8.1' });
+    if (bj.version < 1.85) p.push({ name:'polyfix.js.1.8.5' });
+    if (be.name === 'ie' && parseInt(be.version) === 8) p.push({ name:'polyfix.ie.8' });
+    p.push({ name:'fastclick' });
+    p.push({ name:'core' });
+    p.push({ name:'core.debug' });
+    p.push({ name:'core.events' });
+    p.push({ name:'core.stash' });
+    p.push({ name:'core.store' });
+    p.push({ name:'core.cache' });
+    p.push({ name:'core.cordova' });
+    // p.push({ name:'core.jsload' });
+    p.push({ name:'core.url' });
+    p.push({ name:'core.currency' });
+    p.push({ name:'core.connection' });
+    p.push({ name:'core.connection.xhr' });
+    p.push({ name:'core.form' });
+    p.push({ name:'core.form.message' });
+    p.push({ name:'core.oauth2' });
+    p.push({ name:'binarycom', type:'css' });
+    if (be.name === 'ie' && parseInt(be.version) === 8) { p.push({ name:'binarycom.fonts.eot', type:'css' }); }
+    else { p.push({ name:'binarycom.fonts.otf', type:'css' }); }
+    p.push({ name:'binarycom' });
+    p.push({ name:'binarycom.status' });
+    p.push({ name:'binarycom.apigee' });
+    p.push({ name:'binarycom.safety' });
+    p.push({ name:'binarycom.navigate' });
+    p.push({ name:'binarycom.sparkline' });
+    p.push({ name:'binarycom.models' });
+    p.push({ name:'binarycom.models.home' });
+    p.push({ name:'binarycom.models.trade' });
+    p.push({ name:'binarycom.models.charts' });
+    p.push({ name:'binarycom.models.news' });
+    p.push({ name:'binarycom.models.portfolio' });
+    p.push({ name:'binarycom.models.support' });
+    p.push({ name:'binarycom.models.settings' });
     
     var loading = document.querySelector('body .loading');
     
     // init plugins
-    app.plugins.load({ root:'app', plugins: new Array(
-	
-        'core',
-	'core.debug',
-	'core.events',
-        'core.stash',
-	'core.store',
-	'core.cache',
-	'core.cordova',
-	//'core.jsload',
-	'core.url',
-	'core.currency',
-	'core.connection',
-	'core.connection.xhr',
-	'core.form',
-	'core.form.message',
-	'core.oauth2',
-	'binarycom',
-	'binarycom.status',
-	'binarycom.apigee',
-	'binarycom.safety',
-	'binarycom.navigate',
-	'binarycom.sparkline',
-	'binarycom.models',
-	'binarycom.models.home',
-	'binarycom.models.trade',
-	'binarycom.models.charts',
-	'binarycom.models.news',
-	'binarycom.models.portfolio',
-	'binarycom.models.support',
-	'binarycom.models.settings'
-	
-    ), onProgress : function(p) {
+    AppLoader({ root:'app', env:env, plugins:p, onProgress : function(p) {
 	
 	loading.querySelector('.wrapper >.progress >.wrapper >.percent').style.width = p.percent +'%';
 	
+    }, onAbort : function(o) {
+	
+	var loading = document.querySelector('body .loading');
+	loading.parentNode.removeChild(loading.querySelector('.progress'));
+	var abort = loading.querySelector('.abort');
+	abort.style.display='';
+	
+	if (o.browser && o.browser.incompatible) {
+	    abort.style.display='block';
+	    var b = abort.querySelector('.browser');
+	    b.style.display='block';
+	    b.querySelector('.incompatible').style.display='block';
+	}
+
     }, onCompletion : function() {
 	
 	loading.parentNode.removeChild(loading);
@@ -69,24 +95,6 @@ window.addEventListener('load', function() {
 	app.core.events.listeners.add('core.log.append', function (o) {
 	    if (o.type !== 'debug') return;
 	    if (typeof console !== 'undefined') console.log(o.message);
-	});
-
-	// view listeners
-	var mvms = document.querySelector('body >.main >.settings >.wrapper >.menu');
-	app.core.events.listeners.add('core.cache.mode.set', function (o) {
-	 mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-	});
-	app.core.events.listeners.add('core.debug.mode.set', function (o) {
-	    mvms.querySelector('.debug >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-	});
-	app.core.events.listeners.add('binarycom.safety.mode.set', function (o) {
-	    mvms.querySelector('.safety >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
-	});
-	app.core.events.listeners.add('binarycom.apigee.login.success', function (o) {
-	    mvms.querySelector('.logout >.wrapper').className = 'wrapper';
-	 });
-	app.core.events.listeners.add('binarycom.apigee.logout.success', function (o) {
-	    mvms.querySelector('.logout >.wrapper').className = 'wrapper disabled';
 	});
 
 	// debug listeners - other
@@ -128,7 +136,7 @@ window.addEventListener('load', function() {
 	app.core.events.listeners.add('core.connection.exec.start', function (o) {
 	    var s = o.status;
 	    if (! s.nextto) return;
-	    if (s.container) s.nextto.removeChild(s.container);
+	    if (s.container && s.container.parentNode === s.nextto) s.nextto.removeChild(s.container);
 	    s.container = document.createElement('div');
 	    s.container.className = 'app-core-connection-xhr';
 	    s.nextto.appendChild(s.container);
@@ -136,12 +144,14 @@ window.addEventListener('load', function() {
 	    icon.className = 'loading';
 	    s.container.appendChild(icon);
 	});
-	app.core.events.listeners.add('core.connection.exec.end', function (o) {
+	var f = function (o) {
 	    var s = o.status;
 	    if (! s.nextto || ! s.container) return;
 	    if (s.container.parentNode === s.nextto) s.nextto.removeChild(s.container);
 	    s.container=null;
-	});
+	}
+	app.core.events.listeners.add('core.connection.exec.aborted', f);
+	app.core.events.listeners.add('core.connection.exec.success', f);
 	app.core.events.listeners.add('core.connection.exec.error', function (o) {
 	    var s = o.status;
 	    if (! s.nextto || ! s.container) return;
@@ -182,7 +192,9 @@ window.addEventListener('load', function() {
 	// previous login?
 	var pl = app.binarycom.apigee.status.get();
 	if (pl) app.binarycom.status.append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
-	else { logout.getElementsByClassName('wrapper')[0].className = 'wrapper disabled'; }
+	    
+	// main visible
+	document.querySelector('body .main').style.display='block';
 	    
 	// show home view
 	app.binarycom.models.home.init();
