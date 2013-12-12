@@ -1,40 +1,45 @@
 function AppPlugin(app) {
     
-    app.core.connection = {
-        source : {
+    app['core.connection'] = new function() {
+        
+        var self = this;
+
+        this.source = {
             def : {
                 value:null,
                 set : function(o) { this.value=o; },
-                get : function() { return this.value; }
+                get : function() { return self.value; }
             }
         },
-        types : {},
-        pool : new Array(),
-        count : function() { return this.pool.length },
-        active : {
+        this.types = {},
+        this.pool = new Array(),
+        this.count = function() { return self.pool.length },
+        this.active = {
             pool : new Array(),
-            count : function() { return this.pool.length },
-            add : function(o) { this.pool.push(o) },
-            remove : function(o) { this.pool.splice(this.pool.indexOf(o), 1); }
+            count : function() { return self.pool.length },
+            add : function(o) { self.pool.push(o) },
+            remove : function(o) { self.pool.splice(self.pool.indexOf(o), 1); }
         },
-        create : function(o) {
+        this.create = function(o) {
             if (! o) o = {};
             if (! o.type) o.type = 'xhr';
-            var c = new app.core.connection.types[o.type](o);
-            app.core.events.dispatch('core.connection.created',c);
-            app.core.connection.pool.push(c);
+            var c = new self.types[o.type](o);
+            app['core.events'].dispatch('core.connection.created',c);
+            self.pool.push(c);
             return c;
         },
-        remove : function(o) {
-            app.core.events.dispatch('core.connection.removed',o);
-            app.core.connection.pool.splice(this.pool.indexOf(o), 1);
+        this.remove = function(o) {
+            app['core.events'].dispatch('core.connection.removed',o);
+            self.pool.splice(self.pool.indexOf(o), 1);
         },
-        abort : function(o) {
-            var i = app.core.connection.pool.indexOf(o);
+        this.abort = function(o) {
+            var i = self.pool.indexOf(o);
             if (i===-1) return;
-            app.core.connection.pool[i].abort();
+            self.pool[i].abort();
         }
         
     };
     
 };
+
+AppPluginLoaded=true;

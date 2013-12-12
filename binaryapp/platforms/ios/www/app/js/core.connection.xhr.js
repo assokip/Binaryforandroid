@@ -2,7 +2,7 @@ function AppPlugin(app) {
 
     if (typeof XMLHttpRequest === 'undefined') return;
 
-    app.core.connection.types['xhr'] = function (o) {
+    app['core.connection'].types['xhr'] = function (o) {
 	var self = this;
 	this.data = null;
 	this.exe = o.exe? o.exe : null;
@@ -59,7 +59,7 @@ function AppPlugin(app) {
             xhr.abort();
             if (! this.loading) return;
 	    this.loading=false;
-	    app.core.events.dispatch('core.connection.exec.aborted', this);
+	    app['core.events'].dispatch('core.connection.exec.aborted', this);
             if (self.onEnd) self.onEnd();
 	};
 	if (! ('onload' in xhr) && 'onreadystatechange' in xhr) { //xhr1 compat
@@ -72,27 +72,27 @@ function AppPlugin(app) {
 	    self.loading=false;
 	    if (xhr.status === 200) {
                 try { self.data = xhr.responseText.length? JSON.parse(xhr.responseText) : new Object; }
-                catch(e) { app.core.events.dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
+                catch(e) { app['core.events'].dispatch('core.connection.exec.data.json.error', { xhr:xhr, err:e }); }
                 if (self.onCompletion) self.onCompletion(self.data);
-                app.core.events.dispatch('core.connection.exec.success', self);
+                app['core.events'].dispatch('core.connection.exec.success', self);
             } else if (xhr.status === 302) {
                 self.resource = '';
                 self.run();
-                app.core.events.dispatch('core.connection.exec.success', self);
+                app['core.events'].dispatch('core.connection.exec.success', self);
 	    } else {
                 if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
                 if (self.onError) self.onError();
-                app.core.events.dispatch('core.connection.exec.error', self);
+                app['core.events'].dispatch('core.connection.exec.error', self);
 	    }
-	    app.core.events.dispatch('core.connection.exec.end', self);
+	    app['core.events'].dispatch('core.connection.exec.end', self);
             if (self.onEnd) self.onEnd();
 	};
 	xhr.onerror = function(o) {
 	    self.loading=false;
 	    if ((! o || ! o.fatal) && xhr.status === 0 && self.autoretry.attempts !== -1) { s = setTimeout(self.run,self.autoretry.delay); return; } // retry
 	    if (self.onError) self.onError();
-	    app.core.events.dispatch('core.connection.exec.error', self);
-            app.core.events.dispatch('core.connection.exec.end', self);
+	    app['core.events'].dispatch('core.connection.exec.error', self);
+            app['core.events'].dispatch('core.connection.exec.end', self);
             if (self.onEnd) self.onEnd();
 	};
 	this.run = function() {
@@ -115,10 +115,12 @@ function AppPlugin(app) {
 		xhr.setRequestHeader(key, self.headers.list[key].call());
 	    }
 	    self.loading=true;
-	    app.core.events.dispatch('core.connection.exec.start', self);
+	    app['core.events'].dispatch('core.connection.exec.start', self);
 	    xhr.send((this.action==='POST')? url : null);
 
         };
     };
 
 };
+
+AppPluginLoaded=true;

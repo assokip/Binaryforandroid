@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.core.currency = {
+    app['core.currency'] = {
         validate : function(s,o) {
             if (o && o.allowneg) return RegExp(/^-?\d+(\.\d{2})?$/).test(String(s).trim());
             return RegExp(/^\d+(\.\d{2})?$/).test(String(s).trim());
@@ -15,3 +15,5 @@ function AppPlugin(app) {
     };
     
 };
+
+AppPluginLoaded=true;

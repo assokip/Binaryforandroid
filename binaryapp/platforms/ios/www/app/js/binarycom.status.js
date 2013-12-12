@@ -4,7 +4,7 @@ function AppPlugin(app) {
     stc.className = 'status';
     document.body.appendChild(stc);
     stc.addEventListener('click', function() {
-        app.binarycom.status.remove();
+        app['binarycom.status'].remove();
         this.style.display='none';
     });
     var nav = document.createElement('nav');
@@ -12,7 +12,7 @@ function AppPlugin(app) {
     var ul = document.createElement('ul');
     nav.appendChild(ul);
     
-    app.binarycom.status = {
+    app['binarycom.status'] = {
         pool : new Array(),
         remove : function(l) {
             if (l) {
@@ -59,3 +59,5 @@ function AppPlugin(app) {
         }
     };
 };
+
+AppPluginLoaded=true;

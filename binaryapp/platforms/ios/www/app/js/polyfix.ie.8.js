@@ -67,3 +67,6 @@ if (!window.addEventListener) {
 	}
 
 };
+
+
+AppPluginLoaded=true;

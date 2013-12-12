@@ -48,3 +48,5 @@ if (!Function.prototype.bind) {
 	}; 
     };
 }
+
+AppPluginLoaded=true;

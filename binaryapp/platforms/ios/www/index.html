@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
 <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <link rel="stylesheet" type="text/css" href="app/program.css" />
 <link rel="stylesheet" type="text/css" href="app/loading.css" />
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
 <title>Binary.com Client App</title>
 <script type="text/javascript" async="false" src="cordova.js"></script>
 <script type="text/javascript" async="false" src="app/functions.js"></script>
@@ -19,16 +21,13 @@
 <div class="loading">
     <div class="wrapper">
         <div class="logo"></div>
-        <div class="abort">
-            <div class="browser">
-                <div class="incompatible">
-                Your Browser is incompatible with this application. Please upgrade.
-                </div>
-            </div>    
-        </div>
         <div class="progress">
             <div class="wrapper">
-                <div class="percent"></div>
+                <div class="abort">
+                    <div class="incompatible">Your Browser is incompatible with this application. Please upgrade.</div>
+                    <div class="error">An error occured while loading the application.</div> 
+                </div>
+                <div class="percent">&nbsp;</div>
             </div>
         </div>
     </div>
@@ -42,7 +41,7 @@
             <div class="menu">
                 <div class="trade"><div class="wrapper">Trade</div></div>
                 <div class="portfolio"><div class="wrapper disabled">Portfolio</div></div>
-                <div class="charts"><div class="wrapper disabled">Charts</div></div>
+                <div class="charts"><div class="wrapper">Charts</div></div>
                 <div class="news"><div class="wrapper">News</div></div>
                 <div class="support"><div class="wrapper">Support</div></div>
                 <div class="settings"><div class="wrapper">Settings</div></div>
@@ -60,7 +59,7 @@
             <div class="content">
                 <div class="markets"><div class="title">Markets</div><div class="data"></div></div>
                 <div class="submarkets"><div class="title">Sub Markets</div><div class="data"></div></div>
-                <div class="symbols"><div class="title">Symbols</div><div class="data"></div></div>
+                <div class="symbols"><div class="title">Instrument</div><div class="data"></div></div>
             </div>
         </div>
     </div>
@@ -104,6 +103,59 @@
                 <div class="logo"></div>
                 <div class="title">Charts</div>
             </div>
+            <div class="content">
+                <div id="live_chart_form_wrapper">
+                <form>
+                Market
+                <select id="market_select" name="market">
+                </select>
+                <span id="instrument_span">
+                Instrument
+                <select id="instrument_select" name="instrument">
+                </select>
+                </span>
+                <input type="checkbox" id="extended_options_checkbox">
+                Show extended options
+                </form>
+                <br>
+                <form>
+                From
+                <input type="text" size="11" id="live_charts_from_date" class="live_charts_date_time">
+                <input type="text" size="9" id="live_charts_from_time" class="live_charts_date_time">
+                To
+                <input type="text" size="11" id="live_charts_to_date" class="live_charts_date_time">
+                <input type="text" size="9" id="live_charts_to_time" class="live_charts_date_time">
+                &nbsp;
+                <input type="button" name="show" value="Show" id="live_charts_show_interval"
+                title="Show chart for the given dates">
+                </form>
+                <br/>
+                <div id="live_chart_extended_options">
+                <form>
+                High barrier
+                <input type="text" size="11" id="live_charts_high_barrier" class="live_charts_clear_on_update">
+                Low barrier
+                <input type="text" size="11" id="live_charts_low_barrier" class="live_charts_clear_on_update">
+                <input type="checkbox" id="live_charts_show_spot" class="live_charts_clear_on_update">Spot
+                </form>
+                </div>
+                <br/>
+                
+                <div class="notice" id="delayed_feed_notice">
+                    Realtime data is not available for this underlying
+                </div>
+                <div class="notice" id="not_available_notice">
+                    Charting is not available for this underlying
+                </div>
+                </div>
+                
+                <div id="live_chart_div"></div>
+                <div id="foo"></div>
+                
+            </div>    
+            
+            
+            
         </div>
     </div>
     

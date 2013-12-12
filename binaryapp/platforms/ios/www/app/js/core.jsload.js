@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.core.jsLoad = function(o) {
+    app['core.jsLoad'] = function(o) {
         var e = document.createElement('script');
         e.type = 'text/javascript';
         e.src = o.file;
@@ -17,3 +17,5 @@ function AppPlugin(app) {
     };
 
 };
+
+AppPluginLoaded=true;

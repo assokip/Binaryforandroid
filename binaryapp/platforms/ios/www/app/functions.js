@@ -33,7 +33,6 @@ AppEnv = function() {
 
 };
 
-
 AppLoader = function(p) {
     var root = p.root;
     var plugins = p.plugins;
@@ -48,15 +47,21 @@ AppLoader = function(p) {
         var file = root + '/'+type+'/' + plugin.name + '.' +type;
         if (type === 'js') { o.src = file; }
         else { o.href = file; }
+        o.async = false;
 	o.onload = o.onreadystatechange = function() {
 	    if (o.done || (this.readyState && ! (this.readyState === "loaded" || this.readyState === "complete"))) return;
 	    o.done = true;
 	    if (type === 'js') {
-		var r = AppPlugin(app,p.env);
-		if (typeof r === 'object' && r.abort) {
-		    abort=true;
-		    p.onAbort({ reason:r.abort });
-		}
+                if (AppPluginLoaded===false) {
+                    abort=true;
+                    p.onAbort({ error : { file: { syntax:true } }});
+                } else {
+                    var r = AppPlugin(app,p.env);
+                    if (typeof r === 'object' && r.abort) {
+                        abort=true;
+                        p.onAbort({ abort:r.abort });
+                    }
+                }
 	    }
 	    o.onload = o.onreadystatechange = null; // IE memory leak fix
 	    if (type === 'js') o.parentNode.removeChild(o);
@@ -70,7 +75,12 @@ AppLoader = function(p) {
 		p.onCompletion();
 	    }
 	}
+        o.onerror = function() {
+            p.onAbort({ error : { file : { fetch:true }} });
+        }
+        
 	AppPlugin = function() {}; // wipe
+        if (type === 'js') AppPluginLoaded=false;
 	var s = document.getElementsByTagName('head')[0];
 	s.parentNode.insertBefore(o,s);
         

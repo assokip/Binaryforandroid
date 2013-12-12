@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.core.form.message = {
+    app['core.form.message'] = {
 
         list : new Object(),
         show : function(o) {
@@ -35,3 +35,5 @@ function AppPlugin(app) {
     }
     
 };
+
+AppPluginLoaded=true;

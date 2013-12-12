@@ -1,5 +1,5 @@
 function AppPlugin(app) {
-    app.binarycom.navigate = {
+    app['binarycom.navigate'] = {
         current : null,
      
         to : function(o) {
@@ -20,7 +20,7 @@ function AppPlugin(app) {
                 v.style.zIndex = 1;
                 if (self.current) self.current.style.zIndex=0;
                 v.style.visibility='visible';
-                app.core.events.dispatch('binarycom.navigate.to',{ view:v, id:self.current });
+                app['core.events'].dispatch('binarycom.navigate.to',{ view:v, id:self.current });
                 self.current = v;
             });
             
@@ -46,3 +46,5 @@ function AppPlugin(app) {
     };
 
 }
+
+AppPluginLoaded=true;

@@ -8,24 +8,25 @@ function AppPlugin(app) {
         into : into,
         stages : [{
             url : function(o) { return 'https://webapi01.binary.com:5002/oauth2/login?template=oauth2%2Fxhr&scope='+encodeURIComponent(o.scope)+'&client_id='+encodeURIComponent(o.devid) },
-            onWindowCreate : function(w) {
+            onWindowCreate : function() {
                 w.addEventListener('loadstop', function(event) {
                     if (event.url === url) return;
                     var a = app['core.url'].param.get('code',event.url);
-                    ref.close();
                     apigee.stage2.exec({ code:a });
                 });
                 if (app['core.cordova'].loaded) w.addEventListener('close', function() {  app.exit(); });
             },
             onLoad : function() {
-                if (into) document.body.appendChild(into);
+                if (typeof into === 'object' && ! into.parentNode) document.body.appendChild(into);
             }
         },{
             url : function(o) { return 'http://www.binary.com/clientapp/oauth2/tokenswap?scope='+encodeURIComponent(o.scope)+'&client_id='+encodeURIComponent(o.devid)+'&code='+encodeURIComponent(o.code) },
             onLoad : function() {
+                if (typeof into === 'object' && into.parentNode) { into.parentNode.removeChild(into); }
+                else { into.close(); }
+                app['binarycom.status'].append({ title:'Credentials', lines : new Array('Requesting Details...') });
             },
             onCompletion : function(o) {
-                if (into) into.parentNode.removeChild(into);
                 app['binarycom.status'].append({ title:'Credentials', lines : new Array('You have been logged in') });
                 app['core.events'].dispatch('binarycom.apigee.login.success', o);
                 app['core.store'].set({ id:'binarycom.apigee.auth', value:o.params });
@@ -69,7 +70,6 @@ function AppPlugin(app) {
     };
     
     window.addEventListener('message', function(m) {
-        into.style.display='none';
         var a = app['core.url'].param.get('code',m.data.url);
         apigee.stage2.exec({ code:a });
     });

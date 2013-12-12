@@ -1,5 +1,5 @@
 function AppPlugin(app) {
-    app.core.cordova = {
+    app['core.cordova'] = {
         loaded : window.cordova || window.PhoneGap? true : false
     };
 };        
@@ -9,3 +9,4 @@ function AppPlugin(app) {
 //};
 
 
+AppPluginLoaded=true;

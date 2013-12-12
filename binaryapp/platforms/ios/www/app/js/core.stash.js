@@ -1,6 +1,6 @@
 function AppPlugin(app) {
     
-    app.core.stash = {
+    app['core.stash'] = {
     
         store : {},
         
@@ -8,7 +8,7 @@ function AppPlugin(app) {
         
         set : function (id, value) {
             this.store[id]=value;
-            app.core.events.dispatch('core.cache.set', { id:id, value:value });
+            app['core.events'].dispatch('core.cache.set', { id:id, value:value });
         },
         
         get : function (id) {
@@ -19,3 +19,5 @@ function AppPlugin(app) {
     };
 
 };
+
+AppPluginLoaded=true;

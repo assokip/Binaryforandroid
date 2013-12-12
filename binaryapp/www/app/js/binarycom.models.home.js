@@ -4,7 +4,6 @@ function AppPlugin(app) {
         init : function(o) {
             var effect = o && o.effect? o.effect : 'into';
             app['binarycom.navigate'].to({ view:document.querySelector('body >.main >.home'), effect:effect });
-            //app['binarycom.navigate'].to({ view:document.querySelector('body >.main >.home') });
         }
         
     };

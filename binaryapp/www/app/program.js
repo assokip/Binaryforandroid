@@ -69,7 +69,7 @@ window.addEventListener('load', function() {
     }, onCompletion : function() {
 	
 	loading.parentNode.removeChild(loading);
-
+	
 	// debug listeners - events
 	app['core.events'].listeners.add('core.debug.mode.set', function (o) {
 	    if (! o) {
@@ -169,7 +169,7 @@ window.addEventListener('load', function() {
 	});
 	
 	// safety confirmations
-	app['binarycom.safety'].mode.set(app['core.store'].get({ id:'binarycom.safety.mode' }) === false? false : true,true);
+	app['binarycom.safety'].mode.set(app['core.store'].get({ id:'binarycom.safety.mode' } === false? false : true),true);
 	app['core.events'].listeners.add('binarycom.safety.mode.set', function (o) {
 	    app['binarycom.status'].append({ title:'Safety '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
 	});
@@ -187,7 +187,7 @@ window.addEventListener('load', function() {
 	app['core.events'].listeners.add('core.connection.exec.data.json.error', function (o) {
 	    alert(o.err);
 	});
-	
+
 	// previous login?
 	var pl = app['binarycom.apigee'].status.get();
 	if (pl) app['binarycom.status'].append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });

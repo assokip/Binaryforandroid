@@ -1,41 +1,11 @@
 function AppPlugin(app) {
     
-    app.binarycom.models.trade = {
+    app['binarycom.models.trade'] = new function() {
         
-        offerings : {
-            connection : app.core.connection.create({
-                exe : app.binarycom.apigee.url.get(),
-                resource : '/offerings',
-                headers : {
-                    'Authorization' : function() {
-                        var a = app.binarycom.apigee.status.get();
-                        return a? 'Bearer '+ a.token : '';
-                    }
-                }
-            }),
-            refreshminutes : 15,
-            get : function(o) {
-                if (!o) o = {};
-                var cache = app.core.cache.get('binarycom.product');
-                if (! cache) {
-                    var self = this;
-                    var c = this.connection;
-                    c.status.nextto = o.statusnextto? o.statusnextto : null;
-                    c.onCompletion = function(k) {
-                        var dt = new Date();
-                        dt.setMinutes(dt.getMinutes()+self.refreshminutes);
-                        app.core.cache.set({ id:'binarycom.product', value:k, expiry:dt });
-                        if (o.onCompletion) o.onCompletion(k);
-                    }
-                    c.run();
-                } else {
-                    if (o.onCompletion) o.onCompletion(cache);
-                }
-            }
-        },
-            
-
-        ui : {
+        var root = this;
+        var api = app['binarycom.apigee'];
+ 
+        this.ui = {
                 
             stage1 : {
                 
@@ -46,7 +16,7 @@ function AppPlugin(app) {
                     var view_purchase = mv.querySelector('.trade_purchase >.wrapper >.content');
 
                     var self = this;
-                    app.binarycom.models.trade.offerings.get({
+                    app['binarycom.api.offerings'].get({
                         statusnextto : mv.querySelector('.home >.wrapper >.menu div'),
                         onCompletion : function(data) {
                             var m = Object.keys(data.selectors.market).sort();
@@ -96,14 +66,14 @@ function AppPlugin(app) {
                                                                 if (contracttypes.indexOf(c.contract_type) === -1) contracttypes.push(c.contract_type);
                                                             });
                                                         });
-                                                        app.binarycom.navigate.to({ view:mv.querySelector('.trade_purchase'), effect:false });
+                                                        app['binarycom.navigate'].to({ view:mv.querySelector('.trade_purchase'), effect:false });
                                                         var header = view_purchase.getElementsByClassName('header')[0];
                                                         var location = header.getElementsByClassName('location')[0];
                                                         location.getElementsByClassName('market')[0].innerHTML = self.selected.market;
                                                         location.getElementsByClassName('submarket')[0].innerHTML = self.selected.submarket;
                                                         location.getElementsByClassName('symbol')[0].innerHTML = self.selected.symbol;
                                                         var sd = header.getElementsByClassName('sparkline')[0];
-                                                        var spot = app.binarycom.models.trade.symbol.spot;
+                                                        var spot = root.symbol.spot;
                                                         if (! sd.hasChildNodes()) sd.appendChild(spot.sparkline.canvas);
                                                         var sp = spot.connection;
                                                         sp.resource = '/symbols/'+self.selected.symbol.replace(/\//g,'-')+'/price';
@@ -151,7 +121,7 @@ function AppPlugin(app) {
                 },
                 
                 show : function(o) {
-                    app.binarycom.navigate.to({ view:document.querySelector('body >.main >.trade_options'), effect:o && 'effect' in o? o.effect : 'into' });
+                    app['binarycom.navigate'].to({ view:document.querySelector('body >.main >.trade_options'), effect:o && 'effect' in o? o.effect : 'into' });
                 },
                 
                 selected : {
@@ -163,23 +133,23 @@ function AppPlugin(app) {
  
             }
 
-        },
+        };
         
-        symbol : {
+        this.symbol = {
             
             spot : {
                 refresher : null,
                 history : new Array(),
-                connection : app.core.connection.create({
-                    exe : app.binarycom.apigee.url.get(),
+                connection : app['core.connection'].create({
+                    exe : api.url.get(),
                     headers : {
                         'Authorization' : function() {
-                            var a = app.binarycom.apigee.status.get();
+                            var a = api.status.get();
                             return a? 'Bearer '+ a.token : '';
                         }
                     }
                 }),
-                sparkline : app.binarycom.sparkline.create()
+                sparkline : app['binarycom.sparkline'].create()
             },
         }
         
@@ -187,22 +157,23 @@ function AppPlugin(app) {
     
     // back buttons
     document.querySelector('body >.main >.trade_options >.wrapper >.header >.back').addEventListener('click', function() {
-	app.binarycom.models.home.init({ effect:'back' });
+	app['binarycom.models.home'].init({ effect:'back' });
     });
     document.querySelector('body >.main >.trade_purchase >.wrapper >.header >.back').addEventListener('click', function() {
-	app.binarycom.models.trade.ui.stage1.show({ effect:false });
+	app['binarycom.models.trade'].ui.stage1.show({ effect:false });
     });
 
     // abort connections
-    app.core.events.listeners.add('binarycom.navigate.to', function (o) {
+    app['core.events'].listeners.add('binarycom.navigate.to', function (o) {
         if (o.id === 'trade_purchase') return;
-        var trade = app.binarycom.models.trade;
+        var trade = app['binarycom.models.trade'];
         var spot = trade.symbol.spot;
         window.clearTimeout(spot.refresher);
         spot.connection.abort();
-        trade.offerings.connection.abort();
+        app['binarycom.api.offerings'].abort();
         document.querySelector('body >.main >.trade_purchase >.wrapper >.content').getElementsByClassName('header')[0].getElementsByClassName('spot')[0].innerHTML='';
     });
-    
 
 }
+
+AppPluginLoaded=true;
