@@ -1,16 +1,30 @@
 function AppPlugin(app) {
     
-    var msel = \$("#market_select");
+   // var msel = \$("#market_select");
     
-    app['binarycom.models.charts'] = {
+    app['binarycom.models.charts'] = new function() {
         
-        init : function() {
+        var root = this;
+        
+        this.data = {
+            markets : {
+                pool : new Array(),
+                symbol : {
+                    id : o.symbol? o.symbol : null,
+                    spot : null
+                }
+            }
+        };
+        
+       // this.chart = new app['binarycom.charts.highstock']();
+        
+        this.init = function() {
             
-            app['binarycom.models.trade'].offerings.get({
+            app['binarycom.api.offerings'].get({
                 statusnextto : mv.querySelector('.charts >.wrapper >.menu div'),
                 onCompletion : function(data) {
                     var m = Object.keys(data.selectors.market).sort();
-                    var markets = new Array();
+                    var markets = root.data.markets.pool;
                     msel.options.length=0;  
                     m.forEach(function (market) {
                         var e = new Object({ id: market, symbols:new Array() });
@@ -31,7 +45,12 @@ function AppPlugin(app) {
             });
  
             app['binarycom.navigate'].to({ view:document.querySelector('body >.main >.charts'), effect:'into' });
-        },
+        };
+        
+        
+        /*
+        
+        
         
         ohlc : {
             
@@ -231,22 +250,22 @@ function AppPlugin(app) {
         }
     });
     
+    */
+    
     document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
     
     
     // abort connections
     app['core.events'].listeners.add('binarycom.navigate.to', function (o) {
         if (o.id === 'charts') return;
-        var chart = app['binarycom.models.trade'];
+        //var chart = app['binarycom.models.chart'];
         //var spot = trade.symbol.spot;
         //window.clearTimeout(spot.refresher);
         //spot.connection.abort();
-        chart.offerings.connection.abort();
-        
+        app['binarycom.api.offerings'].abort();
     });
-    
-    
-    
-    
 
 }
+
+
+AppPluginLoaded=true;

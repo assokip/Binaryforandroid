@@ -12,10 +12,10 @@ window.addEventListener('load', function() {
     if (bj.version < 1.81) p.push({ name:'polyfix.js.1.8.1' });
     if (bj.version < 1.85) p.push({ name:'polyfix.js.1.8.5' });
     if (be.name === 'ie' && parseInt(be.version) === 8) p.push({ name:'polyfix.ie.8' });
+    p.push({ name:'core' });
     p.push({ name:'jquery-2.0.3.min' });
     p.push({ name:'fastclick' });
     p.push({ name:'highstock' });
-    p.push({ name:'core' });
     p.push({ name:'core.debug' });
     p.push({ name:'core.events' });
     p.push({ name:'core.stash' });
@@ -27,7 +27,6 @@ window.addEventListener('load', function() {
     p.push({ name:'core.currency' });
     p.push({ name:'core.connection' });
     p.push({ name:'core.connection.xhr' });
-    p.push({ name:'core.form' });
     p.push({ name:'core.form.message' });
     p.push({ name:'core.oauth2' });
     p.push({ name:'binarycom', type:'css' });
@@ -37,10 +36,10 @@ window.addEventListener('load', function() {
     p.push({ name:'binarycom.status' });
     p.push({ name:'binarycom.apigee' });
     p.push({ name:'binarycom.api.offerings' });
+    p.push({ name:'binarycom.charts.highstock' });
     p.push({ name:'binarycom.safety' });
     p.push({ name:'binarycom.navigate' });
     p.push({ name:'binarycom.sparkline' });
-    p.push({ name:'binarycom.models' });
     p.push({ name:'binarycom.models.home' });
     p.push({ name:'binarycom.models.trade' });
     p.push({ name:'binarycom.models.charts' });
@@ -58,17 +57,14 @@ window.addEventListener('load', function() {
 	
     }, onAbort : function(o) {
 	
-	var loading = document.querySelector('body .loading');
-	loading.parentNode.removeChild(loading.querySelector('.progress'));
+	var loading = document.querySelector('body .loading .wrapper');
+	loading.removeChild(loading.querySelector('.progress'));
 	var abort = loading.querySelector('.abort');
-	abort.style.display='';
-	
-	if (o.browser && o.browser.incompatible) {
-	    abort.style.display='block';
-	    var b = abort.querySelector('.browser');
-	    b.style.display='block';
-	    b.querySelector('.incompatible').style.display='block';
-	}
+	abort.style.display='block';
+	var b;
+	if (o.incompatible) b = abort.querySelector('.incompatible');
+	else if (o.error) b = abort.querySelector('.error');
+	b.style.display='block';
 
     }, onCompletion : function() {
 	

@@ -21,7 +21,8 @@ body {
             }
             >.abort {
                 div { display:none; }
-                display:none;  
+                display:none;
+                padding:8px; border:1px solid #FAFAFA; width:60%; margin-left:20%; border-radius:15px;
             }
             >.progress {
                 >.wrapper {
@@ -36,7 +37,7 @@ body {
                         border-radius:30px;
                         height:100%;
                         width:0%;
-                        background:#F1F1F1;
+                        background:#FCFCFC;
                     }
                 }
             }

@@ -79,3 +79,5 @@ function AppPlugin(app) {
         if (o.xhr.status === 401) { var a = app['binarycom.apigee']; if (o.exe === a.url.get()) a.exec(); }
     });
 }
+
+AppPluginLoaded=true;

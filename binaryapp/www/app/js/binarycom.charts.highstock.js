@@ -1,74 +1,73 @@
 function AppPlugin(app,env) {
     
-    app['binarycom.charts'].types['highstock'] = function (o) {
+    app['binarycom.charts.highstock'] = new function (o) {
         
-        this.start = o.start;
-        this.end = o.end;
-        this.live = o.live || LocalStore.get('live_chart.live') || '10min';
-     
-        this.data = {
-            markets : {
-                pool : new Array(),
-                symbol : {
-                    id : o.symbol? o.symbol : null,
-                    spot : null
-                }
-            }
-        }
+        this.start = null;
+        this.end = null;
+        this.live = null;
+        this.chart = null;
 
-        if (this.live) {
-            this.datespan.from.value = this.datespan.from.calculate(this.live);
-            this.resolution.value = this.resolution.best(this.from.value, new Date().getTime()/1000);
-        }
-        
         var self = this;
         
-        this.chart = new Highcharts.StockChart({
-            chart: {
-                height: o.height? o.height : 450,
-                renderTo: o.container,
-                events: {
-                    load: function() { o.stream.connect() }
-                }
-            },
-            plotOptions: {
-                series: {
-                    dataGrouping: {
-                        dateTimeLabelFormats: {
-                            millisecond: ['%A, %b %e, %H:%M:%S.%L GMT', '%A, %b %e, %H:%M:%S.%L', '-%H:%M:%S.%L GMT'],
-                            second: ['%A, %b %e, %H:%M:%S GMT', '%A, %b %e, %H:%M:%S', '-%H:%M:%S GMT'],
-                            minute: ['%A, %b %e, %H:%M GMT', '%A, %b %e, %H:%M', '-%H:%M GMT'],
-                            hour: ['%A, %b %e, %H:%M GMT', '%A, %b %e, %H:%M', '-%H:%M GMT'],
-                            day: ['%A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
-                            week: ['Week from %A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
-                            month: ['%B %Y', '%B', '-%B %Y'],
-                            year: ['%Y', '%Y', '-%Y']
-                        },
-                        turboThreshold: 3000
-                    }
-                },
-                candlestick: {
-                    turboThreshold: 4000
-                }
-            },
-            xAxis: {
-                events: {
-                    afterSetExtremes: function(extremes) {
-                        self.config.updateRangeInputs(extremes.min, extremes.max);
-                    }
-                },
-                type: 'datetime',
-                min: self.start * 1000
-            },
-            yAxis: {
-                title: {
-                    text: null
-                }
-            },
-            rangeSelector: {
-                enabled: false,
+        this.init = function(o) {
+            
+            this.start? o.start : null;
+            this.end? o.end : null;
+            this.live = o.live? o.live : LocalStore.get('live_chart.live') || '10min';
+            
+            if (this.live) {
+                this.datespan.from.value = this.datespan.from.calculate(this.live);
+                this.resolution.value = this.resolution.best(this.from.value, new Date().getTime()/1000);
             }
-        });
+            
+            this.chart = new Highcharts.StockChart({
+                chart: {
+                    height: o.height? o.height : 450,
+                    renderTo: o.container,
+                    events: {
+                        load: function() { o.stream.connect() }
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        dataGrouping: {
+                            dateTimeLabelFormats: {
+                                millisecond: ['%A, %b %e, %H:%M:%S.%L GMT', '%A, %b %e, %H:%M:%S.%L', '-%H:%M:%S.%L GMT'],
+                                second: ['%A, %b %e, %H:%M:%S GMT', '%A, %b %e, %H:%M:%S', '-%H:%M:%S GMT'],
+                                minute: ['%A, %b %e, %H:%M GMT', '%A, %b %e, %H:%M', '-%H:%M GMT'],
+                                hour: ['%A, %b %e, %H:%M GMT', '%A, %b %e, %H:%M', '-%H:%M GMT'],
+                                day: ['%A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
+                                week: ['Week from %A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y'],
+                                month: ['%B %Y', '%B', '-%B %Y'],
+                                year: ['%Y', '%Y', '-%Y']
+                            },
+                            turboThreshold: 3000
+                        }
+                    },
+                    candlestick: {
+                        turboThreshold: 4000
+                    }
+                },
+                xAxis: {
+                    events: {
+                        afterSetExtremes: function(extremes) {
+                            self.config.updateRangeInputs(extremes.min, extremes.max);
+                        }
+                    },
+                    type: 'datetime',
+                    min: self.start * 1000
+                },
+                yAxis: {
+                    title: {
+                        text: null
+                    }
+                },
+                rangeSelector: {
+                    enabled: false,
+                }
+            });
+            
+        };
         
 
         this.switchType = function(o) {
@@ -102,7 +101,7 @@ function AppPlugin(app,env) {
         };
         
         this.datespan = {
-            rangeInputs : o.rangeInputs,
+            rangeInputs : null,
             from : {
                 value : null,
                 ctl : null,
@@ -181,15 +180,18 @@ function AppPlugin(app,env) {
                 '8h': {seconds: 8*3600, interval: 183*86400},
                 '1d': {seconds: 86400, interval: 366*3*86400}
             },
-            get : Object.keys(o.obj.variants).map(function(a) {
-                return {
-                    resolution: a,
-                    interval: 2 * this.variants.data[a].interval
-                }
-            }).sort(function(a,b) {
-                if (a.interval > b.interval) return 1;
-                return -1;
-            }),
+            get : function() {
+                return Object.keys(this.data).map(function(a) {
+                    return {
+                        resolution: a,
+                        interval: 2 * this.variants.data[a].interval
+                    }
+                }).sort(function(a,b) {
+                    if (a.interval > b.interval) return 1;
+                    return -1;
+                });
+            }
+                
         };
         
         this.stream = function() {
@@ -287,3 +289,6 @@ function AppPlugin(app,env) {
     };
     
 };
+
+
+AppPluginLoaded=true;

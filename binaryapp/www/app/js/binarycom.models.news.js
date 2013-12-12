@@ -10,3 +10,5 @@ function AppPlugin(app) {
     document.querySelector('body >.main >.news >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
     
 }
+
+AppPluginLoaded=true;

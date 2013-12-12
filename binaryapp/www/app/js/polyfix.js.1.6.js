@@ -115,3 +115,4 @@ if (!Array.prototype.every) {
   };
 }
 
+AppPluginLoaded=true;

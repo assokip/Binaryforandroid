@@ -790,3 +790,6 @@ if (typeof define !== 'undefined' && define.amd) {
 
 
 FastClick.attach(document.body);
+
+
+AppPluginLoaded=true;

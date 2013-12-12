@@ -59,3 +59,5 @@ function AppPlugin(app) {
         }
     };
 };
+
+AppPluginLoaded=true;
