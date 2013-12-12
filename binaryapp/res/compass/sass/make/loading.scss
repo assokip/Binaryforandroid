@@ -16,28 +16,31 @@ body {
             height:100%;
             >.logo {
                 height:40%;
-                background: inline-image("/logo.svg") no-repeat 50% 80%;
+                background: inline-image("/logo.svg") no-repeat 50% 100%;
                 background-size:40%;
             }
-            >.abort {
-                div { display:none; }
-                display:none;
-                padding:8px; border:1px solid #FAFAFA; width:60%; margin-left:20%; border-radius:15px;
-            }
+
             >.progress {
                 >.wrapper {
+                    border-radius:30px;
                     position:absolute;
                     left:25%;
                     top:45%;
                     width:50%;
-                    border:1px solid #E0E0E0;
-                    height:6%;
-                    border-radius:30px;
+                    border:1px solid #444444;
+                    line-height:100%;
+                    background-color:#FAFAFA;
+                    >.abort {
+                        margin:5%;
+                        font-size:90%;
+                        div { display:none; }
+                        display:none;
+                    }
                     >.percent {
+                        padding-top:10%;
                         border-radius:30px;
-                        height:100%;
                         width:0%;
-                        background:#FCFCFC;
+                        background:#252d5f;
                     }
                 }
             }
@@ -54,7 +57,7 @@ body {
                 }
                 >.progress {
                     >.wrapper {
-                        height:10%;
+                        
                         border-radius:10px;
                         >.percent {
                             border-radius:10px;

@@ -10,7 +10,7 @@ function AppPlugin(app) {
             markets : {
                 pool : new Array(),
                 symbol : {
-                    id : o.symbol? o.symbol : null,
+                    id : null,
                     spot : null
                 }
             }
@@ -252,18 +252,20 @@ function AppPlugin(app) {
     
     */
     
-    document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
+        document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
+        
+        
+        // abort connections
+        app['core.events'].listeners.add('binarycom.navigate.to', function (o) {
+            if (o.id === 'charts') return;
+            //var chart = app['binarycom.models.chart'];
+            //var spot = trade.symbol.spot;
+            //window.clearTimeout(spot.refresher);
+            //spot.connection.abort();
+            app['binarycom.api.offerings'].abort();
+        });
     
-    
-    // abort connections
-    app['core.events'].listeners.add('binarycom.navigate.to', function (o) {
-        if (o.id === 'charts') return;
-        //var chart = app['binarycom.models.chart'];
-        //var spot = trade.symbol.spot;
-        //window.clearTimeout(spot.refresher);
-        //spot.connection.abort();
-        app['binarycom.api.offerings'].abort();
-    });
+    }
 
 }
 

@@ -49,10 +49,8 @@ AppLoader = function(p) {
         else { o.href = file; }
         o.async = false;
 	o.onload = o.onreadystatechange = function() {
-
 	    if (o.done || (this.readyState && ! (this.readyState === "loaded" || this.readyState === "complete"))) return;
 	    o.done = true;
-
 	    if (type === 'js') {
                 if (AppPluginLoaded===false) {
                     abort=true;

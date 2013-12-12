@@ -57,8 +57,8 @@ window.addEventListener('load', function() {
 	
     }, onAbort : function(o) {
 	
-	var loading = document.querySelector('body .loading .wrapper');
-	loading.removeChild(loading.querySelector('.progress'));
+	var loading = document.querySelector('body .loading .wrapper .progress .wrapper');
+	loading.removeChild(loading.querySelector('.percent'));
 	var abort = loading.querySelector('.abort');
 	abort.style.display='block';
 	var b;
