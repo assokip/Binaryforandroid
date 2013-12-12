@@ -1,41 +1,11 @@
 function AppPlugin(app) {
     
-    app['binarycom.models.trade'] = {
+    app['binarycom.models.trade'] = new function() {
         
-        offerings : {
-            connection : app['core.connection'].create({
-                exe : app['binarycom.apigee'].url.get(),
-                resource : '/offerings',
-                headers : {
-                    'Authorization' : function() {
-                        var a = app['binarycom.apigee'].status.get();
-                        return a? 'Bearer '+ a.token : '';
-                    }
-                }
-            }),
-            refreshminutes : 15,
-            get : function(o) {
-                if (!o) o = {};
-                var cache = app['core.cache'].get('binarycom.product');
-                if (! cache) {
-                    var self = this;
-                    var c = this.connection;
-                    c.status.nextto = o.statusnextto? o.statusnextto : null;
-                    c.onCompletion = function(k) {
-                        var dt = new Date();
-                        dt.setMinutes(dt.getMinutes()+self.refreshminutes);
-                        app['core.cache'].set({ id:'binarycom.product', value:k, expiry:dt });
-                        if (o.onCompletion) o.onCompletion(k);
-                    }
-                    c.run();
-                } else {
-                    if (o.onCompletion) o.onCompletion(cache);
-                }
-            }
-        },
-            
-
-        ui : {
+        var root = this;
+        var api = app['binarycom.apigee'];
+ 
+        this.ui = {
                 
             stage1 : {
                 
@@ -46,7 +16,7 @@ function AppPlugin(app) {
                     var view_purchase = mv.querySelector('.trade_purchase >.wrapper >.content');
 
                     var self = this;
-                    app['binarycom.models.trade'].offerings.get({
+                    app['binarycom.api.offerings'].get({
                         statusnextto : mv.querySelector('.home >.wrapper >.menu div'),
                         onCompletion : function(data) {
                             var m = Object.keys(data.selectors.market).sort();
@@ -103,7 +73,7 @@ function AppPlugin(app) {
                                                         location.getElementsByClassName('submarket')[0].innerHTML = self.selected.submarket;
                                                         location.getElementsByClassName('symbol')[0].innerHTML = self.selected.symbol;
                                                         var sd = header.getElementsByClassName('sparkline')[0];
-                                                        var spot = app['binarycom.models.trade'].symbol.spot;
+                                                        var spot = root.symbol.spot;
                                                         if (! sd.hasChildNodes()) sd.appendChild(spot.sparkline.canvas);
                                                         var sp = spot.connection;
                                                         sp.resource = '/symbols/'+self.selected.symbol.replace(/\//g,'-')+'/price';
@@ -163,18 +133,18 @@ function AppPlugin(app) {
  
             }
 
-        },
+        };
         
-        symbol : {
+        this.symbol = {
             
             spot : {
                 refresher : null,
                 history : new Array(),
                 connection : app['core.connection'].create({
-                    exe : app['binarycom.apigee'].url.get(),
+                    exe : api.url.get(),
                     headers : {
                         'Authorization' : function() {
-                            var a = app['binarycom.apigee'].status.get();
+                            var a = api.status.get();
                             return a? 'Bearer '+ a.token : '';
                         }
                     }
@@ -200,9 +170,8 @@ function AppPlugin(app) {
         var spot = trade.symbol.spot;
         window.clearTimeout(spot.refresher);
         spot.connection.abort();
-        trade.offerings.connection.abort();
+        app['binarycom.api.offerings'].abort();
         document.querySelector('body >.main >.trade_purchase >.wrapper >.content').getElementsByClassName('header')[0].getElementsByClassName('spot')[0].innerHTML='';
     });
-    
 
 }

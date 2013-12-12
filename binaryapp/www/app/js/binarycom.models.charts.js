@@ -232,5 +232,21 @@ function AppPlugin(app) {
     });
     
     document.querySelector('body >.main >.charts >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
+    
+    
+    // abort connections
+    app['core.events'].listeners.add('binarycom.navigate.to', function (o) {
+        if (o.id === 'charts') return;
+        var chart = app['binarycom.models.trade'];
+        //var spot = trade.symbol.spot;
+        //window.clearTimeout(spot.refresher);
+        //spot.connection.abort();
+        chart.offerings.connection.abort();
+        
+    });
+    
+    
+    
+    
 
 }

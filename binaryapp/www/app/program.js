@@ -36,6 +36,7 @@ window.addEventListener('load', function() {
     p.push({ name:'binarycom' });
     p.push({ name:'binarycom.status' });
     p.push({ name:'binarycom.apigee' });
+    p.push({ name:'binarycom.api.offerings' });
     p.push({ name:'binarycom.safety' });
     p.push({ name:'binarycom.navigate' });
     p.push({ name:'binarycom.sparkline' });
