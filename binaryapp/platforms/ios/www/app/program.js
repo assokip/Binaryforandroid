@@ -12,9 +12,7 @@ window.addEventListener('load', function() {
     if (bj.version < 1.81) p.push({ name:'polyfix.js.1.8.1' });
     if (bj.version < 1.85) p.push({ name:'polyfix.js.1.8.5' });
     if (be.name === 'ie' && parseInt(be.version) === 8) p.push({ name:'polyfix.ie.8' });
-    p.push({ name:'jquery-2.0.3.min' });
     p.push({ name:'fastclick' });
-    p.push({ name:'highstock' });
     p.push({ name:'core' });
     p.push({ name:'core.debug' });
     p.push({ name:'core.events' });
@@ -74,68 +72,68 @@ window.addEventListener('load', function() {
 	loading.parentNode.removeChild(loading);
 
 	// debug listeners - events
-	app['core.events'].listeners.add('core.debug.mode.set', function (o) {
+	app.core.events.listeners.add('core.debug.mode.set', function (o) {
 	    if (! o) {
-		var s = app['core.stash'].get('core.debug.events.init');
-		if (s) s.forEach( function (b) { app['core.events'].listeners.remove(b); });
+		var s = app.core.stash.get('core.debug.events.init');
+		if (s) s.forEach( function (b) { app.core.events.listeners.remove(b); });
 		return;	
 	    }
 	    var a = new Array();
-	    a.push(app['core.events'].listeners.add('core.events.listeners.add', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:EVENTS:LISTENERS:ADD:'+o.event, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.events.listeners.add', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:EVENTS:LISTENERS:ADD:'+o.event, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.events.listeners.remove', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:EVENTS:LISTENERS:REMOVE:'+o.event, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.events.listeners.remove', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:EVENTS:LISTENERS:REMOVE:'+o.event, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.events.dispatch', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:EVENTS:DISPATCH:'+o.event, type:'debug' }, false);
+	    a.push(app.core.events.listeners.add('core.events.dispatch', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:EVENTS:DISPATCH:'+o.event, type:'debug' }, false);
 	    }));
-	    app['core.stash'].set('core.debug.events.init', a);
+	    app.core.stash.set('core.debug.events.init', a);
 	});
 	
 	// debug mode & append debug log to console
-	app['core.events'].listeners.add('core.log.append', function (o) {
+	app.core.events.listeners.add('core.log.append', function (o) {
 	    if (o.type !== 'debug') return;
 	    if (typeof console !== 'undefined') console.log(o.message);
 	});
 
 	// debug listeners - other
-	app['core.debug'].mode.set(app['core.store'].get({ id:'core.debug.mode' })? true : false);
-	app['core.events'].listeners.add('core.debug.mode.set', function (o) {
-	    app['binarycom.status'].append({ title:'Debug Mode '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
-	    app['core.store'].set({ id:'core.debug.mode', value:o });
+	app.core.debug.mode.set(app.core.store.get({ id:'core.debug.mode' })? true : false);
+	app.core.events.listeners.add('core.debug.mode.set', function (o) {
+	    app.binarycom.status.append({ title:'Debug Mode '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
+	    app.core.store.set({ id:'core.debug.mode', value:o });
 	    if (! o) {
-		var s = app['core.stash'].get('core.debug.events');
-		if (s) s.forEach( function (b) { app['core.events'].listeners.remove(b); });
+		var s = app.core.stash.get('core.debug.events');
+		if (s) s.forEach( function (b) { app.core.events.listeners.remove(b); });
 		return;	
 	    }
 	    var a = new Array();
-	    a.push(app['core.events'].listeners.add('core.connection.exec.data.json.error', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':JSON:ERROR: '+o.xhr.responseText, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.connection.exec.data.json.error', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':JSON:ERROR: '+o.xhr.responseText, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.connection.exec.start', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':START: '+o.lastUrlRequest, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.connection.exec.start', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':START: '+o.lastUrlRequest, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.connection.exec.end', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':END: '+o.xhr.responseText, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.connection.exec.end', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:CONNECTION:'+o.id+':END: '+o.xhr.responseText, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.oauth2.login.request', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:OAUTH2:LOGIN:REQUEST: '+o.url, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.oauth2.login.request', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:OAUTH2:LOGIN:REQUEST: '+o.url, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.oauth2.token.issued', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:OAUTH2:TOKEN: '+o.params.token, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.oauth2.token.issued', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:OAUTH2:TOKEN: '+o.params.token, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.view.shown', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:VIEW:SHOWN: '+o.className, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.view.shown', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:VIEW:SHOWN: '+o.className, type:'debug' });
 	    }));
-	    a.push(app['core.events'].listeners.add('core.view.hidden', function (o) {
-		app['core.events'].dispatch('core.log.append',{ message:'CORE:VIEW:HIDDEN: '+o.className, type:'debug' });
+	    a.push(app.core.events.listeners.add('core.view.hidden', function (o) {
+		app.core.events.dispatch('core.log.append',{ message:'CORE:VIEW:HIDDEN: '+o.className, type:'debug' });
 	    }));
-	    app['core.stash'].set('core.debug.events', a);
+	    app.core.stash.set('core.debug.events', a);
 	});
 	
 	// connection status icons
-	app['core.events'].listeners.add('core.connection.exec.start', function (o) {
+	app.core.events.listeners.add('core.connection.exec.start', function (o) {
 	    var s = o.status;
 	    if (! s.nextto) return;
 	    if (s.container && s.container.parentNode === s.nextto) s.nextto.removeChild(s.container);
@@ -152,9 +150,9 @@ window.addEventListener('load', function() {
 	    if (s.container.parentNode === s.nextto) s.nextto.removeChild(s.container);
 	    s.container=null;
 	}
-	app['core.events'].listeners.add('core.connection.exec.aborted', f);
-	app['core.events'].listeners.add('core.connection.exec.success', f);
-	app['core.events'].listeners.add('core.connection.exec.error', function (o) {
+	app.core.events.listeners.add('core.connection.exec.aborted', f);
+	app.core.events.listeners.add('core.connection.exec.success', f);
+	app.core.events.listeners.add('core.connection.exec.error', function (o) {
 	    var s = o.status;
 	    if (! s.nextto || ! s.container) return;
 	    s.container.firstChild.className = 'error';
@@ -165,41 +163,41 @@ window.addEventListener('load', function() {
 	});
 	
 	// cache
-	app['core.cache'].mode.set(app['core.store'].get({ id:'core.cache.mode' }) === false? false : true);
-	app['core.events'].listeners.add('core.cache.mode.set', function (o) {
-	    app['core.store'].set({ id:'core.cache.mode', type:'local', value:o });
-	    app['binarycom.status'].append({ title:'Caching '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
+	app.core.cache.mode.set(app.core.store.get({ id:'core.cache.mode' }) === false? false : true);
+	app.core.events.listeners.add('core.cache.mode.set', function (o) {
+	    app.core.store.set({ id:'core.cache.mode', type:'local', value:o });
+	    app.binarycom.status.append({ title:'Caching '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
 	});
 	
 	// safety confirmations
-	app['binarycom.safety'].mode.set(app['core.store'].get({ id:'binarycom.safety.mode' }) === false? false : true,true);
-	app['core.events'].listeners.add('binarycom.safety.mode.set', function (o) {
-	    app['binarycom.status'].append({ title:'Safety '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
+	app.binarycom.safety.mode.set(app.core.store.get({ id:'binarycom.safety.mode' }) === false? false : true,true);
+	app.core.events.listeners.add('binarycom.safety.mode.set', function (o) {
+	    app.binarycom.status.append({ title:'Safety '+(o? 'Enabled' : 'Disabled'), lines : new Array('Effective immediately.') });
 	});
 	
 	// throw inbuilt alert for most html codes
-	app['core.events'].listeners.add('core.connection.exec.error', function (o) {
-	    app['core.connection'].active.remove(o);
+	app.core.events.listeners.add('core.connection.exec.error', function (o) {
+	    app.core.connection.active.remove(o);
 	    var xhr = o.xhr;
 	    var type = xhr.status === 401? 'critical' : 'warn';
 	    var title = xhr.status === 0? 'Connection Failure' : xhr.status + ' ('+xhr.statusText+')';
-	    app['binarycom.status'].append( { type:type, id:'error', title:title, lines:new Array(o.resource) });
+	    app.binarycom.status.append( { type:type, id:'error', title:title, lines:new Array(o.resource) });
 	});
 	
 	// json errors always go to user
-	app['core.events'].listeners.add('core.connection.exec.data.json.error', function (o) {
+	app.core.events.listeners.add('core.connection.exec.data.json.error', function (o) {
 	    alert(o.err);
 	});
 	
 	// previous login?
-	var pl = app['binarycom.apigee'].status.get();
-	if (pl) app['binarycom.status'].append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
+	var pl = app.binarycom.apigee.status.get();
+	if (pl) app.binarycom.status.append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
 	    
 	// main visible
 	document.querySelector('body .main').style.display='block';
 	    
 	// show home view
-	app['binarycom.models.home'].init();
+	app.binarycom.models.home.init();
 
     }});
     
