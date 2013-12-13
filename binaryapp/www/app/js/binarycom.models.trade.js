@@ -103,12 +103,32 @@ function AppPlugin(app) {
                                                                 dc.className='selected';
                                                                 self.selected.contracttype = d;
                                                                 
-                                                                view_purchase.getElementsByClassName('symbols')[0].style.display='block';
                                                                 
+                                                                //view_purchase.getElementsByClassName('symbols')[0].style.display='block';
                                                                 
+                                                                // let the fun begin
                                                                 
+                                                                console.log(JSON.stringify(data.offerings));
                                                                 
+                                                                var intraday = false;
+                                                                var forwardstart = false;
+                                                                var barrier = false;
+                                                                var barriers = false;
                                                                 
+                                                                a.available.forEach(function (c) {
+                                                                    if (c.contract_type !== d) return;
+                                                                    if (c.is_forward_starting === 'Y') forwardstart = true;
+                                                                    if (c.expiry_type === 'intraday') intraday = true;
+                                                                });
+                                                                
+                                                                view_purchase.getElementsByClassName('barriers')[0].style.display=barriers? '' : 'none';
+                                                                view_purchase.getElementsByClassName('barrier')[0].style.display=barrier? '' : 'none';
+                                                                var timings = view_purchase.querySelector('.timings >.multiple')
+                                                                timings.getElementsByClassName('starttime')[0].style.display=forwardstart? '' : 'none';
+                                                               // timings.getElementsByClassName('intraday')[0].style.display=intraday? '' : 'none';
+                                                                
+       
+                                                               // console.log(JSON.stringify(a.available));
                                                                 
                                                             });
                                                         });
@@ -186,9 +206,10 @@ function AppPlugin(app) {
     
     // output price
     var tform = document.querySelector('body >.main >.trade_purchase').getElementsByTagName('form')[0];
-    tform.elements['trade_payout'].addEventListener('input', function() {
+    tform.elements['payout'].addEventListener('input', function() {
         app['core.form.message'].clear();
-        if (! app['core.currency'].validate(this.value)) app['core.form.message'].show({ form:tform, near:this });
+       // if (! app['core.currency'].validate(this.value))
+        app['core.form.message'].show({ form:tform, near:this, msg:'This field is required' });
     });
 
 }
