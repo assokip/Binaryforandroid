@@ -20,7 +20,7 @@ function AppPlugin(app) {
                         statusnextto : mv.querySelector('.home >.wrapper >.menu div'),
                         onCompletion : function(data) {
                             var m = Object.keys(data.selectors.market).sort();
-                            var markets = view_options.querySelector('.markets >.data');
+                            var markets = view_options.getElementsByClassName('markets')[0].getElementsByTagName('div')[1];
                             while(markets.firstChild) { markets.removeChild(markets.firstChild); };
                             m.forEach(function (market) {
                                 var dc = document.createElement('div');
@@ -30,9 +30,10 @@ function AppPlugin(app) {
                                     Array.prototype.slice.call(markets.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
                                     dc.className='selected';
                                     self.selected.market = market;
-                                    var submarkets = view_options.querySelector('.submarkets >.data');
+                                    var con = view_options.getElementsByClassName('submarkets')[0];
+                                    var submarkets = con.getElementsByTagName('div')[1];
                                     while(submarkets.firstChild) { submarkets.removeChild(submarkets.firstChild); };
-                                    view_options.getElementsByClassName('submarkets')[0].style.display='block';
+                                    con.style.display='block';
                                     view_options.getElementsByClassName('symbols')[0].style.display='none';
                                     data.offerings.some(function (offering) {
                                         if (offering.market !== market) return;
@@ -50,9 +51,10 @@ function AppPlugin(app) {
                                                 Array.prototype.slice.call(submarkets.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
                                                 dc.className='selected';
                                                 self.selected.submarket = a.submarket;
-                                                var symbols = view_options.querySelector('.symbols >.data');
+                                                var con = view_options.getElementsByClassName('symbols')[0];
+                                                var symbols = con.getElementsByTagName('div')[1];
                                                 while(symbols.firstChild) { symbols.removeChild(symbols.firstChild); };
-                                                view_options.getElementsByClassName('symbols')[0].style.display='block';
+                                                con.style.display='block';
                                                 a.available.forEach(function(a) {
                                                     var dc = document.createElement('div');
                                                     dc.innerHTML = a.symbol;
@@ -89,7 +91,7 @@ function AppPlugin(app) {
                                                             spot.sparkline.draw({ data:spot.history.slice(spot.history.length-10 < 0? 0: spot.history.length-10) });
                                                         }
                                                         sp.run();
-                                                        var contracttype = view_purchase.querySelector('.contracttype >.data');
+                                                        var contracttype = view_purchase.querySelector('.contracttype').getElementsByTagName('div')[1];
                                                         while(contracttype.firstChild) { contracttype.removeChild(contracttype.firstChild); };
                                                         view_purchase.getElementsByClassName('contracttype')[0].style.display='block';
                                                         contracttypes.forEach(function(d) {
@@ -100,6 +102,14 @@ function AppPlugin(app) {
                                                                 Array.prototype.slice.call(contracttype.getElementsByTagName('div')).forEach(function(v) { v.className=''; });
                                                                 dc.className='selected';
                                                                 self.selected.contracttype = d;
+                                                                
+                                                                view_purchase.getElementsByClassName('symbols')[0].style.display='block';
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
+                                                                
                                                             });
                                                         });
                                                     });
@@ -172,6 +182,13 @@ function AppPlugin(app) {
         spot.connection.abort();
         app['binarycom.api.offerings'].abort();
         document.querySelector('body >.main >.trade_purchase >.wrapper >.content').getElementsByClassName('header')[0].getElementsByClassName('spot')[0].innerHTML='';
+    });
+    
+    // output price
+    var tform = document.querySelector('body >.main >.trade_purchase').getElementsByTagName('form')[0];
+    tform.elements['trade_payout'].addEventListener('input', function() {
+        app['core.form.message'].clear();
+        if (! app['core.currency'].validate(this.value)) app['core.form.message'].show({ form:tform, near:this });
     });
 
 }

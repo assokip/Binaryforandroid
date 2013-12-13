@@ -57,9 +57,9 @@
                 <div class="title">Trade</div>
             </div>
             <div class="content">
-                <div class="markets"><div class="title">Markets</div><div class="data"></div></div>
-                <div class="submarkets"><div class="title">Sub Markets</div><div class="data"></div></div>
-                <div class="symbols"><div class="title">Instrument</div><div class="data"></div></div>
+                <div class="markets"><div class="title">Markets</div><div class="single"></div></div>
+                <div class="submarkets"><div class="title">Sub Markets</div><div class="single"></div></div>
+                <div class="symbols"><div class="title">Instrument</div><div class="single"></div></div>
             </div>
         </div>
     </div>
@@ -77,11 +77,39 @@
                     <div class="spot"><div class="value"></div></div>
                     <div class="sparkline"></div>
                 </div>
-                <div class="contracttype"><div class="title">Contract</div><div class="data"></div></div>
-                <div class="duration" style="display:none">
-                    <div class="title">Duration</div>
-                    <input type="text" size=5> <select><option value="days">days<option value="hours">hours<option value="minutes">minutes<option value="seconds">seconds</select>
-                </div>
+                <form>
+                    <div class="payout">
+                        <div class="title">Payout</div>
+                        <div class="single">
+                            <div class="selected">USD</div><div>EUR</div><div>GBP</div><div>AUD</div><input type="text" name="trade_payout" size=6>
+                        </div>
+                    </div>
+                    <div class="contracttype"><div class="title">Contract</div><div class="single"></div></div>
+                    <div class="timings">
+                        <div class="title">Timings</div>
+                        <div class="multiple">
+                            <div><label>Start time</label><select><option value="">Immediate</select></div>
+                            <div><label>Duration</label>
+                                <select><option value="days">Days<option value="hours">Hours<option value="minutes">Minutes<option value="seconds">Seconds</select>
+                                <select><option value="60"></select>
+                            </div>
+   
+                        </div>
+                    </div>
+                    <div class="barrier">
+                        <div class="title">Barrier</div>
+                        <div class="single">
+                            <input type="text" name="barrier" size=5>
+                        </div>
+                    </div>
+                    <div class="barriers"><div class="title">Barriers</div><div class="multiple">
+                        <div><label>High</label><input type="text" name="barrier_high" size=8></div>
+                        <div><label>Low</label><input type="text" name="barrier_low" size=8></div>
+                    </div></div>
+                    
+                    
+                    
+                </form>
             </div>
         </div>
     </div>
