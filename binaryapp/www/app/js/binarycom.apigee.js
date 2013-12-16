@@ -42,16 +42,16 @@ function AppPlugin(app) {
             get : function () { return this.value; }
         },
         
-        auth:apigee,
+        //auth:apigee,
         
-        login : function() {
-            if (this.status.get()) this.logout();
-            apigee.stage1.exec();
-        },
+        //login : function() {
+        //    if (this.status.get()) this.logout();
+        //    apigee.stage1.exec();
+        //},
         
-        exec : function() {
-            this.auth.stage1.exec();
-        },
+        //exec : function() {
+        //    this.auth.stage1.exec();
+        //},
         
         status : {
             get : function () { return app['core.store'].get({ id:'binarycom.apigee.auth' }) },
@@ -76,7 +76,12 @@ function AppPlugin(app) {
     
     // auto direct on any unauthorised code
     app['core.events'].listeners.add('core.connection.exec.error', function (o) {
-        if (o.xhr.status === 401) { var a = app['binarycom.apigee']; if (o.exe === a.url.get()) a.exec(); }
+        if (o.xhr.status === 401) {
+            var a = app['binarycom.apigee'];
+            if (o.exe !== a.url.get()) return;
+            apigee.stage1.exec();
+            setTimeout(function() { app['binarycom.status'].append( { title:'Credentials', lines:new Array('Requesting Login...') }); },100); // solved in newer version of Igaro client
+        }
     });
 }
 

@@ -79,6 +79,7 @@ function AppPlugin(app) {
         };
         this.get = function (o) {
             var id = o.id;
+            if (! o.id) return;
             var type = o.type? o.type : 'local';
             if (type === 'cookie') {
                 id = id + '='; var j = -1; var done = false; var t;
@@ -90,10 +91,10 @@ function AppPlugin(app) {
                     done = true;
                 }
                 if (t) return this.lzw.decode(t);
-                return null;    
+                return null;
             }
-            else if (type === 'local') return JSON.parse(this.lzw.decode(localStorage.getItem(id)));
-            else if (type === 'session') return JSON.parse(this.lzw.decode(sessionStorage.getItem(id)));
+            else if (type === 'local') { return JSON.parse(this.lzw.decode(localStorage.getItem(id))); }
+            else if (type === 'session') { return JSON.parse(this.lzw.decode(sessionStorage.getItem(id))); }
             return null;
         };
     };

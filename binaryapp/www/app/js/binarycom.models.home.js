@@ -34,7 +34,7 @@ function AppPlugin(app) {
          app['binarycom.models.charts'].init();
      });
      mvm.getElementsByClassName('trade')[0].addEventListener('click', function() {
-         app['binarycom.models.trade'].ui.stage1.init();
+         app['binarycom.models.trade'].init();
      });
      mvm.getElementsByClassName('support')[0].addEventListener('click', function() {
          app['binarycom.models.support'].init();

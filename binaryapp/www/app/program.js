@@ -190,7 +190,7 @@ window.addEventListener('load', function() {
 
 	// previous login?
 	var pl = app['binarycom.apigee'].status.get();
-	if (pl) app['binarycom.status'].append({ title:'Credentials', lines : new Array('Using Previous Login: '+pl.login_id) });
+	if (pl) app['binarycom.status'].append({ title:'Credentials', lines : new Array('Using Login: '+pl.login_id) });
 	    
 	// main visible
 	document.querySelector('body .main').style.display='block';

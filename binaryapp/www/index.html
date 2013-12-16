@@ -77,11 +77,12 @@
                     <div class="spot"><div class="value"></div></div>
                     <div class="sparkline"></div>
                 </div>
+                
                 <form>
                     <div class="payout">
                         <div class="title">Payout</div>
                         <div class="single">
-                            <div class="selected">USD</div><div>EUR</div><div>GBP</div><div>AUD</div><input type="text" name="payout" size=6>
+                            <input type="text" name="payout" size=6 value="100">
                         </div>
                     </div>
                     <div class="contracttype"><div class="title">Contract</div><div class="single"></div></div>
@@ -101,11 +102,21 @@
                             <input type="text" name="barrier" size=8>
                         </div>
                     </div>
+                    <div class="barrieroffset">
+                        <div class="title">Barrier Offset</div>
+                        <div class="single">
+                            <div class="+ selected">+</div>
+                            <div class="-">-</div>
+                            <input type="text" name="barrieroffset" size=8 placeholder="0.000">
+                        </div>
+                    </div>
                     <div class="barriers"><div class="title">Barriers</div><div class="multiple">
-                        <div><label>High</label><input type="text" name="barrier_high" size=8></div>
-                        <div><label>Low</label><input type="text" name="barrier_low" size=8></div>
+                        <div><label>High</label><input type="text" name="barrierhigh" size=8></div>
+                        <div><label>Low</label><input type="text" name="barrierlow" size=8></div>
                     </div></div>
                 </form>
+                
+                <div class="buy"><input type="submit"></div>
             </div>
         </div>
     </div>
@@ -175,11 +186,7 @@
                 
                 <div id="live_chart_div"></div>
                 <div id="foo"></div>
-                
             </div>    
-            
-            
-            
         </div>
     </div>
     
