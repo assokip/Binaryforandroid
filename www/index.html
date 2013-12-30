@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+<link rel="stylesheet" type="text/css" href="app/binarycom.css" />
+<link rel="icon" type="image/x-icon" href="favicon.ico"/>
+<title>Binary.com Client App</title>
+<script type="text/javascript" async="false" src="cordova.js"></script>
+<script type="text/javascript" async="false" src="app/binarycom.js"></script>
+</head>
+<body>
+    
+<script></script>
+<noscript>Javascript is not enabled. We can't load this application without it.</noscript>
+
+<div class="loading">
+    <div class="wrapper">
+        <div class="logo"></div>
+        <div class="progress">
+            <div class="wrapper">
+                <div class="abort">
+                    <div class="incompatible">Your Browser is incompatible with this application. Please upgrade.</div>
+                    <div class="error">An error occured while loading the application.</div> 
+                </div>
+                <div class="percent">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main" style="display:none">
+    
+    <div class="home">
+        <div class="wrapper">
+            <div class="logo"></div>
+            <div class="menu">
+                <div class="trade"><div class="wrapper"><div>Trade</div></div></div>
+                <div class="portfolio disabled"><div class="wrapper"><div>Portfolio</div></div></div>
+                <div class="account"><div class="wrapper"><div>Account</div></div></div>
+                <div class="news"><div class="wrapper"><div>News</div></div></div>
+                <div class="support"><div class="wrapper"><div>Support</div></div></div>
+                <div class="settings"><div class="wrapper"><div>Settings</div></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="trade_options">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">Trade</div>
+            </div>
+            <div class="content">
+                <div class="markets"><div class="title">Markets</div><div class="single"></div></div>
+                <div class="submarkets"><div class="title">Sub Markets</div><div class="single"></div></div>
+                <div class="symbols"><div class="title">Instrument</div><div class="single"></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="trade_purchase">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu"></div>
+                <div class="logo"></div>
+                <div class="title">Trade</div>
+            </div>
+            <div class="content">
+                <div class="header">
+                    <div class="location"><div class="market"></div><div class="submarket"></div><div class="symbol"></div></div>
+                    <div class="spot"><div class="value"></div></div>
+                    <div class="sparkline"></div>
+                </div>
+                <form>
+                    <div class="payout">
+                        <div class="title">Payout</div>
+                        <div class="single">
+                            <input type="text" name="payout" size=6 value="100">
+                        </div>
+                    </div>
+                    <div class="contracttype"><div class="title">Contract</div><div class="single"></div></div>
+                    <div class="duration">
+                        <div class="title">Duration</div>
+                        <div class="single">
+                            <div data-name="days">Days</div>
+                            <div data-name="hours">Hours</div>
+                            <div data-name="minutes">Minutes</div>
+                            <div data-name="seconds">Seconds</div>
+                            <input name="duration" type="text" size=4 maxlength=4>
+                        </div>
+                    </div>
+                    <div class="starttime">
+                        <div class="title">Start time</div>
+                        <div class="multiple">
+                            <div><label>Days</label><select name="starttime_days"></select></div>
+                            <div><label>Hours</label><select name="starttime_hours"></select></div>
+                            <div><label>Minutes</label><select name="starttime_minutes"></select></div>
+                        </div>
+                    </div>
+                    <div class="barrier">
+                        <div class="title">Barrier</div>
+                        <div class="single">
+                            <input type="text" name="barrier" size=8>
+                        </div>
+                    </div>
+                    <div class="barrieroffset">
+                        <div class="title">Barrier Offset</div>
+                        <div class="single">
+                            <div class="+ selected">+</div>
+                            <div class="-">-</div>
+                            <input type="text" name="barrieroffset" size=8 placeholder="0.000">
+                        </div>
+                    </div>
+                    <div class="barriers"><div class="title">Barriers</div><div class="multiple">
+                        <div><label>Low</label><input type="text" name="barrierlow" size=8></div>
+                        <div><label>High</label><input type="text" name="barrierhigh" size=8></div>
+                    </div></div>
+                </form>
+                
+                <div class="buy"><input type="submit" value="Purchase"><div class="price"></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="portfolio">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">Portfolio</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="account">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">Charts</div>
+            </div>
+            <div class="content">
+                <div class="status">Status: <div class="limited">Limited</div></div>
+                <div class="accid">MX9994</div> 
+        
+                <div class="balance">
+                    <div class="type">USD</div>
+                    <div class="value">800.43</div>
+                </div>
+
+                <div class="notes">
+                    <div class="done">
+                        <div>Your cashier is unlocked.</div>
+                        <div>Your identity has been verified.</div>
+                    </div>
+                    <div class="limits">
+                        <div>Your cashier is locked.</div>
+                        <div>Trading limits imposed.</div>
+                        <div><a>Identity verification required.</a></div>
+                    </div>
+                    <div class="critical">
+                        <div>Account is suspended.</div>
+                        <div>Security violation detected.</div>
+                    </div>
+
+                </div>       
+                
+
+            </div>    
+        </div>
+    </div>
+    
+    <div class="news">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">News</div>
+            </div>
+            <div class="menu">
+                <div class="markets disabled"><div class="wrapper"><div>Markets</div></div></div>
+                <div class="service disabled"><div class="wrapper"><div>Service</div></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="support">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">Support</div>
+            </div>
+            <div class="menu">
+                <div class="faq disabled"><div class="wrapper"><div>FAQ</div></div></div>
+                <div class="email disabled"><div class="wrapper"><div>Email</div></div></div>
+                <div class="chat disabled"><div class="wrapper"><div>Chat</div></div></div>
+                <div class="phone disabled"><div class="wrapper"><div>Phone</div></div></div>
+                <div class="callback disabled"><div class="wrapper"><div>Callback</div></div></div>
+                <div class="messages disabled"><div class="wrapper"><div>Messages</div></div></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings">
+        <div class="wrapper">
+            <div class="header">
+                <div class="back"></div>
+                <div class="submenu disabled"></div>
+                <div class="logo"></div>
+                <div class="title">Settings</div>
+            </div>
+            <div class="menu">
+                <div class="locale disabled"><div class="wrapper"><div>Locale</div></div></div>
+                <div class="cache"><div class="wrapper"><div>Cache</div></div></div>
+                <div class="debug"><div class="wrapper"><div>Debug</div></div></div>
+                <div class="safety"><div class="wrapper"><div>Prompts</div></div></div>
+                <div class="logout"><div class="wrapper"><div>Logout</div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

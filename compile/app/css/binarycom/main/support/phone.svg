@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<path id="phone-5-icon" d="M280.083,189.335c12.754,3.8,24.059,12.465,30.891,25.095c6.832,12.63,7.898,26.833,4.099,39.588
+	l-49.836-14.847L280.083,189.335z M286.936,166.335c18.641,5.553,35.163,18.217,45.147,36.677
+	c9.985,18.458,11.543,39.218,5.99,57.857l30.667,9.138c7.892-26.49,5.68-55.99-8.51-82.22c-14.19-26.231-37.67-44.228-64.158-52.12
+	L286.936,166.335z M302.924,112.666c32.377,9.646,61.072,31.641,78.414,63.702c17.344,32.062,20.049,68.116,10.403,100.491
+	l31.436,9.365c12.04-40.421,8.664-85.435-12.988-125.462c-21.653-40.027-57.479-67.489-97.898-79.531L302.924,112.666z
+	 M318.549,451.475c-26.055,12.147-86.85,47.641-184.847-147.52c-97.165-193.501-32.179-223.592-8.233-236.313
+	c0.576-0.295,35.029-17.623,35.068-17.642l58.123,115.711l-34.664,17.406c-36.449,19.923,39.445,171.092,76.714,152.647
+	c1.51-0.682,34.24-17.089,34.37-17.154l58.593,115.328C353.547,434.002,320.56,450.541,318.549,451.475z"/>
+</svg>

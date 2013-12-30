@@ -1,0 +1,433 @@
+2013-09-25 13:11:39.319 binarycom[7902:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 13:11:39.383 binarycom[7902:c07] Resetting plugins due to page load.
+2013-09-25 13:11:39.500 binarycom[7902:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 13:16:26.627 binarycom[8785:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 13:16:26.683 binarycom[8785:c07] Resetting plugins due to page load.
+2013-09-25 13:16:26.832 binarycom[8785:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 13:18:58.559 binarycom[9655:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 13:18:58.944 binarycom[9655:c07] Resetting plugins due to page load.
+2013-09-25 13:18:59.063 binarycom[9655:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 13:18:59.120 binarycom[9655:c07] THREAD WARNING: ['InAppBrowser'] took '29.989746' ms. Plugin should use a background thread.
+2013-09-25 13:28:39.980 binarycom[9655:2703] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-09-25 13:55:49.054 binarycom[10639:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 13:55:49.401 binarycom[10639:c07] Resetting plugins due to page load.
+2013-09-25 13:55:49.646 binarycom[10639:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 13:55:49.947 binarycom[10639:c07] THREAD WARNING: ['InAppBrowser'] took '43.000732' ms. Plugin should use a background thread.
+2013-09-25 13:59:54.791 binarycom[11541:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 13:59:55.127 binarycom[11541:c07] Resetting plugins due to page load.
+2013-09-25 13:59:55.290 binarycom[11541:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 13:59:55.396 binarycom[11541:c07] THREAD WARNING: ['InAppBrowser'] took '42.586182' ms. Plugin should use a background thread.
+2013-09-25 14:06:02.324 binarycom[12460:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 14:06:02.682 binarycom[12460:c07] Resetting plugins due to page load.
+2013-09-25 14:06:02.930 binarycom[12460:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 14:06:03.207 binarycom[12460:c07] THREAD WARNING: ['InAppBrowser'] took '52.300781' ms. Plugin should use a background thread.
+2013-09-25 14:38:22.908 binarycom[13572:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 14:38:23.209 binarycom[13572:c07] Resetting plugins due to page load.
+2013-09-25 14:38:23.311 binarycom[13572:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-09-25 14:40:40.892 binarycom[14456:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 14:40:40.958 binarycom[14456:c07] Resetting plugins due to page load.
+2013-09-25 14:40:41.031 binarycom[14456:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:13:41.828 binarycom[15459:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:13:41.878 binarycom[15459:c07] Resetting plugins due to page load.
+2013-09-25 15:13:41.968 binarycom[15459:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:13:42.028 binarycom[15459:c07] THREAD WARNING: ['InAppBrowser'] took '23.497803' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:17:30.444 binarycom[16332:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:17:30.482 binarycom[16332:c07] Resetting plugins due to page load.
+2013-09-25 15:17:30.563 binarycom[16332:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:17:30.610 binarycom[16332:c07] THREAD WARNING: ['InAppBrowser'] took '13.885986' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:26:24.212 binarycom[17278:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:26:24.253 binarycom[17278:c07] Resetting plugins due to page load.
+2013-09-25 15:26:24.324 binarycom[17278:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:26:24.358 binarycom[17278:c07] THREAD WARNING: ['InAppBrowser'] took '12.008057' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:45:24.999 binarycom[18572:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:45:25.036 binarycom[18572:c07] Resetting plugins due to page load.
+2013-09-25 15:45:25.105 binarycom[18572:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:45:25.153 binarycom[18572:c07] THREAD WARNING: ['InAppBrowser'] took '14.510010' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:48:18.292 binarycom[19469:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:48:18.498 binarycom[19469:c07] Resetting plugins due to page load.
+2013-09-25 15:48:18.568 binarycom[19469:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:48:18.613 binarycom[19469:c07] THREAD WARNING: ['InAppBrowser'] took '14.231934' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 15:55:06.282 binarycom[20395:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 15:55:06.505 binarycom[20395:c07] Resetting plugins due to page load.
+2013-09-25 15:55:06.581 binarycom[20395:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 15:55:06.627 binarycom[20395:c07] THREAD WARNING: ['InAppBrowser'] took '13.586182' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-25 16:36:23.293 binarycom[1476:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-25 16:36:23.529 binarycom[1476:c07] Resetting plugins due to page load.
+2013-09-25 16:36:23.599 binarycom[1476:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-25 16:36:23.646 binarycom[1476:c07] THREAD WARNING: ['InAppBrowser'] took '13.608887' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 09:34:25.626 binarycom[1342:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 09:34:25.911 binarycom[1342:c07] Resetting plugins due to page load.
+2013-09-26 09:34:26.060 binarycom[1342:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 09:34:26.145 binarycom[1342:c07] THREAD WARNING: ['InAppBrowser'] took '32.440186' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 10:37:37.341 binarycom[2638:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 10:37:37.633 binarycom[2638:c07] Resetting plugins due to page load.
+2013-09-26 10:37:37.702 binarycom[2638:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-09-26 14:16:20.758 binarycom[4001:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 14:16:20.806 binarycom[4001:c07] Resetting plugins due to page load.
+2013-09-26 14:16:20.885 binarycom[4001:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 14:16:20.940 binarycom[4001:c07] THREAD WARNING: ['InAppBrowser'] took '17.605225' ms. Plugin should use a background thread.
+2013-09-26 14:23:00.755 binarycom[4923:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 14:23:00.798 binarycom[4923:c07] Resetting plugins due to page load.
+2013-09-26 14:23:00.867 binarycom[4923:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 14:23:00.917 binarycom[4923:c07] THREAD WARNING: ['InAppBrowser'] took '14.598145' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 14:26:51.609 binarycom[5797:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 14:26:51.706 binarycom[5797:c07] Resetting plugins due to page load.
+2013-09-26 14:26:51.778 binarycom[5797:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 14:26:51.826 binarycom[5797:c07] THREAD WARNING: ['InAppBrowser'] took '15.248779' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 14:49:42.706 binarycom[6731:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 14:49:42.999 binarycom[6731:c07] Resetting plugins due to page load.
+2013-09-26 14:49:43.076 binarycom[6731:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 14:49:43.121 binarycom[6731:c07] THREAD WARNING: ['InAppBrowser'] took '14.411865' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 14:53:50.921 binarycom[7630:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 14:53:51.011 binarycom[7630:c07] Resetting plugins due to page load.
+2013-09-26 14:53:51.081 binarycom[7630:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 14:53:51.132 binarycom[7630:c07] THREAD WARNING: ['InAppBrowser'] took '15.861816' ms. Plugin should use a background thread.
+2013-09-26 14:54:35.239 binarycom[7630:2703] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+Terminating in response to SpringBoard's termination.
+2013-09-26 16:12:17.155 binarycom[8695:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:12:17.480 binarycom[8695:c07] Resetting plugins due to page load.
+2013-09-26 16:12:17.608 binarycom[8695:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:12:17.683 binarycom[8695:c07] THREAD WARNING: ['InAppBrowser'] took '27.733887' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 16:18:03.050 binarycom[9570:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:18:03.268 binarycom[9570:c07] Resetting plugins due to page load.
+2013-09-26 16:18:03.342 binarycom[9570:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:18:03.384 binarycom[9570:c07] THREAD WARNING: ['InAppBrowser'] took '12.885986' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 16:25:33.842 binarycom[10448:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:25:33.895 binarycom[10448:c07] Resetting plugins due to page load.
+2013-09-26 16:25:33.977 binarycom[10448:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:25:34.015 binarycom[10448:c07] THREAD WARNING: ['InAppBrowser'] took '13.433105' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 16:29:32.239 binarycom[11351:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:29:32.278 binarycom[11351:c07] Resetting plugins due to page load.
+2013-09-26 16:29:32.347 binarycom[11351:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:29:32.392 binarycom[11351:c07] THREAD WARNING: ['InAppBrowser'] took '12.412109' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 16:34:42.996 binarycom[12252:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:34:43.032 binarycom[12252:c07] Resetting plugins due to page load.
+2013-09-26 16:34:43.097 binarycom[12252:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:34:43.143 binarycom[12252:c07] THREAD WARNING: ['InAppBrowser'] took '12.645020' ms. Plugin should use a background thread.
+2013-09-26 16:36:56.812 binarycom[12252:c07] webView:didFailLoadWithError - The request timed out.
+2013-09-26 16:53:30.510 binarycom[13229:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:53:30.596 binarycom[13229:c07] Resetting plugins due to page load.
+2013-09-26 16:53:30.684 binarycom[13229:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:53:30.743 binarycom[13229:c07] THREAD WARNING: ['InAppBrowser'] took '21.837646' ms. Plugin should use a background thread.
+2013-09-26 16:58:48.272 binarycom[14097:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 16:58:48.326 binarycom[14097:c07] Resetting plugins due to page load.
+2013-09-26 16:58:48.417 binarycom[14097:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 16:58:48.468 binarycom[14097:c07] THREAD WARNING: ['InAppBrowser'] took '18.652100' ms. Plugin should use a background thread.
+2013-09-26 16:59:58.539 binarycom[14097:2803] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+Terminating in response to SpringBoard's termination.
+2013-09-26 17:17:22.448 binarycom[15058:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 17:17:22.622 binarycom[15058:c07] Resetting plugins due to page load.
+2013-09-26 17:17:22.703 binarycom[15058:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 17:17:22.764 binarycom[15058:c07] THREAD WARNING: ['InAppBrowser'] took '15.903076' ms. Plugin should use a background thread.
+2013-09-26 17:24:11.072 binarycom[15961:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 17:24:11.156 binarycom[15961:c07] Resetting plugins due to page load.
+2013-09-26 17:24:11.228 binarycom[15961:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 17:24:11.269 binarycom[15961:c07] THREAD WARNING: ['InAppBrowser'] took '14.011230' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 17:31:56.363 binarycom[16836:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 17:31:56.446 binarycom[16836:c07] Resetting plugins due to page load.
+2013-09-26 17:31:56.519 binarycom[16836:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 17:31:56.567 binarycom[16836:c07] THREAD WARNING: ['InAppBrowser'] took '13.659912' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 17:37:25.174 binarycom[17715:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 17:37:25.216 binarycom[17715:c07] Resetting plugins due to page load.
+2013-09-26 17:37:25.283 binarycom[17715:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 17:37:25.331 binarycom[17715:c07] THREAD WARNING: ['InAppBrowser'] took '12.742920' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-09-26 17:39:28.758 binarycom[18581:c07] Multi-tasking -> Device: YES, App: YES
+2013-09-26 17:39:28.936 binarycom[18581:c07] Resetting plugins due to page load.
+2013-09-26 17:39:29.009 binarycom[18581:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-09-26 17:39:29.050 binarycom[18581:c07] THREAD WARNING: ['InAppBrowser'] took '13.861084' ms. Plugin should use a background thread.
+2013-09-26 17:43:01.125 binarycom[18581:2803] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-10-21 10:31:36.837 binarycom[1671:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-21 10:31:37.122 binarycom[1671:c07] Resetting plugins due to page load.
+2013-10-21 10:31:37.265 binarycom[1671:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-10-21 10:36:29.687 binarycom[2564:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-21 10:36:29.734 binarycom[2564:c07] Resetting plugins due to page load.
+2013-10-21 10:36:29.800 binarycom[2564:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-10-21 10:36:29.862 binarycom[2564:c07] THREAD WARNING: ['InAppBrowser'] took '26.354004' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-21 10:45:48.178 binarycom[3461:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-21 10:45:48.213 binarycom[3461:c07] Resetting plugins due to page load.
+2013-10-21 10:45:48.284 binarycom[3461:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-10-21 10:45:48.322 binarycom[3461:c07] THREAD WARNING: ['InAppBrowser'] took '11.849121' ms. Plugin should use a background thread.
+2013-10-21 10:46:03.651 binarycom[3461:c07] webView:didFailLoadWithError - A server with the specified hostname could not be found.
+Terminating in response to SpringBoard's termination.
+2013-10-21 10:49:57.461 binarycom[4331:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-21 10:49:57.575 binarycom[4331:c07] Resetting plugins due to page load.
+2013-10-21 10:49:57.645 binarycom[4331:c07] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/5A7083EC-4102-4387-92B2-7CD5D78983C2/binarycom.app/www/index.html
+2013-10-21 10:49:57.684 binarycom[4331:c07] THREAD WARNING: ['InAppBrowser'] took '11.815918' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 09:54:03.710 binarycom[4833:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 09:54:04.524 binarycom[4833:c07] Resetting plugins due to page load.
+2013-10-22 09:54:04.844 binarycom[4833:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/6BAF9FCD-9CB4-4418-9E79-30B7C75A3B32/binarycom.app/www/index.html
+2013-10-22 09:54:05.022 binarycom[4833:c07] THREAD WARNING: ['InAppBrowser'] took '70.486084' ms. Plugin should use a background thread.
+2013-10-22 10:08:25.377 binarycom[6852:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:08:25.407 binarycom[6852:c07] Resetting plugins due to page load.
+2013-10-22 10:08:25.473 binarycom[6852:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/6BAF9FCD-9CB4-4418-9E79-30B7C75A3B32/binarycom.app/www/index.html
+2013-10-22 10:08:25.527 binarycom[6852:c07] THREAD WARNING: ['InAppBrowser'] took '14.048828' ms. Plugin should use a background thread.
+2013-10-22 10:10:12.511 binarycom[7872:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:10:12.621 binarycom[7872:c07] Resetting plugins due to page load.
+2013-10-22 10:10:12.753 binarycom[7872:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:10:12.862 binarycom[7872:c07] THREAD WARNING: ['InAppBrowser'] took '15.718994' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 10:13:15.479 binarycom[8971:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:13:15.662 binarycom[8971:c07] Resetting plugins due to page load.
+2013-10-22 10:13:15.729 binarycom[8971:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:13:15.780 binarycom[8971:c07] THREAD WARNING: ['InAppBrowser'] took '14.649170' ms. Plugin should use a background thread.
+2013-10-22 10:24:17.536 binarycom[10674:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:24:17.574 binarycom[10674:c07] Resetting plugins due to page load.
+2013-10-22 10:24:17.641 binarycom[10674:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:24:17.691 binarycom[10674:c07] THREAD WARNING: ['InAppBrowser'] took '13.685059' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 10:27:40.739 binarycom[11800:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:27:40.834 binarycom[11800:c07] Resetting plugins due to page load.
+2013-10-22 10:27:40.910 binarycom[11800:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:27:40.980 binarycom[11800:c07] THREAD WARNING: ['InAppBrowser'] took '12.453857' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 10:30:58.471 binarycom[12917:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:30:58.554 binarycom[12917:c07] Resetting plugins due to page load.
+2013-10-22 10:30:58.622 binarycom[12917:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:30:58.661 binarycom[12917:c07] THREAD WARNING: ['InAppBrowser'] took '11.006592' ms. Plugin should use a background thread.
+2013-10-22 10:36:42.414 binarycom[14220:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:36:42.453 binarycom[14220:c07] Resetting plugins due to page load.
+2013-10-22 10:36:42.514 binarycom[14220:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:36:42.562 binarycom[14220:c07] THREAD WARNING: ['InAppBrowser'] took '13.677734' ms. Plugin should use a background thread.
+2013-10-22 10:43:02.051 binarycom[15654:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:43:02.085 binarycom[15654:c07] Resetting plugins due to page load.
+2013-10-22 10:43:02.153 binarycom[15654:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:43:02.204 binarycom[15654:c07] THREAD WARNING: ['InAppBrowser'] took '13.169189' ms. Plugin should use a background thread.
+2013-10-22 10:50:17.973 binarycom[17070:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 10:50:18.175 binarycom[17070:c07] Resetting plugins due to page load.
+2013-10-22 10:50:18.241 binarycom[17070:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/BA595D3A-B376-43B1-ACFA-D614043615E6/binarycom.app/www/index.html
+2013-10-22 10:50:18.293 binarycom[17070:c07] THREAD WARNING: ['InAppBrowser'] took '12.947998' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 11:23:06.891 binarycom[22226:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 11:23:06.973 binarycom[22226:c07] Resetting plugins due to page load.
+2013-10-22 11:23:07.037 binarycom[22226:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 11:23:07.078 binarycom[22226:c07] THREAD WARNING: ['InAppBrowser'] took '12.285889' ms. Plugin should use a background thread.
+2013-10-22 11:30:23.783 binarycom[23661:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 11:30:23.821 binarycom[23661:c07] Resetting plugins due to page load.
+2013-10-22 11:30:23.886 binarycom[23661:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 11:30:23.935 binarycom[23661:c07] THREAD WARNING: ['InAppBrowser'] took '13.179199' ms. Plugin should use a background thread.
+2013-10-22 11:31:09.633 binarycom[23661:2803] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-10-22 11:34:16.994 binarycom[24820:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 11:34:17.074 binarycom[24820:c07] Resetting plugins due to page load.
+2013-10-22 11:34:17.145 binarycom[24820:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 11:34:17.185 binarycom[24820:c07] THREAD WARNING: ['InAppBrowser'] took '11.186035' ms. Plugin should use a background thread.
+2013-10-22 11:42:33.436 binarycom[26328:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 11:42:33.634 binarycom[26328:c07] Resetting plugins due to page load.
+2013-10-22 11:42:33.718 binarycom[26328:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 11:42:33.774 binarycom[26328:c07] THREAD WARNING: ['InAppBrowser'] took '11.843750' ms. Plugin should use a background thread.
+2013-10-22 14:39:52.616 binarycom[40794:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 14:39:53.355 binarycom[40794:c07] Resetting plugins due to page load.
+2013-10-22 14:39:53.754 binarycom[40794:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 14:39:53.925 binarycom[40794:c07] THREAD WARNING: ['InAppBrowser'] took '78.524902' ms. Plugin should use a background thread.
+2013-10-22 14:41:28.491 binarycom[40794:2703] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-10-22 14:44:07.374 binarycom[41979:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 14:44:07.407 binarycom[41979:c07] Resetting plugins due to page load.
+2013-10-22 14:44:07.470 binarycom[41979:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 14:44:07.530 binarycom[41979:c07] THREAD WARNING: ['InAppBrowser'] took '14.259033' ms. Plugin should use a background thread.
+2013-10-22 14:46:52.039 binarycom[41979:2803] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+Terminating in response to SpringBoard's termination.
+2013-10-22 15:03:29.227 binarycom[44333:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 15:03:29.467 binarycom[44333:c07] Resetting plugins due to page load.
+2013-10-22 15:03:29.545 binarycom[44333:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 15:03:29.617 binarycom[44333:c07] THREAD WARNING: ['InAppBrowser'] took '26.872070' ms. Plugin should use a background thread.
+2013-10-22 15:04:17.715 binarycom[44333:2803] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+Terminating in response to SpringBoard's termination.
+2013-10-22 15:05:41.734 binarycom[45366:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 15:05:41.818 binarycom[45366:c07] Resetting plugins due to page load.
+2013-10-22 15:05:41.883 binarycom[45366:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 15:05:41.931 binarycom[45366:c07] THREAD WARNING: ['InAppBrowser'] took '11.381836' ms. Plugin should use a background thread.
+2013-10-22 15:06:40.094 binarycom[45366:2703] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-10-22 16:00:29.751 binarycom[50455:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 16:00:29.855 binarycom[50455:c07] Resetting plugins due to page load.
+2013-10-22 16:00:29.931 binarycom[50455:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 16:00:29.976 binarycom[50455:c07] THREAD WARNING: ['InAppBrowser'] took '11.917725' ms. Plugin should use a background thread.
+2013-10-22 16:49:03.048 binarycom[55001:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 16:49:03.114 binarycom[55001:c07] Resetting plugins due to page load.
+2013-10-22 16:49:03.193 binarycom[55001:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 16:49:03.232 binarycom[55001:c07] THREAD WARNING: ['InAppBrowser'] took '10.821045' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 16:52:08.421 binarycom[56098:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 16:52:08.491 binarycom[56098:c07] Resetting plugins due to page load.
+2013-10-22 16:52:08.559 binarycom[56098:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 16:52:08.597 binarycom[56098:c07] THREAD WARNING: ['InAppBrowser'] took '10.962891' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-22 17:25:11.929 binarycom[59572:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-22 17:25:12.035 binarycom[59572:c07] Resetting plugins due to page load.
+2013-10-22 17:25:12.104 binarycom[59572:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-22 17:25:12.202 binarycom[59572:c07] THREAD WARNING: ['InAppBrowser'] took '25.485107' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-10-23 09:35:53.011 binarycom[34085:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-23 09:35:53.090 binarycom[34085:c07] Resetting plugins due to page load.
+2013-10-23 09:35:53.160 binarycom[34085:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-23 09:35:53.210 binarycom[34085:c07] THREAD WARNING: ['InAppBrowser'] took '20.473145' ms. Plugin should use a background thread.
+2013-10-23 09:50:14.608 binarycom[36083:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-23 09:50:14.700 binarycom[36083:c07] Resetting plugins due to page load.
+2013-10-23 09:50:14.796 binarycom[36083:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/2F625D07-2138-46CA-85A0-F16A4D484F25/binarycom.app/www/index.html
+2013-10-23 09:50:14.888 binarycom[36083:c07] THREAD WARNING: ['InAppBrowser'] took '28.097900' ms. Plugin should use a background thread.
+2013-10-23 10:14:01.133 binarycom[38871:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-23 10:14:01.413 binarycom[38871:c07] Resetting plugins due to page load.
+2013-10-23 10:14:01.484 binarycom[38871:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/E8DECC9A-EE51-421D-A9F4-3D9318E58A25/binarycom.app/www/index.html
+2013-10-23 10:14:01.595 binarycom[38871:c07] THREAD WARNING: ['InAppBrowser'] took '42.363037' ms. Plugin should use a background thread.
+2013-10-23 10:49:03.048 binarycom[42469:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-23 10:49:03.082 binarycom[42469:c07] Resetting plugins due to page load.
+2013-10-23 10:49:03.145 binarycom[42469:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/E8DECC9A-EE51-421D-A9F4-3D9318E58A25/binarycom.app/www/index.html
+2013-10-23 10:49:03.239 binarycom[42469:c07] THREAD WARNING: ['InAppBrowser'] took '15.616943' ms. Plugin should use a background thread.
+2013-10-23 11:00:52.492 binarycom[44317:c07] Multi-tasking -> Device: YES, App: YES
+2013-10-23 11:00:52.663 binarycom[44317:c07] Resetting plugins due to page load.
+2013-10-23 11:00:52.797 binarycom[44317:c07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/68F872A2-3639-4D01-9CE8-F2F24FBEC7E2/binarycom.app/www/index.html
+2013-10-23 11:00:52.912 binarycom[44317:c07] THREAD WARNING: ['InAppBrowser'] took '27.054932' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-11-05 11:43:41.902 binarycom[94511:a07] Multi-tasking -> Device: YES, App: YES
+2013-11-05 11:43:42.765 binarycom[94511:a07] Resetting plugins due to page load.
+2013-11-05 11:43:43.114 binarycom[94511:a07] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/6.1/Applications/68F872A2-3639-4D01-9CE8-F2F24FBEC7E2/binarycom.app/www/index.html
+2013-11-05 11:43:43.323 binarycom[94511:a07] THREAD WARNING: ['InAppBrowser'] took '95.989990' ms. Plugin should use a background thread.
+2013-12-10 13:46:58.620 binarycom[7593:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-10 13:47:03.416 binarycom[7593:80b] Resetting plugins due to page load.
+2013-12-10 13:47:04.758 binarycom[7593:80b] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/67B02666-EDDD-4499-A951-8A0B15889DBB/binarycom.app/www/index.html
+2013-12-10 16:42:10.418 binarycom[23269:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-10 16:42:11.530 binarycom[23269:80b] Resetting plugins due to page load.
+2013-12-10 16:42:11.843 binarycom[23269:80b] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/67B02666-EDDD-4499-A951-8A0B15889DBB/binarycom.app/www/index.html
+2013-12-10 16:43:25.917 binarycom[23269:80b] THREAD WARNING: ['InAppBrowser'] took '129.593018' ms. Plugin should use a background thread.
+2013-12-10 16:45:38.538 binarycom[23269:80b] Received memory warning.
+2013-12-12 16:08:30.145 binarycom[5663:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-12 16:08:33.482 binarycom[5663:80b] Resetting plugins due to page load.
+2013-12-12 16:08:33.983 binarycom[5663:80b] Finished load of: file:///Users/a/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/67B02666-EDDD-4499-A951-8A0B15889DBB/binarycom.app/www/index.html
+2013-12-17 17:28:48.000 binarycom[886:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:28:48.414 binarycom[886:80b] Resetting plugins due to page load.
+2013-12-17 17:28:48.545 binarycom[886:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:29:48.160 binarycom[886:80b] Received memory warning.
+2013-12-17 17:38:32.733 binarycom[1522:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:38:32.952 binarycom[1522:80b] Resetting plugins due to page load.
+2013-12-17 17:38:33.015 binarycom[1522:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:38:45.997 binarycom[1522:80b] THREAD WARNING: ['InAppBrowser'] took '44.223877' ms. Plugin should use a background thread.
+2013-12-17 17:46:45.728 binarycom[2006:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:46:45.967 binarycom[2006:80b] Resetting plugins due to page load.
+2013-12-17 17:46:46.034 binarycom[2006:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:46:56.859 binarycom[2006:80b] THREAD WARNING: ['InAppBrowser'] took '21.345215' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-12-17 17:50:00.636 binarycom[2478:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:50:00.690 binarycom[2478:80b] Resetting plugins due to page load.
+2013-12-17 17:50:00.766 binarycom[2478:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:50:09.523 binarycom[2478:80b] THREAD WARNING: ['InAppBrowser'] took '24.157227' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-12-17 17:52:06.925 binarycom[2943:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:52:07.139 binarycom[2943:80b] Resetting plugins due to page load.
+2013-12-17 17:52:07.197 binarycom[2943:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:52:29.967 binarycom[2943:80b] THREAD WARNING: ['InAppBrowser'] took '25.342285' ms. Plugin should use a background thread.
+2013-12-17 17:55:43.468 binarycom[3421:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:55:43.710 binarycom[3421:80b] Resetting plugins due to page load.
+2013-12-17 17:55:43.776 binarycom[3421:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:57:51.419 binarycom[3421:80b] THREAD WARNING: ['InAppBrowser'] took '20.726074' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-12-17 17:59:06.147 binarycom[3890:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 17:59:06.355 binarycom[3890:80b] Resetting plugins due to page load.
+2013-12-17 17:59:06.421 binarycom[3890:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 17:59:21.539 binarycom[3890:80b] THREAD WARNING: ['InAppBrowser'] took '24.269043' ms. Plugin should use a background thread.
+Terminating in response to SpringBoard's termination.
+2013-12-17 18:01:34.540 binarycom[4357:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:01:34.743 binarycom[4357:80b] Resetting plugins due to page load.
+2013-12-17 18:01:34.800 binarycom[4357:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:02:06.031 binarycom[4357:80b] THREAD WARNING: ['InAppBrowser'] took '25.898926' ms. Plugin should use a background thread.
+2013-12-17 18:05:45.695 binarycom[4830:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:05:45.897 binarycom[4830:80b] Resetting plugins due to page load.
+2013-12-17 18:05:46.009 binarycom[4830:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:05:58.616 binarycom[4830:80b] THREAD WARNING: ['InAppBrowser'] took '21.615967' ms. Plugin should use a background thread.
+2013-12-17 18:07:18.706 binarycom[5285:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:07:18.922 binarycom[5285:80b] Resetting plugins due to page load.
+2013-12-17 18:07:18.979 binarycom[5285:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:09:54.914 binarycom[5285:80b] THREAD WARNING: ['InAppBrowser'] took '20.880371' ms. Plugin should use a background thread.
+2013-12-17 18:12:05.396 binarycom[5760:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:12:05.657 binarycom[5760:80b] Resetting plugins due to page load.
+2013-12-17 18:12:05.713 binarycom[5760:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:13:04.607 binarycom[5760:80b] THREAD WARNING: ['InAppBrowser'] took '22.944092' ms. Plugin should use a background thread.
+2013-12-17 18:14:23.942 binarycom[6220:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:14:24.146 binarycom[6220:80b] Resetting plugins due to page load.
+2013-12-17 18:14:24.210 binarycom[6220:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:14:38.847 binarycom[6220:80b] THREAD WARNING: ['InAppBrowser'] took '24.402832' ms. Plugin should use a background thread.
+2013-12-17 18:15:49.779 binarycom[6677:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:15:49.831 binarycom[6677:80b] Resetting plugins due to page load.
+2013-12-17 18:15:49.898 binarycom[6677:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:15:58.482 binarycom[6677:80b] THREAD WARNING: ['InAppBrowser'] took '24.099609' ms. Plugin should use a background thread.
+2013-12-17 18:17:21.850 binarycom[7138:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:17:22.054 binarycom[7138:80b] Resetting plugins due to page load.
+2013-12-17 18:17:22.116 binarycom[7138:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:17:26.583 binarycom[7138:80b] THREAD WARNING: ['InAppBrowser'] took '32.791016' ms. Plugin should use a background thread.
+2013-12-17 18:23:36.432 binarycom[7608:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-17 18:23:36.577 binarycom[7608:80b] Resetting plugins due to page load.
+2013-12-17 18:23:36.636 binarycom[7608:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-17 18:24:45.189 binarycom[7608:80b] Received memory warning.
+2013-12-18 09:42:24.247 binarycom[1191:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 09:42:24.709 binarycom[1191:80b] Resetting plugins due to page load.
+2013-12-18 09:42:24.849 binarycom[1191:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/CE978C57-D3F9-41E1-8909-97DE84B22DB2/binarycom.app/www/index.html
+2013-12-18 09:42:27.149 binarycom[1191:80b] Received memory warning.
+2013-12-18 09:43:24.891 binarycom[1694:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 09:43:25.152 binarycom[1694:80b] Resetting plugins due to page load.
+2013-12-18 09:43:25.214 binarycom[1694:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 09:43:33.838 binarycom[1694:80b] Received memory warning.
+2013-12-18 09:54:44.836 binarycom[2404:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 09:54:45.047 binarycom[2404:80b] Resetting plugins due to page load.
+2013-12-18 09:54:45.105 binarycom[2404:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 09:57:26.630 binarycom[2404:80b] Received memory warning.
+2013-12-18 10:54:37.417 binarycom[1499:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 10:54:37.843 binarycom[1499:80b] Resetting plugins due to page load.
+2013-12-18 10:54:37.965 binarycom[1499:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 10:57:00.821 binarycom[1977:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 10:57:00.976 binarycom[1977:80b] Resetting plugins due to page load.
+2013-12-18 10:57:01.038 binarycom[1977:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 10:58:28.097 binarycom[2447:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 10:58:28.314 binarycom[2447:80b] Resetting plugins due to page load.
+2013-12-18 10:58:28.371 binarycom[2447:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 11:00:09.374 binarycom[2921:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 11:00:09.590 binarycom[2921:80b] Resetting plugins due to page load.
+2013-12-18 11:00:09.649 binarycom[2921:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 11:01:22.298 binarycom[3381:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 11:01:22.551 binarycom[3381:80b] Resetting plugins due to page load.
+2013-12-18 11:01:22.612 binarycom[3381:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 11:01:45.790 binarycom[3381:80b] Received memory warning.
+2013-12-18 11:21:02.246 binarycom[3953:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 11:21:02.456 binarycom[3953:80b] Resetting plugins due to page load.
+2013-12-18 11:21:02.514 binarycom[3953:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 11:22:56.577 binarycom[3953:80b] Received memory warning.
+2013-12-18 11:31:10.559 binarycom[4491:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 11:31:10.781 binarycom[4491:80b] Resetting plugins due to page load.
+2013-12-18 11:31:10.833 binarycom[4491:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 11:31:32.342 binarycom[4491:2c07] -[UIKeyboardInputManagerClient handleError:forRequest:] will retry sending generateCandidatesWithKeyboardState:candidateRange:continuation: to keyboard daemon after receiving Error Domain=NSCocoaErrorDomain Code=4097 "The operation couldn’t be completed. (Cocoa error 4097.)"
+2013-12-18 11:36:11.149 binarycom[5028:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 11:36:11.363 binarycom[5028:80b] Resetting plugins due to page load.
+2013-12-18 11:36:11.426 binarycom[5028:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-12-18 14:53:55.689 binarycom[6737:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 14:53:56.130 binarycom[6737:80b] Resetting plugins due to page load.
+2013-12-18 14:53:56.247 binarycom[6737:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 14:53:59.243 binarycom[6737:80b] Received memory warning.
+2013-12-18 15:00:09.183 binarycom[7355:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 15:00:09.399 binarycom[7355:80b] Resetting plugins due to page load.
+2013-12-18 15:00:09.456 binarycom[7355:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 15:00:25.378 binarycom[7355:80b] Received memory warning.
+2013-12-18 15:28:59.232 binarycom[8008:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-18 15:28:59.445 binarycom[8008:80b] Resetting plugins due to page load.
+2013-12-18 15:28:59.509 binarycom[8008:80b] Finished load of: file:///i/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/1532FC76-4BA3-425A-AF76-0F3CFF48F1D0/binarycom.app/www/index.html
+2013-12-18 15:29:55.991 binarycom[8008:80b] Received memory warning.
