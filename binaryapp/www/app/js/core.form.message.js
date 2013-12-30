@@ -1,40 +1,61 @@
-function AppPlugin(app) {
-    
-    app['core.form.message'] = {
+module.exports = function(app) {
 
+    app['core.form.message'] = {
         pool : new Object(),
         show : function(o) {
-            this.clear(o.form);
-            var obj = o.near;
-            var t = document.createElement('div');
-            t.className='apmessage';
-            t.style.left=obj.offsetLeft + 'px';
-            t.style.top= ((obj.type==='select-one'? obj.offsetHeight : obj.clientHeight)+obj.offsetTop) + 'px';
-            t.innerHTML = o.msg;
-            o.near.parentNode.appendChild(t);
-            o.near.parentNode.style.position='relative';
+            var form = o.form;
+            this.clear(form);
             
-            if (! this.pool[o.form]) this.pool[o.form] = { onsubmit:null, msgobj:null };
-            var self = this;
-            if (! this.pool[o.form].onsubmit) {
-                this.pool[o.form].onsubmit = o.form.addEventListener('submit', function() { self.clear(this) });
-                var e = o.form.elements;
-                for (var i=0; i < e.length; i++) {
-                    e[i].addEventListener('oninput' in e[i]? 'input' : 'change',function() { self.clear(o.form) });
-                };
+            var t = this.pool[form]? this.pool[form].msgobj : document.createElement('div');
+            var setSize = function() {
+                var obj = o.near;
+                var curleft = 0;
+                var curtop = (obj.type && obj.type==='select-one')? obj.offsetHeight : obj.clientHeight;
+                if(obj.offsetParent) {
+                    while(1) {
+                        curleft += obj.offsetLeft;
+                        curtop += obj.offsetTop;
+                        if(! obj.offsetParent) break;
+                        obj = obj.offsetParent;
+                    }
+                } else if (obj.x) {
+                    curleft += obj.x; curtop += obj.y;
+                }
+                t.style.left = curleft + 'px';
+                t.style.top = curtop + 'px';
             }
-            this.pool[o.form].msgobj = t;
+            t.innerHTML = o.msg;
+            setSize();
+
+            if (this.pool[form]) return;
+            t.className='core-form-message';
+            document.body.appendChild(t);
+            this.pool[form] = {
+                msgobj:t,
+                resizeEvent : window.addEventListener('resize', setSize),
+                onSubmit : form.addEventListener('submit', function() { self.clear(this) }),
+                frmObjEvents : new Array()
+            };
+            var self = this;
+            Array.prototype.slice(form.elements).forEach(function (k) {
+                var t = 'oninput' in k? 'input' : 'change';
+                this.pool[form].frmObjEvents.push({ obj:k, type:t, event:k.addEventListener(t, function() { self.clear(form) }) });
+            });
+
         },
         
         clear : function(form) {
-            if (! this.pool[form] || ! this.pool[form].msgobj) return;
-            var msg = this.pool[form].msgobj;
+            if (! this.pool[form]) return;
+            var frm = this.pool[form];
+            window.removeEventListener('resize',frm.resizeEvent);
+            form.removeEventListener('submit',frm.onSubmit);
+            frm.frmObjEvents.forEach(function (o) {
+                o.obj.removeEventListener(o.type,o.event);
+            });
+            var msg = frm.msgobj;
             msg.parentNode.removeChild(msg)
-            this.pool[form].msgobj = null;
+            delete this.pool[form];
         }
-    
-    }
-    
-};
+    };
 
-AppPluginLoaded=true;
+};

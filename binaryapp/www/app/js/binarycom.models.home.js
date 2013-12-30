@@ -1,4 +1,5 @@
-function AppPlugin(app) {
+module.exports = function (app) {
+
     app['binarycom.models.home'] = {
         
         init : function(o) {
@@ -14,24 +15,24 @@ function AppPlugin(app) {
         mvm.getElementsByClassName('settings')[0].addEventListener('click', function() {
             app['binarycom.models.settings'].init();
         });
-        app['core.events'].listeners.add('core.cache.mode.set', function (o) {
+        app['core.events'].listeners.add('core.cache','mode.set', function (o) {
             mvms.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
         });
-        app['core.events'].listeners.add('core.debug.mode.set', function (o) {
+        app['core.events'].listeners.add('core.debug','mode.set', function (o) {
             mvms.querySelector('.debug >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
         });
-        app['core.events'].listeners.add('binarycom.safety.mode.set', function (o) {
+        app['core.events'].listeners.add('binarycom.safety','mode.set', function (o) {
             mvms.querySelector('.safety >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
         });
-        app['core.events'].listeners.add('binarycom.apigee.login.success', function (o) {
+        app['core.events'].listeners.add('binarycom.apigee','login.success', function (o) {
             mvms.querySelector('.logout >.wrapper').className = 'wrapper';
          });
-        app['core.events'].listeners.add('binarycom.apigee.logout.success', function (o) {
+        app['core.events'].listeners.add('binarycom.apigee','logout.success', function (o) {
             mvms.querySelector('.logout >.wrapper').className = 'wrapper disabled';
         });
          
-     mvm.getElementsByClassName('charts')[0].addEventListener('click', function() {
-         app['binarycom.models.charts'].init();
+     mvm.getElementsByClassName('account')[0].addEventListener('click', function() {
+         app['binarycom.models.account'].init();
      });
      mvm.getElementsByClassName('trade')[0].addEventListener('click', function() {
          app['binarycom.models.trade'].init();
@@ -46,6 +47,4 @@ function AppPlugin(app) {
          app['binarycom.models.portfolio'].init();
      });
 
-}
-
-AppPluginLoaded=true;
+};

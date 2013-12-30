@@ -1,4 +1,4 @@
-function AppPlugin(app) {
+module.exports = function (app) {
     
     app['binarycom.sparkline'] = {
 
@@ -47,6 +47,4 @@ function AppPlugin(app) {
 
     };
 
-}
-
-AppPluginLoaded=true;
+};

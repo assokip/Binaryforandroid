@@ -1,42 +1,41 @@
-function AppPlugin(app) {
-    
+module.exports = function(app) {
+
     app['core.events'] = new function() {
-        
+    
         var self = this;
-        
+    
         this.listeners = {
             pool : {},
-            add : function(event, fn) {
+            add : function(name, event, fn) {
                 var pool = this.pool;
-                if (! pool[event]) pool[event] = new Array();
-                var m = pool[event];
-                var e = null;
-                if (!(fn in m)) e = m.push(fn);
-                self.dispatch('core.events.listeners.add',{ event:event, fn:fn });
+                if (! pool[name]) pool[name] = {};
+                if (! pool[name][event]) pool[name][event] = new Array();
+                var m = pool[name][event];
+                if (m.indexOf(fn) === -1) m.push(fn);
+                self.dispatch('core.events','listeners.add',{ name:name, event:event, fn:fn });
                 return m[m.length-1];
             },
             remove : function(fn) {
-                var pool = this.pool;
-                Object.keys(pool).forEach(function(event) {
-                    var m = pool[event];
-                    for (var i=0; i < m.length; i++) {
-                        if (m[i] !== fn) continue;
-                        self.dispatch('core.events.listeners.remove',{ event:event, fn:fn });
-                        m.slice(i,1);
-                    }
+                var s=this;
+                Object.keys(s.pool).some(function(name) {
+                    return Object.keys(s.pool[name]).some(function(event) {
+                        var p = s.pool[name][event];
+                        for (var i=0; i < p.length; i++) {
+                            if (p[i] !== fn) continue;
+                            self.dispatch('core.events','listeners.remove',{ name:name, event:event, fn:fn });
+                            s.pool[name][event].splice(i,1);
+                            return true;
+                        }
+                    });
                 });
-                if (! pool[event]) return;
             }
         },
-        this.dispatch = function(event, params, bubble) {
-            var m = this.listeners.pool[event];
-            if (! m) return;
-            if (bubble !== false && event !== 'core.events.dispatch') this.dispatch('core.events.dispatch', { event:event });
-            m.forEach(function(t) { t.call(window, params); });
+        this.dispatch = function(name, event, params, bubble) {
+            if (! this.listeners.pool[name] || ! this.listeners.pool[name][event]) return;
+            if (bubble !== false && name !== 'core.events' && event !== 'dispatch') this.dispatch('core.events','dispatch', { name:name, event:event, params: params});
+            this.listeners.pool[name][event].forEach(function(t) { t(params); });
         }
-        
-    }
     
-}
+    };
 
-AppPluginLoaded=true;
+};

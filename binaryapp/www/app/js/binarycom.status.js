@@ -1,11 +1,9 @@
-function AppPlugin(app) {
+module.exports = function (app) {
     
     var stc = document.createElement('div');
-    stc.className = 'status';
-    document.body.appendChild(stc);
+    stc.className = 'binarycom-status';
     stc.addEventListener('click', function() {
-        app['binarycom.status'].remove();
-        this.style.display='none';
+        document.body.removeChild(stc);
     });
     var nav = document.createElement('nav');
     stc.appendChild(nav);
@@ -23,13 +21,13 @@ function AppPlugin(app) {
             } else {
                 this.pool.forEach(function (o) { ul.removeChild(o) });
             }
-            if (! ul.hasChildNodes()) stc.style.display='none';
+            if (! ul.hasChildNodes() && stc.parentNode) document.body.removeChild(stc);
         },
         append : function(o) {
             var self = this;
             var kl = document.createElement('li');
             this.pool.push(kl);
-            stc.style.display='block';
+            if (! stc.parentNode) document.body.appendChild(stc);
             ul.appendChild(kl);
                 var aa = document.createElement('div');
                 aa.className='type';
@@ -59,5 +57,3 @@ function AppPlugin(app) {
         }
     };
 };
-
-AppPluginLoaded=true;

@@ -1,14 +1,15 @@
-function AppPlugin(app) {
-    
+module.exports = function (app) {
+
     app['binarycom.api.offerings'] = new function() {
         
         var api = app['binarycom.apigee'];
         
         var root = this;
         
-        this.connection = app['core.connection'].create({
+        this.connection = new app['core.connection.xhr']({
             exe : api.url.get(),
             resource : '/offerings',
+            withCredentials : true,
             headers : {
                 'Authorization' : function() {
                     var a = api.status.get();
@@ -25,6 +26,9 @@ function AppPlugin(app) {
             if (! cache) {
                 var c = root.connection;
                 c.status.nextto = o.statusnextto? o.statusnextto : null;
+                c.onAbort = function() { if (o.onAbort) o.onAbort(); }
+                c.onError = function(e) { if (o.onError) o.onError(e); }
+                c.onEnd = function() { if (o.onEnd) o.onEnd(); }
                 c.onCompletion = function(k) {
                     var dt = new Date();
                     dt.setMinutes(dt.getMinutes()+root.refreshminutes);
@@ -34,6 +38,7 @@ function AppPlugin(app) {
                 c.run();
             } else {
                 if (o.onCompletion) o.onCompletion(cache);
+                if (o.onEnd) o.onEnd();
             }
         };
 
@@ -41,6 +46,5 @@ function AppPlugin(app) {
             this.connection.abort();
         };
     }
-}
 
-AppPluginLoaded=true;
+};

@@ -1,4 +1,5 @@
-function AppPlugin(app) {
+module.exports = function (app) {
+
     app['binarycom.navigate'] = {
         current : null,
      
@@ -20,7 +21,7 @@ function AppPlugin(app) {
                 v.style.zIndex = 1;
                 if (self.current) self.current.style.zIndex=0;
                 v.style.visibility='visible';
-                app['core.events'].dispatch('binarycom.navigate.to',{ view:v, id:self.current });
+                app['core.events'].dispatch('binarycom.navigate','to',{ view:v, id:self.current });
                 self.current = v;
             });
             
@@ -45,6 +46,8 @@ function AppPlugin(app) {
         
     };
 
-}
+    app['core.events'].listeners.add('binarycom.navigate','to', function (o) {
+        app['core.form.message'].clear();
+    });
 
-AppPluginLoaded=true;
+};

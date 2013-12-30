@@ -1,4 +1,4 @@
-function AppPlugin(app,env) {
+module.exports = function (app) {
     
     app['binarycom.charts.highstock'] = new function (o) {
         
@@ -289,6 +289,3 @@ function AppPlugin(app,env) {
     };
     
 };
-
-
-AppPluginLoaded=true;

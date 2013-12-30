@@ -1,4 +1,5 @@
-function AppPlugin(app) {
+module.exports = function (app) {
+
     app['binarycom.models.portfolio'] = {
         
         init : function() {
@@ -9,6 +10,4 @@ function AppPlugin(app) {
 
     document.querySelector('body >.main >.portfolio >.wrapper >.header >.back').addEventListener('click', function() { app['binarycom.models.home'].init({ effect:'back' }); });
     
-}
-
-AppPluginLoaded=true;
+};

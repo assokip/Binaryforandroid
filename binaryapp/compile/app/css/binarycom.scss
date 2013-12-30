@@ -1,0 +1,775 @@
+@-webkit-keyframes swipeLeft {
+0% { opacity: 0; -webkit-transform: translateX(-100%); }
+100% { -webkit-transform: translateX(0); }
+}
+
+@-webkit-keyframes swipeDown {
+0% { opacity: 0; -webkit-transform: translateY(-100%); }
+100% { -webkit-transform: translateY(0); }
+}
+
+@-moz-keyframes swipeDown {
+0% { opacity: 0; -moz-transform: translateY(-100%); }
+100% { -moz-transform: translateY(0); }
+}
+
+@-o-keyframes swipeDown {
+0% { opacity: 0; -o-transform: translateY(-100%); }
+100% { -o-transform: translateY(0); }
+}
+
+@keyframes swipeDown {
+0% { opacity: 0; transform: translateY(-100%); }
+100% { transform: translateY(0); }
+}
+
+@-webkit-keyframes pulse {
+0% { -webkit-transform: scale(1); }
+50% { -webkit-transform: scale(1.1); }
+100% { -webkit-transform: scale(1); }
+}
+
+@-moz-keyframes pulse {
+0% { -moz-transform: scale(1); }	
+50% { -moz-transform: scale(1.1); }
+100% { -moz-transform: scale(1); }
+}
+
+@-o-keyframes pulse {
+0% { -o-transform: scale(1); }	
+50% { -o-transform: scale(1.1); }
+100% { -o-transform: scale(1); }
+}
+
+@keyframes pulse {
+0% { transform: scale(1); }	
+50% { transform: scale(1.1); }
+100% { transform: scale(1); }
+}
+
+
+@mixin objselected {
+    background:#252d5f;
+    color:#fff;
+    :hover { background:#252d5f; }
+}
+
+@mixin objdisabled {
+    background:#f2f2f2; color:#ccc;
+    &:hover { background:#f2f2f2; }
+}
+
+@mixin pageheader {
+    height:13%;
+    margin:1% 0 4% 0;
+    width:100%;
+    position:relative;
+
+    >.back, >.submenu {
+        height:100%;
+        width:12%;
+        margin:0;
+        position:absolute; top:20%;
+        z-index:99999999;
+        &:hover {
+            cursor:pointer;
+        }
+    }
+
+    >.back {
+        background: inline-image("css/binarycom/pageheader/back0.svg") no-repeat 0 50%;
+        &:hover { background: inline-image("css/binarycom/pageheader/back1.svg") no-repeat 0 50%; background-size:70%; }
+        background-size:70%;
+        right:12.5%;
+    }
+
+    >.submenu {
+        background: inline-image("css/binarycom/pageheader/menu0.svg") no-repeat 0 50%;
+        &:hover { background: inline-image("css/binarycom/pageheader/menu1.svg") no-repeat 0 50%; background-size:70%; }
+        background-size:70%;
+        right:2.5%;
+        &.disabled {
+            opacity:0.4;
+            &:hover {
+                background: inline-image("css/binarycom/pageheader/menu0.svg") no-repeat 0 50%;
+                background-size:70%;
+                opacity:0.4;
+                cursor:default;
+            }
+        }
+
+    }
+
+    >.logo {
+        height:100%; width:50%;
+        background: inline-image("logo.svg") no-repeat 0 50%;
+        background-size:75%;
+        z-index:99999999;
+        position:absolute; top:20%; left:5%;
+        margin:0; padding:0; border:0;
+    }
+ 
+    >.title {
+        display:none;
+        background-position: 100% 50%;
+        background-size:40px;
+        background-repeat:no-repeat;
+        z-index:99999999;
+        position:absolute; top:15%; right:2%;
+        color:#000; font-size:160%;
+        font-weight:bold; padding:0 50px 0 0;
+    }
+    
+    @media (max-aspect-ratio: 4/5) {
+        margin-bottom:2%;
+        >.logo { background-size:90%; width:60%; left:5%; top:5% }
+        >.title { right:2% }
+        >.back, >.submenu, >.submenu.disabled:hover {
+            top:5%;
+            background-size:100%;
+            &:hover { background-size:100%; }
+        }
+        >.back {
+            right:17.5%;
+        }
+        >.submenu {
+            right:5%;
+        }
+    }
+}
+
+@mixin selmenu {
+    >.title {
+        font-size:140%;
+        margin:0 0 0.6% 0.2%; 
+    }
+
+    >.single {
+        >div, >input[type='text'] {
+            margin:0 1% 1% 0;
+            padding:1% 1.8% 1% 1.8%;
+            background:#fff;
+            box-shadow: -0px 10px 20px #EEEEEE;
+            font-size:95%;
+            border: 1px solid #EAEAEA;
+            border-radius:6px;
+            &:hover { cursor:pointer; @include commongradient; }
+            &.selected {
+                @include objselected;
+            }
+            &.disabled {
+                @include objdisabled;
+            }
+        }
+
+		input[disabled]{
+			@include objdisabled;
+		}
+
+    }
+        
+    >.multiple {
+        >div {
+            margin:0 5% 1% 0;
+            border:0;
+            label {
+                display:block;
+                white-space:nowrap;
+                font-size:75%;
+                margin:0 0 1px 10px;
+                padding:0;
+                line-height:50%;
+            }
+            input[type='text'], select {
+                font-size:75%;
+                border: 1px solid #EAEAEA;
+                box-shadow: -0px 10px 20px #EEEEEE;
+                padding:0.3em 0.5em 0.3em 0.5em;
+                border-radius:6px;
+                margin-top:10%;
+                &:hover { cursor:pointer; background-color:#f7f7f7; }
+            }
+            &:last-child { padding-right:0; }
+        }
+    }
+    
+    >.single, >.multiple {
+        padding-bottom:0.5%;
+        >div { float:left; }
+        &:after { content:'.'; display:block; line-height:0; visibility:hidden; clear:both; }
+    }
+    
+    @media (max-aspect-ratio: 4/5) {
+        >.title {
+            font-size:140%;
+            margin:0 0 1% 1%; 
+        }
+        >.single, >.multiple {
+            padding-bottom:2%;
+            &:last-child { margin-bottom:0; }
+        }
+    }
+    
+}
+
+@mixin commongradient {
+    background: linear-gradient(color-stops(#FFF 0%, #F0F0F0 100%));
+}
+
+@mixin commonboxshadow {
+    box-shadow: -0px 10px 20px #EEE;
+}
+
+@mixin pagemenu {
+    
+    height:100%;
+    margin-left:3%;
+
+    >div {
+        width:22%;
+        height:25%;
+        float:left;
+        margin:5%;
+        padding:0;
+        border: 1px solid #E9E9E9;
+        border-radius:20px;
+        background:#fff;
+        @include commonboxshadow;
+
+        &:hover {
+            @include commongradient;
+            border-color:#E4E4E4;
+            border-radius:20px;
+            cursor:pointer;
+        }
+
+        >.wrapper {
+            width:100%; height:100%;
+            margin:0;
+            border-radius:20px;
+            text-align:center;
+            font-size:120%;
+            padding:0;
+            background-repeat: no-repeat;
+            >div {
+                margin-top:7%;
+            }
+        }
+
+    }
+    
+    >.disabled {
+        background:#fff;
+        &:hover { cursor:inherit; background:#fff; }
+        opacity:0.3;
+    }
+    
+    @media (max-width: 600px) {
+        >div {
+            .wrapper {
+                >div {
+                    margin-top:5%;
+                //font-size:130%;
+                //border-radius:10px;
+                }
+            }
+        }
+    }
+    
+    @media (max-aspect-ratio: 4/5) {
+        margin:5% 0 0 9%;
+        >div {
+            width:35%;
+            height:19%;
+            margin:5%;
+            >.wrapper {
+                >div {
+                    margin-top:10%;
+                }
+            }
+        }
+            
+    } 
+    
+}
+
+/* MIXINS -end */
+
+body {
+
+    .effect_into {
+        -webkit-animation: swipeDown 0.3s linear 1;
+        -moz-animation: swipeDown 0.3s linear 1;
+        -ms-animation: swipeDown 0.3s linear 1;
+        -o-animation: swipeDown 0.3s linear 1;
+        animation: swipeDown 0.3s linear 1;
+    }
+    
+    .effect_back {
+        -webkit-animation: swipeLeft 0.3s linear 1;
+        -moz-animation: swipeLeft 0.3s linear 1;
+        -ms-animation: swipeLeft 0.3s linear 1;
+        -o-animation: swipeLeft 0.3s linear 1;
+        animation: swipeLeft 0.3s linear 1;
+    }
+
+    a {
+        outline:none;
+        -ms-touch-action: none;
+        &:focus { outline: none; }
+    }
+
+    form {
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+        }
+    }
+
+	input[type='submit'] {
+		background-color:#000;
+		color:#fff;
+		border:1px solid #EAEAEA;
+		padding:0.3em 0.6em 0.3em 0.6em;
+		border-radius:6px;
+		font-weight:bold;
+		font-size:90%;
+		&:hover { background-color:#444 }
+	}
+
+    input[disabled],textarea[disabled],select[disabled] {
+		@include objdisabled;
+    }
+
+    >iframe { position:absolute; width:100%; height:100%; border:0; padding:0; margin:0; z-index:99999; }
+    
+    >.main {
+        
+        margin:0;
+        padding:0;
+        height:100%;
+        position:relative;
+        
+        >div {
+            visibility:hidden; z-index:-1;
+            position:absolute;
+            left:0;
+            right:0;
+            height:100%;
+            width:100%;
+        }
+                 
+        >.home {
+            
+            position:fixed;
+            
+            >.wrapper {
+                
+                position:relative;
+                height:100%;
+                margin:0; padding:0; border:0;
+                
+                >.logo {
+                    height:20%; width:60%; 
+                    background: inline-image("logo.svg") no-repeat 50% 100%;
+                    background-size:70%;
+                    margin:0; padding:0; border:0;
+                    margin-left:20%;
+                }
+
+                >.menu {
+                    .trade {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/trade.svg") no-repeat 50% 60%;
+                            background-size:60%;
+                        }
+                    }
+                    .account {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/account.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .portfolio {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/portfolio.svg") no-repeat 50% 60%;
+                            background-size:60%;
+                        }
+                    }
+                    .support {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/support.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .news {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/news.svg") no-repeat 50% 60%;
+                            background-size:60%;
+                        }
+                    }
+                    .settings {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/home/settings.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    @include pagemenu;
+                }
+                
+                @media (max-aspect-ratio: 4/5) {
+                  >.logo { background-size:100%; height:17%; width:70%; margin-left:15%; }
+                }
+            }
+        }
+            
+        >.support {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                }
+                >.menu {
+                    @include pagemenu;
+                    .faq {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/faq.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .email {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/email.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .chat {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/chat.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .phone {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/phone.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .callback {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/callback.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .messages {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/support/messages.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                }
+            }
+        }
+        
+        >.portfolio {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: inline-image("css/binarycom/main/portfolio/portfolio.svg");
+                    }
+                }
+                >.menu {
+                    @include pagemenu;
+
+                }
+            }
+        }
+        
+        >.news {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                }
+                >.menu {
+                    @include pagemenu;
+                    .markets {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/news/markets.svg") no-repeat 50% 60%;
+                            background-size:60%;
+                        }
+                    }
+                    .service {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/news/service.svg") no-repeat 50% 60%;
+                            background-size:60%;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+        >.settings {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                }
+                >.menu {
+                    @include pagemenu;
+                    .locale {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/settings/locale.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .debug {
+                        .on {
+                            background: inline-image("css/binarycom/main/settings/debug/on.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                        .off {
+                            background: inline-image("css/binarycom/main/settings/debug/off.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .cache {
+                        .on {
+                            background: inline-image("css/binarycom/main/settings/cache/on.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                        .off {
+                            background: inline-image("css/binarycom/main/settings/cache/off.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .safety {
+                        .on {
+                            background: inline-image("css/binarycom/main/settings/safety/on.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                        .off {
+                            background: inline-image("css/binarycom/main/settings/safety/off.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                    .logout {
+                        .wrapper {
+                            background: inline-image("css/binarycom/main/settings/logout.svg") no-repeat 50% 60%;
+                            background-size:50%;
+                        }
+                    }
+                }
+            }
+        } 
+        
+        >.account {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                }
+                >.content {
+                    padding:1.5em;
+
+                    >.accid {
+                        display:inline-block;
+                        font-size:130%;
+                        font-weight:bold;
+                        padding:1% 0 0 2%;
+                    }
+
+                    >.balance {
+                        clear:both;
+                        border: 1px solid #000;
+                        border-radius: 10px;
+                        font-size:200%;
+                        margin-top:0.5em;
+                        @include commongradient;
+                        @include commonboxshadow;
+                        >div { display:inline-block; }
+                        >.type { background:#000; color:#fff; padding:0.5em; border-radius:10px; }
+                        >.value { padding:0.5em; }
+                    }
+                    >.status {
+                        float:right;
+                        padding-right:2.5%;
+                        color:#AAA;
+                        >div {
+                            color:#fff;
+                            display:inline-block;
+                            font-weight:bold;
+                            border-radius:5px;
+                            margin-left:.2em;
+                            padding:.2em .5em .2em .5em;
+                        }
+                        >.unlimited {
+                            background-color:green;
+                        }
+                        >.limited {
+                            background-color:#ceb613;
+                        }
+                        >.disabled {
+                            background-color:red;
+                        }
+                    }
+                    >.notes {
+                        margin:1.3em 0 0 1%;
+                        >.limits {
+                            background: inline-image("css/binarycom/main/account/limits.svg") no-repeat;
+                            background-size:4em;
+                        }
+                        >.done {
+                            background: inline-image("css/binarycom/main/account/done.svg") no-repeat;
+                            background-size:4em;
+                        }
+                        >.critical {
+                            background: inline-image("css/binarycom/main/account/critical.svg") no-repeat;
+                            background-size:4em;
+                        }
+                        >div {
+                            padding-left:4.5em;
+                            min-height:4.5em;
+                            margin-top:.8em;
+                            >div {
+                                border-left: 1px solid #CCC;
+                                padding:.4em .8em .4em .8em;
+                            }
+                        }
+                    }
+                }
+            }
+        } 
+        
+        >.trade_options, >.trade_purchase {
+            height:100%;
+            position:fixed;
+            >.wrapper {
+                margin:0; padding:0; border:0; height:100%;
+                >.header {
+                    @include pageheader;
+                    >.title {
+                        background-image: inline-image("css/binarycom/main/trade/trade.svg");
+                    }
+                }
+                >div { margin:3% }
+               
+            }
+        }
+        
+        >.trade_options {
+            >.wrapper {
+                >.content {
+                    >div {
+                        clear:both;
+                        @include selmenu;
+                        &:not(:first-child) {
+                            padding-top:1.5%;
+                            display:none;
+                        }
+                    }
+           
+                }
+            }
+        }
+        
+        >.trade_purchase {
+            >.wrapper {
+                >.content {
+                    >.header {
+                        
+                        @include commongradient;
+                        border: 1px solid #E9E9E9;
+                        position:relative;
+                        border-radius:6px;
+                        font-size:90%;
+                        font-weight:bold;
+                        margin-bottom:2%;
+						padding: 0.3em 0 0.3em 0.6em;
+                        
+                        >.location {
+                            display:inline;
+                            >div {
+                                padding-right:1.2em;
+                                display:inline-block;
+                                margin-right:0.3em;
+                                background: inline-image("css/binarycom/main/trade/optionlevel.svg") no-repeat 100% 50%;
+                                background-size:0.9em 0.9em;
+								&:last-child { margin-right:0 }
+                            }
+                        }
+                        
+                        >.spot {
+                            margin:0;
+                            position:relative;
+                            display:inline;
+                            &.up { color:green }
+                            &.down { color:red }
+                            >.core-connection-xhr {
+								background:blue;top:-0.3em;
+                                position:absolute;right:-0.6em;
+                                >.loading { width: 0.3em; height: 0.3em; }
+                                >.error {  width: 0.3em; height: 0.3em; }
+                            }
+                        }
+                        
+                        >.sparkline {
+                            position:absolute;
+							max-width:25%;
+							top:10%;right:0.6em;
+                            height:100%;
+                        }
+                    }
+
+                    @media (max-aspect-ratio: 4/5) {
+                        >.header {
+                            margin-bottom:3%;
+                            >.sparkline { display:none; }
+                        }
+                    } 
+                    
+                    form {
+                        >div {
+                            clear:both;
+                            @include selmenu;
+                        }
+                    }
+                    
+                    >.buy {
+                        clear:both;
+                        border-top:1px solid #EEEEEE;
+                        padding-top:0.5em;
+                        margin-top:0.5em;
+						display:none;
+						>.price {
+							margin-left: 0.7em;
+							display:inline;
+							min-width:100px;
+							position:relative;
+							>.core-connection-xhr {
+								position:absolute;top:-0.5em;left:0;height:1em;width:1em;
+								>.loading { width: 0.7em; height: 0.7em;}
+								>.error {  width: 0.7em; height: 0.7em; }
+							}
+						}
+                    }
+                }
+            }
+        }
+    }
+    
+    
+  
+}

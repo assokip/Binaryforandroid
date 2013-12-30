@@ -1,5 +1,5 @@
-function AppPlugin(app) {
-    
+module.exports = function(app) {
+
     app['core.store'] = new function() {
         
         this.lzw = {
@@ -55,32 +55,32 @@ function AppPlugin(app) {
             }
         },
         
-        this.remove = function(o) {
-            var type = o.type? o.type : 'local';
-            var id = o.id;
-            if (type === 'cookie') document.cookie = id + '=\'\';path=/;expires=Sun, 17-Jan-1980 00:00:00 GMT;\n';
-            else if (type === 'local') return localStorage.setItem(id,null);
-            else if (type === 'session') return sessionStorage.setItem(id,null);
+        this.remove = function(name,id,o) {
+            var type = o && o.type? o.type : 'local';
+            var uid = name+':'+id; 
+            if (type === 'cookie') document.cookie = uid + '=\'\';path=/;expires=Sun, 17-Jan-1980 00:00:00 GMT;\n';
+            else if (type === 'local') return localStorage.setItem(uid,null);
+            else if (type === 'session') return sessionStorage.setItem(uid,null);
             return true;
             
         };
-        this.set = function (o) {
-            var type = o.type? o.type : 'local';
-            var value = this.lzw.encode(JSON.stringify(o.value));
-            var id = o.id;
+        this.set = function (name,id,value,o) {
+            var type = o && o.type? o.type : 'local';
+            value = this.lzw.encode(JSON.stringify(value));
+            var uid = name+':'+id; 
             if (type === 'cookie') {
-                document.cookie = (nopersist)? id+'='+escape(value)+';path=/;\n' : id+'='+escape(value)+';path=/;expires=Sun, 17-Jan-2038 00:00:00 GMT;\n';
+                document.cookie = uid +'='+(nopersist? +escape(value)+';path=/;\n' : escape(value)+';path=/;expires=Sun, 17-Jan-2038 00:00:00 GMT;\n');
             } else if (type === 'local') {
-                try { return localStorage.setItem(id,value); } catch (e) { return e; }
+                try { return localStorage.setItem(uid,value); } catch (e) { return e; }
             } else if (type === 'session') {
-                try { return sessionStorage.setItem(id,value); } catch (e) { return e; }
+                try { return sessionStorage.setItem(uid,value); } catch (e) { return e; }
             }
+            app['core.events'].dispatch('core.store','set', { name:name, id:id, value:value });
             return true;
         };
-        this.get = function (o) {
-            var id = o.id;
-            if (! o.id) return;
-            var type = o.type? o.type : 'local';
+        this.get = function (name,id,o) {
+            id = name+':'+id; 
+            var type = o && o.type? o.type : 'local';
             if (type === 'cookie') {
                 id = id + '='; var j = -1; var done = false; var t;
                 while ((j < document.cookie.length) && done == false) { j++;
@@ -91,14 +91,18 @@ function AppPlugin(app) {
                     done = true;
                 }
                 if (t) return this.lzw.decode(t);
-                return null;
+                return null;    
             }
-            else if (type === 'local') { return JSON.parse(this.lzw.decode(localStorage.getItem(id))); }
-            else if (type === 'session') { return JSON.parse(this.lzw.decode(sessionStorage.getItem(id))); }
+            else if (type === 'local') {
+                try { return JSON.parse(this.lzw.decode(localStorage.getItem(id))); }
+                catch (e) { app['core.debug'].log.append({ module:'core.store', action:'get', error:e }) }
+            }
+            else if (type === 'session') {
+                try { return JSON.parse(this.lzw.decode(sessionStorage.getItem(id))); }
+                catch (e) { app['core.debug'].log.append({ module:'core.store', action:'get', error:e }) }
+            }
             return null;
         };
     };
 
 };
-
-AppPluginLoaded=true;

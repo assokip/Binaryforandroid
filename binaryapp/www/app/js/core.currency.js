@@ -1,6 +1,15 @@
-function AppPlugin(app) {
-    
+module.exports = function(app) {
+
     app['core.currency'] = {
+        locale : {
+            id : null,
+            set : function(o) {
+                this.id=o.id;
+                this.symbol=o.symbol
+                app['core.events'].dispatch('core.currency','locale.set', o);
+            },
+            get : function() { return this.id; }
+        },
         validate : function(s,o) {
             if (o && o.allowneg) return RegExp(/^-?\d+(\.\d{2})?$/).test(String(s).trim());
             return RegExp(/^\d+(\.\d{2})?$/).test(String(s).trim());
@@ -13,7 +22,5 @@ function AppPlugin(app) {
             return o;
         }
     };
-    
-};
 
-AppPluginLoaded=true;
+};

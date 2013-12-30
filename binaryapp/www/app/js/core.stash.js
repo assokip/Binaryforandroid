@@ -1,23 +1,21 @@
-function AppPlugin(app) {
-    
+module.exports = function(app) {
+
     app['core.stash'] = {
     
         store : {},
         
-        remove: function(id) { if (id in this.store) delete this.store[id]; },
+        remove: function(name, id) { if (this.store[name] && this.store[name][id]) this.store[name][id] = null; },
         
-        set : function (id, value) {
-            this.store[id]=value;
-            app['core.events'].dispatch('core.cache.set', { id:id, value:value });
+        set : function (name,id,value) {
+            if (! this.store[name]) this.store[name] = {};
+            this.store[name][id]=value;
+            app['core.events'].dispatch('core.cache','set', { name:name, id:id, value:value });
         },
         
-        get : function (id) {
-            if (id in this.store) return this.store[id];
+        get : function (name, id) {
+            if (this.store[name] && this.store[name][id]) return this.store[name][id];
             return null;
         }
-        
     };
 
 };
-
-AppPluginLoaded=true;

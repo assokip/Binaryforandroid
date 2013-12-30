@@ -1,5 +1,5 @@
-function AppPlugin(app) {
-    
+module.exports = function(app) {
+
     app['core.url'] = {
     
         param : {
@@ -38,7 +38,5 @@ function AppPlugin(app) {
         }
     
     };
-    
-};
 
-AppPluginLoaded=true;
+};

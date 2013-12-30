@@ -1,4 +1,5 @@
-function AppPlugin(app) {
+module.exports = function (app) {
+
     app['binarycom.models.support'] = {
         
         init : function() {
@@ -14,6 +15,4 @@ function AppPlugin(app) {
         else v.addEventListener('click', function() { eval(app['binarycom.models.support']+'.'+this.className).init(); });
     });
 
-}
-
-AppPluginLoaded=true;
+};

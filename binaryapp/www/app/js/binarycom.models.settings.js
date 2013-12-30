@@ -1,30 +1,30 @@
-function AppPlugin(app) {
+module.exports = function (app) {
     
     app['binarycom.models.settings'] = {
         init : function() {
             app['binarycom.navigate'].to({ view:document.querySelector('body >.main >.settings'), effect:'into' });
         }
     };
-    
+
     var sw = document.querySelector('body >.main >.settings >.wrapper');
     var swm = sw.getElementsByClassName('menu')[0];
     
     var ev = app['core.events'];
     
     // view listeners
-    ev.listeners.add('core.cache.mode.set', function (o) {
-     swm.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
+    ev.listeners.add('core.cache','mode.set', function (o) {
+        swm.querySelector('.cache >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
     });
-    ev.listeners.add('core.debug.mode.set', function (o) {
+    ev.listeners.add('core.debug','mode.set', function (o) {
         swm.querySelector('.debug >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
     });
-    ev.listeners.add('binarycom.safety.mode.set', function (o) {
+    ev.listeners.add('binarycom.safety','mode.set', function (o) {
         swm.querySelector('.safety >.wrapper').className = 'wrapper ' + (o? ' on' : ' off');
     });
-    ev.listeners.add('binarycom.apigee.login.success', function (o) {
+    ev.listeners.add('binarycom.apigee','login.success', function (o) {
         swm.querySelector('.logout >.wrapper').className = 'wrapper';
      });
-    ev.listeners.add('binarycom.apigee.logout.success', function (o) {
+    ev.listeners.add('binarycom.apigee','logout.success', function (o) {
         swm.querySelector('.logout >.wrapper').className = 'wrapper disabled';
     });
     
@@ -49,10 +49,10 @@ function AppPlugin(app) {
         if (app['binarycom.apigee'].status.get()) app['binarycom.apigee'].logout();
     });
     var l = logout.getElementsByClassName('wrapper')[0];
-    ev.listeners.add('binarycom.apigee.logout.success', function (o) {
+    ev.listeners.add('binarycom.apigee','logout.success', function (o) {
         l.className = 'wrapper disabled';
     });
-    ev.listeners.add('binarycom.apigee.login.success', function (o) {
+    ev.listeners.add('binarycom.apigee','login.success', function (o) {
         l.className = 'wrapper';
     });
     // initial state?
@@ -64,6 +64,4 @@ function AppPlugin(app) {
         app['binarycom.models.home'].init({ effect:'back' });
     });
     
-}
-
-AppPluginLoaded=true;
+};

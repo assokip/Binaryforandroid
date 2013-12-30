@@ -1,0 +1,48 @@
+@-webkit-keyframes core-connection-xhr-spin {
+  from { -webkit-transform: rotate(0deg); opacity: 0.2; }
+  50%  { -webkit-transform: rotate(180deg); opacity: 1; }
+  to   { -webkit-transform: rotate(360deg); opacity: 0.2; }
+}
+
+@-moz-keyframes core-connection-xhr-spin {
+  from { -moz-transform: rotate(0deg); opacity: 0.2; }
+  50%  { -moz-transform: rotate(180deg); opacity: 1; }
+  to   { -moz-transform: rotate(360deg); opacity: 0.2; }
+}
+
+@-ms-keyframes core-connection-xhr-spin {
+  from { -ms-transform: rotate(0deg); opacity: 0.2; }
+  50%  { -ms-transform: rotate(180deg); opacity: 1; }
+  to   { -ms-transform: rotate(360deg); opacity: 0.2; }
+}
+
+@-o-keyframes core-connection-xhr-spin {
+  from { -o-transform: rotate(0deg); opacity: 0.2; }
+  50%  { -o-transform: rotate(180deg); opacity: 1; }
+  to   { -o-transform: rotate(360deg); opacity: 0.2; }
+}
+
+@keyframes core-connection-xhr-spin {
+  from { transform: rotate(0deg); opacity: 0.2; }
+  50%  { transform: rotate(180deg); opacity: 1; }
+  to   { transform: rotate(360deg); opacity: 0.2; }
+}
+
+.core-connection-xhr {
+    position:relative;
+    div { position:absolute; z-index:999999; left:50%; top:5px; }
+    >.loading { width: 20px; height: 20px; border: 8px solid #000;
+        border-right-color: transparent; border-radius: 50%;
+        -webkit-animation: core-connection-xhr-spin 1s linear infinite;
+        -moz-animation: core-connection-xhr-spin 1s linear infinite;
+        -ms-animation: core-connection-xhr-spin 1s linear infinite;
+        -o-animation: core-connection-xhr-spin 1s linear infinite;
+        animation: core-connection-xhr-spin 1s linear infinite;
+    }
+    >.error {
+        width:35px;
+        height: 35px;
+        background: inline-image("css/core.connection.xhr/error.svg") no-repeat;
+        background-size:35px;
+    }
+}

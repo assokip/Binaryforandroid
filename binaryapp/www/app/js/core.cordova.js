@@ -1,12 +1,5 @@
-function AppPlugin(app) {
-    app['core.cordova'] = {
-        loaded : window.cordova || window.PhoneGap? true : false
-    };
-};        
+module.exports = function(app) {
 
-//App.prototype.exit = function() {
-//    navigator.App.exitApp();
-//};
+    if (window.cordova || window.PhoneGap) app['core.cordova'] = new Object();
 
-
-AppPluginLoaded=true;
+};
